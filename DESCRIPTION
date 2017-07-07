@@ -1,0 +1,10 @@
+Package: grene
+Type: Package
+Title: grene: the R package of the GrENE-net evolution experiment (grene-net.org)
+Version: 0.0.1
+Authors@R: person("Moises", "Exposito-Alonso", email = "moisesexpositoalonso@gmail.com", role = c("aut", "cre"))
+Description: An R package with data from the GrENE-net 
+    GrENE-net (grene-net.org) is a globally distributed evolution experiment with Arabidopsis. In here there is information about the ecotypes, field stations, and others.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
