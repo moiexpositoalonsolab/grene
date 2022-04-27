@@ -1,0 +1,335 @@
+---
+title: "2018 Generation 1 Report"
+author: "Moi Exposito-Alonso"
+date: "10/1/2019"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(moiR)
+library(ggplot2)
+library(cowplot)
+library(devtools)
+load_all(".")
+```
+
+## Load data
+
+
+```{r}
+# setwd("../")
+# samplerec<-read.delim("data-raw/GrENE-net_records_sheet1.tsv",fill=T)
+# demorec<-read.delim("data-raw/GrENE-net_records_sheet2.tsv",fill=T)
+samplerec<-read.delim("data-raw/GrENE-net_records_2017-2018 - Samples.tsv",fill=T)
+demorec<-read.delim("data-raw/GrENE-net_records_2017-2018 - Census .tsv",fill=T)
+sample19<-read.delim("data-raw/GrENE-net_records_2017-2019 - Samples.tsv",fill=T)
+demo19<-read.delim("data-raw/GrENE-net_records_2017-2019 - Census .tsv",fill=T)
+sitesinfo<-read.delim("data-raw/GrENE-sites_info - Participants.tsv",fill=T) %>% 
+  dplyr::filter(NAME!="Moises Exposito-Alonso") #%>%
+  # dplyr::filter(NAME!="Marcelo Sternberg")
+
+sites_with_no_success<-matrix(
+  c("Mohamed Abdelaziz",	20,
+    "Mohamed Abdelaziz",	21,
+    "Jasmin Joshi",	19,
+    "Martijn Herber",	30,
+    "Paula Kover",	35,
+    "Zuzana Münzbergova",	41,
+    "Anne Muola",	56,
+    "Karin Koehl",	47,
+    "John Stinchcombe",	50,
+    "John Stinchcombe",	51
+    ),ncol=2,byrow=T
+)
+
+sites_not_reported<-matrix(
+  c(
+    "Svante Holm"	,44,
+    "Angela Hancock",	59,
+    "Rob Colautti",	3,
+    "Joy Bergelson",	7
+    )
+)
+
+sitesinfo <- dplyr::filter(sitesinfo,SITE_CODE!=31 | #marcelo
+                                       SITE_CODE!=3 |  #rob
+                                        SITE_CODE!=59  ) # angela
+
+sitesinfo$NAME<-fc(sitesinfo$NAME)
+sitesinfo$LATITUDE
+rownames(sitesinfo)<-sitesinfo$SITE_CODE
+
+samplerec$NAME<-sitesinfo[samplerec$Site,"NAME"] 
+samplerec$LONGITUDE<-sitesinfo[samplerec$Site,"LONGITUDE"] 
+samplerec$LATITUDE<-sitesinfo[samplerec$Site,"LATITUDE"] 
+
+demorec$NAME<-sitesinfo[demorec$Site,"NAME"] 
+demorec$LONGITUDE<-sitesinfo[demorec$Site,"LONGITUDE"] 
+demorec$LATITUDE<-sitesinfo[demorec$Site,"LATITUDE"] 
+
+
+samplerec$D<- paste0(substr(samplerec$Date,1,4), "-",
+                    substr(samplerec$Date,5,6), "-",
+                    substr(samplerec$Date,7,8)
+                    )
+samplerec$D<- as.Date(samplerec$D)
+
+demorec$D<- paste0(substr(demorec$Date,1,4), "-",
+                    substr(demorec$Date,5,6), "-",
+                    substr(demorec$Date,7,8)
+                    )
+demorec$D<- as.Date(demorec$D)
+
+
+
+```
+
+## Successful sites
+```{r}
+
+head(sitesinfo)
+
+head(samplerec)
+samplerec %>% 
+  dplyr::filter(grepl("FH",Sample_id)) %>% 
+  dplyr::select(Site)  %>% 
+  unique() %>%  fn %>% 
+  length
+
+samplerec %>% 
+  dplyr::filter(grepl("SB",Sample_id)) %>% 
+  dplyr::select(Site)  %>% 
+  unique() %>%  fn %>% 
+  length
+
+samplerec %>% 
+  dplyr::filter(grepl("SOIL",Sample_id)) %>% 
+  dplyr::select(Site)  %>% 
+  unique() %>%  fn %>% 
+  length
+
+head(demorec)
+demorec %>% 
+  dplyr::select(Site)  %>% 
+  unique() %>%  fn %>% 
+  length
+
+### Who are missing
+
+dplyr::filter(sitesinfo, SITE_CODE %in%
+setdiff(fn(sitesinfo$SITE_CODE), 
+        fn((samplerec %>% 
+          dplyr::filter(grepl("FH",Sample_id)) %>% 
+          dplyr::select(Site) %>% unique)
+        ))
+) %>%
+  dplyr::select(NAME)
+
+dplyr::filter(sitesinfo, SITE_CODE %in%
+setdiff(fn(sitesinfo$SITE_CODE), 
+        fn((samplerec %>% 
+          dplyr::filter(grepl("SB",Sample_id)) %>% 
+          dplyr::select(Site) %>% unique)
+        ))
+) %>%
+  dplyr::select(NAME)
+
+dplyr::filter(sitesinfo, SITE_CODE %in%
+setdiff(fn(sitesinfo$SITE_CODE), 
+        fn((samplerec %>% 
+          dplyr::filter(grepl("SOIL",Sample_id)) %>% 
+          dplyr::select(Site) %>% unique)
+        ))
+) %>%
+  dplyr::select(NAME)
+
+
+dplyr::filter(sitesinfo, SITE_CODE %in%
+setdiff(fn(sitesinfo$SITE_CODE), 
+        fn((demorec %>% 
+          dplyr::select(Site) %>% unique)
+        ))
+) %>%
+  dplyr::select(NAME)
+
+
+
+
+# list done not done
+head(sitesinfo)
+sitesinfo %>% 
+  dplyr::select(SITE_CODE) %>%
+  dplyr::mutate(
+                recordsFH_done= ifelse(SITE_CODE %in% 
+                       fn((samplerec %>% dplyr::filter(grepl("FH",Sample_id)) %>% dplyr::select(Site) %>% unique)),"done", "not_done"),
+                recordsSB_done= ifelse(SITE_CODE %in% 
+                       fn((samplerec %>% dplyr::filter(grepl("SB",Sample_id)) %>% dplyr::select(Site) %>% unique)),"done", "not_done"),
+                recordsSOIL_done= ifelse(SITE_CODE %in% 
+                       fn((samplerec %>% dplyr::filter(grepl("SOIL",Sample_id)) %>% dplyr::select(Site) %>% unique)),"done", "not_done"),
+                demography_done= ifelse(SITE_CODE %in% 
+                      fn((demorec %>% dplyr::select(Site) %>% unique)),"done", "not_done")
+                ) %>% 
+  dplyr::arrange(SITE_CODE) ->tasksdone
+
+
+tasksdone$comment<-NA
+tasksdone$comment[which(moiR::fn(tasksdone$SITE_CODE) %in% sites_not_reported)]<-"not_reported"
+tasksdone$comment[which(moiR::fn(tasksdone$SITE_CODE) %in% sites_with_no_success)]<-"not_successful"
+
+tasksdone$email<- sapply(1:nrow(tasksdone),FUN = function(i){
+  moiR::fc(sitesinfo$EMAIL)[which(sitesinfo$SITE_CODE == tasksdone$SITE_CODE[i])]
+})
+
+tasksdone<-arrange(tasksdone,moiR::fn(SITE_CODE))
+
+
+```
+
+
+
+# Flowering times, demographic time
+```{r}
+
+samplerec %>%
+  dplyr::filter(grepl("FH",Sample_id)) %>%
+  ggplot(aes(y=Site, x=D, color=factor(Site))
+         ) + geom_line()+
+  ylab("Site code")+ xlab("Date of flowering sampling")
+
+samplerec %>%
+  dplyr::filter(grepl("FH",Sample_id)) %>%
+  ggplot(aes(y=LATITUDE, x=D, color=LATITUDE,group=Site)
+         ) + 
+  geom_line()+
+  geom_point()+
+  ylab("Latitude")+ xlab("Date of flowering sampling")
+lm(fn(samplerec$D - as.Date("2018-01-01")) ~ samplerec$LATITUDE) %>% 
+  summary
+
+samplerec %>%
+  dplyr::filter(grepl("SB",Sample_id)) %>%
+  ggplot(aes(y=LATITUDE, x=D, color=LATITUDE,group=Site)
+         ) + 
+  geom_line()+
+  geom_point()+
+  ylab("Latitude")+ xlab("Date of flowering sampling")
+
+
+demorec %>%
+  ggplot(aes(y=LATITUDE, x=D, color=LATITUDE,group=Site)
+  # ggplot(aes(y=LONGITUDE, x=D, color=LONGITUDE,group=Site)
+         ) + 
+  geom_line()+
+  geom_point()+
+  ylab("Latitude")+ xlab("Date of demographic records")
+lm(fn(demorec$D - as.Date("2018-01-01")) ~ demorec$LATITUDE) %>% 
+  summary
+
+
+demorec %>%
+  ggplot(aes(x=LATITUDE, y=fn(Diagonal_plant_number), color=LATITUDE,group=Site)
+         ) + 
+  geom_point()+
+  xlab("Latitude")+ ylab("Number of plants")
+lm(data=na.omit(dplyr::select(demorec,Diagonal_plant_number,LATITUDE)),
+                fn(Diagonal_plant_number) ~ poly(LATITUDE,2)) %>% 
+  summary()
+
+```
+
+
+### Locations of successful sites and not
+```{r}
+
+#### accessions ####
+data("grenelist")
+head(grenelist)
+
+################################################################################
+#### The locations ####
+# grenestations=read.table("data-raw/Sites_info - Participants.tsv",header=TRUE,fill=TRUE,sep="\t")
+grenestations=read.table("data-raw/GrENE-sites_info - Participants_TOGOOGLE.tsv",header=TRUE,fill=TRUE,sep="\t")
+head(grenestations)
+
+#### plot geo ####
+
+grenelist$longitude = as.numeric(grenelist$longitude)
+grenelist$latitude = as.numeric(grenelist$latitude)
+grenestations$LONGITUDE<-moiR::fn(grenestations$LONGITUDE)
+grenestations$LATITUDE<-moiR::fn(grenestations$LATITUDE)
+
+library(ggplot2)
+library(moiR)
+
+g<-merge(grenestations,tasksdone, by="SITE_CODE")
+g$comment[is.na(g$comment)]<-"reproduced"
+g$comment[g$comment=="not_reported"]<-"unclear"
+g$comment[g$comment=="not_successful"]<-"did_not_grow"
+
+p<-moiR::ggplot_world_map(projection="ortho") + 
+  geom_point(data=g,aes(y=LATITUDE, x=LONGITUDE,color=comment),size=3, shape=16) +
+  scale_color_manual(values=c("orange","green4","black"))+
+  theme(axis.line=element_blank(),
+      axis.text.y=element_blank(),
+      axis.text.x=element_blank(),
+      axis.ticks=element_blank()
+      )
+ p
+
+# save_plot(file="figs/201903grene_map.pdf",plot = p,base_height = 8, base_width = 12)
+
+
+```
+
+
+### Total number of individuals and fruits counted
+```{r}
+# grepl("FH",samplerec$Sample_id) %>% sum
+sum(fn(samplerec$Number_flowers_collected),na.rm=T)
+
+indensity<-fn(demorec$Diagonal_plant_number) /  (sqrt(0.4^2 + 0.6*2) * 0.01)  # the diagonal of a triangle of 60cm and 40 cm side
+offdensity<-fn(demorec$Off.diagonal_plant_number) / (0.6 * 0.01) # the 
+
+((indensity + offdensity) /2) %>% na.omit %>% hist
+demorec$Total_plant_number..optional. %>% fn %>% hist
+demorec$Total_plant_number..optional. %>% fn %>% hist
+demorec$Mean.fruits.per.plant..optional. %>% hist
+
+
+cor.test(fn((indensity + offdensity) /2), fn(demorec$Total_plant_number..optional.),na.rm=T,method="spearman")
+plot(fn((indensity + offdensity) /2), fn(demorec$Total_plant_number..optional.))
+
+den<-data.frame(estim=fn(indensity + offdensity) /2 ,real=fn(demorec$Total_plant_number..optional.)) %>% na.omit
+lm(data=den, real ~poly(estim,3)) %>% summary
+
+sum(c(fn(demorec$Diagonal_plant_number)  , fn(demorec$Off.diagonal_plant_number)), na.rm=T)
+
+
+ggplot(data.frame(
+        var=c("Fresh flowers collected for sequencing","Individuals counted in transects","Individuals counted in trays"),
+        co=c(sum(fn(samplerec$Number_flowers_collected),na.rm=T) ,
+                sum(c(fn(demorec$Diagonal_plant_number)  , fn(demorec$Off.diagonal_plant_number)), na.rm=T),
+                sum(fn(demorec$Total_plant_number..optional.),na.rm=T)
+                )
+       )) + 
+  geom_col(aes(y=co,x=var),fill=c("green4","green4","green4"))+
+  # scale_fill_manual(values=c("green4","green5","green6"))+
+  labs(x="",y="number")+
+  coord_flip() ->
+  p2
+
+
+```
+
+```{r}
+
+pcomb<-plot_grid(p,p2,ncol=1,rel_heights = c(5,1))
+save_plot(file="figs/201903grene_map_counts.pdf",plot = pcomb,base_height = 8, base_width = 8)
+
+```
+

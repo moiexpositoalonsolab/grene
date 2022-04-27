@@ -1,0 +1,403 @@
+---
+title: "grene-net sample summary"
+output: html_document
+author: Moi
+date: 31-12-2020
+editor_options: 
+  chunk_output_type: console
+---
+```{r}
+tabular <- function(df, ...) {
+  stopifnot(is.data.frame(df))
+
+  align <- function(x) if (is.numeric(x)) "r" else "l"
+  col_align <- vapply(df, align, character(1))
+
+  cols <- lapply(df, format, ...)
+  contents <- do.call("paste",
+                      c(cols, list(sep = " \\tab ", collapse = "\\cr\n  ")))
+  col_names <- paste0("\\bold{",
+                      do.call("paste",
+                              c(names(df), list(sep = "} \\tab \\bold{", collapse = "\\cr\n  "))),
+                      "} \\cr")
+
+  paste("\\tabular{", paste(col_align, collapse = ""), "}{\n",
+        col_names,
+        "\n",
+        contents, "\n}\n", sep = "")
+}
+
+
+tabular(records)
+```
+
+
+
+```{r setup, include=FALSE, echo=F}
+head(recordssorted)
+data()
+unique(records$CODES)
+records
+document()
+?/names(census)
+
+## to activate data docuemntation
+#use_r("data")
+knitr::opts_knit$set(root.dir = "~/safedata/ath_evo/grenephase1")
+knitr::opts_chunk$set(echo = TRUE)
+setwd( "~/safedata/ath_evo/grenephase1")
+library(ggplot2)
+library(ggpmisc)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(tidyverse)
+# devtools::install("~/safedata/genemaps/")
+library(genemaps)
+devtools::load_all(".") # the current project
+
+
+# Visualize with tiles
+library(plyr)
+library(plotly)
+library(data.table)
+
+```
+
+
+### Visualize number of samples
+```{r, fig.height=4,fig.width=10}
+data("records")
+data("recordssorted")
+
+tmp <- recordssorted %>%
+           dplyr::filter(RECODE=="FH")
+
+numsamples<- table(tmp$D) %>% data.frame
+colnames(numsamples)<-c("date","nsamples")
+
+numsamples$weekday = as.POSIXlt(numsamples$date)$wday+1 #finding the day no. of the week
+numsamples$weekdayf<-factor(numsamples$weekday,levels=rev(1:7),labels=rev(c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")),ordered=TRUE) # converting the day no. to factor
+numsamples$monthf<-factor(month(numsamples$date),levels=as.character(1:12),labels=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"),ordered=TRUE) # finding the month
+numsamples$yearmonth<- factor(zoo::as.yearmon(numsamples$date)) # finding the year and the month from the date. Eg: Nov 2018
+numsamples$week <- as.numeric(strftime(numsamples$date,"%V")) # finding the week of the year for each date
+numsamples<-ddply(numsamples,.(yearmonth),transform,monthweek=1+week-min(week)) # normalizing the week to start at 1 for every month
+
+calendarplot<-
+  ggplot(numsamples, aes(monthweek, weekdayf, fill = nsamples)) + 
+  geom_tile(colour = "lightgrey") + 
+  facet_grid(year(numsamples$date)~monthf) + 
+  scale_fill_gradientn(colours = brewer.pal(6,"Greens")[-1])+
+  labs(fill = "# samples",y='',x='') +
+  theme(strip.background = element_blank(),
+        axis.line = element_blank(),
+        axis.text.x =  element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.ticks.y = element_blank()
+        )
+calendarplot
+# save_plot(calendarplot,base_width = )
+# calendarheatmap
+# calendarHeat()
+```
+
+
+
+### Flowering time map
+```{r}
+# using original data rather than 
+data("sites.clim")
+data("recordssorted")
+data("census")
+head("recordssorted")
+
+
+m<-merge(sites.clim,recordssorted, by.x='SITE_CODE', by.y='SITE' )
+m <- m %>% mutate(LATITUDE=fn(LATITUDE),
+                  LONGITUDE=fn(LONGITUDE),
+                  NUMBER_FLOWERS_COLLECTED=fn(NUMBER_FLOWERS_COLLECTED),
+                  doy=fn(doy))
+plot(m$NUMBER_FLOWERS_COLLECTED ~ m$LATITUDE)
+plot(m$NUMBER_FLOWERS_COLLECTED ~ m$LONGITUDE)
+plot(m$NUMBER_FLOWERS_COLLECTED ~ m$doy)
+
+flower_n_dayofyear<-ggplot(m) +
+  geom_vline(xintercept=91.25, lty='dotted',color='grey')+
+  geom_vline(xintercept=182.5, lty='dotted',color='grey')+
+  geom_vline(xintercept=273.75, lty='dotted',color='grey')+
+  geom_point(aes(y=NUMBER_FLOWERS_COLLECTED, x= doy, color=NUMBER_FLOWERS_COLLECTED)) +
+  labs(y='# adults', x='calendar day in year') +
+  scale_color_gradientn(colours = brewer.pal(6,"Greens")[-1])+
+  theme(legend.position = "none")
+flower_n_dayofyear
+save_plot(filename = "figs/adults_by_calendaryear.pdf",base_width = 7,base_height = 5,flower_n_dayofyear)
+save_plot(filename = "figs/adults_by_calendaryear_short.pdf",base_width = 8,base_height = 1.5,flower_n_dayofyear)
+
+
+```
+
+### Successful sites
+```{r}
+data("sitesinfo")
+data("recordssorted")
+data("records")
+data("census")
+
+recordssorted <- recordssorted %>% 
+                  dplyr::mutate(D=cleandates(DATE))
+
+# Get true false values of samples
+t1<-recordssorted %>%
+  dplyr::mutate(year=year(D)) %>%
+  dplyr::group_by(SITE, year) %>%
+  dplyr::summarize(collected_flowers = sum(CODES == "FH")>=1) %>% data.frame
+t2<-records %>%
+  dplyr::mutate(year=year(D)) %>%
+  dplyr::group_by(SITE, year) %>%
+  dplyr::summarize(collected_seedbank = sum(CODES == "SB")>=1) %>% data.frame
+t3<-records %>%
+  dplyr::mutate(year=year(D)) %>%
+  dplyr::group_by(SITE, year) %>%
+  dplyr::summarize(collected_soil = sum(CODES == "SOIL")>=1) %>% data.frame
+t4<-census %>%
+  dplyr::mutate(year=year(D)) %>%
+  dplyr::group_by(SITE, year) %>%
+  dplyr::summarize(conducted_census = length(DIAGONAL_PLANT_NUMBER)>=1)  %>% data.frame
+
+tmp<-merge(t1,t2,by=c('SITE','year'),all=T)
+tmp<-merge(tmp,t3,by=c('SITE','year'),all=T)
+tmp<-merge(tmp,t4,by=c('SITE','year'),all=T)
+tmp[is.na(tmp)] <- FALSE
+
+# Remerge with all sites info to incorporate information on those sites that did not report samples because they died orbecause of logistical problems
+tmpsites<-dplyr::select(sitesinfo,SITE_CODE,LATITUDE, LONGITUDE)
+tmp<-merge(tmp, sitesinfo, by.x="SITE",by.y="SITE_CODE", all.y=T)
+tmp[,1:3]
+```
+
+
+### Map of locations
+Map of sites with at least one generation of data
+```{r}
+
+# uncomment to flag as logistical problems
+sites_with_logistic_problems<-matrix(
+  c( 
+    "Mohamed Abdelaziz",	20, # one eaten by boars, cannot remember 20 or 21
+    # "Mohamed Abdelaziz",	21, # High altitude
+    # "Jasmin Joshi",	19, # They just died due to environment
+    # "Martijn Herber",	30, 
+    "Paula Kover",	35, # snails, should not count
+    "Zuzana Münzbergova",	41, # natural causes
+    # "Anne Muola",	56, # natural causes
+    # "Karin Koehl",	47,# natural causes
+    # "John Stinchcombe",	50, # natural causaes
+    # "John Stinchcombe",	51, # natural causaes
+    # "Rob Colautti",	3, # natural causaes
+    # "Joy Bergelson",	7, # natural causaes
+    "Svante Holm"	,44, # Never heard back
+    "Angela Hancock",	59, # Never started
+    "Marcelo Sternberg",	31, # Never started
+    "David Salt", 36 # Decided to discontinue
+  ),ncol=2,byrow=T
+)
+
+toplot <- tmp  %>% 
+  ungroup() %>%
+  dplyr::group_by(SITE, LONGITUDE, LATITUDE) %>%
+  dplyr::summarize(colorscale=sum(collected_flowers)) %>%
+  mutate(colorscale = ifelse(!is.na(colorscale), colorscale, 0)) %>%
+  mutate(colorscale = ifelse(SITE %in% sites_with_logistic_problems, colorscale-1, colorscale))
+  # Codes
+  # 0 = never started the study due to logistical difficulties
+  # 1 = started but population did not survive
+  # 2 = Samples 1 year
+  # 3 = Samples 2 years
+  # 4 = Samples 3 years
+
+basemap<-genemaps::ggplot_world_map(projection="ortho")
+successcolor<-c('darkred','orange',brewer.pal(8,"YlGn")[c(3,5,8)] )
+
+mapplot<-basemap+
+  geom_point(data=ecotypes,aes(y=LATITUDE, x=LONGITUDE),size=2, shape=3, color='black') +
+  geom_point(data=toplot,aes(y=LATITUDE, x=LONGITUDE),size=3.2, shape=1, color='black') +
+  geom_point(data=toplot,aes(y=LATITUDE, x=LONGITUDE),size=3, shape=16, color='white') +
+  geom_point(data=toplot,aes(y=LATITUDE, x=LONGITUDE,color=factor(colorscale)),size=3, shape=16) +
+  scale_color_manual(values=transparent(c(
+                                          'darkred',
+                                          'orange',
+                                          brewer.pal(8,"YlGn")[c(3,5,8)] 
+                                          )),
+                     labels=c(
+                              "Logistical cause",
+                              "No survival",
+                              "Survival 1 year",
+                              "Survival 2 year",
+                              "Survival 3 year"
+                              ))+
+  # scale_color_manual(values=transparent(c("orange","green4","black")),na.value='grey')+
+  theme(axis.line=element_blank(),
+      axis.text.y=element_blank(),
+      axis.text.x=element_blank(),
+      axis.ticks=element_blank(),
+      panel.grid = element_blank(),
+      panel.border = element_blank(),
+      legend.text = element_text(size=14)
+      )
+
+mapplot
+
+save_plot("figs/map_summary_success_sites.pdf",
+          mapplot, base_width = 10,base_height = 10)
+
+write.table(quote = F, row.names = F,col.names = T,
+            file = "tables/success_summary.tsv",
+            x= toplot
+            )
+
+```
+
+
+
+### Climate bi-plot
+```{r}
+data("ecotypes.clim")
+data("sites.clim")
+sites.clim2<-merge(sites.clim, toplot,by.x='SITE_CODE',by.y='SITE')
+
+ylimtemp=c(-55,230)
+xlimprec=c(0,2500)
+mybiplot<-
+ggplot()+
+  geom_point(data=ecotypes.clim, aes(y=bio1, x=bio12), shape=3, size=2,color=transparent("black")) +
+  geom_point(data=sites.clim2, aes(y=bio1, x=bio12), size=4.2, shape=1 , col="black") +
+  geom_point(data=sites.clim2, aes(y=bio1, x=bio12), size=4, shape=1 , col="white") +
+  geom_point(data=sites.clim2, aes(y=bio1, x=bio12, color=factor(colorscale)), size=3.9, shape=16) +
+  scale_color_manual(values=transparent(c(
+                                          'darkred',
+                                          'orange',
+                                          brewer.pal(8,"YlGn")[c(3,5,8)] 
+                                          )),
+                     labels=c(
+                              "Logistical cause",
+                              "No survival",
+                              "Survival 1 year",
+                              "Survival 2 year",
+                              "Survival 3 year"
+                              ))+
+  labs(y="Mean Annual Temperature (ºC x 10)", x="Mean Annual precipitation (mm)", color="") +
+  theme(legend.text = element_text(size=14))+
+  ylim(ylimtemp) +xlim(xlimprec)
+
+mybiplot
+save_plot(file="figs/grenenet_climate-biplot.pdf",plot = mybiplot,base_height = 5, base_width = 7)
+
+mybiplot + geom_point(data = dplyr::filter(sites.clim2, SITE_CODE %in% c(26,46)), 
+                      aes(y=bio1, x=bio12), col='red')
+
+
+```
+
+#### Samples ~ climate 
+```{r}
+data("sites.clim")
+data("recordssorted")
+head(recordssorted)
+recordssorted$SITE<-fn(recordssorted$SITE)
+sites.clim$SITE_CODE<-fn(sites.clim$SITE_CODE)
+samples.clim<-merge(recordssorted, sites.clim,by.x='SITE',by.y='SITE_CODE')
+
+dim(samples.clim)
+dim(recordssorted)
+
+
+ylimtemp=c(-55,230)
+xlimprec=c(0,2500)
+flowertemperature<-ggplot(samples.clim) +
+  geom_point(aes(y=fn(NUMBER_FLOWERS_COLLECTED),x=bio1, color=fn(NUMBER_FLOWERS_COLLECTED))) +
+  scale_color_gradientn(colors =  brewer.pal(9,"Greens")[-1])+
+  theme(legend.position = 'none')+
+  labs(y="# flowers / sampling", x="Mean Annual Temperature (ºC x 10)", color="")+
+  xlim(ylimtemp)
+flowerprecipitation<-ggplot(samples.clim) +
+  geom_point(aes(y=fn(NUMBER_FLOWERS_COLLECTED),x=bio12, color=fn(NUMBER_FLOWERS_COLLECTED))) +
+  scale_color_gradientn(colors =  brewer.pal(9,"Greens")[-1])+
+  theme(legend.position = 'none')+
+  labs(y="# flowers / sampling", x="Mean Annual precipitation (mm)", color="")+
+  xlim(xlimprec)
+
+
+save_plot(filename='figs/flower_by_annualprec.pdf',base_height = 2.5,base_width = 8, plot=flowerprecipitation)
+save_plot(filename='figs/flower_by_annualtemp.pdf',base_height = 2.5,base_width = 8, plot=flowertemperature)
+
+dplyr::filter(samples.clim, bio12 >1500 ,  bio12 <2000)$NUMBER_FLOWERS_COLLECTED
+dplyr::filter(samples.clim, bio12 > 2000)$NUMBER_FLOWERS_COLLECTED
+#   geom_hex(aes(y=fn(NUMBER_FLOWERS_COLLECTED),x=bio1)) +
+#   scale_fill_gradientn(colors =  brewer.pal(9,"Greens")[-1])
+#   stat_summary(aes(y=fn(NUMBER_FLOWERS_COLLECTED),x=cut(bio1,10)))
+  # stat_smooth(aes(y=fn(NUMBER_FLOWERS_COLLECTED),x=bio1), method='glm', formula=y ~ x+ I(x^2) +I(x^3), se=F)
+
+```
+
+```{r}
+
+
+```
+
+
+#### - combine plot
+
+```{r}
+
+plot_grid(ncol=1,rel_heights = c(1,2),
+          calendarplot, 
+          plot_grid(mapplot+theme(legend.position = "none"), mybiplot)
+          )
+# plot_grid(calendarplot, mapplot, ncol=1,rel_heights = c(1,2))
+
+```
+
+
+
+### Census summary
+```{r}
+# grepl("FH",samplerec$Sample_id) %>% sum
+sum(fn(samplerec$Number_flowers_collected),na.rm=T)
+
+indensity<-fn(demorec$Diagonal_plant_number) /  (sqrt(0.4^2 + 0.6*2) * 0.01)  # the diagonal of a triangle of 60cm and 40 cm side
+offdensity<-fn(demorec$Off.diagonal_plant_number) / (0.6 * 0.01) # the
+
+((indensity + offdensity) /2) %>% na.omit %>% hist
+demorec$Total_plant_number..optional. %>% fn %>% hist
+demorec$Total_plant_number..optional. %>% fn %>% hist
+demorec$Mean.fruits.per.plant..optional. %>% hist
+
+
+cor.test(fn((indensity + offdensity) /2), fn(demorec$Total_plant_number..optional.),na.rm=T,method="spearman")
+plot(fn((indensity + offdensity) /2), fn(demorec$Total_plant_number..optional.))
+
+den<-data.frame(estim=fn(indensity + offdensity) /2 ,real=fn(demorec$Total_plant_number..optional.)) %>% na.omit
+lm(data=den, real ~poly(estim,3)) %>% summary
+
+sum(c(fn(demorec$Diagonal_plant_number)  , fn(demorec$Off.diagonal_plant_number)), na.rm=T)
+
+
+ggplot(data.frame(
+        var=c("Fresh flowers collected for sequencing","Individuals counted in transects","Individuals counted in trays"),
+        co=c(sum(fn(samplerec$Number_flowers_collected),na.rm=T) ,
+                sum(c(fn(demorec$Diagonal_plant_number)  , fn(demorec$Off.diagonal_plant_number)), na.rm=T),
+                sum(fn(demorec$Total_plant_number..optional.),na.rm=T)
+                )
+       )) +
+  geom_col(aes(y=co,x=var),fill=c("green4","green4","green4"))+
+  # scale_fill_manual(values=c("green4","green5","green6"))+
+  labs(x="",y="number")+
+  coord_flip() ->
+  p2
+
+```
+
+
+
+
+

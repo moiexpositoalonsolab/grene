@@ -1,0 +1,895 @@
+SITE PLOT DATE RECORD_ID DIAGONAL_PLANT_NUMBER OFF.DIAGONAL_PLANT_NUMBER TOTAL_PLANT_NUMBER..OPTIONAL. MEAN_FRUITS_PER_PLANT..OPTIONAL. SD_FRUITS_PER_PLANT..OPTIONAL. COMMENTS COMMENTS2 D
+2 6 20200205 02-06-20200205 20 12 175 5   NA 2020-02-05
+2 7 20200205 02-07-20200205 4 3 30 2   NA 2020-02-05
+2 12 20200205 02-12-20200205 0 0 4 0   NA 2020-02-05
+45 1 20200210 45-01-20200210 32 20     NA 2020-02-10
+45 2 20200210 45-02-20200210 16 18     NA 2020-02-10
+45 3 20200210 45-03-20200210 0 0     NA 2020-02-10
+45 4 20200210 45-04-20200210 43 51     NA 2020-02-10
+45 5 20200210 45-05-20200210 23 23     NA 2020-02-10
+45 6 20200210 45-06-20200210 62 42     NA 2020-02-10
+45 7 20200210 45-07-20200210 0 0     NA 2020-02-10
+45 8 20200210 45-08-20200210 31 25     NA 2020-02-10
+45 9 20200210 45-09-20200210 0 0     NA 2020-02-10
+45 10 20200210 45-10-20200210 20 23     NA 2020-02-10
+45 11 20200210 45-11-20200210 21 30     NA 2020-02-10
+45 12 20200210 45-12-20200210 30 20     NA 2020-02-10
+55 1 20200214 55-1-20200214   18    NA 2020-02-14
+55 2 20200214 55-2-20200215 17 16     NA 2020-02-14
+55 3 20200214 55-3-20200216   11    NA 2020-02-14
+55 4 20200214 55-4-20200217 45 44     NA 2020-02-14
+55 5 20200214 55-5-20200218 32 22     NA 2020-02-14
+55 6 20200214 55-6-20200219 34 47     NA 2020-02-14
+55 7 20200214 55-7-20200220   55    NA 2020-02-14
+55 8 20200214 55-8-20200221 15 22     NA 2020-02-14
+55 9 20200214 55-9-20200222   0    NA 2020-02-14
+55 10 20200214 55-10-20200223 39 26     NA 2020-02-14
+55 11 20200214 55-11-20200224 24 14     NA 2020-02-14
+55 12 20200214 55-12-20200225 26 33     NA 2020-02-14
+32 1 20200117 32-1-20200117 4 10     NA 2020-01-17
+32 2 20200117 32-2-20200117 12 9     NA 2020-01-17
+32 3 20200117 32-3-20200117 3 6     NA 2020-01-17
+32 4 20200117 32-4-20200117 4 11     NA 2020-01-17
+32 5 20200117 32-5-20200117 1 1     NA 2020-01-17
+32 6 20200117 32-6-20200117 3 2     NA 2020-01-17
+32 7 20200117 32-7-20200117 0 1     NA 2020-01-17
+32 8 20200117 32-8-20200117 3 2     NA 2020-01-17
+32 9 20200117 32-9-20200117 1 1     NA 2020-01-17
+32 10 20200117 32-10-20200117 0 0     NA 2020-01-17
+32 11 20200117 32-11-20200117 0 0     NA 2020-01-17
+32 12 20200117 32-12-20200117 1 0     NA 2020-01-17
+5 1 20200306 5-1-20200306 70 41    Mostly,small purple/dry plants NA 2020-03-06
+5 2 20200306 5-2-20200306 49 36    Mostly,small purple/dry plants NA 2020-03-06
+5 3 20200306 5-3-20200306 28 34    Mostly,small purple/dry plants NA 2020-03-06
+5 4 20200306 5-4-20200306 64 49    Mostly,small purple/dry plants NA 2020-03-06
+5 5 20200306 5-5-20200306 64 54    Mostly,small purple/dry plants NA 2020-03-06
+5 6 20200306 5-6-20200306 69 60    Mostly,small purple/dry plants NA 2020-03-06
+5 7 20200306 5-7-20200306 17 15    Mostly,small purple/dry plants NA 2020-03-06
+5 8 20200306 5-8-20200306 47 36    Mostly,small purple/dry plants NA 2020-03-06
+5 9 20200306 5-9-20200306 63 57    Mostly,small purple/dry plants NA 2020-03-06
+5 10 20200306 5-10-20200306 62 53    Mostly,small purple/dry plants NA 2020-03-06
+5 11 20200306 5-11-20200306 58 47    Mostly,small purple/dry plants NA 2020-03-06
+5 12 20200306 5-12-20200306 28 31    Mostly,small purple/dry plants NA 2020-03-06
+43 1 20190228 43-1-20200224 17 11    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 2 20190228 43-1-20200224 28 40    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 3 20190228 43-1-20200224 10 20    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 4 20190228 43-1-20200224 41 42    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 5 20190228 43-1-20200224 74 44    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 6 20190228 43-1-20200224 36 34    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 7 20190228 43-1-20200224 39 14    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 8 20190228 43-1-20200224 23 24    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 9 20190228 43-1-20200224 40 69    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 10 20190228 43-1-20200224 2 1    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 11 20190228 43-1-20200224 20 15    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+43 12 20190228 43-1-20200224 25 18    Mostrly small plants/or plants that are emerged yet NA 2019-02-28
+1 1 20200323 1-1-20200323 1 0 7    NA 2020-03-23
+1 2 20200323 1-2-20200324 0 0 0    NA 2020-03-23
+1 3 20200323 1-3-20200325 0 0 0    NA 2020-03-23
+1 4 20200323 1-4-20200326 1 0 9    NA 2020-03-23
+1 5 20200323 1-5-20200327 2 1 45    NA 2020-03-23
+1 6 20200323 1-6-20200328 1 2 24    NA 2020-03-23
+1 7 20200323 1-7-20200329 2 1 61    NA 2020-03-23
+1 8 20200323 1-8-20200330 1 1 17    NA 2020-03-23
+1 9 20200323 1-9-20200331 0 0 18    NA 2020-03-23
+1 10 20200323 1-10-20200332 0 3 33    NA 2020-03-23
+1 11 20200323 1-11-20200333 6 9 199    NA 2020-03-23
+1 12 20200323 1-12-20200334 7 4 42    NA 2020-03-23
+42 1 20200331 42-1-20200331 57 25     NA 2020-03-31
+42 2 20200331 42-2-20200331 17 20     NA 2020-03-31
+42 3 20200331 42-3-20200331 7 8     NA 2020-03-31
+42 4 20200331 42-4-20200331 7 12     NA 2020-03-31
+42 5 20200331 42-5-20200331 11 8     NA 2020-03-31
+42 6 20200331 42-6-20200331 7 14     NA 2020-03-31
+42 7 20200331 42-7-20200331 24 16     NA 2020-03-31
+42 8 20200331 42-8-20200331 24 19     NA 2020-03-31
+42 9 20200331 42-9-20200331 7 11     NA 2020-03-31
+42 10 20200331 42-10-20200331 7 12     NA 2020-03-31
+42 11 20200331 42-11-20200331 0 2     NA 2020-03-31
+42 12 20200331 42-12-20200331 6 3     NA 2020-03-31
+46 NA 20200403       Unfortunately, it was impossible to count the number of plants since there were hundreds of small individuals per plot (diameter <2 mm). NA 2020-04-03
+52 1 20200316 52-01-20200316   30   In general (across all plots and dates in 2020): often more plants along the outer rim of the box, where soils is depressed and shadow. In the center of teh plots , soil is deeper=higher, but plants seem to die quieckly here NA 2020-03-16
+52 2 20200316 52-02-20200316   1    NA 2020-03-16
+52 3 20200316 52-03-20200316   40    NA 2020-03-16
+52 4 20200316 52-04-20200316   14    NA 2020-03-16
+52 5 20200316 52-05-20200316   2    NA 2020-03-16
+52 6 20200316 52-06-20200316   12    NA 2020-03-16
+52 7 20200316 52-07-20200316   6    NA 2020-03-16
+52 8 20200316 52-08-20200316   8    NA 2020-03-16
+52 9 20200316 52-09-20200316   45    NA 2020-03-16
+52 10 20200316 52-10-20200316   60    NA 2020-03-16
+52 11 20200316 52-11-20200316   20    NA 2020-03-16
+52 12 20200316 52-12-20200316   50    NA 2020-03-16
+52 1 20200320 52-01-20200320   32    NA 2020-03-20
+52 2 20200320 52-02-20200320   13    NA 2020-03-20
+52 3 20200320 52-03-20200320   120    NA 2020-03-20
+52 4 20200320 52-04-20200320   27    NA 2020-03-20
+52 5 20200320 52-05-20200320   4    NA 2020-03-20
+52 6 20200320 52-06-20200320   61    NA 2020-03-20
+52 7 20200320 52-07-20200320   55    NA 2020-03-20
+52 8 20200320 52-08-20200320   24    NA 2020-03-20
+52 9 20200320 52-09-20200320   130    NA 2020-03-20
+52 10 20200320 52-10-20200320   90    NA 2020-03-20
+52 11 20200320 52-11-20200320   50    NA 2020-03-20
+52 12 20200320 52-12-20200320   130    NA 2020-03-20
+52 1 20200327 52-01-20200327   7   today after 2 weeks of sunshine without rain, many plants are dying and wilting NA 2020-03-27
+52 2 20200327 52-02-20200327   11    NA 2020-03-27
+52 3 20200327 52-03-20200327   130    NA 2020-03-27
+52 4 20200327 52-04-20200327   12    NA 2020-03-27
+52 5 20200327 52-05-20200327   5    NA 2020-03-27
+52 6 20200327 52-06-20200327   53    NA 2020-03-27
+52 7 20200327 52-07-20200327   40    NA 2020-03-27
+52 8 20200327 52-08-20200327   21    NA 2020-03-27
+52 9 20200327 52-09-20200327   33    NA 2020-03-27
+52 10 20200327 52-10-20200327   51    NA 2020-03-27
+52 11 20200327 52-11-20200327   29    NA 2020-03-27
+52 12 20200327 52-12-20200327   88    NA 2020-03-27
+52 1 20200403 52-01-20200403   4   another week without rain, many plants are dyign or dead NA 2020-04-03
+52 2 20200403 52-02-20200403   20    NA 2020-04-03
+52 3 20200403 52-03-20200403   130    NA 2020-04-03
+52 4 20200403 52-04-20200403   9    NA 2020-04-03
+52 5 20200403 52-05-20200403   21    NA 2020-04-03
+52 6 20200403 52-06-20200403   60    NA 2020-04-03
+52 7 20200403 52-07-20200403   49    NA 2020-04-03
+52 8 20200403 52-08-20200403   50    NA 2020-04-03
+52 9 20200403 52-09-20200403   50    NA 2020-04-03
+52 10 20200403 52-10-20200403   70    NA 2020-04-03
+52 11 20200403 52-11-20200403   21    NA 2020-04-03
+52 12 20200403 52-12-20200403   84    NA 2020-04-03
+11 1 20200402 11-1-20200402 2 3 23    NA 2020-04-02
+11 2 20200402 11-2-20200402 0 0 0    NA 2020-04-02
+11 3 20200402 11-3-20200402 1 0 1    NA 2020-04-02
+11 4 20200402 11-4-20200402 0 0 0    NA 2020-04-02
+11 5 20200402 11-5-20200402 0 0 1    NA 2020-04-02
+11 6 20200402 11-6-20200402 0 0 0    NA 2020-04-02
+11 7 20200402 11-7-20200402 0 0 0    NA 2020-04-02
+11 8 20200402 11-8-20200402 0 0 0    NA 2020-04-02
+11 9 20200402 11-9-20200402 0 0 0    NA 2020-04-02
+11 10 20200402 11-10-20200402 0 0 0    NA 2020-04-02
+11 11 20200402 11-11-20200402 0 0 0    NA 2020-04-02
+11 12 20200402 11-12-20200402 0 0 0    NA 2020-04-02
+27 1 20200505 27-1-20200505   1    NA 2020-05-05
+27 2 20200505 27-2-20200505   0    NA 2020-05-05
+27 3 20200505 27-3-20200505   0    NA 2020-05-05
+27 4 20200505 27-4-20200505   1    NA 2020-05-05
+27 5 20200505 27-5-20200505   0    NA 2020-05-05
+27 6 20200505 27-6-20200505   1    NA 2020-05-05
+27 7 20200505 27-7-20200505   3    NA 2020-05-05
+27 8 20200505 27-8-20200505   4    NA 2020-05-05
+27 9 20200505 27-9-20200505   1    NA 2020-05-05
+27 10 20200505 27-10-20200505   5    NA 2020-05-05
+27 11 20200505 27-11-20200505   13    NA 2020-05-05
+27 12 20200505 27-12-20200505   15    NA 2020-05-05
+28 1 20200227 28-01-20200227 8 5     NA 2020-02-27
+28 2 20200227 28-02-20200227 17 8     NA 2020-02-27
+28 3 20200227 28-03-20200227 8 15     NA 2020-02-27
+28 4 20200227 28-04-20200227 18 17     NA 2020-02-27
+28 5 20200227 28-05-20200227 6 13     NA 2020-02-27
+28 6 20200227 28-06-20200227 13 14     NA 2020-02-27
+28 7 20200227 28-07-20200227 22 18     NA 2020-02-27
+28 8 20200227 28-08-20200227 33 29     NA 2020-02-27
+28 9 20200227 28-09-20200227 11 16     NA 2020-02-27
+28 10 20200227 28-10-20200227 8 6     NA 2020-02-27
+28 11 20200227 28-11-20200227 14 33     NA 2020-02-27
+28 12 20200227 28-12-20200227 54 70     NA 2020-02-27
+28 13 20200227 28-13-20200227 9 15     NA 2020-02-27
+28 14 20200227 28-14-20200227 14 20     NA 2020-02-27
+28 15 20200227 28-15-20200227 22 20     NA 2020-02-27
+28 16 20200227 28-16-20200227 20 19     NA 2020-02-27
+28 17 20200227 28-17-20200227 11 10     NA 2020-02-27
+28 18 20200227 28-18-20200227 22 9     NA 2020-02-27
+53 1 20200320 53-01-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 2 20200320 53-02-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 3 20200320 53-03-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 4 20200320 53-04-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 5 20200320 53-05-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 6 20200320 53-06-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 7 20200320 53-07-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 8 20200320 53-08-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 9 20200320 53-09-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 10 20200320 53-10-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 11 20200320 53-11-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+53 12 20200320 53-12-20200320   * total number of plants was impossible to assess as there are a lot of very small, purplish rosettes that aggregate together which makes it impossible to count.    NA 2020-03-20
+4 1 20200212 4-1-20200212 Not done (lockdown) Not done (lockdown) 342 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 2 20200212 4-2-20200212 Not done (lockdown) Not done (lockdown) 188 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 3 20200212 4-3-20200212 Not done (lockdown) Not done (lockdown) 145 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 4 20200212 4-4-20200212 Not done (lockdown) Not done (lockdown) 11 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 5 20200212 4-5-20200212 Not done (lockdown) Not done (lockdown) 274 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 6 20200212 4-6-20200212 Not done (lockdown) Not done (lockdown) 232 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 7 20200212 4-7-20200212 Not done (lockdown) Not done (lockdown) 25 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 8 20200212 4-8-20200212 Not done (lockdown) Not done (lockdown) 45 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 9 20200212 4-9-20200212 Not done (lockdown) Not done (lockdown) 89 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 10 20200212 4-10-20200212 Not done (lockdown) Not done (lockdown) 102 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 11 20200212 4-11-20200212 Not done (lockdown) Not done (lockdown) 23 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 12 20200212 4-12-20200212 Not done (lockdown) Not done (lockdown) 30 Not done (lockdown) Not done (lockdown) Maximum number of flowering and fruiting plants observed during the experiment (Late February). NA 2020-02-12
+4 1 20190320 4-1-20190320 69 70 492 2.04 2.48 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 2 20190320 4-2-20190320 55 42 264 2.04 1.51 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 3 20190320 4-3-20190320 65 51 398 2.12 2.01 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 4 20190320 4-4-20190320 7 4 13 7.27 4.58 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 5 20190320 4-5-20190320 24 22 117 6.39 5.31 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 6 20190320 4-6-20190320 24 21 110 5.93 5.5 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 7 20190320 4-7-20190320 22 18 106 3.68 2.12 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 8 20190320 4-8-20190320 18 14 87 7.72 8.61 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 9 20190320 4-9-20190320 24 25 92 7.12 7.77 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 10 20190320 4-10-20190320 28 23 99 5.2 3.5 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 11 20190320 4-11-20190320 23 21 76 6.41 4.79 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+4 12 20190320 4-12-20190320 25 24 90 5.76 4.41 Maximum number of flowering and fruiting plants observed during the experiment (late February). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants. NA 2019-03-20
+55 1 20193020 55-01-20193020 NA NA 1 NA NA very small plants (diameter < 1cm) NA NA
+55 2 20193020 55-02-20193020 NA NA 1 NA NA very small plants (diameter < 1cm) NA NA
+55 3 20193020 55-03-20193020 NA NA 0 NA NA  NA NA
+55 4 20193020 55-04-20193020 NA NA 0 NA NA  NA NA
+55 5 20193020 55-05-20193020 NA NA 7 NA NA very small plants (diameter < 1cm) NA NA
+55 6 20193020 55-06-20193020 NA NA 7 NA NA very small plants (diameter < 1cm) NA NA
+55 7 20193020 55-07-20193020 NA NA 0 NA NA  NA NA
+55 8 20193020 55-08-20193020 NA NA 3 NA NA very small plants (diameter < 1cm) NA NA
+55 9 20193020 55-09-20193020 NA NA 0 NA NA  NA NA
+55 10 20193020 55-10-20193020 NA NA 2 NA NA very small plants (diameter < 1cm) NA NA
+55 11 20193020 55-11-20193020 NA NA 0 NA NA  NA NA
+55 12 20193020 55-12-20193020 NA NA 12 NA NA very small plants (diameter < 1cm) NA NA
+27 1 20190427 27-1-20190427 NA NA 7 NA NA  NA 2019-04-27
+27 2 20190427 27-2-20190427 NA NA 5 NA NA  NA 2019-04-27
+27 3 20190427 27-3-20190427 NA NA 1 NA NA  NA 2019-04-27
+27 4 20190427 27-4-20190427 NA NA 8 NA NA  NA 2019-04-27
+27 5 20190427 27-5-20190427 NA NA 6 NA NA  NA 2019-04-27
+27 6 20190427 27-6-20190427 NA NA 15 NA NA  NA 2019-04-27
+27 7 20190427 27-7-20190427 NA NA 8 NA NA  NA 2019-04-27
+27 8 20190427 27-8-20190427 NA NA 0 NA NA  NA 2019-04-27
+27 9 20190427 27-9-20190427 NA NA 9 NA NA  NA 2019-04-27
+27 10 20190427 27-10-20190427 NA NA 4 NA NA  NA 2019-04-27
+27 11 20190427 27-11-20190427 NA NA 9 NA NA  NA 2019-04-27
+27 12 20190427 27-12-20190427 NA NA 6 NA NA  NA 2019-04-27
+33 3 20190418 33_3_20190418 0 0 2 NA NA  NA 2019-04-18
+33 4 20190418 33_4_20190418 1 0 2 NA NA  NA 2019-04-18
+33 5 20190418 33_5_20190418 0 0 1 NA NA  NA 2019-04-18
+33 6 20190418 33_6_20190418 1 1 NA NA NA  NA 2019-04-18
+33 9 20190418 33_9_20190418 2 2 NA NA NA  NA 2019-04-18
+33 10 20190418 33_10_20190418 0 1 NA NA NA  NA 2019-04-18
+33 11 20190418 33_11_20190418 1 0 NA NA NA  NA 2019-04-18
+33 12 20190418 33_12_20190418 1 0 NA NA NA  NA 2019-04-18
+42 1 20190430 42-1-20190430 0 0 NA NA NA  NA 2019-04-30
+42 2 20190430 42-2-20190430 0 2 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 3 20190430 42-3-20190430 6 18 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 4 20190430 42-4-20190430 1 1 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 5 20190430 42-5-20190430 1 2 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 6 20190430 42-6-20190430 3 3 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 7 20190430 42-7-20190430 0 4 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 8 20190430 42-8-20190430 2 7 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 9 20190430 42-9-20190430 4 8 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 10 20190430 42-10-20190430 0 0 NA NA NA  NA 2019-04-30
+42 11 20190430 42-11-20190430 1 5 NA NA NA small plants at the end of april still not flowering - probably due to draught (almost no rain in april) NA 2019-04-30
+42 12 20190430 42-12-20190430 0 0 NA NA NA  NA 2019-04-30
+55 1 20190506 55-01-20190506 NA NA 3 NA NA  NA 2019-05-06
+55 2 20190506 55-02-20190506 NA NA 12 NA NA  NA 2019-05-06
+55 3 20190506 55-03-20190506 NA NA 4 NA NA  NA 2019-05-06
+55 4 20190506 55-04-20190506 NA NA 6 NA NA  NA 2019-05-06
+55 5 20190506 55-05-20190506 NA NA 27 NA NA  NA 2019-05-06
+55 6 20190506 55-06-20190506 NA NA 17 NA NA  NA 2019-05-06
+55 7 20190506 55-07-20190506 NA NA 0 NA NA  NA 2019-05-06
+55 8 20190506 55-08-20190506 NA NA 32 NA NA  NA 2019-05-06
+55 9 20190506 55-09-20190506 NA NA 0 NA NA  NA 2019-05-06
+55 10 20190506 55-10-20190506 NA NA 1 NA NA  NA 2019-05-06
+55 11 20190506 55-11-20190506 NA NA 0 NA NA  NA 2019-05-06
+55 12 20190506 55-12-20190506 NA NA 11 NA NA  NA 2019-05-06
+28 1 20190425 28-1-20190425 3 3 NA NA NA since late in the season; counted recently dead rosettes; most plants really small in all plots NA 2019-04-25
+28 2 20190425 28-2-20190425 8 7 NA NA NA  NA 2019-04-25
+28 3 20190425 28-3-20190425 3 3 NA NA NA  NA 2019-04-25
+28 4 20190425 28-4-20190425 1 1 NA NA NA  NA 2019-04-25
+28 5 20190425 28-5-20190425 6 6 NA NA NA  NA 2019-04-25
+28 6 20190425 28-6-20190425 2 4 NA NA NA  NA 2019-04-25
+28 7 20190425 28-7-20190425 3 2 NA NA NA  NA 2019-04-25
+28 8 20190425 28-8-20190425 7 2 NA NA NA  NA 2019-04-25
+28 9 20190425 28-9-20190425 0 0 NA NA NA  NA 2019-04-25
+28 10 20190502 28-10-20190502 0 3 NA NA NA  NA 2019-05-02
+28 11 20190502 28-11-20190502 0 0 NA NA NA  NA 2019-05-02
+28 12 20190502 28-12-20190502 6 5 NA NA NA  NA 2019-05-02
+28 13 20190502 28-13-20190502 5 0 NA NA NA  NA 2019-05-02
+28 14 20190502 28-14-20190502 3 6 NA NA NA  NA 2019-05-02
+28 15 20190502 28-15-20190502 2 0 NA NA NA  NA 2019-05-02
+28 16 20190502 28-16-20190502 2 1 NA NA NA  NA 2019-05-02
+28 17 20190502 28-17-20190502 5 2 NA NA NA  NA 2019-05-02
+28 18 20190502 28-18-20190502 0 4 NA NA NA  NA 2019-05-02
+55 1 20190521 55-01-20190521 NA NA 3 NA NA  NA 2019-05-21
+55 2 20190521 55-02-20190521 NA NA 20 NA NA  NA 2019-05-21
+55 3 20190521 55-03-20190521 NA NA 7 NA NA  NA 2019-05-21
+55 4 20190521 55-04-20190521 NA NA 4 NA NA  NA 2019-05-21
+55 5 20190521 55-05-20190521 NA NA 33 NA NA  NA 2019-05-21
+55 6 20190521 55-06-20190521 NA NA 25 NA NA  NA 2019-05-21
+55 7 20190521 55-07-20190521 NA NA 0 NA NA  NA 2019-05-21
+55 8 20190521 55-08-20190521 NA NA 14 NA NA  NA 2019-05-21
+55 9 20190521 55-09-20190521 NA NA 0 NA NA  NA 2019-05-21
+55 10 20190521 55-10-20190521 NA NA 1 NA NA  NA 2019-05-21
+55 11 20190521 55-11-20190521 NA NA 0 NA NA  NA 2019-05-21
+55 12 20190521 55-12-20190521 NA NA 12 NA NA  NA 2019-05-21
+43 1 20190228 43-1-20190228 23 41 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 2 20190228 43-2-20190228 0 1 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 3 20190228 43-3-20190228 10 9 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 4 20190228 43-4-20190228 63 27 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 5 20190228 43-5-20190228 24 35 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 6 20190228 43-6-20190228 32 19 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 7 20190228 43-7-20190228 43 32 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 8 20190228 43-8-20190228 31 36 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 9 20190228 43-9-20190228 10 5 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 10 20190228 43-10-20190228 24 7 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 11 20190228 43-11-20190228 20 8 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+43 12 20190228 43-12-20190228 14 12 NA NA NA incresed seedling mortality observed probably due to heavy rainy season NA 2019-02-28
+52 1 20190322 FH-52_1_20190322 NA NA 5 NA NA  NA 2019-03-22
+52 2 20190322 FH-52_2_20190322 NA NA 0 NA NA  NA 2019-03-22
+52 3 20190322 FH-52_3_20190322 NA NA 0 NA NA  NA 2019-03-22
+52 4 20190322 FH-52_4_20190322 NA NA 2 NA NA  NA 2019-03-22
+52 5 20190322 FH-52_5_20190322 NA NA 2 NA NA  NA 2019-03-22
+52 6 20190322 FH-52_6_20190322 NA NA 2 NA NA  NA 2019-03-22
+52 7 20190322 FH-52_7_20190322 NA NA 2 NA NA  NA 2019-03-22
+52 8 20190322 FH-52_8_20190322 NA NA 2 NA NA  NA 2019-03-22
+52 9 20190322 FH-52_9_20190322 NA NA 21 NA NA  NA 2019-03-22
+52 10 20190322 FH-52_10_20190322 NA NA 15 NA NA  NA 2019-03-22
+52 11 20190322 FH-52_11_20190322 NA NA 16 NA NA  NA 2019-03-22
+52 12 20190322 FH-52_12_20190322 NA NA 16 NA NA  NA 2019-03-22
+52 1 20190402 FH-52_1_20190402 NA NA 1 NA NA  NA 2019-04-02
+52 2 20190402 FH-52_2_20190402 NA NA 0 NA NA  NA 2019-04-02
+52 3 20190402 FH-52_3_20190402 NA NA 4 NA NA  NA 2019-04-02
+52 4 20190402 FH-52_4_20190402 NA NA 10 NA NA  NA 2019-04-02
+52 5 20190402 FH-52_5_20190402 NA NA 3 NA NA  NA 2019-04-02
+52 6 20190402 FH-52_6_20190402 NA NA 0 NA NA  NA 2019-04-02
+52 7 20190402 FH-52_7_20190402 NA NA 100 NA NA  NA 2019-04-02
+52 8 20190402 FH-52_8_20190402 NA NA 50 NA NA  NA 2019-04-02
+52 9 20190402 FH-52_9_20190402 NA NA 200 NA NA  NA 2019-04-02
+52 10 20190402 FH-52_10_20190402 NA NA 70 NA NA  NA 2019-04-02
+52 11 20190402 FH-52_11_20190402 NA NA 150 NA NA  NA 2019-04-02
+52 12 20190402 FH-52_12_20190402 NA NA 70 NA NA  NA 2019-04-02
+52 1 20190417 FH-52_1_20190417 NA NA 5 NA NA  NA 2019-04-17
+52 2 20190417 FH-52_2_20190417 NA NA 10 NA NA  NA 2019-04-17
+52 3 20190417 FH-52_3_20190417 NA NA 50 NA NA  NA 2019-04-17
+52 4 20190417 FH-52_4_20190417 NA NA 15 NA NA  NA 2019-04-17
+52 5 20190417 FH-52_5_20190417 NA NA 5 NA NA  NA 2019-04-17
+52 6 20190417 FH-52_6_20190417 NA NA 40 NA NA  NA 2019-04-17
+52 7 20190417 FH-52_7_20190417 NA NA 100 NA NA  NA 2019-04-17
+52 8 20190417 FH-52_8_20190417 NA NA 40 NA NA  NA 2019-04-17
+52 9 20190417 FH-52_9_20190417 NA NA 250 NA NA  NA 2019-04-17
+52 10 20190417 FH-52_10_20190417 NA NA 80 NA NA  NA 2019-04-17
+52 11 20190417 FH-52_11_20190417 NA NA 80 NA NA  NA 2019-04-17
+52 12 20190417 FH-52_12_20190417 NA NA 80 NA NA  NA 2019-04-17
+52 1 20190426 FH-52_1_20190426 NA NA 8 NA NA  NA 2019-04-26
+52 2 20190426 FH-52_2_20190426 NA NA 5 NA NA  NA 2019-04-26
+52 3 20190426 FH-52_3_20190426 NA NA 35 NA NA  NA 2019-04-26
+52 4 20190426 FH-52_4_20190426 NA NA 12 NA NA  NA 2019-04-26
+52 5 20190426 FH-52_5_20190426 NA NA 3 NA NA  NA 2019-04-26
+52 6 20190426 FH-52_6_20190426 NA NA 13 NA NA  NA 2019-04-26
+52 7 20190426 FH-52_7_20190426 NA NA 12 NA NA  NA 2019-04-26
+52 8 20190426 FH-52_8_20190426 NA NA 25 NA NA  NA 2019-04-26
+52 9 20190426 FH-52_9_20190426 NA NA 44 NA NA  NA 2019-04-26
+52 10 20190426 FH-52_10_20190426 NA NA 13 NA NA  NA 2019-04-26
+52 11 20190426 FH-52_11_20190426 NA NA 26 NA NA  NA 2019-04-26
+52 12 20190426 FH-52_12_20190426 NA NA 27 NA NA  NA 2019-04-26
+9 1 20190604 FH_9_1_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 2 20190604 FH_9_2_20190604 NA NA NA NA NA could not do the census, too many errors due to other weeds, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 3 20190604 FH_9_3_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 4 20190604 FH_9_4_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 5 20190604 FH_9_5_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 6 20190604 FH_9_6_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 7 20190604 FH_9_7_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 8 20190604 FH_9_8_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 9 20190604 FH_9_9_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 10 20190604 FH_9_10_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 11 20190604 FH_9_11_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+9 12 20190604 FH_9_12_20190604 NA NA NA NA NA could not do the census, too many errors due to other species, hard to identify what is arabidopsis since plants are so small NA 2019-06-04
+49 1 20190320 49-01-20190320 1 0 NA NA NA  NA 2019-03-20
+49 2 20190320 49-02-20190320 0 1 NA NA NA  NA 2019-03-20
+49 3 20190320 49-03-20190320 0 0 NA NA NA  NA 2019-03-20
+49 4 20190320 49-04-20190320 0 0 NA NA NA  NA 2019-03-20
+49 5 20190320 49-05-20190320 0 0 NA NA NA  NA 2019-03-20
+49 6 20190320 49-06-20190320 4 1 NA NA NA  NA 2019-03-20
+49 7 20190320 49-07-20190320 4 4 NA NA NA  NA 2019-03-20
+49 8 20190320 49-08-20190320 0 4 NA NA NA  NA 2019-03-20
+49 9 20190320 49-09-20190320 4 0 NA NA NA  NA 2019-03-20
+49 10 20190320 49-10-20190320 3 10 NA NA NA  NA 2019-03-20
+49 11 20190320 49-11-20190320 0 0 NA NA NA  NA 2019-03-20
+49 12 20190320 49-12-20190320 0 0 NA NA NA  NA 2019-03-20
+53 1 20190405 53-01-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 2 20190405 53-02-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 3 20190405 53-03-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 4 20190405 53-04-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 5 20190405 53-05-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 6 20190405 53-06-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 7 20190405 53-07-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 8 20190405 53-08-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 9 20190405 53-09-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 10 20190405 53-10-20190405 NA NA 17 NA NA  NA 2019-04-05
+53 11 20190405 53-11-20190405 NA NA NA NA NA > 100 plants, most are very tiny and full of anthocyanins, impossible to count or estimate exact number NA 2019-04-05
+53 12 20190405 53-12-20190405 NA NA 27 NA NA  NA 2019-04-05
+5 1 20190227 5-1-20190227 51 34 NA NA NA Very small and dry  plants NA 2019-02-27
+5 2 20190227 5-2-20190227 36 25 NA NA NA Very small and dry  plants NA 2019-02-27
+5 3 20190227 5-3-20190227 26 16 NA NA NA Very small and dry  plants NA 2019-02-27
+5 4 20190227 5-4-20190227 15 14 NA NA NA Very small and dry  plants NA 2019-02-27
+5 5 20190227 5-5-20190227 22 15 NA NA NA Very small and dry  plants NA 2019-02-27
+5 6 20190227 5-6-20190227 24 34 NA NA NA Very small and dry  plants NA 2019-02-27
+5 7 20190227 5-7-20190227 44 34 NA NA NA Very small and dry  plants NA 2019-02-27
+5 8 20190227 5-8-20190227 14 15 NA NA NA Very small and dry  plants NA 2019-02-27
+5 9 20190227 5-9-20190227 6 12 NA NA NA Very small and dry  plants NA 2019-02-27
+5 10 20190227 5-10-20190227 13 12 NA NA NA Very small and dry  plants NA 2019-02-27
+5 11 20190227 5-11-20190227 16 12 NA NA NA Very small and dry  plants NA 2019-02-27
+5 12 20190227 5-12-20190227 13 12 NA NA NA Very small and dry  plants NA 2019-02-27
+45 1 20190204 45-1-20190204 97 85 NA NA NA  NA 2019-02-04
+45 2 20190204 45-2-20190204 13 6 NA NA NA  NA 2019-02-04
+45 3 20190204 45-3-20190204 38 31 NA NA NA  NA 2019-02-04
+45 4 20190204 45-4-20190204 18 14 NA NA NA  NA 2019-02-04
+45 5 20190204 45-5-20190204 6 4 NA NA NA  NA 2019-02-04
+45 6 20190204 45-6-20190204 0 2 NA NA NA  NA 2019-02-04
+45 7 20190204 45-7-20190204 0 3 NA NA NA  NA 2019-02-04
+45 8 20190204 45-8-20190204 0 0 NA NA NA  NA 2019-02-04
+45 9 20190204 45-9-20190204 6 15 NA NA NA  NA 2019-02-04
+45 10 20190204 45-10-20190204 26 34 NA NA NA  NA 2019-02-04
+45 11 20190204 45-11-20190204 0 0 NA NA NA  NA 2019-02-04
+45 12 20190204 45-12-20190204 51 41 NA NA NA  NA 2019-02-04
+1 1 20190401 01-01-20190401 4 0 44 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 2 20190401 01-02-20190401 4 1 145 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 3 20190401 01-03-20190401 0 1 3 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 4 20190401 01-04-20190401 4 1 73 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 5 20190401 01-05-20190401 3 3 49 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 6 20190401 01-06-20190401 3 0 47 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 7 20190401 01-07-20190401 2 1 80 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 8 20190401 01-08-20190401 5 2 123 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 9 20190401 01-09-20190401 0 0 3 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 10 20190401 01-10-20190401 1 1 4 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 11 20190401 01-11-20190401 2 0 13 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 12 20190401 01-12-20190401 2 1 32 NA NA Total plant number only of flowering plants NA 2019-04-01
+1 1 20180409 01-01-20180409 18 9 396 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 2 20180409 01-02-20180409 15 17 433 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 3 20180409 01-03-20180409 18 10 323 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 4 20180409 01-04-20180409 22 9 387 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 5 20180409 01-05-20180409 4 7 289 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 6 20180409 01-06-20180409 15 18 208 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 7 20180409 01-07-20180409 26 9 333 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 8 20180409 01-08-20180409 10 13 347 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 9 20180409 01-09-20180409 21 13 572 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 10 20180409 01-10-20180409 8 12 433 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 11 20180409 01-11-20180409 5 18 420 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+1 12 20180409 01-12-20180409 10 21 382 NA NA Many very small plants (rosette diameter <0.5cm)  2018-04-09
+2 1 20180316 02-01-20180316 1 2 26 NA NA 90% of plants are very small. see coresponding picture in shared folder  2018-03-16
+2 1 20180420 02-01-20180420 2 4 30 NA NA   2018-04-20
+2 2 20180316 02-02-20180316 0 0 0 NA NA tray lost due to flooding  2018-03-16
+2 2 20180420 02-02-20180420 0 0 0 NA NA tray lost due to flooding  2018-04-20
+2 3 20180316 02-03-20180316 0 0 0 NA NA   2018-03-16
+2 3 20180420 02-03-20180420 0 0 0 NA NA tray lost due to flooding  2018-04-20
+2 4 20180316 02-04-20180316 1 0 1 NA NA tray lost due to flooding  2018-03-16
+2 4 20180420 02-04-20180420 0 0 0 NA NA tray lost due to flooding  2018-04-20
+2 5 20180316 02-05-20180316 12 12 319 NA NA all plants are small. see coresponding picture in shared folder  2018-03-16
+2 5 20180420 02-05-20180420 19 10 112 NA NA   2018-04-20
+2 6 20180316 02-06-20180316 2 0 84 NA NA all plants are very small. see coresponding picture in shared folder  2018-03-16
+2 6 20180420 02-06-20180420 8 5 69 NA NA   2018-04-20
+2 7 20180316 02-07-20180316 3 2 32 NA NA 90% of plants are very small. see coresponding picture in shared folder  2018-03-16
+2 7 20180420 02-07-20180420 4 6 32 NA NA   2018-04-20
+2 8 20180316 02-08-20180316 7 6 136 NA NA 90% of plants are very small. Herbivory spotted, see coresponding picture in shared folder  2018-03-16
+2 8 20180420 02-08-20180420 10 7 101 NA NA   2018-04-20
+2 9 20180316 02-09-20180316 2 7 73 NA NA 90% of plants are very small. Herbivory spotted, see coresponding picture in shared folder  2018-03-16
+2 9 20180420 02-09-20180420 4 7 75 NA NA   2018-04-20
+2 10 20180316 02-10-20180316 0 0 0 NA NA tray lost due to flooding  2018-03-16
+2 10 20180420 02-10-20180420 0 0 0 NA NA tray lost due to flooding  2018-04-20
+2 11 20180316 02-11-20180316 3 0 87 NA NA 90% of plants are very small. see coresponding picture in shared folder  2018-03-16
+2 11 20180420 02-11-20180420 2 2 42 NA NA   2018-04-20
+2 12 20180316 02-12-20180316 1 1 37 NA NA all plants are very small. Herbivory spotted, see coresponding picture in shared folder  2018-03-16
+2 12 20180420 02-12-20180420 2 3 33 NA NA   2018-04-20
+2 13 20180316 02-13-20180316 5 4 166 NA NA all plants are very small. see coresponding picture in shared folder  2018-03-16
+2 13 20180420 02-13-20180420 6 6 116 NA NA   2018-04-20
+2 14 20180316 02-14-20180316 12 7 134 NA NA 90% of plants are very small, but some are relatively big. see coresponding picture in shared folder  2018-03-16
+2 14 20180420 02-14-20180420 10 11 144 NA NA   2018-04-20
+2 15 20180316 02-15-20180316 1 0 1 NA NA tray lost due to flooding  2018-03-16
+2 15 20180420 02-15-20180420 0 0 2 NA NA tray lost due to flooding  2018-04-20
+2 16 20180316 02-16-20180316 4 3 72 NA NA all plants are very small. see coresponding picture in shared folder  2018-03-16
+2 16 20180420 02-16-20180420 3 4 63 NA NA   2018-04-20
+2 17 20180316 02-17-20180316 0 0 2 NA NA tray lost due to flooding  2018-03-16
+2 17 20180420 02-17-20180420 0 0 0 NA NA tray lost due to flooding  2018-04-20
+2 18 20180316 02-18-20180316 4 2 65 NA NA all plants are very small. see coresponding picture in shared folder  2018-03-16
+2 18 20180420 02-18-20180420 8 7 63 NA NA   2018-04-20
+4 1 20180403 4-1-20180403 72 71 502 5.23 3.27 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 2 20180403 4-2-20180403 61 59 566 4.68 2.74 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 3 20180403 4-3-20180403 81 77 582 5.23 3.47 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 4 20180403 4-4-20180403 38 34 306 4.71 2.54 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 5 20180403 4-5-20180403 57 45 363 4.11 1.97 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 6 20180403 4-6-20180403 80 65 515 3.77 2.11 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 7 20180403 4-7-20180403 63 56 382 4.21 2.49 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 8 20180403 4-8-20180403 67 64 369 3.56 1.74 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 9 20180403 4-9-20180403 68 63 516 4.69 2.83 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 10 20180403 4-10-20180403 71 66 474 4.8 2.61 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 11 20180403 4-11-20180403 72 49 448 4.9 2.79 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+4 12 20180403 4-12-20180403 89 85 496 4.1 2.13 Flowering and fruiting quite homogeneous over the experiment. Maximum number of flowering and fruiting plants observed during the experiment (right during the second sampling). Mean and SD fruits per plant computed from all diagonal and off-diagonal plants.  2018-04-03
+5 1 20180321 5-1-20180321 50 37   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 1 20180510 5-1-20180510 77 40  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 1 20190227 5-1-20190227 51 34  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 2 20180321 5-2-20180321 40 49   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 2 20180510 5-2-20180510 82 60  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 2 20190227 5-2-20190227 36 25  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 3 20180321 5-3-20180321 52 48   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 3 20180510 5-3-20180510 75 69  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 3 20190227 5-3-20190227 26 16  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 4 20180321 5-4-20180321 45 55   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 4 20180510 5-4-20180510 73 56  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 4 20190227 5-4-20190227 15 14  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 5 20180321 5-5-20180321 67 58   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 5 20180510 5-5-20180510 81 68  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 5 20190227 5-5-20190227 22 15  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 6 20180321 5-6-20180321 50 43   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 6 20180510 5-6-20180510 72 60  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 6 20190227 5-6-20190227 24 34  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 7 20180321 5-7-20180321 54 61   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 7 20180510 5-7-20180510 90 66  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 7 20190227 5-7-20190227 44 34  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 8 20180321 5-8-20180321 52 52   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 8 20180510 5-8-20180510 70 33  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 8 20190227 5-8-20190227 14 15  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 9 20180321 5-9-20180321 61 54   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 9 20180510 5-9-20180510 78 56  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 9 20190227 5-9-20190227 6 12  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 10 20180321 5-10-20180321 42 45   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 10 20180510 5-10-20180510 73 51  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 10 20190227 5-10-20190227 13 12  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 11 20180321 5-11-20180321 52 62   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 11 20180510 5-11-20180510 71 55  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 11 20190227 5-11-20190227 16 12  NA NA very small plants (diameter < 1cm)  2019-02-27
+5 12 20180321 5-12-20180321 73 72   NA NA The two cohorts of germination very clear with small and large plants. See pictures from the same date  2018-03-21
+5 12 20180510 5-12-20180510 91 69  NA NA Second census has been done during fruiting period. Most plants have fully flowered and the first fruits start drying. We have done this census at this precise stage to avoid losing seeds. This census reflects the number of reproductive individuals per tray  2018-05-10
+5 12 20190227 5-12-20190227 13 12  NA NA very small plants (diameter < 1cm)  2019-02-27
+6 1 20180328 06-1-20180328 ? ? 210 NA NA Total plant number counted, not estimated; Individuals: 210, Aprox nr. non-sprouted rosettes: 50  2018-03-28
+6 2 20180328 06-2-20180328 ? ? 235 NA NA Total plant number counted, not estimated; Individuals: 235, Aprox nr. non-sprouted rosettes: 70  2018-03-28
+6 3 20180328 06-3-20180328 ? ? 196 NA NA Total plant number counted, not estimated; Individuals: 196, Aprox nr. non-sprouted rosettes: 60  2018-03-28
+6 4 20180328 06-4-20180328 ? ? 206 NA NA Total plant number counted, not estimated; Individuals: 206, Aprox nr. non-sprouted rosettes: 65  2018-03-28
+6 5 20180328 06-5-20180328 ? ? 209 NA NA Total plant number counted, not estimated; Individuals: 209, Aprox nr. non-sprouted rosettes: 60  2018-03-28
+6 6 20180328 06-6-20180328 ? ? 183 NA NA Total plant number counted, not estimated; Individuals: 183, Aprox nr. non-sprouted rosettes: 40  2018-03-28
+6 7 20180328 06-7-20180328 ? ? 365 NA NA Total plant number counted, not estimated; Individuals: 365, Aprox nr. non-sprouted rosettes: 60  2018-03-28
+6 8 20180328 06-8-20180328 ? ? 242 NA NA Total plant number counted, not estimated; Individuals: 242, Aprox nr. non-sprouted rosettes: 50  2018-03-28
+6 9 20180328 06-9-20180328 ? ? 201 NA NA Total plant number counted, not estimated; Individuals: 201, Aprox nr. non-sprouted rosettes: 65  2018-03-28
+6 10 20180328 06-10-20180328 ? ? 242 NA NA Total plant number counted, not estimated; Individuals: 242, Aprox nr. non-sprouted rosettes: 60  2018-03-28
+6 11 20180328 06-11-20180328 ? ? 267 NA NA Total plant number counted, not estimated; Individuals: 267, Aprox nr. non-sprouted rosettes: 45  2018-03-28
+6 12 20180328 06-12-20180328 ? ? 369 NA NA Total plant number counted, not estimated; Individuals: 369, Aprox nr. non-sprouted rosettes: 70  2018-03-28
+9 1 20180420 9_1_20180420 8 7 86 NA NA   2018-04-20
+9 1 20180504 9_1_20180504 9 8 120 NA NA   2018-05-04
+9 1 20180518 9_1_20180518 11 8 107 NA NA general: few individuals are still flowering, many have dispersed and senesced! Probably only one more round of sampling in 2 weeks.  2018-05-18
+9 2 20180420 9_2_20180420 9 13 65 NA NA   2018-04-20
+9 2 20180504 9_2_20180504 11 14 139 NA NA   2018-05-04
+9 2 20180518 9_2_20180518 6 7 86 NA NA   2018-05-18
+9 3 20180420 9_3_20180420 5 7 45 NA NA   2018-04-20
+9 3 20180504 9_3_20180504 4 6 77 NA NA   2018-05-04
+9 3 20180518 9_3_20180518 3 5 46 NA NA   2018-05-18
+9 4 20180420 9_4_20180420 14 13 134 NA NA   2018-04-20
+9 4 20180504 9_4_20180504 14 7 170 NA NA plants only at the edge of the plot shaded by surrounded grass, too few plants for line measurements  2018-05-04
+9 4 20180518 9_4_20180518 8 10 121 NA NA   2018-05-18
+9 5 20180420 9_5_20180420 10 7 53 NA NA   2018-04-20
+9 5 20180504 9_5_20180504 9 6 100 NA NA plants only at the edge of the plot shaded by surrounded grass, too few plants for line measurements  2018-05-04
+9 5 20180518 9_5_20180518 5 7 82 NA NA   2018-05-18
+9 6 20180420 9_6_20180420 9 7 86 NA NA   2018-04-20
+9 6 20180504 9_6_20180504 6 9 108 NA NA plants only at the edge of the plot shaded by surrounded grass, too few plants for line measurements  2018-05-04
+9 6 20180518 9_6_20180518 6 5 65 NA NA   2018-05-18
+9 7 20180420 9_7_20180420 14 9 73 NA NA   2018-04-20
+9 7 20180504 9_7_20180504 9 9 119 NA NA plants only at the edge of the plot shaded by surrounded grass, too few plants for line measurements  2018-05-04
+9 7 20180518 9_7_20180518 12 8 71 NA NA   2018-05-18
+9 8 20180420 9_8_20180420 6 5 37 NA NA   2018-04-20
+9 8 20180504 9_8_20180504 8 4 64 NA NA plants only at the edge of the plot shaded by surrounded grass, too few plants for line measurements; already fruiting  2018-05-04
+9 8 20180518 9_8_20180518 4 4 52 NA NA   2018-05-18
+9 9 20180420 9_9_20180420 4 7 88 NA NA   2018-04-20
+9 9 20180504 9_9_20180504 6 8 111 NA NA plants only at the edge of the plot shaded by surrounded grass, too few plants for line measurements  2018-05-04
+9 9 20180518 9_9_20180518 4 5 92 NA NA   2018-05-18
+9 10 20180420 9_10_20180420 7 8 62 NA NA   2018-04-20
+9 10 20180504 9_10_20180504 10 6 138 NA NA plants only at the edge of the plot shaded by surrounded grass, too few plants for line measurements  2018-05-04
+9 10 20180518 9_10_20180518 6 6 98 NA NA   2018-05-18
+9 11 20180420 9_11_20180420 6 21 77 NA NA   2018-04-20
+9 11 20180504 9_11_20180504 7 6 91 NA NA   2018-05-04
+9 11 20180518 9_11_20180518 5 7 107 NA NA   2018-05-18
+9 12 20180420 9_12_20180420 4 3 37 NA NA only one opened flower per individual (sample in two weeks)  2018-04-20
+9 12 20180504 9_12_20180504 3 4 70 NA NA   2018-05-04
+9 12 20180518 9_12_20180518 0 4 59 NA NA   2018-05-18
+12 1 20180427 12_1_20180427 1 14 15 NA NA   2018-04-27
+12 1 20180511 12_1_20180511 1 10 11 NA NA   2018-05-11
+12 1 20180525 12_1_20180525 1 0 7 NA NA   2018-05-25
+12 1 20180606 12_1_20180606 0 0 2 NA NA   2018-06-06
+12 2 20180427 12_2_20180427 2 13 15 NA NA   2018-04-27
+12 2 20180511 12_2_20180511 2 17 19 NA NA   2018-05-11
+12 2 20180525 12_2_20180525 1 3 10 NA NA   2018-05-25
+12 2 20180606 12_2_20180606 2 1 8 NA NA   2018-06-06
+12 3 20180427 12_3_20180427 2 4 6 NA NA   2018-04-27
+12 3 20180511 12_3_20180511 1 4 5 NA NA   2018-05-11
+12 3 20180525 12_3_20180525 1 1 5 NA NA   2018-05-25
+12 3 20180606 12_3_20180606 1 0 6 NA NA   2018-06-06
+12 4 20180427 12_4_20180427 3 23 26 NA NA   2018-04-27
+12 4 20180511 12_4_20180511 3 22 25 NA NA   2018-05-11
+12 4 20180525 12_4_20180525 2 0 14 NA NA   2018-05-25
+12 4 20180606 12_4_20180606 2 0 13 NA NA   2018-06-06
+12 5 20180427 12_5_20180427 5 23 28 NA NA   2018-04-27
+12 5 20180511 12_5_20180511 3 17 20 NA NA   2018-05-11
+12 5 20180525 12_5_20180525 3 4 19 NA NA   2018-05-25
+12 5 20180606 12_5_20180606 3 2 10 NA NA   2018-06-06
+12 6 20180427 12_6_20180427 1 18 19 NA NA   2018-04-27
+12 6 20180511 12_6_20180511 0 17 17 NA NA   2018-05-11
+12 6 20180525 12_6_20180525 1 0 13 NA NA   2018-05-25
+12 6 20180606 12_6_20180606 1 1 7 NA NA   2018-06-06
+12 7 20180427 12_7_20180427 2 10 12 NA NA   2018-04-27
+12 7 20180511 12_7_20180511 2 7 9 NA NA   2018-05-11
+12 7 20180525 12_7_20180525 2 0 9 NA NA   2018-05-25
+12 7 20180606 12_7_20180606 1 1 8 NA NA   2018-06-06
+12 8 20180427 12_8_20180427 2 17 19 NA NA   2018-04-27
+12 8 20180511 12_8_20180511 0 15 15 NA NA   2018-05-11
+12 8 20180525 12_8_20180525 2 2 9 NA NA   2018-05-25
+12 8 20180606 12_8_20180606 2 1 14 NA NA   2018-06-06
+12 9 20180427 12_9_20180427 11 31 42 NA NA   2018-04-27
+12 9 20180511 12_9_20180511 6 21 27 NA NA   2018-05-11
+12 9 20180525 12_9_20180525 1 2 23 NA NA   2018-05-25
+12 9 20180606 12_9_20180606 2 3 19 NA NA   2018-06-06
+12 10 20180427 12_10_20180427 18 60 78 NA NA   2018-04-27
+12 10 20180511 12_10_20180511 6 32 38 NA NA   2018-05-11
+12 10 20180525 12_10_20180525 2 3 21 NA NA   2018-05-25
+12 10 20180606 12_10_20180606 4 3 26 NA NA   2018-06-06
+12 11 20180427 12_11_20180427 18 104 122 NA NA   2018-04-27
+12 11 20180511 12_11_20180511 9 57 66 NA NA   2018-05-11
+12 11 20180525 12_11_20180525 9 8 44 NA NA   2018-05-25
+12 11 20180606 12_11_20180606 6 8 31 NA NA   2018-06-06
+12 12 20180427 12_12_20180427 14 86 100 NA NA   2018-04-27
+12 12 20180511 12_12_20180511 9 31 40 NA NA   2018-05-11
+12 12 20180525 12_12_20180525 8 6 36 NA NA   2018-05-25
+12 12 20180606 12_12_20180606 10 7 38 NA NA   2018-06-06
+23 1 20180520 23-1-20180520 13 6 160 NA NA   2018-05-20
+23 2 20180520 23-2-20180520 62 62 820 NA NA   2018-05-20
+23 3 20180520 23-3-20180520 20 10 270 NA NA   2018-05-20
+23 4 20180520 23-4-20180520 21 13 346 NA NA   2018-05-20
+23 5 20180520 23-5-20180520 9 8 263 NA NA   2018-05-20
+23 6 20180520 23-6-20180520 23 25 314 NA NA   2018-05-20
+23 7 20180520 23-7-20180520 18 7 410 NA NA   2018-05-20
+23 8 20180520 23-8-20180520 11 8 335 NA NA   2018-05-20
+23 9 20180520 23-9-20180520 18 11 395 NA NA   2018-05-20
+23 10 20180520 23-10-20180520 27 11 455 NA NA   2018-05-20
+23 11 20180520 23-11-20180520 23 34 485 NA NA   2018-05-20
+23 12 20180520 23-12-20180520 15 15 420 NA NA   2018-05-20
+28 14 20180303 28-14-20180303 45 31  NA NA   2018-03-03
+28 15 20180303 28-15-20180303 50 38  NA NA   2018-03-03
+28 16 20180303 28-16-20180303 23 20  NA NA   2018-03-03
+28 17 20180303 28-17-20180303 25 29  NA NA   2018-03-03
+28 18 20180303 28-18-20180303 29 38  NA NA   2018-03-03
+32 1 20180131 32-01-20180131 34 19  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 2 20180131 32-02-20180131 28 33  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 3 20180131 32-03-20180131 12 17  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 4 20180131 32-04-20180131 14 10  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 5 20180131 32-05-20180131 8 14  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 6 20180131 32-06-20180131 17 18  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 7 20180131 32-07-20180131 30 24  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 8 20180131 32-08-20180131 23 23  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 9 20180131 32-09-20180131 32 17  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 10 20180131 32-10-20180131 33 16  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 11 20180131 32-11-20180131 15 12  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+32 12 20180131 32-12-20180131 23 18  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-01-31
+37 1 20180423 37-1-20180423   77 NA NA   2018-04-23
+37 1 20180619 R-37-1-20180619   72 NA NA Rosettes  2018-06-19
+37 1 20180912 37-1-20180912   1 NA NA 1 new sprout. See photo.  2018-09-12
+37 2 20180423 37-2-20180423   62 NA NA   2018-04-23
+37 2 20180619 R-37-2-20180619   78 NA NA Rosettes  2018-06-19
+37 2 20180912 37-2-20180912   1 NA NA 1 smal sprout unitentified  2018-09-12
+37 3 20180423 37-3-20180423   106 NA NA   2018-04-23
+37 3 20180619 R-37-3-20180619   62 NA NA Rosettes  2018-06-19
+37 3 20180912 37-3-20180912   na NA NA 1 smal sprout unitentified  2018-09-12
+37 4 20180423 37-4-20180423   109 NA NA   2018-04-23
+37 4 20180619 R-37-4-20180619   72 NA NA Rosettes  2018-06-19
+37 4 20180912 37-4-20180912   4 NA NA 4 smal sprouts unitentified  2018-09-12
+37 5 20180423 37-5-20180423   104 NA NA   2018-04-23
+37 5 20180619 R-37-5-20180619   89 NA NA Rosettes  2018-06-19
+37 5 20180912 37-5-20180912   2 NA NA 2 smal sprouts unitentified  2018-09-12
+37 6 20180423 37-6-20180423   122 NA NA   2018-04-23
+37 6 20180619 R-37-6-20180619   103 NA NA Rosettes  2018-06-19
+37 6 20180912 37-6-20180912   1 NA NA 1 smal sprouts unitentified  2018-09-12
+37 7 20180423 37-7-20180423   149 NA NA   2018-04-23
+37 7 20180619 R-37-7-20180619   100 NA NA Rosettes  2018-06-19
+37 7 20180912 37-7-20180912   na NA NA   2018-09-12
+37 8 20180423 37-8-20180423   116 NA NA   2018-04-23
+37 8 20180619 R-37-8-20180619   55 NA NA Rosettes  2018-06-19
+37 8 20180912 37-8-20180912   na NA NA   2018-09-12
+37 9 20180423 37-920180423   160 NA NA   2018-04-23
+37 9 20180619 R-37-9-20180619   87 NA NA Rosettes  2018-06-19
+37 9 20180912 37-9-20180912   na NA NA   2018-09-12
+37 10 20180423 37-10-20180423   169 NA NA   2018-04-23
+37 10 20180619 R-37-10-20180619   92 NA NA Rosettes  2018-06-19
+37 10 20180912 37-10-20180912   na NA NA   2018-09-12
+37 11 20180423 37-11-20180423   170 NA NA   2018-04-23
+37 11 20180619 R-37-11-20180619   86 NA NA Rosettes  2018-06-19
+37 11 20180912 37-11-20180912   na NA NA   2018-09-12
+37 12 20180423 37-12-20180423   89 NA NA   2018-04-23
+37 12 20180619 R-37-12-20180619   47 NA NA Rosettes  2018-06-19
+37 12 20180912 37-12-20180912   na NA NA   2018-09-12
+42 1 20180413 42-1-20180413 34 39  NA NA   2018-04-13
+42 2 20180413 42-2-20180414 49 47  NA NA   2018-04-13
+42 3 20180413 42-3-20180415 42 52  NA NA   2018-04-13
+42 4 20180413 42-4-20180416 23 24  NA NA   2018-04-13
+42 5 20180413 42-5-20180417 3 10  NA NA   2018-04-13
+42 6 20180413 42-6-20180418 12 12  NA NA   2018-04-13
+42 7 20180413 42-7-20180419 32 55  NA NA   2018-04-13
+42 8 20180413 42-8-20180420 31 24  NA NA   2018-04-13
+42 9 20180413 42-9-20180421 20 32  NA NA   2018-04-13
+42 10 20180413 42-10-20180422 24 37  NA NA   2018-04-13
+42 11 20180413 42-11-20180423 10 10  NA NA   2018-04-13
+42 12 20180413 42-12-20180424 14 16  NA NA   2018-04-13
+43 1 20180205 43-1-20180205 50 39  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 2 20180205 43-2-20180205 46 38  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 3 20180205 43-3-20180205 46 19  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 4 20180205 43-4-20180205 39 17  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 5 20180205 43-5-20180205 35 17  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 6 20180205 43-6-20180205 48 21  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 7 20180205 43-7-20180205 32 21  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 8 20180205 43-8-20180205 33 33  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 9 20180205 43-9-20180205 47 20  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 10 20180205 43-10-20180205 37 23  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 11 20180205 43-11-20180205 29 33  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+43 12 20180205 43-12-20180205 46 29  NA NA numbers may be underestimated, plants are overlapping, there are many small plants (emerged from the third batch of seeds sown)  2018-02-05
+45 1 20180321 45-1-20180321 50 40  NA NA   2018-03-21
+45 1 20190204 45-1-20190204 97 85  NA NA   2019-02-04
+45 2 20180321 45-2-20180321 63 63  NA NA   2018-03-21
+45 2 20190204 45-2-20190204 13 6  NA NA   2019-02-04
+45 3 20180321 45-3-20180321 25 24  NA NA   2018-03-21
+45 3 20190204 45-3-20190204 38 31  NA NA   2019-02-04
+45 4 20180321 45-4-20180321 53 42  NA NA   2018-03-21
+45 4 20190204 45-4-20190204 18 14  NA NA   2019-02-04
+45 5 20180321 45-5-20180321 28 37  NA NA   2018-03-21
+45 5 20190204 45-5-20190204 6 4  NA NA   2019-02-04
+45 6 20180321 45-6-20180321 46 54  NA NA   2018-03-21
+45 6 20190204 45-6-20190204 0 2  NA NA   2019-02-04
+45 7 20180321 45-7-20180321 19 23  NA NA   2018-03-21
+45 7 20190204 45-7-20190204 0 3  NA NA   2019-02-04
+45 8 20180321 45-8-20180321 28 26  NA NA   2018-03-21
+45 8 20190204 45-8-20190204 0 0  NA NA   2019-02-04
+45 9 20180321 45-9-20180321 47 25  NA NA   2018-03-21
+45 9 20190204 45-9-20190204 6 15  NA NA   2019-02-04
+45 10 20180321 45-10-20180321 42 33  NA NA   2018-03-21
+45 10 20190204 45-10-20190204 26 34  NA NA   2019-02-04
+45 11 20180321 45-11-20180321 43 44  NA NA   2018-03-21
+45 11 20190204 45-11-20190204 0 0  NA NA   2019-02-04
+45 12 20180321 45-12-20180321 46 40  NA NA   2018-03-21
+45 12 20190204 45-12-20190204 51 41  NA NA   2019-02-04
+46 1 20180404 46-01-20180404 31 32  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 2 20180404 46-02-20180404 29 25  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 3 20180404 46-03-20180404 34 26  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 4 20180404 46-04-20180404 30 34  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 5 20180404 46-05-20180404 27 20  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 6 20180404 46-06-20180404 30 28  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 7 20180404 46-07-20180404 27 21  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 8 20180404 46-08-20180404 28 23  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 9 20180404 46-09-20180404 19 23  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 10 20180404 46-10-20180404 29 20  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 11 20180404 46-11-20180404 25 20  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+46 12 20180404 46-12-20180404 29 15  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-04-04
+49 1 20180409 49-01-20180409 22 21  NA NA   2018-04-09
+49 2 20180409 49-02-20180409 9 9  NA NA   2018-04-09
+49 3 20180409 49-03-20180409 15 19  NA NA   2018-04-09
+49 4 20180409 49-04-20180409 7 8  NA NA   2018-04-09
+49 5 20180409 49-05-20180409 36 39  NA NA   2018-04-09
+49 6 20180409 49-06-20180409 28 20  NA NA   2018-04-09
+49 7 20180410 49-07-20180409 33 29  NA NA   2018-04-10
+49 8 20180410 49-08-20180409 32 15  NA NA   2018-04-10
+49 9 20180410 49-09-20180409 29 35  NA NA   2018-04-10
+49 10 20180410 49-10-20180409 8 5  NA NA   2018-04-10
+49 11 20180410 49-11-20180409 22 33  NA NA   2018-04-10
+49 12 20180410 49-12-20180409 29 35  NA NA   2018-04-10
+52 1 20180417 52-1-20180417 0 0 1 NA NA   2018-04-17
+52 1 20180502 52-1-20180502 0 0 0 NA NA   2018-05-02
+52 1 20180522 52-1-20180522   1 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 1 20190322 52_1_20190322   5 NA NA   2019-03-22
+52 1 20190402 52_1_20190322   1 NA NA   2019-04-02
+52 1 20190417 52_1_20190417   5 NA NA   2019-04-17
+52 2 20180417 52-2-20180417 0 0 2 NA NA   2018-04-17
+52 2 20180502 52-2-20180502 0 0 2 NA NA   2018-05-02
+52 2 20180522 52-2-20180522   2 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 2 20190322 52_2_20190322   0 NA NA   2019-03-22
+52 2 20190402 52_2_20190402   0 NA NA   2019-04-02
+52 2 20190417 52_2_20190417   10 NA NA   2019-04-17
+52 3 20180417 52-3-20180417 2 3 26 NA NA   2018-04-17
+52 3 20180502 52-3-20180502 2 3 23 NA NA   2018-05-02
+52 3 20180522 52-3-20180522   15 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 3 20190322 52_3_20190322   0 NA NA   2019-03-22
+52 3 20190402 52_3_20190402   4 NA NA   2019-04-02
+52 3 20190417 52_3_20190417   50 NA NA   2019-04-17
+52 4 20180417 52-4-20180417 4 5 57 NA NA   2018-04-17
+52 4 20180502 52-4-20180502 4 5 55 NA NA   2018-05-02
+52 4 20180522 52-4-20180522   41 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 4 20190322 52_4_20190322   2 NA NA   2019-03-22
+52 4 20190402 52_4_20190402   10 NA NA   2019-04-02
+52 4 20190417 52_4_20190417   15 NA NA   2019-04-17
+52 5 20180417 52-5-20180417 0 0 0 NA NA   2018-04-17
+52 5 20180502 52-5-20180502 0 0 0 NA NA   2018-05-02
+52 5 20180522 52-5-20180522   0 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 5 20190322 52_5_20190322   2 NA NA   2019-03-22
+52 5 20190402 52_5_20190402   3 NA NA   2019-04-02
+52 5 20190417 52_5_20190417   5 NA NA   2019-04-17
+52 6 20180417 52-6-20180417 1 0 8 NA NA   2018-04-17
+52 6 20180502 52-6-20180502 1 0 6 NA NA   2018-05-02
+52 6 20180522 52-6-20180522   8 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 6 20190322 52_6_20190322   2 NA NA   2019-03-22
+52 6 20190402 52_6_20190402   0 NA NA   2019-04-02
+52 6 20190417 52_6_20190417   35 NA NA   2019-04-17
+52 7 20180417 52-7-20180417 0 0 4 NA NA   2018-04-17
+52 7 20180502 52-7-20180502 0 0 4 NA NA   2018-05-02
+52 7 20180522 52-7-20180522   4 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 7 20190322 52_7_20190322   2 NA NA   2019-03-22
+52 7 20190402 52_7_20190402   40 NA NA   2019-04-02
+52 7 20190417 52_7_20190417   75 NA NA   2019-04-17
+52 8 20180417 52-8-20180417 2 1 17 NA NA   2018-04-17
+52 8 20180502 52-8-20180502 2 1 19 NA NA   2018-05-02
+52 8 20180522 52-8-20180522   16 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 8 20190322 52_8_20190322   2 NA NA   2019-03-22
+52 8 20190402 52_8_20190402   15 NA NA   2019-04-02
+52 8 20190417 52_8_20190417   40 NA NA   2019-04-17
+52 9 20180417 52-9-20180417 5 7 65 NA NA   2018-04-17
+52 9 20180502 52-9-20180502 5 7 62 NA NA   2018-05-02
+52 9 20180522 52-9-20180522   41 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 9 20190322 52_9_20190322   21 NA NA   2019-03-22
+52 9 20190402 52_9_20190402   100 NA NA   2019-04-02
+52 9 20190417 52_9_20190417   250 NA NA   2019-04-17
+52 10 20180417 52-10-20180417 3 2 27 NA NA   2018-04-17
+52 10 20180502 52-10-20180502 3 2 22 NA NA   2018-05-02
+52 10 20180522 52-10-20180522   21 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 10 20190322 52_10_20190322   15 NA NA   2019-03-22
+52 10 20190402 52_10_20190402   70 NA NA   2019-04-02
+52 10 20190417 52_10_20190417   80 NA NA   2019-04-17
+52 11 20180417 52-11-20180417 3 0 14 NA NA   2018-04-17
+52 11 20180502 52-11-20180502 3 0 15 NA NA   2018-05-02
+52 11 20180522 52-11-20180522   14 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 11 20190322 52_11_20190322   16 NA NA   2019-03-22
+52 11 20190402 52_11_20190402   50 NA NA   2019-04-02
+52 11 20190417 52_11_20190417   80 NA NA   2019-04-17
+52 12 20180417 52-12-20180417 1 1 18 NA NA   2018-04-17
+52 12 20180502 52-12-20180502 1 1 16 NA NA   2018-05-02
+52 12 20180522 52-12-20180522   14 NA NA Almost all plants non-flowering but fruiting, leaves dead. Was dry and hot for at least 2 weeks before  2018-05-22
+52 12 20190322 52_12_20190322   16 NA NA   2019-03-22
+52 12 20190402 52_12_20190402   20 NA NA   2019-04-02
+52 12 20190417 52_12_20190417   80 NA NA   2019-04-17
+53 1 20180413 53-1-20180413 22 30  NA NA accurate determination of “total number of plants” is in most cases not really possible -> we see very patchy growth in most of the plots on site 53(potentially due to "bad" sowing?). 2 plots are (almost) empty where plants did not survive the winter
+  2018-04-13
+53 2 20180414 53-2-20180413 5 3  NA NA   2018-04-14
+53 3 20180415 53-3-20180413 16 18  NA NA   2018-04-15
+53 4 20180416 53-4-20180413 6 8  NA NA   2018-04-16
+53 5 20180417 53-5-20180413 6 3  NA NA   2018-04-17
+53 6 20180418 53-6-20180413 14 6  NA NA   2018-04-18
+53 7 20180419 53-7-20180413 2 7  NA NA   2018-04-19
+53 8 20180420 53-8-20180413 2 3  NA NA   2018-04-20
+53 9 20180421 53-9-20180413 7 8  NA NA   2018-04-21
+53 10 20180422 53-10-20180413 0 0  NA NA   2018-04-22
+53 11 20180423 53-11-20180413 5 6  NA NA   2018-04-23
+53 12 20180424 53-12-20180413 0 1  NA NA   2018-04-24
+54 1 20180130 54-1-20180130 55 47  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 2 20180130 54-2-20180130 44 37  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 3 20180130 54-3-20180130 33 47  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 4 20180130 54-4-20180130 50 36  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 5 20180130 54-5-20180130 43 41  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 6 20180130 54-6-20180130 46 38  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 7 20180130 54-7-20180130 43 47  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 8 20180130 54-8-20180130 43 36  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 9 20180130 54-9-20180130 41 47  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 10 20180130 54-10-20180130 44 41  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 11 20180130 54-11-20180130 34 39  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+54 12 20180130 54-12-20180130 43 39  NA NA numbers may be underestimation, coverage of the plots is very high, plants are overlapping  2018-01-30
+55 1 20180222 55-1-20180222 1 3 36 NA NA exact count : 36 very small plants 2018-02-22
+55 1 20180412 55-01-20180412   7 NA NA   2018-04-12
+55 2 20180222 55-1-20180222 8 8 >100 NA NA exact count : >100 very small plants 2018-02-22
+55 2 20180412 55-02-20180412   127 NA NA   2018-04-12
+55 3 20180222 55-1-20180222 1 0 12 NA NA exact count : 12 very small plants 2018-02-22
+55 3 20180412 55-03-20180412   4 NA NA   2018-04-12
+55 4 20180222 55-1-20180222 1 3 28 NA NA exact count : 28 very small plants 2018-02-22
+55 4 20180412 55-04-20180412   22 NA NA   2018-04-12
+55 5 20180222 55-1-20180222 4 4 49 NA NA exact count : 49 very small plants 2018-02-22
+55 5 20180412 55-05-20180412   22 NA NA   2018-04-12
+55 6 20180222 55-1-20180222 15 19 >100 NA NA exact count : >100 very small plants 2018-02-22
+55 6 20180412 55-06-20180412   90 NA NA   2018-04-12
+55 7 20180222 55-1-20180222 0 0 4 NA NA exact count : 4 very small plants 2018-02-22
+55 7 20180412 55-07-20180412   2 NA NA   2018-04-12
+55 8 20180222 55-1-20180222 7 3 59 NA NA exact count : 59 very small plants 2018-02-22
+55 8 20180412 55-08-20180412   20 NA NA   2018-04-12
+55 9 20180222 55-1-20180222 1 1 10 NA NA exact count : 10 very small plants 2018-02-22
+55 9 20180412 55-09-20180412   4 NA NA   2018-04-12
+55 10 20180222 55-1-20180222 0 0 5 NA NA exact count : 5 very small plants 2018-02-22
+55 10 20180412 55-10-20180412   3 NA NA   2018-04-12
+55 11 20180222 55-1-20180222 2 0 5 NA NA exact count : 5 very small plants 2018-02-22
+55 11 20180412 55-11-20180412   3 NA NA   2018-04-12
+55 12 20180222 55-1-20180222 9 6 63 NA NA exact count : 63 very small plants 2018-02-22
+55 12 20180412 55-12-20180412   37 NA NA   2018-04-12
+57 10G 20180411 na ? ? 8 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 12G 20180411 na ? ? 93 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 13G 20180411 na ? ? 13 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 15G 20180411 na ? ? 170 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 16G 20180411 na ? ? 80 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 18G 20180411 na ? ? 192 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 1G 20180411 na ? ? 8 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 3G 20180411 na ? ? 17 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 4G 20180411 na ? ? 18 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 6G 20180411 na ? ? 45 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 7G 20180411 na ? ? 63 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11
+57 9G 20180411 na ? ? 169 NA NA Plot_ID numbers may seem weird because other numbers are in use for spin-off experiment  2018-04-11

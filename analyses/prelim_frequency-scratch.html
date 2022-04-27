@@ -1,0 +1,393 @@
+---
+title: "preliminary-frequency-scratch"
+output: html_document
+---
+
+<!-- # Arid frequency -->
+<!-- ```{r} -->
+<!-- freqsel<-data.table::fread("data-big/frequencies.tsv.avg_freq_selected_samples") -->
+
+<!-- freqsel<-dplyr::filter(freqsel,CHROM=="5") -->
+<!-- freqsel<-dplyr::mutate(freqsel,SNP=paste0(CHROM,"_",POS)) -->
+
+
+<!-- fm<-fm2<-merge(frqseeds,freqsel,by="SNP") %>% -->
+<!--       rename(A1x=V3, A2x=V4,  -->
+<!--              A1y=REF,A2y=ALT,  -->
+<!--              FRQ=V5, newFRQ=AVG_FREQ) %>% -->
+<!--       dplyr::select(SNP, CHROM, POS, A1x, A2x, A1y,A2y, newFRQ, FRQ) %>% -->
+<!--       dplyr::mutate(MAF= ifelse(A1x==A1y, newFRQ, 1-newFRQ)) %>% -->
+<!--       dplyr::mutate(df=newFRQ-FRQ) %>% -->
+<!--       data.frame -->
+
+<!-- ggplot(data=fm) + -->
+<!--   geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) + -->
+<!--   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+ -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') + -->
+<!--   geom_hline(yintercept=0, color='black',lty='dotted')+ -->
+<!--   geom_abline(intercept = 1,slope=-1, lty='dotted')+ -->
+<!--   geom_abline(intercept = 0,slope=-1, lty='dotted')+ -->
+<!--   ylim(c(-1,1))+ -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') -->
+
+<!-- ggplot(data=fm) + -->
+<!--   # geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) + -->
+<!--   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+ -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') + -->
+<!--   geom_hline(yintercept=0, color='black',lty='dotted')+ -->
+<!--   geom_abline(intercept = 1,slope=-1, lty='dotted')+ -->
+<!--   geom_abline(intercept = 0,slope=-1, lty='dotted')+ -->
+<!--   # ylim(c(-1,1))+ -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') -->
+
+<!-- ``` -->
+
+
+<!-- Compare the arid vs everything -->
+<!-- ```{r} -->
+<!-- freqmerge<-merge(fm1,fm2,by="SNP") -->
+<!-- colnames(freqmerge) -->
+<!-- dim(freqmerge) -->
+
+<!-- ggplot(freqmerge )+ -->
+<!--   geom_hex(aes(y=df.x - df.y, x=FRQ.x))+ -->
+<!--   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10') + -->
+<!--   stat_smooth(aes(y=df.x - df.y, x=FRQ.x)) -->
+
+<!-- cor.test(y=freqmerge$df.x - freqmerge$df.y, x=freqmerge$FRQ.x) -->
+
+<!-- ``` -->
+
+<!-- Arid vs climate -->
+<!-- ```{r} -->
+<!-- # bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mhi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt") -->
+<!-- # bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rSeeds_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt") -->
+<!-- # bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mli/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt") -->
+<!-- # bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rSurvival_fruit_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt") -->
+<!-- # bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rSeeds_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt") -->
+<!-- bio18<-data.table::fread("~/safedata/natvar/phenotypes/1001_Consortium_Cell_2016_PID_27293186/1001/FT10/output/1001_Consortium_Cell_2016_PID_27293186.lmm.assoc.txt") -->
+<!-- bio18<-data.table::fread("~/safedata/natvar/climate/bio12/output/bio12.assoc.txt") -->
+<!-- bio18<-data.table::fread("~/safedata/natvar/climate/bio12/output/bio18.assoc.txt") -->
+<!-- bio18<-data.table::fread("~/safedata/natvar/climate/bio12/output/bio4.assoc.txt") -->
+<!-- bio18<-data.table::fread("~/safedata/natvar/climate/bio12/output/bio7.assoc.txt") -->
+
+<!-- biofreq<-merge(bio18, fm2,by.x='rs',by.y='SNP') -->
+<!-- biofreq<- biofreq %>% -->
+<!--   mutate(beta= ifelse(A1x == allele1, beta, (-1)*beta ), -->
+<!--          newallele1=ifelse(A1x == allele1, allele1, allele0) -->
+<!--          ) %>% -->
+<!--   mutate(df= (newFRQ-FRQ) , -->
+<!--          df_= (newFRQ-FRQ) / (FRQ*(1-FRQ)) , -->
+<!--          z= beta/se -->
+<!--   )   -->
+
+<!-- cor.test(biofreq$df, biofreq$beta,method='s') -->
+<!-- cor.test(biofreq$df_, biofreq$z,method='s') -->
+<!-- ``` -->
+
+<!-- # Frequency partitioned year -->
+<!-- ```{r} -->
+<!-- yearfrq<-data.table::fread("data-big/plate123.chr5.plink.frq.strat",header=T) %>% -->
+<!--   rename(newMAF=MAF) -->
+<!-- head(yearfrq) -->
+<!-- head(frqseeds) -->
+
+<!-- yfg<-merge(frqseeds, yearfrq,by.x='SNP',by.y='SNP') %>% -->
+<!-- # frq<-merge(frqseeds,frq231,by="SNP") %>% -->
+<!--       rename(newFRQ=newMAF) %>% -->
+<!--       rename(FRQ=V5) %>% -->
+<!--       dplyr::mutate(newFRQ= ifelse(A1==V3, newFRQ, 1-newFRQ)) %>% -->
+<!--       data.frame -->
+<!-- head(yfg) -->
+<!-- summary(yfg$newFRQ - yfg$FRQ) -->
+
+<!-- library(RColorBrewer) -->
+<!-- freqchange_byyear<- -->
+<!--   ggplot(data=yfg) + -->
+<!--   geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) + -->
+<!--   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+ -->
+<!--   geom_hline(yintercept=0, color='black',lty='dotted')+ -->
+<!--   geom_abline(intercept = 1,slope=-1, lty='dotted')+ -->
+<!--   geom_abline(intercept = 0,slope=-1, lty='dotted')+ -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~0+x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') + -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') + -->
+<!--   facet_wrap(~CLST) -->
+
+<!-- freqchange_byyear -->
+
+<!-- yfg %>% -->
+<!--   dplyr::filter(CLST =='2018') %>% -->
+<!--   lm((newFRQ - FRQ)~0+FRQ+I(FRQ^2)+I(FRQ^3), data=.) -> mod18 -->
+<!-- yfg %>% -->
+<!--   dplyr::filter(CLST =='2019') %>% -->
+<!--   lm((newFRQ - FRQ)~0+FRQ+I(FRQ^2)+I(FRQ^3), data=.) -> mod19 -->
+
+
+<!-- # x=seq(0,1,0.1) -->
+<!-- # plot((0+coefficients(mod18)[1]*x+coefficients(mod18)[2]*x^2+coefficients(mod18)[3]*x^3) ~ x) -->
+<!-- # points((0+coefficients(mod19)[1]*x+coefficients(mod19)[2]*x^2+coefficients(mod19)[3]*x^3) ~ x, col='red') -->
+
+<!-- save_plot(filename = "figs/global_frequency_change_vs_start_chr5_2018_vs_2019.pdf", -->
+<!--           freqchange_byyear,  -->
+<!--           base_height = 5,base_width = 9) -->
+<!-- # they look identical -->
+<!-- ``` -->
+
+<!-- # Frequency year -->
+<!-- ```{r} -->
+<!-- yearfrq<-data.table::fread("data-big/plate123.chr5.plink.climcluster.frq.strat",header=T) %>% -->
+<!--   rename(newMAF=MAF) -->
+<!-- head(yearfrq) -->
+<!-- head(frqseeds) -->
+
+<!-- yfg<-merge(frqseeds, yearfrq,by.x='SNP',by.y='SNP') %>% -->
+<!--       rename(newFRQ=newMAF) %>% -->
+<!--       rename(FRQ=V5) %>% -->
+<!--       dplyr::mutate(newFRQ= ifelse(A1==V3, newFRQ, 1-newFRQ)) %>% -->
+<!--       data.frame -->
+<!-- head(yfg) -->
+
+<!-- library(RColorBrewer) -->
+<!-- freqchange_byyear<- -->
+<!--   ggplot(data=yfg) + -->
+<!--   geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) + -->
+<!--   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+ -->
+<!--   geom_hline(yintercept=0, color='black',lty='dotted')+ -->
+<!--   geom_abline(intercept = 1,slope=-1, lty='dotted')+ -->
+<!--   geom_abline(intercept = 0,slope=-1, lty='dotted')+ -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~0+x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') + -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') + -->
+<!--   facet_wrap(~CLST) -->
+
+<!-- freqchange_byyear -->
+
+
+<!-- save_plot(filename = "figs/global_frequency_change_vs_start_chr5_hot_vs_cold.pdf", -->
+<!--           freqchange_byyear,  -->
+<!--           base_height = 5,base_width = 9) -->
+
+<!-- ``` -->
+
+
+<!-- # Frequency per environment and year -->
+<!-- ```{r} -->
+<!-- yearfrq<-data.table::fread("data-big/plate123.chr5.plink.climcluster_and_year.frq.strat",header=T) %>% -->
+<!--   rename(newMAF=MAF) -->
+<!-- head(yearfrq) -->
+<!-- head(frqseeds) -->
+
+<!-- yfg<-merge(frqseeds, yearfrq,by.x='SNP',by.y='SNP') %>% -->
+<!--       rename(A1x=V3, A2x=V4, FRQ=V5) %>% -->
+<!--       rename(A1y=A1, A2y=A2, newFRQ=newMAF) %>% -->
+<!--       dplyr::filter( (A1y == A1x  | A1y == A2x) & (A2y == A1x  | A2y == A2x)) %>% -->
+<!--       dplyr::mutate(newFRQ= ifelse(A1y==A1x, newFRQ, 1-newFRQ)) %>% -->
+<!--       data.frame -->
+
+<!-- freqchange_byyear_andclim<- -->
+<!--   ggplot(data=yfg) + -->
+<!--   geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) + -->
+<!--   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+ -->
+<!--   geom_hline(yintercept=0, color='black',lty='dotted')+ -->
+<!--   geom_abline(intercept = 1,slope=-1, lty='dotted')+ -->
+<!--   geom_abline(intercept = 0,slope=-1, lty='dotted')+ -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~0+x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') + -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') + -->
+<!--   facet_wrap(~CLST) -->
+
+<!-- save_plot(filename = "figs/global_frequency_change_vs_start_chr5_hot_vs_cold_andyears.pdf", -->
+<!--           freqchange_byyear,  -->
+<!--           base_height = 5,base_width = 9) -->
+
+
+<!-- onlymodel<-ggplot(data=yfg) + -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ, group=CLST, color=factor(CLST)), method='glm',formula = y~0+x+I(x^2)+I(x^3), lty='dashed') + -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') + -->
+<!--   scale_color_manual(values = c( -->
+<!--                                 brewer.pal(5,"Blues")[c(3,5)], -->
+<!--                                 brewer.pal(5,"Reds")[c(3,5)] -->
+<!--                                 ) -->
+<!--                      ) -->
+<!-- save_plot(filename = "figs/global_frequency_change_vs_start_chr5_hot_vs_cold_andyears_onlymodel.pdf", -->
+<!--           onlymodel,  -->
+<!--           base_height = 5,base_width = 9) -->
+
+
+
+<!-- ``` -->
+
+<!-- Global plot with both hot and dry -->
+<!-- ```{r} -->
+<!-- onlymodel<-ggplot(data=yfg) + -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ, group=CLST, color=factor(CLST)), method='glm',formula = y~0+x+I(x^2)+I(x^3), lty='dashed') + -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') + -->
+<!--   scale_color_manual(values = c( -->
+<!--                                 brewer.pal(5,"Blues")[c(3,5)], -->
+<!--                                 brewer.pal(5,"Reds")[c(3,5)] -->
+<!--                                 ) -->
+<!--                      ) -->
+
+<!-- globalsnps_hotdrymodel<-ggplot() + -->
+<!--   geom_hex( data=fg, aes(y=newFRQ - FRQ , x= FRQ), bins=50) + -->
+<!--   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+ -->
+<!--   geom_hline(yintercept=0, color='black',lty='dotted')+ -->
+<!--   geom_abline(intercept = 1,slope=-1, lty='dotted')+ -->
+<!--   geom_abline(intercept = 0,slope=-1, lty='dotted')+ -->
+<!--   stat_smooth(data=fg, aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~0+x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') + -->
+<!--   ylim(c(-1,1))+ -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') + -->
+<!--   geom_smooth(data=yfg,aes(y=newFRQ - FRQ , x= FRQ, group=CLST, color=factor(CLST)), method='glm',formula = y~0+x+I(x^2)+I(x^3), lty='dashed') + -->
+<!--    scale_color_manual(values = c( -->
+<!--                                 brewer.pal(5,"Blues")[c(3,5)], -->
+<!--                                 brewer.pal(5,"Reds")[c(3,5)] -->
+<!--                                 ) -->
+<!--                      ) -->
+<!-- globalsnps_hotdrymodel -->
+<!-- save_plot(filename = "figs/global_frequency_change_vs_start_chr5_globalSNPs_trendsfrom_hot_vs_cold_andyears_onlymodel.pdf", -->
+<!--           globalsnps_hotdrymodel,  -->
+<!--           base_height = 5,base_width = 9) -->
+
+<!-- ``` -->
+
+<!-- Frequency (fixation) per site -->
+<!-- ```{r} -->
+<!-- yearfrq<-data.table::fread("data-big/plate123.chr5.plink.site.frq.strat",header=T) %>% -->
+<!--   rename(newMAF=MAF) -->
+
+<!-- dfix<-yearfrq %>% -->
+<!--   group_by(CLST) %>% -->
+<!--   sample_n(10000) %>% -->
+<!--   merge(frqseeds, ., -->
+<!--            by.x='SNP',by.y='SNP') %>% -->
+<!--       rename(newFRQ=newMAF) %>% -->
+<!--       rename(FRQ=V5) %>% -->
+<!--       dplyr::mutate(newFRQ= ifelse(A1==V3, newFRQ, 1-newFRQ)) %>% -->
+<!--       data.frame -->
+
+
+
+
+<!-- #  -->
+<!-- # yearfrqhead(yearfrq) -->
+<!-- # yearfrq_<-yearfrq %>% dplyr::filter(CLST %in% c( -->
+<!-- #                                       04,#pico -->
+<!-- #                                       43,# panayotis -->
+<!-- #                                       26, # merav -->
+<!-- #                                       30, # martjin -->
+<!-- #                                       46, # korte -->
+<!-- #                                       54 # juliete -->
+<!-- #                                       )) -->
+<!-- # yearfrq_$CLST %>% unique -->
+
+<!-- # yfg<-merge(frqseeds, yearfrq_, -->
+<!-- #            by.x='SNP',by.y='SNP') %>% -->
+<!-- #       rename(newFRQ=newMAF) %>% -->
+<!-- #       rename(FRQ=V5) %>% -->
+<!-- #       dplyr::mutate(newFRQ= ifelse(A1==V3, newFRQ, 1-newFRQ)) %>% -->
+<!-- #       data.frame -->
+<!-- #  -->
+<!-- # freqchange_site<- -->
+<!-- #   ggplot(data=yfg) + -->
+<!-- #   geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) + -->
+<!-- #   scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+ -->
+<!-- #   geom_hline(yintercept=0, color='black',lty='dotted')+ -->
+<!-- #   geom_abline(intercept = 1,slope=-1, lty='dotted')+ -->
+<!-- #   geom_abline(intercept = 0,slope=-1, lty='dotted')+ -->
+<!-- #   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~0+x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') + -->
+<!-- #   labs(y="change in frequency (across all sites)", x='starting founder frequency') + -->
+<!-- #   facet_wrap(~CLST) -->
+<!-- #  -->
+<!-- # freqchange_site -->
+<!-- # save_plot(filename = "figs/global_frequency_change_vs_start_site.pdf", -->
+<!-- #           freqchange_site,  -->
+<!-- #           base_height = 5,base_width = 9) -->
+<!-- #  -->
+
+<!-- ggplot(data=yearfrq_) + -->
+<!--   stat_smooth(aes(y=newFRQ - FRQ , x= FRQ, group=CLST, color=factor(CLST)), method='glm',formula = y~0+x+I(x^2)+I(x^3), lty='dashed') + -->
+<!--   labs(y="change in frequency (across all sites)", x='starting founder frequency') -->
+
+
+
+<!-- ``` -->
+
+<!-- # Plates 1-3 PCA trick -->
+<!-- ```{r} -->
+<!-- pca<-data.table::fread("data-big/plate123.chr5.plink.mds") -->
+<!-- data("sites.clim") -->
+<!-- data("recordssorted") -->
+<!-- recordssorted<-dplyr::select(recordssorted,-year) -->
+
+<!-- # add metatada -->
+<!-- pca$id<- pca$IID -->
+<!-- pca<-addparsedidcolumns(pca) -->
+
+<!-- # and climate -->
+<!-- pca$site <- fn(pca$site) -->
+<!-- sites.clim$SITE_CODE<-fn(sites.clim$SITE_CODE) -->
+
+<!-- pcam<-merge(pca,sites.clim,by.x='site', by.y="SITE_CODE") -->
+<!-- head(pcam) -->
+<!-- pca<-pcam -->
+
+<!-- # add sequencing data -->
+<!-- pcam<-merge(pca,seqtable,by.x='IID', by.y='id') -->
+<!-- pca<-pcam -->
+
+<!-- # add records sorted number of flowers -->
+<!-- head(pca) -->
+<!-- pca$site<-fn(pca$site) -->
+<!-- pca$plot<-fn(pca$plot) -->
+<!-- pca$date<-fn(pca$date) -->
+<!-- recordssorted$SITE<-fn(recordssorted$SITE) -->
+<!-- recordssorted$PLOT<-fn(recordssorted$PLOT) -->
+<!-- recordssorted$DATE<-fn(recordssorted$DATE) -->
+
+<!-- pcam<-merge(pca,recordssorted,by.x=c("site","plot","date"), by.y=c("SITE","PLOT","DATE")) -->
+<!-- pca<-pcam -->
+
+<!-- # plot PCA with metadata -->
+
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=fn(NUMBER_FLOWERS_COLLECTED))) -->
+
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=year)) -->
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=month)) -->
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=factor(site))) -->
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=bio1)) -->
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=bio15)) -->
+
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=paste(sra_folder , release_lane))) + -->
+<!--   labs(color="Data release and line (=plate)") -->
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2,color=bio1/10, shape=year, size=NUMBER)) + -->
+<!--   scale_color_gradientn(colours = rev(brewer.pal(9,"RdBu"))) -->
+
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2, -->
+<!--                  color=factor(release_lane),  -->
+<!--                  shape=factor(year))) -->
+<!-- ggplot(pca) + -->
+<!--   geom_point(aes(y=C3,x=C2, -->
+<!--                  # color=fn(bio1)/10,  -->
+<!--                  shape=factor(year))) + -->
+<!--   scale_color_gradientn(colours = rev(brewer.pal(9,"RdBu"))) -->
+
+<!-- pcabyclimate<-ggplot(pca) + -->
+<!--   geom_point(aes(y=C1,x=C2, -->
+<!--                  color=fn(bio1)/10, -->
+<!--                  shape=factor(year))) + -->
+<!--   scale_color_gradientn(colours = rev(brewer.pal(9,"RdBu"))[-5])+ -->
+<!--   labs(y="MDS component 1", x="MDS component 2", color="Annual Temp (C)", shape="") -->
+
+<!-- pcabyclimate -->
+<!-- save_plot(file="figs/pca_bio1_plates123_chr5.pdf", -->
+<!--           plot=pcabyclimate, -->
+<!--           base_height = 5,base_width = 7) -->
+
+<!-- ``` -->

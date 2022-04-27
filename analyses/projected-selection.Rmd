@@ -1,0 +1,14 @@
+---
+title: "projected strength of selection"
+output: html_document
+author: Moi
+date: 06-04-2021
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+
+```
+

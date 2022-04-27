@@ -1,0 +1,29 @@
+---
+title: "Effective coverage"
+author: "Moi Exposito-Alonso"
+date: "26/12/2018"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(moiR)
+library(ggplot2)
+library(cowplot)
+```
+
+Accuracy of allele frequencies
+
+sensu Greenblum:
+
+Effective coverage was used as a metric to assess accuracy of all HAFs and non-HAFs.
+
+Effective coverage was calculated by equating the total binomial variance ($BV$) of the true frequencies given an average coverage $C$, where $BV=\sum \frac{pp(1-pp)}{cC}$ to the sum of the squared error (SSE) of estimated allele frequencies $SSE=\sum \sqrt \frac{\hat{p}(1-\hat{p})}{n}$. 
+
+$$\sum \frac{p \rho(1-pp)}{cC} = SSE$$
+$$C= \frac{\sum p\rho(1-p)}{SSE} $$
+

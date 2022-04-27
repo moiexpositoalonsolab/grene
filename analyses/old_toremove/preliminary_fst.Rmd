@@ -1,0 +1,301 @@
+---
+title: "grene-net preliminary fst"
+output: html_document
+author: Moi
+date: 31-12-2020
+editor_options: 
+  chunk_output_type: console
+---
+
+THE ANALYSES IN THIS FILE ARE INCORRECT DUE TO THEY WERE CALCULATED ASSUMING 500 POOLS
+
+<!-- Study whether there are trade-offs in phenotypes that may be under selection -->
+<!-- and measure whether these may imply constraints to adaptation -->
+
+
+<!-- ```{r setup, include=FALSE} -->
+<!-- knitr::opts_knit$set(root.dir = "~/safedata/ath_evo/grenephase1/") -->
+
+<!-- knitr::opts_chunk$set(echo = TRUE) -->
+<!-- library(ggplot2) -->
+<!-- library(ggpmisc)c -->
+<!-- library(cowplot) -->
+<!-- theme_set(theme_cowplot()) -->
+<!-- library(RColorBrewer) -->
+<!-- library(tidyverse) -->
+<!-- # devtools::install("~/safedata/genemaps/") -->
+<!-- # library(genemaps) -->
+<!-- # devtools::load_all(".") # natvar -->
+<!-- # library(natvar) -->
+
+<!-- library(genemaps) -->
+<!-- devtools::load_all(".")  -->
+<!-- ``` -->
+
+<!-- ```{r util functions} -->
+
+<!-- # homogenize the sample ids to not underscores and numbers startin with 0 if single numbers -->
+<!-- cleansampleid<-function(libnames=c("MLFH130320180405","MLFH13_1_20190122")){ -->
+<!--   mytmp<-tempfile(pattern = "file", tmpdir = tempdir(), fileext = "") -->
+<!--   write.table(file = mytmp, x=libnames,quote = F,row.names = F,col.names = F) -->
+<!--   mytmp2<-tempfile(pattern = "file", tmpdir = tempdir(), fileext = "") -->
+<!--   system(paste('./data-raw/homogenizesampleID.sh', mytmp, mytmp2)) -->
+<!--   cleanid<-read.table(mytmp2,stringsAsFactors = F,header = F)$V1 -->
+<!--   return(cleanid) -->
+<!-- } -->
+<!-- # Util function for preliminary analysis -->
+<!-- parse_fst_table<-function(fstfile="~/safedata/ath_evo/fst_seed_vs_data1-3/chr5.csv.gz"){ -->
+<!--   message("reading ",fstfile) -->
+<!--   fst<-data.table::fread(fstfile) #%>% data.frame -->
+<!--   fst<-data.frame(fst) -->
+<!--   # exclude undefine columns -->
+<!--   fst<-fst[,!grepl("Unde",colnames(fst))] -->
+<!--   # parse names as this batch did not have the final names as new grenedalf does, but sequencing names are separated by _CK, just split -->
+<!--   tmpcols<-colnames(fst)[-c(1:2)] -->
+<!--   tmpcols2<-as.character(sapply(tmpcols,function(x) strsplit(x,split = "_CK",fixed = T)[[1]][1])) -->
+<!--   tmpcols3<-cleansampleid(tmpcols2) -->
+<!--   colnames(fst)[-c(1:2)] <- tmpcols3 -->
+<!--   fst[1:20,1:5] -->
+<!--   return(fst) -->
+<!-- } -->
+
+<!-- ``` -->
+
+<!-- ## Read the Fst table -->
+<!-- ```{r, warning=FALSE} -->
+<!-- library(data.table) -->
+<!-- library(R.utils) -->
+<!-- # fst<-fread("~/safedata/ath_evo/fst_seed_vs_data1-3/chr5.csv.gz") %>% data.frame -->
+<!-- fstfile="~/safedata/ath_evo/fst_seed_vs_data1-3/chr5.csv.gz" -->
+<!-- fst<-parse_fst_table(fstfile) -->
+
+<!-- chr=5 -->
+<!-- start=3173382 -->
+<!-- end=3179448 -->
+<!-- flc<-fst %>% data.frame %>% dplyr::filter(Chrom==chr,Pos>start | Pos<end) -->
+<!-- ``` -->
+
+<!-- ## Check 2 technical replicates give very similar Fst -->
+<!-- ```{r tech replicates} -->
+<!-- # # Takes a bit to compute -->
+<!-- mypair<- flc[,colnames(fst) %in% colnames(fst)[duplicated(colnames(fst))]] -->
+<!-- dim(mypair) -->
+<!-- mypair= randomForest::na.roughfix(mypair) -->
+
+<!-- # Correlate only libraries that are equivalent -->
+<!-- # for(mycol in 1:96) cor.test(mypair[,mycol], mypair[,mycol+96])$estimate %>% print -->
+<!-- corpairs<-c() -->
+<!-- for(mycol in 1:96) corpairs[mycol] = cor.test(mypair[,mycol], mypair[,mycol+96], method='spearman')$estimate -->
+<!-- hist(corpairs, xlab='Correlation between technical replicates (rho between Fst)', col=transparent('grey'),border = 'white') -->
+<!-- #  -->
+<!-- # # Correlate all to all -->
+<!-- # mycor = cor(mypair,method = 'spearman') -->
+<!-- # mysame<-matrix(ncol=ncol(mycor),nrow=nrow(mycor)) -->
+<!-- # mysame[]<-0 -->
+<!-- # for(mycol in 1:96){ -->
+<!-- #   mysame[mycol,mycol+96]<-1 -->
+<!-- #   mysame[mycol+96,mycol]<-1 -->
+<!-- # } -->
+<!-- #  -->
+<!-- # boxplot(mycor[upper.tri(mycor)] ~ mysame[upper.tri(mysame)], xlab="Pairs of sequencing runs from same library", ylab='Correlation of Fst values') -->
+<!-- # t.test(mycor[upper.tri(mycor)] ~ mysame[upper.tri(mysame)]) -->
+
+<!-- ``` -->
+
+<!-- ## Fst histogram -->
+<!-- ```{r} -->
+<!-- # hist(fn(fst[,-c(1:2)]), xlab='Fst', main='Fst across all samples') -->
+<!-- hist(fn(fst[,"MLFH120320180427"]), xlab='Fst', main='Fst in one sample', col=transparent('grey'),border = 'white') -->
+
+<!-- ``` -->
+
+<!-- ## Fst manhattan plot -> later -->
+<!-- ```{r, fig.width=12,fig.height=30} -->
+<!-- # data("seqtable") -->
+<!-- # data("recordssorted") -->
+<!-- # # Select only 3 first plates -->
+<!-- # plate1_3_ids <- seqtable %>%  -->
+<!-- #                   mutate(sra_folder=fc(sra_folder)) %>% -->
+<!-- #                   dplyr::filter(grepl("release-01",sra_folder) | -->
+<!-- #                                 grepl("release-02",sra_folder)   -->
+<!-- #                                 )  -->
+<!-- # dim(plate1_3_ids) -->
+<!-- #  -->
+<!-- # # Subset to plate 1-3 -->
+<!-- # plate1_3<-fst[,colnames(fst) %in% c("Chrom", "Pos", plate1_3_ids$id)] -->
+<!-- #  -->
+<!-- # # average Fst per window -->
+<!-- # windowsizebp=1000 -->
+<!-- # toplot<-plate1_3 %>%  -->
+<!-- #         head(10000) %>% # to speed up debug -->
+<!-- #         # sample_n(1000) %>% -->
+<!-- #         dplyr::mutate(window = round(Pos/windowsizebp) *windowsizebp) %>% # need to do some windowed approach -->
+<!-- #         tidyr::gather(key='id', value='fst', -Pos , -Chrom, -window) %>% -->
+<!-- #         dplyr::group_by(id, window) %>% -->
+<!-- #         summarize(fstwindow = mean(fst,na.rm=T)) -->
+<!-- # dim(toplot) -->
+<!-- # toplot<-addparsedidcolumns(toplot) -->
+<!-- #  -->
+<!-- # manh<-ggplot(toplot) + -->
+<!-- #   geom_point(aes(y=fst,x=Pos)) + -->
+<!-- #   scale_y_continuous(breaks = c(0,1),labels = c(0,1))+ -->
+<!-- #   facet_wrap( ~ site,ncol = 1)+ -->
+<!-- #   theme(strip.background = element_blank()) -->
+<!-- #  -->
+<!-- # save_plot(filename = "figs/fst_all_manhattan.png", -->
+<!-- #           plot = manh, -->
+<!-- #           base_height = 30,base_width = 12 -->
+<!-- #           ) -->
+
+<!-- ``` -->
+
+<!-- ## Summaries of Fst  -->
+<!-- ```{r} -->
+<!-- data("seqtable") -->
+<!-- data("recordssorted") -->
+<!-- ## Select only 3 first plates -->
+<!-- plate1_3_ids <- seqtable %>% -->
+<!--                   mutate(sra_folder=fc(sra_folder)) %>% -->
+<!--                   dplyr::filter(grepl("release-01",sra_folder) | -->
+<!--                                 grepl("release-02",sra_folder) -->
+<!--                                 ) -->
+<!-- dim(plate1_3_ids) -->
+
+<!-- ## Subset to plate 1-3 -->
+<!-- plate1_3<-fst[,colnames(fst) %in% c("Chrom", "Pos", plate1_3_ids$id)] -->
+
+<!-- ## average Fst -->
+<!-- toplot <-  -->
+<!--   plate1_3 %>%  -->
+<!--   select(-Pos, -Chrom) %>%  -->
+<!--   sample_n(10000) %>% -->
+<!--   apply(.,2,function(x) mean(x,na.rm=T)) -->
+
+<!-- hist(toplot, xlab='Fst', main='Fst average across samples', col=transparent('grey'),border = 'white') -->
+
+<!-- ``` -->
+
+<!-- Look at relationship of Fst with variables -->
+<!-- ```{r} -->
+<!-- # Get the average Fst -->
+<!-- tp<- data.frame(toplot) %>% rename(fstaverage=toplot) -->
+<!-- tp$id <- row.names(tp) -->
+<!-- tp<-addparsedidcolumns(tp) # add info year site, etc -->
+<!--   tp$site<-fn(tp$site) -->
+<!--   tp$plot<-fn(tp$plot) -->
+<!--   tp$date<-fn(tp$date) -->
+<!-- # Get info on records, including how many flwoers pooled -->
+<!-- data("recordssorted") -->
+<!--   recordssorted$SITE<-fn(recordssorted$SITE) -->
+<!--   recordssorted$PLOT<-fn(recordssorted$PLOT) -->
+<!--   recordssorted$DATE<-fn(recordssorted$DATE) -->
+
+<!-- tp2<-merge(tp,by.x=c("site","plot","date") , -->
+<!--            recordssorted,by.y=c('SITE','PLOT','DATE')) -->
+<!-- dim(tp) -->
+<!-- dim(tp2) -->
+
+<!-- # merge with site info, including climate -->
+<!-- data("sites.clim") -->
+<!-- tp3<-merge(tp2,by.x=c("site") , -->
+<!--            sites.clim,by.y=c('SITE_CODE')) -->
+
+<!-- dim(tp3) -->
+
+
+<!-- qplot(y= tp3$fstaverage , x = fn(tp3$NUMBER_FLOWERS_COLLECTED)) -->
+<!--   cor.test(y= tp3$fstaverage , x = fn(tp3$NUMBER_FLOWERS_COLLECTED)) -->
+<!-- qplot(y= tp3$fstaverage , x = tp3$LATITUDE) -->
+<!-- qplot(y= tp3$fstaverage , x = tp3$LONGITUDE) -->
+<!-- qplot(y= tp3$fstaverage , x = tp3$bio1) -->
+<!--   cor.test(y= tp3$fstaverage , x = tp3$bio1)  -->
+<!--   cor.test(y= tp3$fstaverage , x = tp3$bio2)  -->
+
+
+<!-- ``` -->
+
+<!-- ## Example Fst vs original MAF -->
+<!-- ```{r} -->
+
+<!-- hist(fn(fst[,"MLFH120320180427"]), xlab='Fst', main='Fst in one sample', col=transparent('grey'),border = 'white') -->
+
+
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- # /lustre/scratch/lczech/grenepipe-runs -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- # ## average Fst -->
+<!-- # toplot <-  -->
+<!-- #   plate1_3 %>%  -->
+<!-- #   select(-Pos, -Chrom) %>%  -->
+<!-- #   sample_n(10000) %>% -->
+<!-- #   apply(.,2,function(x) mean(x,na.rm=T)) -->
+<!-- #  -->
+<!-- # hist(fn(toplot)) -->
+
+<!-- # toplot<-plate1_3 %>% -->
+<!-- #         # head(10000) %>% # to speed up debug -->
+<!-- #         tidyr::gather(key='id', value='fst', -Pos , -Chrom)  %>% -->
+<!-- #         dplyr::mutate(site=parseid(id,"site"), -->
+<!-- #                       plot=parseid(id,"plot"), -->
+<!-- #                       year=parseid(id,"year"), -->
+<!-- #                       month=parseid(id,"month") -->
+<!-- #                       ) -->
+<!-- # toplot<-addparsedidcolumns(toplot) -->
+<!-- # toplot %>% -->
+<!-- #         dplyr::mutate() %>% -->
+<!-- #         dplyr::group_by(site) %>% -->
+<!-- #         summarize( -->
+<!-- #                   fstmean = mean(fst,na.rm=T) -->
+<!-- #                   ) -->
+<!-- # head(toplot) -->
+
+
+<!-- ``` -->
+
+<!-- ## Look at fst by season point or flowering time date -->
+<!-- is average fst  -->
+<!-- ```{r} -->
+<!-- # data("seqtable") -->
+<!-- # data("recordssorted") -->
+<!-- # flo<-read.csv("tables/preliminary_flowering_peaks_GrENE-net.csv") -->
+<!-- # dim(recordssorted) -->
+<!-- # dim(seqtable) -->
+
+
+
+
+<!-- # tmp<-fst[,-c(1:2)] %>% -->
+<!-- #       sample_n(1000) -->
+<!-- #  -->
+<!-- # fstaverage<-apply(tmp,2,function(x) mean(x,na.rm=T)) -->
+<!-- # hist(fstaverage) -->
+<!-- # colnames(fst) -->
+
+<!-- #get years -->
+
+<!-- # # generate distances -->
+<!-- # ff<-fst[,-c(1:2)] -->
+<!-- # ff[1:5,1:5] -->
+<!-- # fstdist<-dist(t(ff)) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # fst<-fst[,-which(grepl("Undetermined", colnames(fst)))] -->
+<!-- #  -->
+<!-- # # there are many NAs, so impute with mean for visualization -->
+<!-- # library(randomForest) -->
+<!-- # fst2<-na.roughfix(fst) -->
+<!-- # head(fst2) -->
+<!-- #  -->
+<!-- # fst2[1:5,1:5] -->
+<!-- # fst2[,4] %>% fn %>% hist -->
+<!-- #  -->
+<!-- # start=3173382 -->
+<!-- # end=3179448 -->
+
+<!-- ``` -->
+

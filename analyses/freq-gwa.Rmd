@@ -1,0 +1,118 @@
+---
+title: "freq gwa climate flowering"
+output: html_document
+author: Moi
+date: 07-04-2021
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "~/safedata/ath_evo/grenephase1")
+
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+# library(ggpmisc)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(tidyverse)
+# devtools::install("~/safedata/genemaps/")
+library(genemaps)
+devtools::load_all(".") 
+
+```
+
+# GWA 1001G
+```{r}
+d<-data.table::fread("~/safedata/natvar/phenotypes/1001_Consortium_Cell_2016_PID_27293186/1001/FT10/output/1001_Consortium_Cell_2016_PID_27293186.lmm.assoc.txt")
+d$rowpos<-1:nrow(d)
+
+d_<-dplyr::filter(d,chr==5, 
+                  p_lrt<0.05)
+
+# d_<-d %>%
+#   group_by(chr) %>%
+#   dplyr::mutate(cumpos = cumsum(as.numeric(ps))) %>%
+
+d_<-dplyr::filter(d,
+                  p_lrt<0.0001)
+  ggplot(d_ )+
+  # geom_hex(aes(y=-log10(p_lrt),x= rowpos)) 
+  geom_point(aes(y=-log10(p_lrt),x= rowpos, color=factor(chr))) +
+  scale_color_manual("",values=c("grey40","grey","grey40","grey","grey40"))
+
+```
+
+# GWA with year and cliamte
+```{r}
+famread<-read.table("data-big/plate123.chr5.plink.fambackup")
+head(famread)
+famread<-famread %>% rename(id=V1)
+famread<-addparsedidcolumns(famread) %>% 
+  mutate(site=as.numeric(site),
+         plot=as.numeric(plot))
+
+f2<-famread %>% 
+  mutate(startyear=as.Date(paste0(year,"0101"),format="%Y%m%d"),
+         parsedate=as.Date(date,format="%Y%m%d")
+         ) %>%
+  mutate(doy= as.numeric(parsedate- startyear))
+
+data("sites.clim")
+sites.clim<-sites.clim[,c("SITE_CODE","LATITUDE","LONGITUDE","ALTITUDE",paste0("bio",1:19))]
+
+f3<-merge(f2,sites.clim,
+          by.x=c("site"),
+          by.y="SITE_CODE"
+)
+
+famtowrite<-f3 %>% dplyr::select(id,V2,V3 ,V4 ,V5, doy,LATITUDE,LONGITUDE, ALTITUDE,bio1,bio2,bio3,bio4,bio5,bio6,bio7,bio8,bio9,bio10,bio11,bio12,bio13,bio14,bio15,bio16,bio17,bio18,bio19)
+
+write.table(quote = F,row.names = F, col.names = F,
+            x = famtowrite, file = "data-big/plate123.chr5.plink.fam")
+
+```
+
+# Prepare GWA and run
+```{r}
+
+system('ln -f data-big/plate123.chr5.plink.fam gwas/plate123.chr5.plink.fam')
+system('ln -f data-big/plate123.chr5.plink.bim gwas/plate123.chr5.plink.bim')
+system('ln -f data-big/plate123.chr5.plink.bed gwas/plate123.chr5.plink.bed')
+
+name= "bio1"
+colnum<-which(colnames(famtowrite) == name)-5
+
+write.table(quote=F,row.names=F,col.names=F,
+            file='gwas/rungwa.sh',
+            x=rbind(
+              "#!/bin/bash",
+              "#SBATCH --time=0-15:00",
+              "#SBATCH --cpus-per-task=1",
+              "#SBATCH --mem-per-cpu=6G",
+              # "#SBATCH --partition=DPB,SHARED",
+              # paste0("#SBATCH --job-name=",name),
+              # paste0("#SBATCH --output=",name,".slurm.log"),
+              paste('gemma -bfile plate123.chr5.plink -lm 4 -n', colnum , '-o ',paste0(name,'.lm'))
+            )
+)
+system('gwas/rungwa.sh')
+
+```
+
+# Load gwa
+```{r}
+library(data.table)
+g<-fread(file = "gwas/output/bio1.lm.assoc.txt")
+
+head(g)
+
+ggplot(g) +
+  geom_point(aes(y=-log10(p_lrt),x=ps))
+
+
+dim(g)
+
+```
+

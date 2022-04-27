@@ -1,0 +1,794 @@
+---
+title: "prelim_frequency"
+output: html_document
+author: Moi
+date: 07-04-2021
+editor_options: 
+  chunk_output_type: console
+---
+
+Study whether there are trade-offs in phenotypes that may be under selection
+and measure whether these may imply constraints to adaptation
+
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "~/safedata/ath_evo/grenephase1")
+setwd("~/safedata/ath_evo/grenephase1")
+
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(tidyverse)
+# library(ggpmisc)
+# devtools::install("~/safedata/genemaps/")
+library(genemaps)
+devtools::load_all(".") 
+
+library(data.table)
+```
+
+# Seeds vs 1001genomes
+```{r, fig.height=5,fig.width=5}
+## Frequency of the seeds directly
+# frqseeds<-data.table::fread("data-big/seedscombined.chr5.frq") %>% data.frame # old one without guided SNP calilng
+frqseeds<-data.table::fread("data-big/seeds-allchr-guided.avg_freq") %>% data.frame
+frqseeds$SNP<-paste0(frqseeds[,1],"_", frqseeds[,2])
+
+## Frequency of the founders assuming equal proportions
+frq231<-data.table::fread("data-big/231g.frq") %>% 
+          data.frame %>%
+          dplyr::filter(CHR==5)    
+# head(frq231)
+
+frq<-merge(frqseeds,frq231,by="SNP") %>%
+      rename(A1x=REF, A2x=ALT, A1y=A1,A2y=A2, FRQ=frq, POS=POS) %>%
+      dplyr::select(SNP, CHR, POS, A1x, A2x, A1y,A2y, MAF, FRQ, NCHROBS) %>%
+      dplyr::mutate(MAF= ifelse(A1x==A1y, MAF, 1-MAF)) %>%
+      data.frame
+
+# dim(frq)
+# head(frq)
+
+# Plot relationship
+toplot=frq
+founder_vcfvsseeds<-ggplot(data=frq) +
+  # geom_point(aes(y=FRQ,x=MAF))+
+  geom_hex( aes(y=FRQ , x= MAF), bins=50) +
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+
+  labs(y="Deep Pool-Seq of seeds (REF allele freq)", 
+      x="1001 founder vcf (REF allele freq)")
+
+founder_vcfvsseeds
+
+save_plot(filename = "figs/founders_seeds_vs_vcf.pdf",
+          founder_vcfvsseeds +coord_equal(), 
+          base_height = 5,base_width = 6)
+
+
+```
+
+# Frequency average
+## True average freq vs vcf
+```{r}
+## Average frequency across all samples in plate123 
+freqtrue<-data.table::fread("data-big/plate123bigrun.avg_freq")
+freqtrue<-dplyr::filter(freqtrue,CHROM=="5")
+freqtrue<-dplyr::mutate(freqtrue,SNP=paste0(CHROM,"_",POS))
+head(freqtrue)
+head(frq231)
+
+frq<-merge(freqtrue,frq231,by="SNP") %>%
+      # rename(A1x=V3, A2x=V4, A1y=A1,A2y=A2, FRQ=V5, POS=V2) %>%
+      # dplyr::select(SNP, CHR, POS, A1x, A2x, A1y,A2y, MAF, FRQ, NCHROBS) %>%
+      # dplyr::mutate(MAF= ifelse(A1x==A1y, MAF, 1-MAF)) %>%
+      # data.frame
+      rename(A1x=A1, A2x=A2, 
+             A1y=REF,A2y=ALT, 
+             FRQ=MAF, newFRQ=AVG_FREQ) %>%
+      dplyr::select(SNP, CHROM, POS, A1x, A2x, A1y,A2y, newFRQ, FRQ) %>%
+      dplyr::mutate(MAF= ifelse(A1x==A1y, newFRQ, 1-newFRQ)) %>%
+      dplyr::mutate(df=newFRQ-FRQ) %>%
+      data.frame
+
+```
+
+## True average freq vs seeds
+```{r}
+
+fm<-fm1<-merge(dplyr::select(frqseeds, -CHROM,-POS),freqtrue,by="SNP") %>%
+      rename(A1x=REF.x, A2x=ALT.x, 
+             A1y=REF.y,A2y=ALT.y, 
+             FRQ=frq, newFRQ=AVG_FREQ) %>%
+      dplyr::select(SNP, CHROM, POS, A1x, A2x, A1y,A2y, newFRQ, FRQ) %>%
+      dplyr::mutate(FRQ= ifelse(A1x==A1y, FRQ, 1-FRQ)) %>%
+      dplyr::mutate(df=newFRQ-FRQ) %>%
+      data.frame
+```
+
+plot derived average frequency vs founders
+```{r}
+freqchange_by_freq<-
+  ggplot(data=fm) +
+  geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) +
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+
+  stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') +
+  geom_hline(yintercept=0, color='black',lty='dotted')+
+  geom_abline(intercept = 1,slope=-1, lty='dotted')+
+  geom_abline(intercept = 0,slope=-1, lty='dotted')+
+  ylim(c(-1,1))+
+  labs(y="change in frequency (across all sites)", x='starting founder frequency')
+
+save_plot(filename = "figs/global_frequency_change_vs_start_chr5_matchalleles.pdf",
+          freqchange_by_freq,
+          base_height = 5,base_width = 6)
+
+# Full SNP density
+freqchange_by_freq_notrend<-
+ggplot(data=fm) +
+  geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) +
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+
+  # stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') +
+  geom_hline(yintercept=0, color='black',lty='dotted')+
+  geom_abline(intercept = 1,slope=-1, lty='dotted')+
+  geom_abline(intercept = 0,slope=-1, lty='dotted')+
+  ylim(c(-1,1))+
+  labs(y="change in frequency (across all sites)", x='starting founder frequency')
+freqchange_by_freq_notrend
+
+save_plot(filename = "figs/global_frequency_change_vs_start_chr5_matchalleles-notrend.pdf",
+          freqchange_by_freq_notrend,
+          base_height = 5,base_width = 6)
+
+```
+
+Check some statistics
+```{r}
+# Only model trend to visualize
+ggplot(data=fm) +
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+
+  stat_smooth(aes(y=newFRQ - FRQ , x= FRQ), method='glm',formula = y~x+I(x^2)+I(x^3), color="lightgreen", lty='dashed') +
+  labs(y="change in frequency (across all sites)", x='starting founder frequency')
+
+# Summary of changes
+summary(fm$newFRQ - fm$FRQ)
+t.test(fm$newFRQ - fm$FRQ)
+summary(abs(fm$newFRQ - fm$FRQ))
+
+# write.table(file="tables/freqchange_by_freq.chr5.txt",fg,quote = F, row.names = F,col.names = T)
+
+```
+
+
+## SFS nonsynonymoiu
+```{r}
+# merge with annotations
+ann<-fread("~/safedata/slhateley/regVSfunc/data/1001snpeff.tsv")
+head(fm)
+head(ann)
+ann$SNP<-paste0(ann$CHROM,"_",ann$POS)
+
+fm2<- merge(fm,ann,by='SNP')
+fm3<- dplyr::filter(fm2, ANNO %in% c("synonymous_variant", "missense_variant"))
+dim(fm3)
+
+freqchange_NSvsS<-
+ggplot(data=fm3) +
+  # geom_hex( aes(y=newFRQ - FRQ , x= FRQ), bins=50) +
+  # scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys")[-1], trans='log10')+
+  stat_smooth(aes(y=newFRQ - FRQ , x= FRQ,group=ANNO,color=ANNO), method='glm',formula = y~x+I(x^2)+I(x^3),  lty='dashed') +
+  geom_hline(yintercept=0, color='black',lty='dotted')+
+  # geom_abline(intercept = 1,slope=-1, lty='dotted')+
+  # geom_abline(intercept = 0,slope=-1, lty='dotted')+
+  geom_vline(xintercept=0.3, color='black',lty='dotted')+
+  coord_cartesian(ylim = c(-0.03,0.07))+
+  scale_color_manual("",values = c("orange","black"),labels=c("nonsyn.","syn."))+
+  labs(y="change in frequency (across all sites)", x='starting founder frequency')
+
+```
+
+some statistics 
+```{r}
+table(fm3$ANNO)
+
+midfreq <- dplyr::filter(fm3, round(newFRQ*100) > 10 , round(newFRQ*100) < 30) 
+midfreq <- dplyr::filter(fm3, round(newFRQ*100) == 28 )
+midfreq <- dplyr::filter(fm3, round(newFRQ*100) == 25 )
+dim(midfreq)
+summary(fn(dist(midfreq$POS.x )))
+t.test(midfreq$newFRQ - midfreq$FRQ ~ midfreq$ANNO)
+wilcox.test(midfreq$newFRQ - midfreq$FRQ ~ midfreq$ANNO)
+
+# boxplot(midfreq$newFRQ - midfreq$FRQ ~ midfreq$ANNO)
+# boxplot(abs(midfreq$newFRQ - midfreq$FRQ) ~ midfreq$ANNO)
+# t.test(abs(midfreq$newFRQ - midfreq$FRQ) ~ midfreq$ANNO)
+```
+
+
+## Delta frequency and global Ne?
+```{r}
+df=fg$newFRQ - fg$FRQ
+f=fg$FRQ
+
+removeloc=which(f==0 | f ==1)
+
+df=df[-removeloc]
+f=f[-removeloc]
+
+summary(df^2/(f*(1-f)))
+
+1/2*mean(df^2/(f*(1-f)),na.rm=T)
+
+```
+
+
+## Frequency and fitness
+```{r}
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/climate/bio1/output/bio1.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/climate/bio18/output/bio18.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/climate/bio12/output/bio12.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/climate/bio15/output/bio15.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/FT_mli/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+
+
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rSurvival_fruit_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rSeeds_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mhi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+
+biofreq<-merge(bio18, fm,by.x='rs',by.y='SNP')
+biofreq<- biofreq %>%
+  mutate(beta= ifelse(A1x == allele1, beta, (-1)*beta ),
+         newallele1=ifelse(A1x == allele1, allele1, allele0)
+         ) %>%
+  mutate(df= (newFRQ-FRQ) ,
+         df_= (newFRQ-FRQ) / (FRQ*(1-FRQ)) ,
+         z= beta/se
+  )  
+
+cor.test(biofreq$df, biofreq$beta,method='s')
+cor.test(biofreq$df_, biofreq$beta,method='s')
+cor.test(biofreq$df, biofreq$z,method='s')
+cor.test(biofreq$df_, biofreq$z,method='s')
+cor.test(biofreq$newFRQ, biofreq$beta,method='s')
+cor.test(biofreq$FRQ, biofreq$beta,method='s')
+
+```
+
+
+
+## Fixed proportion across locations
+Thinking that fixation would likely be an interesting metric, but fst may be better
+
+
+## Climate - delta F
+can association to climate explain this trend of low frequency alleles rising?
+BIO1 = Annual Mean Temperature
+BIO2 = Mean Diurnal Range (Mean of monthly (max temp - min temp))
+BIO3 = Isothermality (BIO2/BIO7) (* 100)
+BIO4 = Temperature Seasonality (standard deviation *100)
+BIO5 = Max Temperature of Warmest Month
+BIO6 = Min Temperature of Coldest Month
+BIO7 = Temperature Annual Range (BIO5-BIO6)
+BIO8 = Mean Temperature of Wettest Quarter
+BIO9 = Mean Temperature of Driest Quarter
+BIO10 = Mean Temperature of Warmest Quarter
+BIO11 = Mean Temperature of Coldest Quarter
+BIO12 = Annual Precipitation
+BIO13 = Precipitation of Wettest Month
+BIO14 = Precipitation of Driest Month
+BIO15 = Precipitation Seasonality (Coefficient of Variation)
+BIO16 = Precipitation of Wettest Quarter
+BIO17 = Precipitation of Driest Quarter
+BIO18 = Precipitation of Warmest Quarter
+BIO19 = Precipitation of Coldest Quarter
+```{r}
+
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/FT_mli/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+bio1<-data.table::fread("~/safedata/natvar/climate/bio1/output/bio1.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/climate/bio18/output/bio18.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/climate/bio12/output/bio12.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/climate/bio15/output/bio15.assoc.txt")
+bio18<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt")
+
+biofreq<-merge(bio18, fg,by.x='rs',by.y='SNP')
+head(biofreq)
+biofreq<- biofreq %>%
+  mutate(df= (newFRQ-FRQ) ,
+         df_= (newFRQ-FRQ) / (FRQ*(1-FRQ)) ,
+         z= beta/se
+  ) 
+
+cor.test(biofreq$df_, biofreq$beta,method='s')
+cor.test(biofreq$df, biofreq$beta,method='s')
+cor.test(biofreq$df, biofreq$z,method='s')
+cor.test(biofreq$df_, biofreq$z,method='s')
+cor.test(biofreq$newFRQ, biofreq$beta,method='s')
+cor.test(biofreq$FRQ, biofreq$beta,method='s')
+
+# There seems to be an association between
+fitnessglobalfrequency<-ggplot(data=biofreq) +
+  geom_hex( aes(y=df , x= beta), bins=50) +
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys"), trans='log10')+
+  geom_hline(yintercept=0,lty='dotted')+
+  geom_vline(xintercept=0,lty='dotted')+
+  labs(y="change in frequency (across all sites)", x='effect size in fitness')+
+  ylim(c(-0.5,0.5)) 
+fitnessglobalfrequency
+
+#more detail
+# table(biofreq$df > 0, biofreq$beta>0)
+table(as.numeric(biofreq$df > 0), biofreq$beta>0)/ sum(table(biofreq$df > 0, biofreq$beta>0))
+table(as.numeric(biofreq$df > 0), biofreq$beta>0) %>% fisher.test
+round(table(as.numeric(biofreq$df > 0), biofreq$beta>0)/ sum(table(biofreq$df > 0, biofreq$beta>0)) * 1000 ) %>% fisher.test # this round would show that even with 1000 independent tests, the diferences of 10% more SNPs is significant
+for(i in seq(100,1000,by=10)) round(table(as.numeric(biofreq$df > 0), biofreq$beta>0)/ sum(table(biofreq$df > 0, biofreq$beta>0)) * i ) %>% fisher.test %>% print # this round would show
+resfisher<-sapply(seq(100,1000,by=10), function(i) {
+  fisher.test(round(table(as.numeric(biofreq$df > 0), biofreq$beta>0)/ sum(table(biofreq$df > 0, biofreq$beta>0)) * i ))$p.value
+  })
+plot(-log10(resfisher) ~ seq(100,1000,by=10))
+
+save_plot("figs/rfitness_mlp_lmm_vs_globalfreq_chr5.pdf",base_height = 5,base_width = 6,
+          fitnessglobalfrequency)
+
+
+# # Is the leading snp stronger or weaker in relationship? ## problem that you only get two blops
+# window=50000
+# biosub<- biofreq %>%
+#   dplyr::filter(abs(df)<0.5) %>%
+#   dplyr::mutate(windowed=round(ps/window)*window) %>%
+#   dplyr::group_by(windowed) %>%
+#   dplyr::mutate(leaddf=max(abs(df),na.rm = T),
+#                 direction=df/abs(df)) %>%
+#   dplyr::filter(abs(df)==leaddf)
+# head(biosub)
+# dim(biosub)
+# dim(biofreq)
+
+
+```
+
+## PCA raw freq
+```{r}
+# freall<-data.table::fread("data-big/plate123bigrun.freq.tsv")  # too big
+freall<-data.table::fread("data-big/plate123bigrun.freq.tsv.toy")
+freall<-freall[,c(289:572)]
+freall[1:5,1:5]
+
+## run principal component
+freall<-t(freall) # transpose
+freall<-randomForest::na.roughfix(freall) # fix NAs as mean imputation
+distfreq<-dist(freall)
+# pr<-princomp(distfreq,) # distance of freq and then principal component
+pr<-cmdscale(distfreq,k=10) # distance of freq and then principal component
+summary(pr)
+plot(pr)
+
+# get columns
+d<-read.table("~/grenephase1/data-big/plate123bigrun.header")$V1
+d_<-d[grepl("FREQ",d)]
+d_<-as.character(d_)
+d_<-gsub(x = d_,pattern = "FREQ.",replacement = "",fixed = T)
+mydata<-data.frame(id=d_)
+mydata2<-addparsedidcolumns(mydata)
+mydata2$site <- as.numeric(mydata2$site)
+mydata2$plot <- as.numeric(mydata2$plot)
+
+# merge columns with frequency
+df<-data.frame(pr$scores)
+df<-cbind(mydata2,df)
+
+# climate 
+data("sites.clim")
+df<-merge(df, sites.clim, by.x='site', by.y="SITE_CODE")
+df[1:5,1:10]
+df[1:2,]
+
+# PCA
+# BIO1 = Annual Mean Temperature
+# BIO2 = Mean Diurnal Range (Mean of monthly (max temp - min temp))
+# BIO3 = Isothermality (BIO2/BIO7) (* 100)
+# BIO4 = Temperature Seasonality (standard deviation *100)
+# BIO5 = Max Temperature of Warmest Month
+# BIO6 = Min Temperature of Coldest Month
+# BIO7 = Temperature Annual Range (BIO5-BIO6)
+# BIO8 = Mean Temperature of Wettest Quarter
+# BIO9 = Mean Temperature of Driest Quarter
+# BIO10 = Mean Temperature of Warmest Quarter
+# BIO11 = Mean Temperature of Coldest Quarter
+# BIO12 = Annual Precipitation
+# BIO13 = Precipitation of Wettest Month
+# BIO14 = Precipitation of Driest Month
+# BIO15 = Precipitation Seasonality (Coefficient of Variation)
+# BIO16 = Precipitation of Wettest Quarter
+# BIO17 = Precipitation of Driest Quarter
+# BIO18 = Precipitation of Warmest Quarter
+# BIO19 = Precipitation of Coldest Quarter
+
+cor.test(df$Comp.2, df$bio1 ,method = 's')
+cor.test(df$Comp.2, df$bio2 ,method = 's')
+cor.test(df$Comp.2, df$bio3 ,method = 's')
+cor.test(df$Comp.2, df$bio4 ,method = 's')
+cor.test(df$Comp.2, df$bio5 ,method = 's')
+cor.test(df$Comp.2, df$bio6 ,method = 's')
+cor.test(df$Comp.2, df$bio7 ,method = 's')
+cor.test(df$Comp.2, df$bio8 ,method = 's')
+cor.test(df$Comp.2, df$bio9 ,method = 's')
+cor.test(df$Comp.2, df$bio10 ,method = 's')
+cor.test(df$Comp.2, df$bio11,method = 's')
+cor.test(df$Comp.2, df$bio12 ,method = 's')
+cor.test(df$Comp.2, df$bio13 ,method = 's')
+cor.test(df$Comp.2, df$bio14 ,method = 's')
+cor.test(df$Comp.2, df$bio15 ,method = 's')
+cor.test(df$Comp.2, df$bio16 ,method = 's')
+cor.test(df$Comp.2, df$bio17 ,method = 's')
+cor.test(df$Comp.2, df$bio18 ,method = 's')
+cor.test(df$Comp.2, df$bio19 ,method = 's')
+
+# Plot climate and color PC
+set.seed(1)
+pclimateplot<-
+ggplot(df) +
+  # geom_jitter(aes(y=bio15 , x=bio17), size=2.5, color='white')+
+  # geom_jitter(aes(y=bio15 , x=bio17), size=2, color='black')+
+  geom_jitter(aes(y=bio15 , x=bio17, color=rank(Comp.2)),
+              width = diff(range(df$bio17,na.rm=T))*0.03 ,
+              height = diff(range(df$bio15,na.rm=T))*0.03, 
+              size=1)+
+  scale_color_gradientn("PC 2",colours=brewer.pal(9,"Greens")[-1]) +
+  labs(x="Precipitation in the driest quarter (mm)",
+       y="Precipitation seasonality (CV)"
+       )
+pclimateplot
+
+save_plot(filename="figs/preliminary-plat123-chr5-subset-mds-climate.pdf",
+          plot=pclimateplot, 
+          base_width=5, base_height=4)
+
+# Plot PC and climate color
+ggplot(df) +
+  geom_point(aes(y=Comp.2 , x=Comp.1), size=2.5, color='white')+
+  geom_point(aes(y=Comp.2 , x=Comp.1), size=2, color='black')+
+  geom_point(aes(y=Comp.2 , x=Comp.1, color=(bio17)),size=1.9)+
+  scale_color_gradientn("Annual prec.",colours=brewer.pal(9,"Blues"))
+
+#
+library(lme4)
+library(lmerTest)
+model = lmer(Comp.2 ~ 
+              bio17+
+             # (1 | site/plot),
+             (1 | site) + (1 | site:plot),
+             # (1 | plot),
+             # (1 | site:plot),
+             # data=dplyr::filter(df,year==2018),
+             data=df,
+             REML = F)
+summary(model)
+rand(model)
+anova(model)
+
+```
+
+## PCA delta F
+```{r}
+# freall<-data.table::fread("data-big/plate123bigrun.freq.tsv.toy")
+# freall<-freall[,c(1:2,289:572)]
+# head(freall)
+# freall$CHROM<-fn(freall$CHROM)
+# freall$POS<-fn(freall$POS)
+# frqseeds$V1 <- fn(frqseeds$V1)
+# frqseeds$V2 <- fn(frqseeds$V2)
+# df<-merge(
+#               select(frqseeds,V1,V2,V5),
+#               freall,
+#               by.x=c('V1','V2'),
+#               by.y=c('CHROM','POS')
+#               )
+# SNPsfreall<-paste0(freall$CHROM,"_",freall$POS)
+# SNPsseeds<-paste0(frqseeds$V1,"_",frqseeds$V2)
+# 
+# table(SNPsfreall %in% SNPsseeds)
+# 
+# dim(freall)
+
+```
+
+# Fst
+## read the header and get pool numbers
+Ned the pool numbers to produce the Fst corrected version
+```{r}
+data("sites.clim")
+data("recordssorted")
+
+# plate of sequences
+# plate123header<-read.table()
+d<-read.table("~/grenephase1/data-big/plate123bigrun.header")$V1
+d_<-d[grepl("FREQ",d)]
+d_<-as.character(d_)
+poolnames<-gsub(x = d_,pattern = "FREQ.",replacement = "",fixed = T)
+
+# records info on pool numbers
+sampleids<-fc(recordssorted$id)
+
+table(poolnames %in% sampleids) # NOT ALL COINCIDE, BUT WILL FIX THAT LATER
+poolnames[which(!(poolnames %in% sampleids))]
+
+# Get the pool information again
+poolinfo<-merge(data.frame(poolnames), 
+                recordssorted,
+      by.x="poolnames", by.y='id', all.x=T)
+
+# Merge pool information with climate
+poolinfo.clim<-merge(poolinfo, sites.clim, by.x='SITE', by.y="SITE_CODE",all.x=TRUE)
+head(poolinfo.clim)
+dim(poolinfo)
+
+# Get pool info for merging with records
+mergeinfo<-merge(data.frame(poolnames), 
+                 dplyr::select(recordssorted, id,NUMBER_FLOWERS_COLLECTED),
+      by.x="poolnames", by.y='id', all.x=T)
+
+head(mergeinfo)
+
+# Add also the poolnames from the 8 seed replicates
+seedpools<-data.frame(poolnames=paste0("S",1:8), NUMBER_FLOWERS_COLLECTED=2500)
+poolnumbers<-rbind(seedpools,mergeinfo)
+poolnumbers$NUMBER_FLOWERS_COLLECTED[is.na(poolnumbers$NUMBER_FLOWERS_COLLECTED)] <- 100
+poolnumbers$NUMBER_FLOWERS_COLLECTED[poolnumbers$NUMBER_FLOWERS_COLLECTED =="?"] <- 100
+poolnumbers$NUMBER_FLOWERS_COLLECTED[poolnumbers$NUMBER_FLOWERS_COLLECTED =="1"] <- 2
+
+write.table(file="data-big/seedsplate123.chr5.poolnumbers.txt",sep=',',
+            poolnumbers, row.names = F,col.names = F,quote = F)
+```
+These numbers were used to run the command 
+grenedalf fst \
+--vcf-file seedsplate123.chr5.vcf.gz \
+--pool-sizes seedsplate123.chr5.poolnumbers.txt \
+--comparand S1 \
+--file-prefix seedsplate123 \
+--allow-file-overwriting
+
+## Read Fst output -- histogram
+```{r}
+fst<-read.table("data-big/seedsplate123fst-chr5subset.csv", header=T)
+dim(fst)
+fst[1:5,1:5]
+fstsub<-fst[,-c(1:4)] # remove cols of chr start , etc
+```
+
+plot a simple histogram
+```{r}
+fstpivot <-
+  fst %>% 
+  head(100000) %>%
+  pivot_longer(data = ., 
+               cols=starts_with("S1."),
+               names_prefix = "S1.",
+               values_to="fst"
+               ) %>%
+  dplyr::rename(id=name) %>%
+  addparsedidcolumns() %>%
+  dplyr::filter(year == 2018 | substr(id,0,1) == "S") %>% # to compare founder to GrENE net 2018 only
+  dplyr::mutate(type=ifelse(substr(id,0,1) == "S", "Founder", "GrENE"))
+
+fsthistograms<-
+ggplot(fstpivot) +
+  geom_density(aes(x=fst,group=id, fill=type), color="white") +
+  scale_fill_manual("",values = transparent(c("Black","Grey"))) +
+  labs(x="Fst (one founder to all)")
+
+save_plot(filename = "figs/plate123-fst_histograms-chr5subset-100000SNPs.pdf",
+          plot=fsthistograms,
+          base_height = 5,base_width = 6)
+```
+
+plot histogram by climate
+```{r}
+# pivot
+fstclim <-
+  fst %>% 
+  head(5000) %>%
+  pivot_longer(data = ., 
+               cols=starts_with("S1."),
+               names_prefix = "S1.",
+               values_to="fst"
+               ) %>%
+  dplyr::rename(id=name) %>%
+  addparsedidcolumns() %>%
+  dplyr::mutate(site=fn(site)) %>%
+  dplyr::filter(year == 2018 | substr(id,0,1) == "S") %>% # to compare founder to GrENE net 2018 only
+  dplyr::mutate(type=ifelse(substr(id,0,1) == "S", "Founder", "GrENE")) # %>%
+
+# add climate
+fstclim_<- fstclim %>% merge(.,sites.clim, by.x='site', by.y="SITE_CODE", all.x=T)
+dim(fstclim)
+
+# color palet
+mycolors=colorRampPalette(brewer.pal(9,"Blues")[-1])
+
+# group and plot
+toplot<-fstclim_ %>% mutate(mygroup=cut(bio12,breaks = 12)) 
+ggplot(toplot) +
+  geom_violin(aes(y=fst,x=mygroup, group=factor(mygroup), fill=factor(mygroup)), color='white' ,draw_quantiles = c(0.5)) +
+  scale_fill_manual("Prec.",values=mycolors(length(unique(toplot$mygroup))),na.value="grey")+
+  labs(y="Fst (founder to yr 1", x='Annual precipitation (mm)')+
+  coord_flip()
+
+toplot<-fstclim_ %>% mutate(mygroup=cut(bio1,breaks = 12)) 
+ggplot(toplot) +
+  geom_violin(aes(y=fst,x=mygroup, group=factor(mygroup), fill=factor(mygroup)), color='white' ,draw_quantiles = c(0.5)) +
+  scale_fill_manual("Temp.",values=mycolors(length(unique(toplot$mygroup))),na.value="grey")+
+  labs(y="Fst (founder to yr 1", x='Annual temperature (C x 10)')+
+  coord_flip()
+
+toplot<-fstclim_ %>% mutate(mygroup=cut(LATITUDE,breaks = 15)) 
+ggplot(toplot) +
+  geom_violin(aes(y=fst,x=mygroup, group=factor(mygroup), fill=factor(mygroup)), color='white' ,draw_quantiles = c(0.5)) +
+  scale_fill_manual("Latitude",values=mycolors(length(unique(toplot$mygroup))),na.value="grey")+
+  labs(y="Fst (founder to yr 1", x='Latitude (N)')+
+  coord_flip()
+  # scale_fill_brewer("Latitude",palette = "Blues",na.value="grey") +
+  # stat_smooth(aes(y=fst,x=bio1mygroup) ) +
+
+```
+
+
+## PCA Fst values
+Fst should be better than frequencies in a PCA as it accounts for sampling
+
+```{r}
+# pca of fst values
+fstsub<-t(fstsub) # transpose
+fstsub<-randomForest::na.roughfix(fstsub) # fix NAs as mean imputation
+fstdist<-dist(fstsub)
+# fstpca<-princomp(fstdist) # distance of freq and then principal component
+fstmds <- cmdscale(fstdist,eig=TRUE, k=10) # k is the number of dim
+# saveRDS(file="tmp.rds",object=fstmds)
+# fstmds<-readRDS("tmp.rds")
+
+# Extract vectors and merge with site
+df<-data.frame(fstmds$points)
+df$id<- gsub(rownames(df),pattern = "S1.", replacement="")
+df <- addparsedidcolumns(df)  
+df <- merge(x=df, by.x='site', y=poolinfo.clim, by.y='SITE')
+df$doy<-doy(df$date)
+
+mdsplot<-
+ggplot(df) +
+  # geom_jitter(aes(y=bio15 , x=bio17), size=2.5, color='white')+
+  # geom_jitter(aes(y=bio15 , x=bio17), size=2, color='black')+
+  geom_point(aes(y=X2 , x=X1, color=bio18))+
+              # width = diff(range(df$bio17,na.rm=T))*0.03 ,
+              # height = diff(range(df$bio15,na.rm=T))*0.03, 
+              # size=1)+
+  scale_color_gradientn("bio1",colours=brewer.pal(9,"Greens")[-1], trans="log10") +
+  labs(x="Precipitation in the driest quarter (mm)",
+       y="Precipitation seasonality (CV)"
+       )
+mdsplot
+
+
+
+mdsplot<-
+ggplot(df) +
+  # geom_jitter(aes(y=bio15 , x=bio17), size=2.5, color='white')+
+  # geom_jitter(aes(y=bio15 , x=bio17), size=2, color='black')+
+  geom_point(aes(y=X2 , x=X1, color=rank(doy)))+
+              # width = diff(range(df$bio17,na.rm=T))*0.03 ,
+              # height = diff(range(df$bio15,na.rm=T))*0.03, 
+              # size=1)+
+  scale_color_gradientn("bio1",colours=brewer.pal(9,"Greens")[-1]) +
+  labs(x="Precipitation in the driest quarter (mm)",
+       y="Precipitation seasonality (CV)"
+       )
+mdsplot
+
+save_plot(filename="figs/preliminary-fst-plat123-chr5-mds-climate.pdf",
+          plot=pclimateplot, 
+          base_width=5, base_height=4)
+
+
+# # df<-cbind(mydata2,df)
+# #  <- fstmds$points[,1]
+# # y <- fstmds$points[,2]
+# # plot(x, y, xlab="Coordinate 1", ylab="Coordinate 2",
+# #   main="Nonmetric MDS", type="n")
+# 
+# # merge pca with climate variables
+# 
+# # fstpca <- fstsub %>% t()
+# # fstpcamod<-princomp(fstpca)
+# # 
+# 
+# 
+# fstpivot <-
+#   fst %>% 
+#   head(100000) %>%
+#   pivot_longer(data = ., 
+#                cols=starts_with("S1."),
+#                names_prefix = "S1.",
+#                values_to="fst"
+#                ) %>%
+#   dplyr::rename(id=name) %>%
+#   addparsedidcolumns() %>%
+#   dplyr::filter(year == 2018 | substr(id,0,1) == "S") %>% # to compare founder to GrENE net 2018 only
+#   dplyr::mutate(type=ifelse(substr(id,0,1) == "S", "Founder", "GrENE"))
+
+
+```
+
+
+# Fst genetic groups
+```{r}
+gfst<-data.table::fread("data-big/762_4m.fst") 
+gfst$SNP<-paste0(gfst$CHR,"_",gfst$POS)
+
+m2<-merge(gfst,fm,by='SNP')
+
+m2$FRQvar<- m2$FRQ * (1-m2$FRQ)
+  
+m2$FST[m2$FST<=0] <- 0.00001
+
+cor.test(m2$FST, m2$newFRQ- m2$FRQ)
+cor.test(m2$FST, ifelse(m2$FRQ>0.5,m2$FRQ,1-m2$FRQ))
+
+ggplot(data=m2) +
+  geom_hex( aes(y=(newFRQ - FRQ) , x= FST/ ((1-FRQ+0.00001)*(FRQ+0.00001)) ), bins=50)
+
+ggplot(data=m2) +
+  geom_hex( aes(y=(newFRQ - FRQ) / ((1-FRQ+0.00001)*(FRQ+0.00001))   , x= FST), bins=50)
+  
+lm( (newFRQ - FRQ) ~ FRQ * FST , data=m2)  %>%
+  summary
+lm( (newFRQ - FRQ) ~ FST * FRQvar , data=m2)  %>%
+  summary
+lm( (newFRQ - FRQ) /FRQvar ~ FST * FRQ , data=m2[m2$FRQvar !=0])  %>%
+  summary
+
+ggplot(data=m2) +
+  geom_hex( aes(y=(newFRQ - FRQ) / ((1-FRQ+0.00001)*(FRQ+0.00001))   , x= FST), bins=50)
+
+
+fst_frqchange<-
+  ggplot(data=m2) +
+  geom_hex( aes(y=newFRQ - FRQ , x= FST), bins=50) +
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys"), trans='log10')+
+  geom_hline(yintercept=0,lty='dotted')+
+  geom_vline(xintercept=0.5,lty='dotted')+
+  labs(y="change in frequency (across all sites)", x='Fst across genetic groups')+
+  ylim(c(-0.5,0.5)) +
+  stat_smooth( aes(y=newFRQ - FRQ , x= FST), formula=y~x+I(x^2), method='glm', color='lightgreen', lty='dashed')
+fst_frqchange
+
+save_plot(file="figs/prelim_freqchange_fstgroups_chr5.pdf",plot = fst_frqchange,
+          base_width = 6,base_height=5)
+
+t.test( m2$FST  ~ ((m2$newFRQ- m2$FRQ)>0 ))
+
+table(m2$FST> -0.1, (m2$newFRQ- m2$FRQ) >0) / nrow(m2)
+
+table(m2$FST>0.25, (m2$newFRQ- m2$FRQ) >0) / nrow(m2)
+table(m2$FST>0.5, (m2$newFRQ- m2$FRQ) >0) / nrow(m2)
+
+df=(m2$newFRQ- m2$FRQ)
+df[m2$FST>0.5] %>% summary
+hist(df[m2$FST>0.5])
+
+ggplot(data=m2) +
+  geom_hex( aes(x=FRQ , y= FST), bins=50) +
+  scale_fill_gradientn("# SNPS",colours = RColorBrewer::brewer.pal(9, "Greys"), trans='log10')+
+  geom_hline(yintercept=0,lty='dotted')+
+  geom_vline(xintercept=0,lty='dotted')+
+  labs(x="Original frequency", y='Fst across genetic groups') %>%
+
+  save_plot(file="figs/founderfreq_fstgroups_chr5.pdf",
+            x=.,
+            base_width = 6,base_height=5)
+
+  
+```
+

@@ -1,0 +1,109 @@
+---
+title: "fitness-frequency"
+output: html_document
+author: Moi
+date: 25-04-2021
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "~/safedata/ath_evo/grenephase1")
+setwd("~/safedata/ath_evo/grenephase1")
+
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+# library(ggpmisc)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(tidyverse)
+# devtools::install("~/safedata/genemaps/")
+library(genemaps)
+devtools::load_all(".") 
+
+library(data.table)
+```
+
+```{r}
+# Phenotypes
+listoffiles<-
+  c(
+    "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt",
+    "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt",
+    "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt",
+    "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt"
+  )
+listofnames<-c(
+"rFitness_thp",
+"rFitness_thi",
+"rFitness_tlp",
+"rFitness_tli",
+"rFitness_mhp",
+"rFitness_mhi",
+"rFitness_mlp",
+"rFitness_mli"
+)
+listoffiles<-paste0(
+  "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/",
+  listofnames,
+  "/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt"
+)
+# load all
+gwas<-lapply(1:length(listoffiles), function(i){
+  x=listoffiles[i]
+  getname<-listofnames[i]
+  tmp<-data.table::fread(x) %>% select(chr,ps,p_score) #%>% head
+  tmp$pheno=getname
+  return(tmp)
+}) %>%  do.call(rbind,.)
+
+```
+
+Visualize the gwa by frequency
+```{r}
+
+
+d1<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/gemma/rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.assoc.txt")
+d2<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/gemma/rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.assoc.txt")
+
+d1<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt")
+d2<-data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt")
+
+d<-cbind(data.frame(d1) %>% select(beta) %>% rename(beta.x=beta),
+         data.frame(d2) %>% select(beta,af) %>% rename(beta.y=beta)
+         )
+head(d)
+
+ggplot(d) +
+  geom_hex(aes(y=beta,x=af))
+
+
+qplot(d$beta, d$af,geom="hex")
+
+tmp<-head(d,1000)
+
+ggplot(tmp) +
+  geom_hex(aes(y=beta,x=af, color=n_obs))
+
+
+save_plot("figs/fitness_selection_by_vcffreq.png",base_width = 5,base_height = 4,
+          plot=pfreq)
+
+
+save
+# d_<-dplyr::filter(d,p_lrt<0.05)
+
+# d_<-d %>%
+#   group_by(chr) %>%
+#   dplyr::mutate(cumpos = cumsum(as.numeric(ps))) %>%
+
+d_<-dplyr::filter(d,
+                  p_lrt<0.0001)
+  ggplot(d_ )+
+  # geom_hex(aes(y=-log10(p_lrt),x= rowpos)) 
+  geom_point(aes(y=-log10(p_lrt),x= rowpos, color=factor(chr))) +
+  scale_color_manual("",values=c("grey40","grey","grey40","grey","grey40"))
+
+```
+

@@ -1,0 +1,283 @@
+devtools::install_github("privefl/bigstatsr",lib="~/R/library",force=TRUE)
+devtools::install_github("privefl/bigsnpr",lib="~/R/library",force=TRUE)
+install("gws/.")
+devtools::install("gws/.")
+library(gws)
+devtools::install('~/gws/.',lib="~/R/library")
+pres=raster::getData(name ="worldclim" ,res="2.5",path="~/",var="bio")
+pres
+myuniversities<-matrix(c(
+55.94282, -3.18537,"University of Edinburgh",
+38.38526, -0.51358,"University of Alicante",
+37.38075, -5.99123,"University of Sevilla",
+48.53684, 9.05699,"Max Planck Institute",
+37.87189, -122.25853, "University California Berkeley"
+),byrow = TRUE,ncol=3
+)
+colnames(myuniversities)<-c('Latitude','Longitude','Institution')
+pres=raster::getData(name ="worldclim" ,res="2.5",path="~/",var="bio")
+clim=
+sapply(1:19, function(b){
+raster::extract(pres[[b]],myuniversities[,c("Longitude","Latitude")])
+})
+pres
+myuniversities[,c("Longitude","Latitude")]
+myuniversities[,c("Longitude","Latitude")] <- apply(myuniversities[,c("Longitude","Latitude")],2,as.numeric())
+myuniversities[,c("Longitude","Latitude")] <- apply(myuniversities[,c("Longitude","Latitude")],2,as.numeric)
+clim=
+sapply(1:19, function(b){
+raster::extract(pres[[b]],myuniversities[,c("Longitude","Latitude")])
+})
+myuniversities[,c("Longitude","Latitude")]
+library(moiR)
+myuniversities[,c("Longitude","Latitude")] <- apply(myuniversities[,c("Longitude","Latitude")],2,fn)
+myuniversities
+myuniversities<-data.frame(myuniversities,stringsAsFactors = F)
+colnames(myuniversities)<-c('Latitude','Longitude','Institution')
+pres=raster::getData(name ="worldclim" ,res="2.5",path="~/",var="bio")
+myuniversities[,c("Longitude","Latitude")] <- apply(myuniversities[,c("Longitude","Latitude")],2,fn)
+myuniversities
+clim=
+sapply(1:19, function(b){
+raster::extract(pres[[b]],myuniversities[,c("Longitude","Latitude")])
+})
+clim
+library(cowplot)
+library(ggplot)
+library(ggplot2)
+clim
+myuniversities<-matrix(c(
+38.38526, -0.51358,"University of Alicante",2011,
+37.38075, -5.99123,"University of Sevilla",2013,
+55.94282, -3.18537,"University of Edinburgh",2014,
+48.53684, 9.05699,"Max Planck Institute",2016,
+37.87189, -122.25853, "University California Berkeley",2017
+),byrow = TRUE,ncol=3
+)
+myuniversities<-data.frame(myuniversities,stringsAsFactors = F)
+colnames(myuniversities)<-c('Latitude','Longitude','Institution','year')
+myuniversities
+myuniversities<-matrix(c(
+38.38526, -0.51358,"University of Alicante",2011,
+37.38075, -5.99123,"University of Sevilla",2013,
+55.94282, -3.18537,"University of Edinburgh",2014,
+48.53684, 9.05699,"Max Planck Institute",2016,
+37.87189, -122.25853, "University California Berkeley",2017
+),byrow = TRUE,ncol=4
+)
+myuniversities<-data.frame(myuniversities,stringsAsFactors = F)
+colnames(myuniversities)<-c('Latitude','Longitude','Institution','year')
+rownames(myuniversities)
+myuniversities$order<-rownames(myuniversities)
+myuniversities$order<-fn(rownames(myuniversities))
+myuniversities
+pres=raster::getData(name ="worldclim" ,res="2.5",path="~/",var="bio")
+myuniversities[,c("Longitude","Latitude")] <- apply(myuniversities[,c("Longitude","Latitude")],2,fn)
+clim=
+sapply(1:19, function(b){
+raster::extract(pres[[b]],myuniversities[,c("Longitude","Latitude")])
+})
+qplot(clim[,1],myuniversities$order)
+qplot(y=clim[,1],myuniversities$order)
+qplot(y=clim[,1],myuniversities$order)+ scale_x_manual(bearks=1:5,labels=myuniversities$Institution)
+qplot(y=clim[,1],myuniversities$order)+ scale_x_continuous(bearks=1:5,labels=myuniversities$Institution)
+qplot(y=clim[,1],myuniversities$order)+ scale_x_continuous(1:5,labels=myuniversities$Institution)
+temp<-function(x,input="c"){
+if(input=='c'){ x *(9/5) +32 }
+else if(input=='f'){ (x - 32) * (5/9) }
+# ctemp = (ftemp - 32) * 5/9
+}
+temp(20)
+temp(75,'f')
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature')
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line()+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line()+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+
+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line()+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line(color='red')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line(color='red')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line(color='red')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 35, hjust = 1))
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line(color='red')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line(color='red')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+colnames(clim<-paste("bio",1:19)
+# fut=raster::getData(name ="CMIP5" ,res="2.5",path="~",var="bio",model="MP",rcp=85,year=50) # MP for Max Planck
+temp<-function(x,input="c"){
+if(input=='c'){ x *(9/5) +32 }
+else if(input=='f'){ (x - 32) * (5/9) }
+# ctemp = (ftemp - 32) * 5/9
+}
+qplot(y=temp(clim[,1]/10),myuniversities$order)+
+geom_line(color='red')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+colnames(clim)<-paste("bio",1:19)
+clim
+fut=raster::getData(name ="CMIP5" ,res="2.5",path="~",var="bio",model="MP",rcp=85,year=50) # MP for Max Planck
+pres=raster::getData(name ="worldclim" ,res="2.5",path="~/",var="bio")
+fut=raster::getData(name ="CMIP5" ,res="2.5",path="~",var="bio",model="MP",rcp=85,year=50) # MP for Max Planck
+install.packages("rgdal",lib="~/R/library")
+library(rgdal)
+fut=raster::getData(name ="CMIP5" ,res="2.5",path="~",var="bio",model="MP",rcp=85,year=50) # MP for Max Planck
+fclim=
+sapply(1:19, function(b){
+raster::extract(fut[[b]],myuniversities[,c("Longitude","Latitude")])
+})
+colnames(fclim)<-paste("fbio",1:19)
+fclim
+colnames(fclim)<-paste0("fbio",1:19)
+colnames(clim)<-paste0("bio",1:19)
+cbind(clim,myuniversities)
+cbind(clim,fclim,myuniversities)
+ggplot(data=cbind(clim,fclim,myuniversities))+
+geom_line(aes(x=order,y=temp(bio1/10)) ,color='red')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+ggplot(data=cbind(clim,fclim,myuniversities))+
+geom_line(aes(x=order,y=temp(bio1/10)) ,color='red')+
+geom_line(aes(x=order,y=temp(bio1/10)) ,color='red',lty='dashed')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+ggplot(data=cbind(clim,fclim,myuniversities))+
+geom_line(aes(x=order,y=temp(bio1/10)) ,color='red')+
+geom_line(aes(x=order,y=temp(fbio1/10)) ,color='red',lty='dashed')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+ggplot(data=cbind(clim,fclim,myuniversities))+
+geom_line(aes(x=order,y=temp(bio1/10)) ,color='red')+
+geom_line(aes(x=order,y=temp(fbio1/10)) ,color='red',lty='dashed')+
+scale_x_continuous(1:5,"",labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+ggplot(data=cbind(clim,fclim,myuniversities))+
+geom_line(aes(x=order,y=temp(bio1/10)) ,color='red')+
+geom_line(aes(x=order,y=temp(fbio1/10)) ,color='red',lty='dashed')+
+scale_x_continuous(1:5,labels=myuniversities$Institution)+
+ylab('Annual temperature °F')+ xlab("")+
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+## Load packages
+library(devtools)
+library(dplyr)
+library(ggplot2)
+library(cowplot)
+load_all('.')
+setwd("~/gws/analyses")
+setwd('../')
+getwd()
+load_all('.')
+gwad<-read.table('data-raw/m1d_polqua.ps',header=TRUE)
+gwares<-readRDS('dataint/Fitness_mlp.rda')
+names(gwad)
+gwad<-read.table('data-raw/m1d_polqua.ps',header=FALSE)
+names(gwares)
+colnames(gwad)<-c('snp','beta','p')
+saveRDS('dataint/Droughtemmax.rda',gwad)
+saveRDS(file = 'dataint/Droughtemmax.rda',gwad)
+names(gwad)
+names(gwares)
+moiR::parsechrX_XXX(head(gwad))
+moiR::parsechrX_XXX(head(gwad$snp))
+moiR::parsechrX_XXX
+data(dry)
+head(dry)
+tocor=dplyr::select(dry,-id,-name,-country,-kgroup)
+thecor<-moiR::cormatrix_r_p(dat = tocor,
+# method = 'pearson')
+method = 'spearman')
+names(dry)
+grep("pol",names(dry))
+names(dry)[grep("pol",names(dry))]
+thecor[1:5,1:5]
+thecor[phenotypes,phenotypes]
+phenotypes<-c('Fitness_mlp','polqua')
+thecor[phenotypes,phenotypes]
+phenotypes<-c('Fitness_mlp','Fitness_mli','polqua')
+thecor[phenotypes,phenotypes]
+phenotypes<-c('Fitness_mlp','Fitness_mli','polqua','bio18')
+phenotypes<-c('Fitness_mlp','Fitness_mli','polqua','bio18','bio17')
+thecor[phenotypes,phenotypes]
+qplot(dry$bio17,dry$Fitness_mli)
+qplot(dry$bio17,dry$Fitness_mli) + stat_smooth()
+qplot(dry$bio17,dry$Fitness_mli) + stat_smooth('glm')
+qplot(dry$bio17,dry$Fitness_mli) + stat_smooth(method='glm')
+#qplot(dry$bio17,dry$Fitness_mli) + stat_smooth(method='glm')
+setwd("~/GoogleDrive/RESEARCH/_evolutionexperiment/grene/analyses")
+setwd('../')
+devtools::load_all(".")
+data("grenelist")
+grenelist
+head(grenelist)
+p<-ggplot_world_map()
+p
+p<-p+ geom_point(data=grenelist, aes(y=grenelist$latitude, x=grenelist$longitude),size=1)
+p
+p<-p+ geom_point(data=grenestations,aes(y=LATITUDE, x=LONGITUDE),size=2, shape=1, col="red")
+p
+grenestations=read.table("data-raw/GrENE-sites_info - Participants_TOGOOGLE.tsv",header=TRUE,fill=TRUE,sep="\t")
+head(grenestations)
+grenelist$longitude = as.numeric(grenelist$longitude)
+grenelist$latitude = as.numeric(grenelist$latitude)
+grenestations$LONGITUDE<-moiR::fn(grenestations$LONGITUDE)
+grenestations$LATITUDE<-moiR::fn(grenestations$LATITUDE)
+p<-ggplot_world_map()
+p
+p<-p+ geom_point(data=grenelist, aes(y=grenelist$latitude, x=grenelist$longitude),size=1)
+p
+p<-p+ geom_point(data=grenestations,aes(y=LATITUDE, x=LONGITUDE),size=2, shape=1, col="red")
+p
+save_plot(file="figs/grene_map.pdf",plot = p,base_height = 7, base_width = 10)
+save_plot(file="figs/grene_map.pdf",plot = p,base_height = 7, base_width = 10)
+save_plot(file="figs/grene_map.pdf",plot = p,base_height = 8, base_width = 12)
+colnames(results) <- c("model","response", "bias","accuracy")
+results<- expand.grid(modes=c("lm","rf"),response=c("eff","sign"))
+results
+smallsample<-acc515 %>%
+dplyr::filter(country %in% c("ESP", "ITA")) %>%
+dplyr::mutate(wei=1-normalize(latitude)) %>%
+dplyr::sample_n(acc515, size=50,weight= wei)
+?sample_n
+make_Euroclim
+spaniards<-filter(acc515, country=="ESP")
+germanics<-filter(acc515, country=="GER")
+?writeRaster
+mad
+spaniards_rows
+hloadsf

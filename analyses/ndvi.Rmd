@@ -1,0 +1,26 @@
+---
+title: "ndvi"
+output: html_document
+author: Moi
+date: 10-04-2021
+editor_options: 
+  chunk_output_type: console
+---
+
+Study whether grene net poopulation size, or frequency trajectories can be explained by the NDVI index from remote sensing data
+
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "~/safedata/ath_evo/grenephase1")
+
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+# library(ggpmisc)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(tidyverse)
+# devtools::install("~/safedata/genemaps/")
+library(genemaps)
+devtools::load_all(".") 
+
+```

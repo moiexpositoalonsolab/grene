@@ -1,0 +1,545 @@
+---
+title: "predict-trajectories"
+output: html_document
+author: Moi
+date: 25-04-2021
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+knitr::opts_knit$set(root.dir = "~/safedata/ath_evo/grenephase1")
+knitr::opts_chunk$set(echo = TRUE)
+
+setwd("~/safedata/ath_evo/grenephase1")
+
+library(ggplot2)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(tidyverse)
+library(data.table)
+# devtools::install("~/safedata/genemaps/")
+library(genemaps)
+devtools::load_all(".") 
+
+```
+
+# Frequencies
+```{r, setup, include=FALSE}
+## Load frequency across sites in toy dataset
+# freall<-data.table::fread("data-big/plate123bigrun.freq.tsv.toy")
+freall<-data.table::fread("data-big/plate123.flc.frequency.csv")
+
+allele<-paste0(freall$CHROM,"_", freall$POS)
+# freall_[1:5,1:5]
+# freall<-freall_[,c(289:572)] # ONLY IF USING LARGE FILE WITH MORE THAN FREQS
+# freall[1:5,1:5]
+colnames(freall) <- gsub(colnames(freall),pattern = ".FREQ",replacement = "",fixed = TRUE)
+colnames(freall) <- gsub(colnames(freall),pattern = "FREQ.",replacement = "",fixed = TRUE)
+tmpfrq<-data.frame(SNP=allele,freall)
+
+# Subtract starting frequencies
+frqseeds<-data.table::fread("data-big/seeds-allchr-guided.avg_freq") %>% data.frame
+frqseeds$SNP<-paste0(frqseeds[,1],"_", frqseeds[,2])
+
+# Merge starting seeds and frequency of GrENE net
+freall2<-merge(frqseeds, tmpfrq, all.y=T,by="SNP")
+# freall2[,-c(1:6)] <- freall2[,-c(1:6)] - fn(freall2$frq) ###### Option of raw freq diff
+freall2[,-c(1:6)] <- (freall2[,-c(1:6)] - fn(freall2$frq)) / (fn(freall2$frq) * (1-fn(freall2$frq))) ###### Option of scaled freq diff / p(1-p)
+freall3 <- freall2
+freall<-freall2
+
+# get columns information
+d<-read.table("~/grenephase1/data-big/plate123bigrun.header")$V1
+d_<-d[grepl("FREQ",d)]
+d_<-as.character(d_)
+d_<-gsub(x = d_,pattern = "FREQ.",replacement = "",fixed = T)
+mydata<-data.frame(id=d_)
+mydata2<-addparsedidcolumns(mydata)
+mydata2$site <- as.numeric(mydata2$site)
+mydata2$plot <- as.numeric(mydata2$plot)
+mydata2$year <- as.numeric(mydata2$year)
+
+# remove columns that are not 2018
+tokeep<-dplyr::filter(mydata2,year ==2018)$id %>% fc
+
+# select frequencies from sites of 2018
+s_<-data.frame(freall)[,colnames(freall) %in% c(tokeep)]
+
+# bind with allele names
+s<-cbind(allele,s_)
+
+# pivot to make sites the columns 
+s<-s %>% pivot_longer(data = .,values_to = "s", cols = starts_with("MLFH"))
+
+# save pivot with sample name and allele
+sample.allele<-s
+
+# make site numberic and rename
+s$name<- substr(s$name,5,6)
+s<- s %>% rename(site=name)
+head(s)
+site.allele.s=s
+
+```
+
+# REPEATABILITY
+```{r}
+# prepare pivot to make a repeatability model
+suballele<-sample.allele %>% na.omit
+
+# # test first with one snp
+# test<-
+#   suballele %>%
+#   dplyr::filter(allele =="1_219") %>% # example SNP
+#   rename(id=name) %>%
+#   addparsedidcolumns() %>%
+#   mutate(doy=doy(date)) %>%
+#   filter(year ==2018) %>%
+#   mutate(site=fn(site)) %>%
+#   mutate(plot=fn(plot)) %>%
+#   merge(x=.,y=mutate(sites.clim,SITE_CODE=fn(SITE_CODE)), 
+#         by.x="site", by.y="SITE_CODE", all.x=T)
+# # model anova
+# aovmod<-summary(
+#   aov(
+#       formula= s ~ site + site:plot + doy + bio17,
+#       data=test)
+# ) 
+# aovmod
+# aovmod %>% unlist %>% matrix(ncol=5)
+
+
+# iterate through SNPs
+mysnps<-unique(fc(suballele$allele)) %>% head(1000)
+scananova<-lapply(1:length(mysnps), function(i){
+      test<-
+      suballele %>%
+      dplyr::filter(allele == mysnps[i]) %>% # example SNP
+      rename(id=name) %>%
+      addparsedidcolumns() %>%
+      mutate(doy=doy(date)) %>%
+      filter(doy < 200) %>% # get rid of fall
+      # filter(year ==2018) %>%
+      mutate(site=fn(site)) %>%
+      mutate(plot=fn(plot)) %>%
+      merge(x=.,y=mutate(sites.clim,SITE_CODE=fn(SITE_CODE)), 
+            by.x="site", by.y="SITE_CODE", all.x=T)
+    aovmod<-summary(
+      aov(
+        formula= s ~ site + plot %in% site + doy + LATITUDE,
+        # formula= s ~ Error(site) + plot %in% site + doy + LATITUDE,
+        # formula= s ~  (doy * LATITUDE) + Error(plot/site) ,
+        # formula= s ~  (LATITUDE) + Error(site/(plot+plot:doy)) + doy ,
+          data=test)
+    ) 
+    aovmod
+    tmp<-matrix(unlist(aovmod),ncol=5)[,5]
+    # tmp<-matrix(unlist(aovmod[["Error: Within"]]),ncol=5)[,5]
+    tmp<-c(mysnps[i], tmp)
+    names(tmp)<-c("snp","site","doy", "clim", "plot:site","E")
+    # names(tmp)<-c("snp", "clim", "doy","E")
+    return(tmp)
+  }) %>% do.call(rbind,.) %>% data.frame()
+
+# pivot longer to plot
+scpiv<- scananova %>%
+  rename(bio4 = clim) %>%
+  pivot_longer(values_to = "p",cols=-snp) %>%
+  mutate(pos= fc(sapply(fc(snp),function(x) strsplit(x,split = "_",fixed = T)[[1]][2])) )%>%
+  na.omit()
+
+
+# GWA-style plot
+anovapersnp<-ggplot(scpiv) +
+  geom_vline(xintercept = 3173382, color='lightgrey') + geom_vline(xintercept = 3179448, color='lightgrey')+
+  geom_point(aes(y=-log10(fn(p)), x= fn(pos), color=name, size=-log10(fn(p)))) +
+  scale_size_continuous("log10 P-value",range = c(0.5,2)) +
+  # scale_fill_manual(values=transparent(c(brewer.pal(9,"YlGn")[7],brewer.pal(9,"YlGn")[2], "grey" ,"lightgrey")), 0.9) +
+  scale_color_manual("",values = c("orange", "#F21A00", "grey75","grey30") )+
+  labs(x="genomic position", y=TeX("explanatory power of $\\Delta$ p (log10 P-value)"))
+
+anovapersnp
+save_plot(anovapersnp, filename = "figs/plate123_anovapersnp.pdf",base_height = 4.1,base_width = 12)
+
+# ks.test(fn(scananova[,"site"]), fn(scananova[,"clim"]) )
+# plot(cumsum(fn(scananova[,"site"])))
+# lines(cumsum(fn(scananova[,"clim"]) ), col="red")
+# 
+# qqplot(-log10(fn(scananova[,"site"])), -log10(fn(scananova[,"clim"])))
+# abline(b=1,a=0)
+qqplot(-log10(fn(scananova[,"site.plot"])), -log10(fn(scananova[,"doy"])))
+qqplot(-log10(fn(scananova[,"plot"])), -log10(fn(scananova[,"site"])))
+abline(b=1,a=0)
+
+# # plot histograms
+# ggplot(scpiv) +
+#   geom_density(aes(x=-log10(fn(p)), fill=name), color=transparent("white",0)) +
+#   # facet_wrap(~name, ncol=1) +
+#   # scale_fill_manual(values=transparent(c(brewer.pal(9,"YlGn")[7],brewer.pal(9,"YlGn")[2], "grey" ,"lightgrey")), 0.9) +
+#   labs(y="# SNPs", x=TeX("Variance explained in $\\Delta$ p"))
+```
+
+
+# Climate and GWES
+```{r}
+## Load climate of sites and alleles
+## allele.clim<-read.csv("data/alleles.clim.csv")
+allele.clim<-readRDS("data/alleles.clim.rds")
+allele.clim = allele.clim %>%
+  dplyr::mutate(allele= paste0(chr, "_", ps)) %>%
+  dplyr::select(-chr,-ps)
+
+# sitesc limate
+data("sites.clim")
+site.clim<-sites.clim
+site.clim <- site.clim %>% dplyr::select(.,
+                                            SITE_CODE, 
+                                            colnames(sites.clim)[grepl("bio", colnames(sites.clim))],
+                                            colnames(sites.clim)[grepl("tmin", colnames(sites.clim))],
+                                            colnames(sites.clim)[grepl("tmax", colnames(sites.clim))],
+                                            colnames(sites.clim)[grepl("prec", colnames(sites.clim))]
+                                            ) %>%
+  rename(site=SITE_CODE)
+
+####************************************************************************####
+# FUNCTIONS
+gwes_prepare<-
+function(site.allele.s = data.frame(site="madrid", allele="1_150",s=-0.5),
+         allele.clim = data.frame(allele="1_150", clim=-0.8), 
+         site.clim = data.frame(site='madrid', clim=10))
+{
+require(dplyr)
+# make sure correct column names
+stopifnot("site" %in% colnames(site.allele.s))
+stopifnot("allele" %in% colnames(site.allele.s))
+stopifnot("s" %in% colnames(site.allele.s))
+stopifnot("allele" %in% colnames(allele.clim))
+stopifnot("site" %in% colnames(site.clim))
+
+# Make columns same type of variables
+site.allele.s$site <- fn(site.allele.s$site)
+site.allele.s$allele <- fc(site.allele.s$allele)
+site.clim$site <- fn(site.clim$site)
+allele.clim$allele <- fc(allele.clim$allele)
+
+# change column names of sites clim to not overlap with allele lcim
+site.clim_<-site.clim
+colnames(site.clim_)<-paste0(colnames(site.clim_),".site")
+
+# Make the matrices
+tmp=merge(site.allele.s, allele.clim,
+        by="allele")
+tmp=merge(tmp, site.clim_,
+        by.x = 'site', by.y='site.site')
+tmp=dplyr::select(tmp, -site, -allele)
+
+if(dim(tmp)[1] == 0) stop("The merge was not successful. Make sure sites and allele columns are overlapping and equally formatted!")
+
+# end
+return(tmp)
+}
+
+gwes_loo<-function(d, sitestotest){
+require(tidyverse)
+require(caret)
+  createDataPartition()
+  set.seed(123)
+  training.samples <- d$s %>%
+    createDataPartition(p = trainfrac, list = FALSE)
+  train.data  <- d[training.samples, ]
+  test.data <- d[-training.samples, ]
+  # Build the model
+  model <- randomForest(s ~., data = train.data)
+  # Make predictions and compute the R2, RMSE and MAE
+  predictions <- model %>% predict(test.data)
+  res<-data.frame( R2 = R2(predictions, test.data$s),
+              RMSE = RMSE(predictions, test.data$s),
+              MAE = MAE(predictions, test.data$s))
+  return(model=model,res=res)
+}
+gwes_cv<-function(d, trainfrac=0.8){
+require(tidyverse)
+require(caret)
+  createDataPartition()
+  set.seed(123)
+  training.samples <- d$s %>%
+    createDataPartition(p = trainfrac, list = FALSE)
+  train.data  <- d[training.samples, ]
+  test.data <- d[-training.samples, ]
+  # Build the model
+  model <- randomForest(s ~., data = train.data)
+  # Make predictions and compute the R2, RMSE and MAE
+  predictions <- model %>% predict(test.data)
+  res<-data.frame( R2 = R2(predictions, test.data$s),
+              RMSE = RMSE(predictions, test.data$s),
+              MAE = MAE(predictions, test.data$s))
+  return(model=model,res=res)
+}
+####************************************************************************####
+
+#### RUN example ####
+colnames(allele.clim)
+colnames(site.clim)
+colnames(site.allele.s)
+
+d<-gwes_prepare(site.allele.s=head(site.allele.s,10000),
+                allele.clim = head(alleles.clim,10000),
+                site.clim = site.clim
+                )
+# saveRDS(file="data-big/tmp-plate123-2018-gwesprep.rds", object = d)
+
+d<-na.omit(d)
+# testquickmodel
+library(randomForest)
+model<-randomForest(d, formula= s ~ .)
+model<-lm(d, formula= s ~ .)
+# model<-randomForest_CV(d, "s",)
+
+```
+
+# FITNESS
+```{r}
+# # Phenotypes
+# listoffiles<-
+#   c(
+#     "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt",
+#     "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt",
+#     "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt",
+#     "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt"
+#   )
+# listofnames<-c(
+# "rFitness_thp",
+# "rFitness_thi",
+# "rFitness_tlp",
+# "rFitness_tli",
+# "rFitness_mhp",
+# "rFitness_mhi",
+# "rFitness_mlp",
+# "rFitness_mli"
+# )
+# listoffiles<-paste0(
+#   "~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/",
+#   listofnames,
+#   "/output/Exposito-Alonso_Nature_2019_PID_31462776.lmm.assoc.txt"
+# )
+# # load all
+# gwas<-lapply(1:length(listoffiles), function(i){
+#   x=listoffiles[i]
+#   getname<-listofnames[i]
+#   tmp<-data.table::fread(x) %>% select(chr,ps,p_score) #%>% head
+#   tmp$pheno=getname
+#   return(tmp)
+# }) %>%  do.call(rbind,.)
+
+```
+
+Are frequency trends predictable by previous fitness?
+```{r}
+d<-list(
+  (data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_mhi/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>% 
+     select(chr,rs,ps,n_miss,allele1,allele0, beta,se) %>% 
+     mutate(z=beta/se) %>% 
+     select(-beta, -se)),
+  (data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_mhp/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>%
+     select(beta,se) %>% 
+     mutate(z=beta/se) %>% 
+    select(-beta, -se)),
+(data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_mli/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>%
+     select(beta,se) %>% 
+     mutate(z=beta/se) %>% 
+    select(-beta, -se)),
+(data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_mlp/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>%
+     select(beta,se) %>% 
+     mutate(z=beta/se) %>% 
+    select(-beta, -se)),
+(data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_thi/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>%
+     select(beta,se) %>% 
+     mutate(z=beta/se) %>% 
+    select(-beta, -se)),
+(data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_thp/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>%
+     select(beta,se) %>% 
+     mutate(z=beta/se) %>% 
+    select(-beta, -se)),
+(data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_tli/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>%
+     select(beta,se) %>% 
+     mutate(z=beta/se) %>% 
+    select(-beta, -se)),
+(data.table::fread("~/safedata/natvar/phenotypes/Exposito-Alonso_Nature_2019_PID_31462776/1001/norm_rFitness_tlp/output/Exposito-Alonso_Nature_2019_PID_31462776norm.lmm.assoc.txt") %>%
+     select(beta,se) %>% 
+     mutate(z=beta/se) %>% 
+    select(-beta, -se))
+) %>% do.call(cbind,.)
+
+colnames(d)[ (ncol(d)-7):ncol(d) ] <- paste0("z.",c("mhi" ,"thi" ,"mli" ,"tli", "mhp", "thp", "mlp", "tlp"))
+
+
+# 
+# ggplot(d) +
+#   geom_hex(aes(y=beta,x=af))
+# 
+# 
+# qplot(d$beta, d$af,geom="hex")
+# 
+# tmp<-head(d,1000)
+# 
+# ggplot(tmp) +
+#   geom_hex(aes(y=beta,x=af, color=n_obs))
+# 
+# 
+# save_plot("figs/fitness_selection_by_vcffreq.png",base_width = 5,base_height = 4,
+#           plot=pfreq)
+# 
+# 
+# save
+# # d_<-dplyr::filter(d,p_lrt<0.05)
+# 
+# # d_<-d %>%
+# #   group_by(chr) %>%
+# #   dplyr::mutate(cumpos = cumsum(as.numeric(ps))) %>%
+# 
+# d_<-dplyr::filter(d,
+#                   p_lrt<0.0001)
+#   ggplot(d_ )+
+#   # geom_hex(aes(y=-log10(p_lrt),x= rowpos)) 
+#   geom_point(aes(y=-log10(p_lrt),x= rowpos, color=factor(chr))) +
+#   scale_color_manual("",values=c("grey40","grey","grey40","grey","grey40"))
+
+```
+
+merge fitness with frequency
+```{r}
+# Merge fitness with frequency
+master<-merge(freall2, d, by.x="SNP", by.y="rs")
+```
+
+All to all samples correlations, including fitness with frequency
+```{r}
+# All to all correlations
+tocorr<-dplyr::select(master, starts_with("MLFH"), starts_with("z."))
+# co<-cor(tocorr)
+cormatrix_r_p<-function (dat, columns = NULL, method = "pearson", digits = 3){
+    if (is.null(columns)) {
+        columns = colnames(dat)
+    }
+    dat <- dat[, columns]
+    dat <- apply(dat, 2, fn)
+    res <- matrix(nrow = length(columns), ncol = length(columns))
+    colnames(res) = rownames(res) = columns
+    dm = expand.grid(columns, columns)
+    dm = subset(dm, dm$Var1 != dm$Var2)
+    for (i in 1:nrow(dm)) {
+        v1 = fc(dm[i, 1])
+        v2 = fc(dm[i, 2])
+        # message(paste(v1, "<->", v2))
+        tmpdat = data.frame(v1 = fn(dat[, v1]), v2 = fn(dat[,
+            v2]))
+        tmpdat = na.omit(tmpdat)
+        if (nrow(tmpdat) < 3) {
+            message("Too many NAs")
+            res[v1, v2] <- NA
+            res[v2, v1] <- NA
+        }
+        else {
+            tmp = cor.test(method = method, fn(dat[, v1]), fn(dat[,
+                v2]))
+            res[v1, v2] <- fn(round(tmp$estimate, digits = digits))
+            res[v2, v1] <- fn(format(tmp$p.value, digits = digits))
+        }
+    }
+    return(res)
+}
+co<-cormatrix_r_p(tocorr,method = "s")
+# co_<-co
+pv<-co
+co[lower.tri(co)] <- co[upper.tri(co)] 
+pv[upper.tri(pv)] <- pv[lower.tri(pv)] 
+
+toplot<-data.frame(r=fn(co[(nrow(co)-7):nrow(co),-((nrow(co)-7):nrow(co))] ) , 
+                   p=fn(pv[(nrow(pv)-7):nrow(pv),-((nrow(pv)-7):nrow(pv))] ))
+corfitfreq<-ggplot(toplot)+
+  geom_histogram(aes(x=r, fill= p<0.001), bins=50)+
+  labs(x="Correlation fitness B/se and Delta frequency (r)")+
+  scale_fill_manual(values=transparent(c("black","grey")))
+save_plot("figs/plate123-chr5-fitness-deltaf-cor.pdf",
+          plot=corfitfreq)
+
+focalcor<-co[(nrow(co)-7):nrow(co),-((nrow(co)-7):nrow(co))] 
+apply(focalcor, 2, function(x) any(x>0.25))
+```
+
+Predictability of some sort
+```{r}
+
+# Variance across and withing
+
+summary(
+  aov(
+  formula= Dq ~ bio18 + site + plot + doy + z.mlp,
+  data=dplyr::filter(test,SNP==sample(test$SNP,1))
+  )) %>% unlist %>% matrix(ncol=5)
+
+
+# regular linear model to see joine effects of fitness (probably bad)
+mod<-lm(data=master, formula = value  ~ z.mhi +z.thi +z.mli +z.tli+ z.mhp+ z.thp+ z.mlp+ z.tlp)
+summary(mod)
+
+# Linear mixed model incorporating fitness
+library(lme4)
+mixed =  lmer(Dq ~ z.mhi +z.thi +z.mli +z.tli+ z.mhp+ z.thp+ z.mlp+ z.tlp +
+                (1 + site)+ (1 + site | year ) + (1 + site | plot ), 
+              data = test)
+summary(mixed)
+
+# Linear mixed model of repeatability
+library(lme4)
+test2<-dplyr::filter(test, year==2018)
+mixed =  lmer(Dq ~ (1 + site)+ (1 + doy ) + (1 + site | plot ), 
+              data = test2)
+summary(mixed)
+
+mixed =  lmer(Dq ~ 1 + (1 + site), 
+              data = test2)
+
+maov<- aov(Dq ~ doy + Error(site), 
+            data=test2)
+maov<- aov(Dq ~ 1 + Error(site/plot), 
+            data=test2)
+summary(maov)
+
+
+test2$doy <- fn(test2$doy)
+aov(Dq ~ 1 + doy + I(doy^2) + site/plot, 
+            data=test2) %>% summary
+
+lm(Dq ~ 1 + doy + I(doy^2) + Error(site/plot) +, 
+            data=test2) %>% summary
+
+library(randomForest)
+rfmod<-randomForest(Dq ~ 1 + doy + site + plot, 
+            data=na.omit(test2) )
+
+rfmod<-randomForest(Dq ~ 1 +z.mhi +z.thi +z.mli +z.tli+ z.mhp+ z.thp+ z.mlp+ z.tlp + doy + site + plot , 
+            data=na.omit(test2) )
+
+# mutate(ave = rowMeans(select(., starts_with("z."))))
+# 
+#   
+#   select(starts_with("MLFH01") | starts_with("z."))
+#   dplyr::mutate(site1= mean(dplyr::select(master,starts_with("MLFH01")), na.rm=T))
+#   # mutate(df, IVMean = rowMeans(select(df, starts_with("IV")), na.rm = TRUE))
+# 
+#    mutate_at(.vars = vars(colnames(master)[grepl("MLFH01", colnames(master))]),
+#              .funs = list(~ mean(.,na.rm = TRUE) ) )
+#   dplyr::mutate(meansite1=across(colnames(master)[grepl("MLFH01", colnames(master))],
+#                 ~mean(.,na.rm = TRUE))
+#   ) 
+#                 
+#   # dplyr:mutate(across(c(y, z), ~ ifelse(x, ., NA)))
+#   dplyr::mutate(avgDf= mean(colnames(master)[grepl("MLFH01", colnames(master))]) )
+# 
+# df %>%
+#    mutate(across(c(y, z), ~ ifelse(x, ., NA)))
+```
+

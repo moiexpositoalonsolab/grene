@@ -1,3 +1,4 @@
+
 library(dplyr)
 
 #### GENERAL CALCULATIONS ####
@@ -48,7 +49,7 @@ mod %>% summary()
 mod9965=mod
 plot(wei ~ seeds,pch=19) ;abline(mod)
 
-devtools::use_data(mod9965)
+devtools::use_data(mod9965, overwrite = F)
 
 ################################################################################
 ## Seeds per ecotype
@@ -57,11 +58,12 @@ ecotype.w<-read.table("data-raw/Grene-Net ecotypes\ -\ GrENE-net_final_list.tsv"
 ecotype.w= ecotype.w[-nrow(ecotype.w),] # remove the lowest row, that is the total
 
 totwei=rbind(
-ecotype.w$weight_put_on_master_mix..g. / coefficients(modcol) ,
-ecotype.w$weight_put_on_master_mix..g. / coefficients(mod9965) ,
-ecotype.w$weight_put_on_master_mix..g. / coefficients(modbur)
-) %>% apply(.,2,mean) %>% round
+            ecotype.w$weight_put_on_master_mix..g. / coefficients(modcol) ,
+            ecotype.w$weight_put_on_master_mix..g. / coefficients(mod9965) ,
+            ecotype.w$weight_put_on_master_mix..g. / coefficients(modbur)
+            ) %>% apply(.,2,mean) %>% round
 
+hist(ecotype.w$weight_put_on_master_mix..g.)
 hist(totwei)
 mean(totwei)
 sum(totwei)
@@ -69,7 +71,7 @@ sum(totwei)
 ecotype.w$estimated.number.of.seeds.in.total = totwei
 head(ecotype.w)
 
-moiR::write.tsv(file="data/Grene-Net_ecotypes_andseeds.tsv",ecotype.w)
+# moiR::write.tsv(file="data/Grene-Net_ecotypes_andseeds.tsv",ecotype.w)
 
 ################################################################################
 #### How much per epi ####
