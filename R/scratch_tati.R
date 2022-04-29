@@ -1,6 +1,6 @@
 #pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 #install.packages("reticulate")
-
+system('ls')
 ## in case you need to install a python library
 ## module load Conda/3.7
 ## conda activate grenenet_phase1
