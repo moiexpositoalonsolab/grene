@@ -3,10 +3,10 @@
 ## Date: April 25 2022
 
 ####
-## Takes data from GrENE-net_records_2017-2021 which includes sample and census datasets
-## - For samples dataset the ones preprocessed by Ru will be used (the ones send for sequencing)
+## Preprocess of GrENE-net sample and census datasets:
+## - For samples dataset the ones preprocessed by Ru will be used (the ones sent for sequencing) in https://drive.google.com/drive/folders/1Unx3cb5WYUtxUQ0ETlNO9j6dz6FsHPKt
 ## - For census datasets the ones from  GrENE-net_records_2017-2021 will be used
-## This script process samples and census data and dumps r data files to be used in the package
+## After preprocess the 2 datasets are dumps as r data files to be used in the grene package
 ###
 
 library(tidyverse)

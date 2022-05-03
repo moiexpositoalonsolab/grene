@@ -5,6 +5,13 @@ system('ls')
 ## module load Conda/3.7
 ## conda activate grenenet_phase1
 
+library(devtools)
+
+devtools::document()
+load_all()
+
+
+
 library(reticulate)
 use_virtualenv("grenenet_phase1")
 source_python("data-raw/python_scripts/list_new_data_files.py")
