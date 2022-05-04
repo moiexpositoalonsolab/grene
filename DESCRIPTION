@@ -7,7 +7,7 @@ Description: An R package with data from the GrENE-net
     GrENE-net (grene-net.org) is a globally distributed evolution experiment with Arabidopsis. In here there is information about the ecotypes, field stations, and others.
 Encoding: UTF-8
 LazyData: true
-License: GPL (>= 2)
+License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.4)
 LinkingTo: Rcpp
 RoxygenNote: 7.1.2

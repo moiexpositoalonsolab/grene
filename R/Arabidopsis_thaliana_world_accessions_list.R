@@ -1,3 +1,5 @@
+#' @param folder
+#'
 #' @export
 Arabidopsis_thalina_world_accessions_list=function(folder="data/"){
 
