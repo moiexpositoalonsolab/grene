@@ -31,7 +31,7 @@ fastqfiles_firstreleases<-unlist(fastqfiles_firstreleases)
 
 #cleaning becuase relseas contain the same files (release 5 in particular)
 files =  as.character(sapply(fastqfiles_firstreleases, function(x) strsplit(x,split = "/",fixed = T)[[1]][14]))
-nrow(table_files)
+#nrow(table_files)
 table_files<-data.frame(fastq=fastqfiles_firstreleases,files=files, stringsAsFactors = F)
 table_files = table_files %>% distinct(files, .keep_all = TRUE)
 nrow(table_files)
@@ -176,7 +176,7 @@ sub$'1'
 sub$'2'
 
 head(tableseq)
-
+dim(tableseq)
 # Store
 seqtable=tableseq
 write.table(seqtable,file = "data-raw/seqtable.csv",quote = F,col.names = T,row.names = F)
