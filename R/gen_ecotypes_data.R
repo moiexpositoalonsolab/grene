@@ -1,3 +1,4 @@
+## here, we should add theGrene-Net ecotypes - GrENE-net_final_list to actaully generate the ecotypes dataframe
 library(dplyr)
 
 ac=read.csv("data-raw/AccessionsIDs.csv",fill = T,header=T)
