@@ -2,62 +2,47 @@
 ## Author: Tati
 ## Date: April 25 2022
 
+##### this should b deleted soon
+# cleandates will be used so we need functions from grene
+#load_all()
+cleandates<-function(mydate){
+  newdate<-paste0(substr(mydate,1,4), "-",
+                  substr(mydate,5,6), "-",
+                  substr(mydate,7,8)
+  )
+  return(as.Date(newdate))
+}
+###############################
+
 ####
-## Preprocess of GrENE-net sample and census datasets:
-## - For samples dataset the ones preprocessed by Ru will be used (the ones sent for sequencing) in https://drive.google.com/drive/folders/1Unx3cb5WYUtxUQ0ETlNO9j6dz6FsHPKt
-## - For census datasets the ones from  GrENE-net_records_2017-2021 will be used
-## After preprocess the 2 datasets are dumps as r data files to be used in the grene package
+## Preprocess of GrENE-net samples sent for sequencing (the ones preprocessed by Ru will be used) in https://drive.google.com/drive/folders/1Unx3cb5WYUtxUQ0ETlNO9j6dz6FsHPKt
 ###
 
 library(tidyverse)
 library(readxl)
-# cleandates will be used so we need functions from grene
-load_all()
 
-# Load census spreadsheets
-# import census sheets ######################
+# Load sample dataset
+samples = read_csv("data-raw/samples_sorted.csv")
+samples
 
-filename = "data-raw/census_samples.xlsx"
-sheets <- openxlsx::getSheetNames(filename)
-
-census_sheets = sheets %>%
-  str_subset(pattern = "Census*")
-
-sheetlist_census <- lapply(census_sheets,readxl::read_excel,path=filename,
-                           col_types = c("guess", "guess", "text", "guess", "text","text", "text","text", "text","guess", "guess"))
-
-names(sheetlist_census) <- census_sheets
-census = bind_rows(sheetlist_census, .id = "column_label")
-
-#census <-  census %>%
-#           dplyr::mutate(
-#                         D=cleandates(DATE)) # to make it R understandable
-
-write.table(census,file = "data/census.tsv",quote = F,col.names = T,row.names = F)
-usethis::use_data(census,overwrite = T)
-
-
-################################################################################
-##### Load sorted flower records by RU ####
-samples_sorted = read_csv("data-raw/samples_sorted.csv")
-samples_sorted
-
-# create sample id including formatting dicussed as  MLFH-01-01-20180518-01
-samples_sorted <-  samples_sorted %>%
+# create sample id and select relevant columns
+samples <-  samples %>%
   filter(is.na(TO_SKIP)) %>%
   dplyr::mutate(
-     SAMPLE_ID=paste('ML',SAMPLE_ID, '-01', sep=''), # add ML (moi lab) and 01 based on seq or reseq
+     SAMPLE_ID=paste('ML',SAMPLE_ID, '01', sep=''), # add ML (moi lab) and 01 based on seq or reseq
+     SAMPLE_ID=str_remove_all(SAMPLE_ID, "-"),
      DATE=cleandates(DATE), # to make it R understandable
-   )
-
-# Add day of year
-samples_sorted <- samples_sorted %>%
-  dplyr::mutate(year=substr(DATE,start = 1,4)) %>%
-  dplyr::mutate(startyear=as.Date(paste0(year,"0101"),format="%Y%m%d")) %>%
-  dplyr::mutate(doy= as.numeric(D- startyear))
+     ) %>%
+  dplyr::rename('sampleid'='SAMPLE_ID',
+                'code'='CODES',
+                'site'='SITE',
+                'plot'='PLOT',
+                'date'='DATE',
+                'flowerscollected'='NUMBER_FLOWERS_COLLECTED') %>%
+  dplyr::select(sampleid, code, site, plot, date, flowerscollected)
 
 # Write out
-write.table(census,file = "data/recordssorted",quote = F,col.names = T,row.names = F)
+write.table(census,file = "data/samples.csv",quote = T,col.names = T,row.names = F)
 usethis::use_data(recordssorted,overwrite = T)
 
 
