@@ -1,5 +1,5 @@
 1001genomes-accessions.csv
-GrENE-sites_info-CuratedParticipants.csv
+GrENE-sites_info-CuratedParticipants.csv --> locations_dataraw.csv
 AccessionsIDs.csv
 census_samples.xlsx --> census_dataraw.xlsx
 country_ISO_codes.tsv
