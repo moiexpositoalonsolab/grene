@@ -42,7 +42,8 @@ samples <-  samples %>%
   dplyr::select(sampleid, code, site, plot, date, flowerscollected)
 
 # Write out
-write.table(census,file = "data/samples_test.csv",quote = T,col.names = T,row.names = F)
+write.csv(samples,"data/samples_test.csv", row.names = FALSE, quote = T)
+#write.table(samples,file = "data/samples_test.csv",quote = T,col.names = T,row.names = F)
 #usethis::use_data(recordssorted,overwrite = T)
 
 

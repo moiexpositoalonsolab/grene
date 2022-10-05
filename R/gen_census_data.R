@@ -62,7 +62,8 @@ census
 
 ## creating a sampleid that matches the censusid
 
-write.table(census,file = "data/census_test.csv",quote = T,col.names = T,row.names = F)
+#write.table(census,file = "data/census_test.csv",quote = T,col.names = T,row.names = F)
+write.csv(census,"data/census_test.csv", row.names = FALSE, quote = T)
 #usethis::use_data(census,overwrite = T)
 
 
