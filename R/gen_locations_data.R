@@ -6,9 +6,12 @@
 ## Take table sitesinfo, remove the sites that haven't been reported or started, rename columns
 ## Include a field for the sites with no success
 ## Dump sitesinfo (filtered), sites_not_reported_or_started and sites_with_no_success in /data
-# install.packages('lutz')
+# add in information newly confirmed in Oct 2022
 gen_locations_data <- function() {
     options(stringsAsFactors = FALSE)
+    source('R/download_altitude.R') # these needs to be removed
+    source('R/timezone_lookup.R')
+    source('R/use_grene_data.R')
     require(dplyr)
     #######################################################################
     # define a function for locations data
@@ -46,6 +49,7 @@ gen_locations_data <- function() {
     locations_data <- locations_raw %>%
         dplyr::filter(!(SITE_CODE %in% locations_noreport_nostart$SITE_CODE)) %>%
         dplyr::mutate(survivalyear = ifelse(SITE_CODE %in% locations_nosuccess$SITE_CODE, 0, NA))
+
     #######################################################################
     # format for the output locations data
     locations_data <- locations_data %>%
@@ -53,6 +57,17 @@ gen_locations_data <- function() {
                       LATITUDE,ALTITUDE,TIME_ZONE,survivalyear)
     # get new colnames
     colnames(locations_data) <- outcols
+
+    #######################################################################
+    # Add new info
+    # site3
+    site3data = data.frame(list(3,'Robert I. Colautti','yes','QUBS (Queen’s University Biological Station)',-76.326395,
+                                44.568512,'129','Eastern EST', 1))
+    colnames(site3data) = colnames(locations_data)
+    locations_data = rbind(locations_data, site3data)
+    # site24
+    locations_data[locations_data$site==24,c('longitude','latitude')] = c(12.261756, 47.470432)
+
     #######################################################################
     # format experimentstartdate
     locations_data$experimentstartdate <- date_fixer(locations_data$experimentstartdate)
@@ -64,7 +79,7 @@ gen_locations_data <- function() {
     # cleanup raw data altitude that was provided
     altitude_clean <- c("52","329","709","164","1600","1900","1400","450",
                         "477","381","198","20","60","651","68","118",
-                        "90","37","750","10","0","2100")
+                        "90","37","750","10","0","2100","129")
     locations_data[locations_data$altitude != "", 'altitude'] <- altitude_clean
     locations_data$altitude_new <- altitude_new
     locations_data = locations_data %>%
@@ -72,6 +87,7 @@ gen_locations_data <- function() {
         dplyr::mutate(altitude_out = ifelse(is.na(altitude),altitude_new, altitude))
     # check the match between older elevation data and this new one
     locations_data[!is.na(locations_data$altitude),c('site','altitude','altitude_new','altitude_out')]
+
     #######################################################################
     # format timezone
     timezone_new <- timezone_lookup(latitude = locations_data$latitude,
@@ -82,7 +98,8 @@ gen_locations_data <- function() {
     locations_data = locations_data %>%
         dplyr::select(-timezone, -altitude, -altitude_new) %>%
         dplyr::rename(altitude = altitude_out, timezone = timezone_new) # new_name = old_name
-    locations_data = locations_data[,outcols]
+    locations_data = locations_data[,outcols] %>%
+        dplyr::arrange(site)
     print(str(locations_data))
     use_grene_data(locations_data)
     return(invisible())
