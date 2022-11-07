@@ -1,7 +1,7 @@
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
-creds = Credentials.from_authorized_user_file('data-raw/python_scripts/token.json', SCOPES)
+creds = Credentials.from_authorized_user_file('token.json', SCOPES)
 
 service = build('drive', 'v3', credentials=creds)
 
@@ -17,6 +17,6 @@ for item in filtered:
     print(u'{0}'.format(item['name']))
 
 import json
-with open('data-raw/python_scripts/files_to_download.txt', 'w') as fout:
+with open('files_to_download.txt', 'w') as fout:
     json.dump(filtered, fout)
 

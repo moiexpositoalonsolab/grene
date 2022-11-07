@@ -45,5 +45,11 @@ cnames = c("ecotypeid", "longitude", "latitude", 'csnumber', 'name', 'country' ,
 names(our_acc) = cnames
 
 #save dataset ecotypes
-write.csv(our_acc,"data/ecotypes_data.csv", row.names = FALSE, quote = T)
+
+################
+source('R/use_grene_data.R')
+################
+ecotypes_data = our_acc
+use_grene_data(ecotypes_data)
+#write.csv(our_acc,"data/ecotypes_data.csv", row.names = FALSE, quote = T)
 
