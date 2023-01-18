@@ -23,3 +23,6 @@ TODELETE/
 logs/
 srtm/
 data/alleles.clim.rds
+**/ARCHIVE/
+data/ARCHIVE/
+data-raw/ARCHIVE/
