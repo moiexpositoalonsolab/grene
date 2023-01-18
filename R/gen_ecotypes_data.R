@@ -18,7 +18,6 @@ iso_codes=read.csv("data-raw/country_isocodes.csv",fill = T,header=T)
 
 # bring info from 1001g
 our_acc = merge(our_acc, g1001_acc[c("id", "Lat", "Long", 'CS.Number')], all.x = TRUE, by.x = 'ecotypeid', by.y = 'id')
-names(g1001_acc)
 
 # some accessions did not come from the 1001g project
 missing_acc = subset(our_acc, is.na(our_acc$Lat))$ecotypeid
@@ -30,6 +29,12 @@ our_acc = merge(our_acc, arapheno_acc[c('pk', 'latitude','longitude')], all.x = 
 # replace missing lat and long
 our_acc$Lat[is.na(our_acc$Lat)] <- our_acc$latitude[is.na(our_acc$Lat)]
 our_acc$Long[is.na(our_acc$Long)] <- our_acc$longitude[is.na(our_acc$Long)]
+
+# correct the 2 israeli accessions that are not in arapheno
+our_acc[our_acc$ecotypeid == 100001, "Long"]  = 35.797398
+our_acc[our_acc$ecotypeid == 100001, "Lat"]  = 33.093931
+our_acc[our_acc$ecotypeid == 100002, "Long"]  = 35.788213
+our_acc[our_acc$ecotypeid == 100002, "Lat"]  = 33.176177
 
 # use isocodes to get actual country names
 our_acc = merge(our_acc, iso_codes, all.x = TRUE, by.x = 'country', by.y = 'code')

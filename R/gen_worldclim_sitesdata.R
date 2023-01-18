@@ -1,115 +1,76 @@
-# devtools::load_all(".")
-# library(ggplot2)
-# library(cowplot)
-# library(moiR)
-# library(plyr)
-# library(dplyr)
-# library(raster)
+# Title: generate worldclim data by location_data
+# Author: Meixi Lin
+# Adapted from Moi's previous script
+# Date: Wed Nov 16 13:37:45 2022
 
-# devtools::install_github("MoisesExpositoAlonso/moiR")
+gen_worldclim_sitesdata <- function() {
+    print(date())
+    rm(list = ls())
+    options(echo = TRUE, stringsAsFactors = FALSE)
+    source('R/extract_worldclim.R') # these needs to be removed
+    source('R/use_grene_data.R')
 
-################################################################################
-#### accessions ####
-load("data/ecotypes.rda")
-load("data/sitesinfo.rda")
+    require(dplyr)
+    require(stringr)
 
-################################################################################
-### Get climate data
+    #######################################################################
+    # define variables
+    # variables
+    wc_vars = c('bio','tmin','tmax', 'tavg', 'prec', 'srad', 'wind', 'vapr')
 
-# refresh=T
-# fut=raster::getData(name ="CMIP5" ,res="2.5",path="~",var="bio",model="MP",rcp=85,year=50, download = refresh) # MP for Max Planck
-# pres=raster::getData(name ="worldclim" ,res="2.5",path=".",var="bio",download = refresh)
-library(raster)
-bionow<-getData('worldclim', var='bio', res=2.5,path='~/natvar')
-precnow<-getData('worldclim', var='prec', res=2.5,path='~/natvar')
-minnow<-getData('worldclim', var='tmin', res=2.5,path='~/natvar')
-maxnow<-getData('worldclim', var='tmax', res=2.5,path='~/natvar')
-# pet<-stack(filename = paste0('~/natvarpet/','petworld.gri'),path='~/natvar')
+    #######################################################################
+    # small function to rename the header
+    new_colnames <- function(oldname,
+                             myvar = c('bio','tmin','tmax', 'tavg', 'prec', 'srad', 'wind', 'vapr')) {
+        out = reshape2::colsplit(oldname, pattern = '_', names = c('ver','res','var', 'sub')) %>%
+            dplyr::mutate(sub0 = as.integer(sub)) %>%
+            dplyr::arrange(sub0)
+        if (myvar == 'bio') {
+            out = out %>%
+                dplyr::mutate(out = paste0(var, sub))
+        } else {
+            out = out %>%
+                dplyr::mutate(out = paste0(var, stringr::str_pad(sub, width = 2, side = 'left', pad = '0')))
+        }
+        return(out$out)
+    }
 
-### Create coordinates
-coords=
-  rbind(
-  ecotypes[,c("LONGITUDE","LATITUDE")],
-  sitesinfo[,c("LONGITUDE","LATITUDE")]
-  )
-Locations=coords
+    #######################################################################
+    # load data
+    load('data/locations_data.rda')
+    longlat = locations_data[,c('longitude','latitude')]
+    rownames(longlat) = locations_data$site
 
-### Extract info
-biom<-raster::extract(bionow,Locations)
-precm<-raster::extract(precnow,Locations)
-minm<-raster::extract(minnow,Locations)
-maxm<-raster::extract(maxnow,Locations)
-# petm<-raster::extract(pet,Locations)
-climext<-list(biom,precm,minm,maxm)
-climext<-do.call(cbind,climext)
+    #######################################################################
+    # extract worldclim
+    wc_dtlist0 = lapply(wc_vars, extract_worldclim, longlat = longlat)
+    names(wc_dtlist0) = wc_vars
+    wc_dtlist = lapply(wc_vars, function(xx) {
+        wcdt = wc_dtlist0[[xx]]
+        oldname = dimnames(wcdt)[[2]]
+        newname = new_colnames(oldname, myvar = xx)
+        dimnames(wcdt)[[2]] = newname
+        wcdt = data.frame(wcdt, row.names = NULL) # drops dimnames[[1]]
+        return(wcdt)
+    })
+    worldclim_sitesdata = dplyr::bind_cols(wc_dtlist) %>%
+        dplyr::mutate(site = as.integer(dimnames(wc_dtlist0[[1]])[[1]])) %>% # append the dimnames for sanity check
+        dplyr::relocate(., site)
+    # sanity check that the site names is the same as locations data
+    if (!all.equal(worldclim_sitesdata$site, locations_data$site)) {
+        stop('Mismatched sites')
+    }
+    use_grene_data(worldclim_sitesdata)
+    print(date())
+    return(invisible())
+}
 
-
-### join with site information and ecotype information
-ecotypes.clim<- cbind(ecotypes,climext[1:nrow(ecotypes),])
-sites.clim<- cbind(sitesinfo,climext[-c(1:nrow(ecotypes)),])
-
-### Save in data/
-write.table(ecotypes.clim,file = "data/ecotypes.clim.tsv",quote = F,col.names = T,row.names = F)
-usethis::use_data(ecotypes.clim,overwrite = T)
-
-write.table(sites.clim,file = "data/sites.clim.tsv",quote = F,col.names = T,row.names = F)
-usethis::use_data(sites.clim,overwrite = T)
-
-
-
-
-
-
-
+# sink(file = './logs/gen_worldclim_sitesdata.log')
+# gen_worldclim_sitesdata()
+# sink()
 
 
 
 
-# ################################################################################
-# #### The locations ####
-# # grenestations=read.table("data-raw/Sites_info - Participants.tsv",header=TRUE,fill=TRUE,sep="\t")
-# grenestations=read.table("data-raw/GrENE-sites_info - Participants_TOGOOGLE.tsv",header=TRUE,fill=TRUE,sep="\t")
-# head(grenestations)
-#
-# climstation=
-#   sapply(1:19, function(b){
-#   raster::extract(pres[[b]],grenestations[,c("LONGITUDE","LATITUDE")])
-# })
-# colnames(climstation)<-names(pres)
-#
-# grenestations.clim <- cbind(grenestations,climstation)
-#
-#
-# #### plot clima ####
-# # grenerange=ggplot()+
-# #   geom_point(data=grenelist.clim, aes(y=bio1, x=bio12)) +
-# #   geom_point(data=grenestations.clim, aes(y=bio1, x=bio12), size=4, shape=1, col="red") +
-# #   ylab("Mean Annual Temperature (ºC x 10)")+ xlab("Mean Annual precipitation (mm)")
-# # grenerange
-#
-# save_plot(file="figs/grene_climate.pdf",plot = grenerange,base_height = 7, base_width = 7)
-#
-#
-# #### plot geo ####
-#
-# grenelist$longitude = as.numeric(grenelist$longitude)
-# grenelist$latitude = as.numeric(grenelist$latitude)
-# grenestations$LONGITUDE<-moiR::fn(grenestations$LONGITUDE)
-# grenestations$LATITUDE<-moiR::fn(grenestations$LATITUDE)
-#
-#
-# p<-ggplot_world_map()
-# p<-ggplot_world_map(projection="ortho")
-# p<-p+ geom_point(data=grenelist, aes(y=grenelist$latitude, x=grenelist$longitude),size=1, shape=1)
-# p<-p+ geom_point(data=grenestations,aes(y=LATITUDE, x=LONGITUDE),size=3, shape=16, col="green4")
-# p
-#
-# save_plot(file="figs/grene_map.pdf",plot = p,base_height = 8, base_width = 12)
-# save_plot(file="figs/grene_map-ortho.pdf",plot = p,base_height = 8, base_width = 12)
-#
-# #### combined ####
-#
-# ppanel=plot_grid(p,grenerange,ncol=1)
-# ppanel
-#
-# save_plot(file="figs/grene_map_climate.pdf",plot = ppanel,base_height = 8, base_width = 6)
+
+

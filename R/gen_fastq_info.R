@@ -1,183 +1,169 @@
 # Create a master table from all the GrENE net releases in SRA
-# author Moi+Tati
-# date Mar 30 2021
+# author Moi+Tati+Meixi
+# date Thu Sep 22 15:18:55 2022
 
-library(dplyr)
-########
-## Because the seq company was changed, there are two types of files:
-## - From release 01-08: release folders will have a folder inside (raw_data) where the files are named
-## with the sample_id provided by us
-## - From release 09-on: release folder will have folders with the files names with codes assigned by
-## the company and a key folder that will relate their keys with ou sample_ids
-########
-# Find releasess
-releases<- list.files("/Carnegie/DPB/Data/Shared/Labs/Moi/Everyone/SRA/grenenet-phase1", pattern = "ath-release",full.names = T)
-releases
+gen_fastq_info <- function() {
+  options(stringsAsFactors = FALSE)
+  require(dplyr)
+  source('./R/use_grene_data.R')
+  #######################################################################
+  # define functions
+  # fix sampleid
+  fix_sampleid <- function(x) {
+    y = strsplit(x,'_')[[1]]
+    out = ifelse(length(y) == 1, y,
+                 ifelse(length(y) == 3,paste0(y[1], sprintf("%02d", as.integer(y[2])), y[3]),
+                        ifelse(length(y) == 4, paste0(y[1], sprintf("%02d", as.integer(y[2])), sprintf("%02d", as.integer(y[3])), y[4]),
+                               NA_character_)))
+    return(out)
+  }
+  fix_sampleid <- base::Vectorize(fix_sampleid)
+  # srafolder == fullpath
+  outcols = c('r1filename','r2filename','sampleid','r1srafolder','r2srafolder','unit','platform','datereleased')
 
-### only select releases 01 to 08
-pattern = paste(sprintf(paste("ath-release-0",seq(1:8), sep=''),seq(1:8)), collapse="|")
-first_releases = releases[stringr::str_detect(releases,pattern)]
+  #######################################################################
+  # Find releases
+  ########
+  ## Because the seq company was changed, there are two types of files:
+  ## - From release 01-08: release folders will have a folder inside (raw_data) where the files are named
+  ## with the sample_id provided by us
+  ## - From release 09-on: release folder will have folders with the files names with codes assigned by
+  ## the company and a key folder that will relate their keys with our sample_ids
+  ## - release 10 need to be skipped. Not for main grene-net analyses
+  ########
+  releases<- list.files("/Carnegie/DPB/Data/Shared/Labs/Moi/Everyone/SRA/grenenet-phase1", pattern = "ath-release",full.names = T)
+  releases
 
-# Find fastq files under each release
-fastqfiles_firstreleases <-lapply(first_releases, function(x) {
-        tmp<-list.files(x, pattern = "*.fq.gz",recursive = T,full.names = T)
-        tmp<-tmp[!grepl("Undeter",tmp)]
-        tmp<-tmp[!grepl("CYCLE",tmp)]
-        #tmp<-tmp[!grepl("_2.fq",tmp)] # Do not report the read two, as everything would be duplicated
-        tmp<-tmp[grepl("MLFH",tmp)] # This is our golden code of libraries produced in grene net by Moi Lab ML
-})
+  #######################################################################
+  # Releases 01 to 08
+  first_releases = releases[1:8]
 
-fastqfiles_firstreleases<-unlist(fastqfiles_firstreleases)
+  # Find fastq files under each release
+  fastqfiles_firstreleases <- lapply(first_releases, function(x) {
+    tmp <- list.files(x, pattern = ".fq.gz",recursive = T,full.names = T)
+    # This is our golden code of libraries produced in grene net by Moi Lab ML
+    out <- tmp[grepl('MLFH', tmp)]
+    # # print the removed files
+    # print(paste0('Release ',x, 'Fastq files not considered'))
+    # print(setdiff(tmp,out))
+    return(out)
+  })
+  lapply(fastqfiles_firstreleases, length)
+  fastqfiles_firstreleases <- unlist(fastqfiles_firstreleases)
 
-#cleaning becuase relseas contain the same files (release 5 in particular)
-files =  as.character(sapply(fastqfiles_firstreleases, function(x) strsplit(x,split = "/",fixed = T)[[1]][14]))
-#nrow(table_files)
-table_files<-data.frame(fastq=fastqfiles_firstreleases,files=files, stringsAsFactors = F)
-table_files = table_files %>% distinct(files, .keep_all = TRUE)
-nrow(table_files)
+  # form a data frame
+  filesdt1 <- sapply(fastqfiles_firstreleases, function(x) strsplit(x,split = "/",fixed = T)[[1]][c(11,13,14)]) %>%
+    t() %>%
+    as.data.frame(stringsAsFactors = FALSE) %>%
+    tibble::rownames_to_column(var = 'fullpath')
+  colnames(filesdt1) = c('fullpath','datereleased', 'sampleid', 'filename')
+  filesdt1 = filesdt1 %>%
+    dplyr::mutate(fileprefix = substring(filename,1, nchar(filename)-8)) %>%
+    dplyr::mutate(direction = ifelse(grepl('_1.fq.gz',filename), 'R1','R2'))
+  length(unique(filesdt1$sampleid)) # 1502
 
+  #######################################################################
+  # Releases 09 and 11
+  #####
+  # MLFH570120190821 had two sequences: 21093FL-02-02-03 and 21093FL-02-02-08
+  # There is one file called "21093FL-02-04-32_S320_L004_R1_001_broken.fastq.gz"
+  # all other files were correctly formatted
+  #####
+  second_releases = releases[c(9,10)]
+  second_releases
 
-fastqfiles_firstreleases = table_files$fastq
-# Clean names for table
-#cleanfq<- as.character(sapply(fastqfiles_firstreleases, function(x) tail(strsplit(x,split = "/",fixed = T)[[1]],1)))
+  ## find the keys
+  key_files = list.files(second_releases, pattern = "*Key.csv",recursive = T,full.names = T)
+  ## read the keys and make one dataframe of them
+  keys <- lapply(key_files, function(x) {
+    y = read.csv(x)
+    colnames(y) = c('seqid','sampleid')
+    return(y)
+  })
+  keys <- dplyr::bind_rows(keys) # 914 rows
+  keys$sampleid[duplicated(keys$sampleid)] # MLFH570120190821
 
-#cleanfq
-sampleid = as.character(sapply(fastqfiles_firstreleases, function(x) head(tail(strsplit(x,split = "/",fixed = T)[[1]],2),1)))
-file_for_seqcer = as.character(sapply(fastqfiles_firstreleases, function(x) strsplit(x,split = "/",fixed = T)[[1]][13]))
+  ## find the fastqfiles
+  fastqfiles_secondreleases <-lapply(second_releases, function(x) {
+    tmp <- list.files(x, pattern = ".fastq.gz",recursive = TRUE,full.names = TRUE)
+  })
+  fastqfiles_secondreleases <- unlist(fastqfiles_secondreleases)
 
-#cleanrelease<- as.character(sapply(fastqfiles, function(x) head(tail(strsplit(x,split = "/",fixed = T)[[1]],4),1)))
+  # form a data frame
+  filesdt2 <- sapply(fastqfiles_secondreleases, function(x) strsplit(x,split = "/",fixed = T)[[1]][c(11,13)]) %>%
+    t() %>%
+    as.data.frame(stringsAsFactors = FALSE) %>%
+    tibble::rownames_to_column(var = 'fullpath')
+  colnames(filesdt2) = c('fullpath','datereleased', 'filename')
+  filesdt2$seqid = unname(sapply(filesdt2$filename, function(x) strsplit(x, '_')[[1]][1]))
+  filesdt2 <- filesdt2 %>%
+    dplyr::left_join(., y = keys, by = 'seqid') %>%
+    dplyr::select(fullpath, datereleased, filename, sampleid)
+  length(unique(filesdt2$sampleid)) # 913
+  filesdt2 = filesdt2 %>%
+    dplyr::mutate(fileprefix = substring(filename,1, nchar(filename)-16)) %>%
+    dplyr::mutate(direction = ifelse(grepl('_R1_001.fastq.gz',filename), 'R1','R2'))
 
-# Build table, providing some useful columns
-tableseq<-data.frame(fastq=fastqfiles_firstreleases,sample_id=sampleid, file_for_seqcer = file_for_seqcer, stringsAsFactors = F)
+  #######################################################################
+  # Format sampleid
+  filesdt <- dplyr::bind_rows(filesdt1,filesdt2) %>%
+    dplyr::mutate(sampleid = fix_sampleid(sampleid)) %>%
+    dplyr::arrange(sampleid, datereleased)
+  length(unique(filesdt$sampleid))
+  # 2415 = 913 + 1502 (no duplicates cross comparing releases 01-08 vs 09,11)
 
+  #######################################################################
+  # Cleanup duplicated releases and bad files
+  ########
+  ## For release-02 and 05, 376 exact-same fastq (md5sum identical) in release-02 were duplicated in release-05
+  ## Remove duplicated fastq files in release-05 to avoid duplicated processing
+  ########
+  duplicated_release05 <- filesdt$fullpath[filesdt$filename %in% filesdt$filename[duplicated(filesdt$filename)]]
+  duplicated_release05 <- duplicated_release05[grepl('release-05', duplicated_release05)]
 
+  # remove the duplicated_release05 files
+  filesdt_dedup <- filesdt %>%
+    dplyr::filter(!(fullpath %in% duplicated_release05)) %>%
+    dplyr::filter(filename != '21093FL-02-04-32_S320_L004_R1_001_broken.fastq.gz') # 5400
 
-tableseq
-### there are >10 special cases where the samples were sent twice to seq and they have an A or B at the end
-### only if they have a B is a second unit so will be named like that, in any opther case is the first unit
-tableseq = tableseq %>%
-  mutate(special_replicate = if_else(str_detect(sample_id, 'B'), 'B', '')) %>%
-  mutate(special_replicate = if_else(str_detect(sample_id, 'A'), 'A', '')) %>%
-  mutate(sample_id = str_remove_all(sample_id, 'A|B'))
+  #######################################################################
+  # Format for the output fastq_info data
+  fastq_info_base = filesdt_dedup[,c('fileprefix','datereleased','sampleid')] %>%
+    dplyr::distinct()
+  fastq_info <- data.table::dcast.data.table(data = data.table::setDT(filesdt_dedup),
+                                             formula = fileprefix ~ direction,
+                                             value.var = c('filename', 'fullpath')) %>%
+    as.data.frame() %>%
+    dplyr::left_join(., y = fastq_info_base, by = 'fileprefix') %>%
+    dplyr::arrange(sampleid, datereleased)
 
-tableseq = tableseq %>%
-  mutate(date_released = substr(sample_id, nchar(sample_id)-8+1, nchar(sample_id))) %>% ## create separete column for date
-  mutate(test = str_remove_all(sample_id,paste(c(date_released), collapse = '|'))) %>% ## remove dates
-  mutate(test = str_remove_all(test,'MLFH')) %>% ## remove general code
-  mutate(read = as.numeric(substr(fastq, nchar(fastq)-7+1, nchar(fastq)-6))) #left or right read
+  # generate unit for grenepipe input (for each )
+  fastq_info_split <- base::split(fastq_info, fastq_info$sampleid)
+  fastq_info_unit <- unlist(lapply(fastq_info_split, function(xx) {
+    yy = seq(1,nrow(xx))
+  }))
+  fastq_info$unit = fastq_info_unit
+  table(fastq_info$unit,useNA = 'always')
+  # 285 samples were sequenced twice, no sample sequenced three times
+  fastq_info$platform = 'ILLUMINA'
 
-## this set of samples, the site and plot is separeted by _ so will be treated separetly
-tableseq1 = tableseq %>%
-  filter(str_detect(test, '_')) %>%
-  mutate(site = as.numeric(str_remove_all(substr(test, 1, 2), '_')))  %>%
-  mutate(plot = as.numeric(str_remove_all(substr(test, nchar(test)-2+1, nchar(test)), '_')))
+  # clean up with output
+  fastq_info = fastq_info[,c('filename_R1','filename_R2','sampleid','fullpath_R1','fullpath_R2','unit','platform','datereleased')]
+  colnames(fastq_info) = outcols
 
-## this set of samples, the site and plot is not separeted by _ and there are leading 0 in the values so will ve treated sep
-tableseq[is.na(tableseq)]
-tableseq2 = tableseq %>%
-  filter(!str_detect(test, '_'))  %>%
-  mutate(site = as.numeric(substr(test, 1, 2))) %>%
-  mutate(plot = as.numeric(substr(test, nchar(test)-2+1, nchar(test))))
+  #######################################################################
+  # Output files
+  use_grene_data(fastq_info)
+  # output one file that conforms to grenepipe data format
+  fastq_grenepipe = fastq_info[,c('sampleid','unit','platform','r1srafolder','r2srafolder')]
+  colnames(fastq_grenepipe) = c('sample','unit','platform','fq1','fq2')
 
+  write.table(fastq_grenepipe, file = './data/fastq_grenepipe.tsv', quote = FALSE, sep = '\t', row.names = FALSE)
 
+  return(invisible())
+}
 
-tableseq1 = rbind(tableseq1, tableseq2)
-
-## drop intermediate columns
-tableseq1$sample_id_test = NULL
-tableseq1$test = NULL
-
-tableseq1 = tableseq1 %>%
-  mutate(sample_id = paste0('MLFH', sprintf("%02d", site), sprintf("%02d", plot), date_released, special_replicate))
-
-##########################################################
-## releases 09 on
-### only select releases 01 to 08
-second_releases = releases[!stringr::str_detect(releases,pattern)]
-second_releases
-
-##find the keys
-key_files = list.files(second_releases, pattern = "*Key.csv",recursive = T,full.names = T)
-## read the keys and make one dataframe of them
-keys <-lapply(key_files, function(x) {read_csv(x)})
-keys = bind_rows(keys)
-
-## fint he fastqfiles
-fastqfiles_secondreleases <-lapply(second_releases, function(x) {
-  tmp<-list.files(x, pattern = "*.fastq.gz",recursive = T,full.names = T)
-})
-
-fastqfiles_secondreleases<-unlist(fastqfiles_secondreleases)
-
-#21093FL-01-01-01
-example= "/Carnegie/DPB/Data/Shared/Labs/Moi/Everyone/SRA/grenenet-phase1/2021-12-06-ath-release-11/21093-02/21093FL-02-01-28_S28_L001_R2_001.fastq.gz"
-strsplit(example,split = "/",fixed = T)[[1]]
-strsplit(strsplit(example,split = "/",fixed = T)[[1]][13],split = "_",fixed = T)[[1]][4][1]
-
-file_for_seqcer = as.character(sapply(fastqfiles_secondreleases, function(x) strsplit(strsplit(x,split = "/",fixed = T)[[1]][13],split = "_",fixed = T)[[1]][1]))
-read = as.numeric(sapply(fastqfiles_secondreleases, function(x) str_replace(strsplit(strsplit(x,split = "/",fixed = T)[[1]][13],split = "_",fixed = T)[[1]][4], 'R', '')))
-
-# Build table, providing some useful columns
-tableseq2 = data.frame(fastq=fastqfiles_secondreleases,sample_id=file_for_seqcer, read= read, file_for_seqcer=file_for_seqcer, stringsAsFactors = F)
-names(tableseq2)
-## drop duplciated files (generated by the way seq were sent)
-tableseq2 = merge(tableseq2, keys, by.x = "file_for_seqcer",
-      by.y = "Admera Health Library ID", all.x = TRUE, all.y = FALSE)
-
-
-names(tableseq2)
-names(tableseq2)
-names(tableseq2)[5]= 'sample_id'
-head(tableseq1)
-head(tableseq2)
-names(tableseq2)
-names(tableseq1)
-
-## bind all reads
-tableseq <- rbind(tableseq1[ , c("sample_id", "fastq", "file_for_seqcer", "read")], tableseq2[, c("sample_id", "fastq","file_for_seqcer", "read")])
-head(tableseq)
-
-tableseq = tableseq %>%
-  mutate(file_for_seqcer = paste0(file_for_seqcer, sprintf("%02d", read)))
-
-## some samples might be reseq so they might be present in one release and the in other release
-head(tableseq)
-tableseq = tableseq %>%
-  group_by(file_for_seqcer) %>%
-  mutate(unit = as.integer(paste0(row_number())))
-
-#for adding the reseq in the sampleid
-#tableseq
-#tableseq = tableseq %>%
-#  mutate(sample_id = paste0(sample_id, sprintf("%02d", resequenced)))
-
-tableseq$file_for_seqcer = NULL
-head(tableseq)
-result = pivot_wider(tableseq, names_from = read, values_from = fastq)
-result
-
-hola = result %>% filter(unit == 3)
-hola
-nrow(tableseq)
+gen_fastq_info()
 
 
-hola = c("/Carnegie/DPB/Data/Shared/Labs/Moi/Everyone/SRA/grenenet-phase1/2021-01-29-ath-release-01/raw_data/MLFH_1_1_20180409/MLFH_1_1_20180409_CKDL210000711-1a-AK11638-AK9050_HFLJFCCX2_L6_1.fq.gz", "/Carnegie/DPB/Data/Shared/Labs/Moi/Everyone/SRA/grenenet-phase1/2021-02-18-ath-release-03/raw_data/MLFH_1_1_20180409/MLFH_1_1_20180409_CKDL210000711-1a-AK11638-AK9050_HFLHHCCX2_L2_1.fq.gz")
-hola[1]
-hola[2]
-table(tableseq1$fastq)
-n_occur <- data.frame(table(tableseq1$fastq))
-n_occur
-n_occur[n_occur$Freq > 1,]
-MLFH570120181003
 
-sub = result %>% filter(sample_id == 'MLFH570120181003')
-sub
-sub$'1'
-sub$'2'
-
-head(tableseq)
-dim(tableseq)
-# Store
-seqtable=tableseq
-write.table(seqtable,file = "data-raw/seqtable.csv",quote = F,col.names = T,row.names = F)
-#usethis::use_data(seqtable,overwrite = T)

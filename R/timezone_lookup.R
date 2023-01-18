@@ -1,4 +1,4 @@
-timezone_lookup <- function(latitude, longitude) {
+timezone_lookup <- function(longitude, latitude) {
     require(lutz)
     require(dplyr)
     tzdt = lutz::tz_list()

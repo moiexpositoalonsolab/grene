@@ -40,17 +40,33 @@ for file in tempr:
         ibutton['value'] = (ibutton['value']-32) * 5/9
         ibutton['unit'] = 'C'
     ibutton['name'] = file.replace('.csv', '').replace('tempr', '')
+    
+    #ibutton['datetime_right'] = pd.to_datetime(ibutton['datetime'])
     ibutton['datetime_right'] = np.nan
-    for eachformat in possible_formats_temp: 
+    #for eachformat in possible_formats_temp: 
+    #    ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format=eachformat, errors="coerce"))
+    
+    for eachformat in possible_formats_temp:
         ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format=eachformat, errors="coerce"))
+        if ibutton['datetime_right'].isna().any():
+            ibutton['datetime_right'] = np.nan
+        else:
+            break 
 
     if (file == 'tempr33-11-40BFF421-20190819.csv') or (file == 'tempr33-02-40C90021-20190819.csv'): 
         ibutton['datetime_right'] = pd.to_datetime(ibutton['datetime'], format='%d.%m.%y %H:%M')
     if file == 'tempr33-02-40C90021-20190102.csv': 
         ibutton['datetime_right'] = pd.to_datetime(ibutton['datetime'], format='%y.%m.%d %H:%M')
+        
+    ## ibuttons with mix formats:
+    if (file == 'tempr57-09-40B84621-20170000.csv') or (file == 'tempr57-10-4090ED21-20170000.csv'): 
+        ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format='%d-%m-%y %H:%M:%S', errors="coerce")).fillna(pd.to_datetime(ibutton['datetime'], format='%d/%m/%y %H:%M', errors="coerce"))
     
+    if file == ('tempr27-01-40C6BD21-20180811.csv') or ('tempr27-01-408BE821-20180811.csv'):     
+        ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format='%m/%d/%y %I:%M:%S %p', errors="coerce")).fillna(pd.to_datetime(ibutton['datetime'], format='%d-%m-%y %H:%M', errors="coerce"))
+
     temp_ib_data = pd.concat([temp_ib_data, ibutton])
-    #os.remove(path + file)
+    os.remove(path + file)
     
 temphum_ib_data = pd.DataFrame()
 
@@ -65,16 +81,36 @@ for file in temphum:
         ibutton['datetime'] = ibutton['datetime'].str.split(' ').str[0]
         
     ibutton['datetime'] = ibutton['datetime'].str.replace('%RH', '')
-    ibutton['datetime_right'] = np.nan
-    for eachformat in possible_formats_humtemp: 
-        ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format=eachformat, errors="coerce"))
     
+    ibutton['datetime_right'] = pd.to_datetime(ibutton['datetime'])
+    
+    ibutton['datetime_right'] = np.nan
+    #for eachformat in possible_formats_humtemp: 
+    #    ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format=eachformat, errors="coerce"))
+    
+    
+    
+    for eachformat in possible_formats_humtemp:
+        ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format=eachformat, errors="coerce"))
+        if ibutton['datetime_right'].isna().any():
+            ibutton['datetime_right'] = np.nan
+        else:
+            break 
+            
     if (file == 'temphum33-TH-H-20190102.csv') or (file == 'temphum33-TH-T-20190102.csv'): 
         ibutton['datetime_right'] = pd.to_datetime(ibutton['datetime'], format='%y-%m-%d')
+            
+    ## ibuttons with mix formats:
+    if (file == 'temphum57-TH-H-20170000.csv') or (file == 'temphum57-TH-T-20170000.csv'): 
+        ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format='%d-%m-%y', errors="coerce")).fillna(pd.to_datetime(ibutton['datetime'], format='%d/%m/%y', errors="coerce"))
+   
+    if (file == 'temphum27-TH-T-50B65E41-20180811.csv') or (file == 'temphum27-TH-H-50B65E41-20180811.csv'): 
+        ibutton['datetime_right'] = ibutton['datetime_right'].fillna(pd.to_datetime(ibutton['datetime'], format='%m/%d/%y', errors="coerce")).fillna(pd.to_datetime(ibutton['datetime'], format='%m-%d-%y', errors="coerce"))
+    
     
     temphum_ib_data = pd.concat([temphum_ib_data, ibutton])
     ## now we can drop it
-    #os.remove(path + file)
+    os.remove(path + file)
 
 ib_info = pd.read_csv('data/ibuttons_info.csv')
 

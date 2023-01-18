@@ -1,0 +1,1136 @@
+,id,Sequenced by,Name,Country,Lat,Long,Collector,CS Number,Admixture Group
+0,88,Monsanto,CYR,FRA,47.4,0.683333,Valerie Le Corre,CS76790,blu_circle
+1,108,Monsanto,LDV-18,FRA,48.5167,-4.06667,Valerie Le Corre,CS77013,blu_circle
+2,139,Monsanto,LDV-46,FRA,48.5167,-4.06667,Valerie Le Corre,CS77014,blu_circle
+3,159,Monsanto,MAR2-3,FRA,47.35,3.93333,Valerie Le Corre,CS77070,blu_circle
+4,265,Monsanto,PYL-6,FRA,44.65,-1.16667,Valerie Le Corre,CS77198,forbidden
+5,350,Monsanto,TOU-A1-88,FRA,46.6667,4.11667,Fabrice Roux,CS77382,blu_circle
+6,351,Monsanto,TOU-A1-89,FRA,46.6667,4.11667,Fabrice Roux,CS77383,blu_circle
+7,403,Monsanto,Zdarec3,CZE,49.3667,16.2667,Marie-Theres Hauser,CS78873,ylw_circle
+8,410,Monsanto,Doubravnik7,CZE,49.4211,16.3497,Marie-Theres Hauser,CS76808,ylw_circle
+9,424,Monsanto,Draha2,CZE,49.4112,16.2815,Marie-Theres Hauser,CS76812,ylw_circle
+10,428,Monsanto,Borky1,CZE,49.403,16.232,Marie-Theres Hauser,CS76718,ylw_circle
+11,430,Salk,Gr-1,AUT,47.0,15.5,Albert Kranz,CS76496,ylw_circle
+12,470,MPI,BRR4,USA,40.8313,-87.735,Diane Byers,CS78943,ltblu_circle
+13,476,MPI,BRR12,USA,40.8313,-87.735,Diane Byers,CS78944,ltblu_circle
+14,484,MPI,BRR23,USA,40.8313,-87.735,Diane Byers,CS78945,ltblu_circle
+15,504,MPI,BRR57,USA,40.8313,-87.735,Diane Byers,CS78946,ltblu_circle
+16,506,MPI,BRR60,USA,40.8313,-87.735,Diane Byers,CS78947,ltblu_circle
+17,531,MPI,BRR107,USA,40.8313,-87.735,Diane Byers,CS78948,ltblu_circle
+18,544,MPI,LI-WP-039,USA,40.9076,-73.2089,Oliver Bossdorf,CS78949,ltblu_circle
+19,546,MPI,LI-WP-041,USA,40.9076,-73.2089,Oliver Bossdorf,CS78950,ltblu_circle
+20,628,MPI,LI-OF-061,USA,40.7777,-72.9069,Oliver Bossdorf,CS78951,blu_circle
+21,630,Monsanto,LI-OF-065,USA,40.7777,-72.9069,Oliver Bossdorf,CS77036,blu_circle
+22,680,MPI,LI-RR-096,USA,40.9447,-72.8615,Oliver Bossdorf,CS78952,ltblu_circle
+23,681,MPI,LI-RR-097,USA,40.9447,-72.8615,Oliver Bossdorf,CS78953,ltblu_circle
+24,685,MPI,LI-EF-011,USA,40.9064,-73.1493,Oliver Bossdorf,CS78954,ltblu_circle
+25,687,MPI,LI-EF-018,USA,40.9064,-73.1493,Oliver Bossdorf,CS78955,ltblu_circle
+26,728,MPI,LI-SET-019,USA,40.9352,-73.114,Oliver Bossdorf,CS78956,ltblu_circle
+27,742,MPI,LI-SET-036,USA,40.9352,-73.114,Oliver Bossdorf,CS78957,ltblu_circle
+28,763,Salk,Kar-1,KGZ,42.3,74.3667,Olivier Loudet,CS76522,purple_circle
+29,765,Salk,Sus-1,KGZ,42.1833,73.4,Olivier Loudet,CS76607,purple_circle
+30,766,Salk,Dja-1,KGZ,42.5833,73.6333,Olivier Loudet,CS76473,purple_circle
+31,768,Salk,Zal-1,KGZ,42.8,76.35,Olivier Loudet,CS76634,purple_circle
+32,772,Salk,Neo-6,TJK,37.35,72.4667,Olivier Loudet,CS76560,purple_circle
+33,801,Monsanto,KYC-33,USA,37.9169,-84.4639,Kathleen Donohue,CS76992,ltblu_circle
+34,853,MPI,MIA-1,USA,41.7976,-86.6691,Kathleen Donohue,CS78958,ltblu_circle
+35,854,MPI,MIA-5,USA,41.7976,-86.6691,Kathleen Donohue,CS78959,ltblu_circle
+36,867,MPI,MIC-20,USA,41.8266,-86.4366,Kathleen Donohue,CS78960,ltblu_circle
+37,868,MPI,MIC-24,USA,41.8266,-86.4366,Kathleen Donohue,CS78961,ltblu_circle
+38,870,Monsanto,MIC-31,USA,41.8266,-86.4366,Kathleen Donohue,CS77082,ltblu_circle
+39,915,Monsanto,LIN S-5,USA,41.8972,-71.4378,Kathleen Donohue,CS77040,ltblu_circle
+40,932,Monsanto,CHA-41,USA,42.3634,-71.1445,Kathleen Donohue,CS76765,blu_circle
+41,991,GMI,Ale-Stenar-41-1,SWE,55.3833,14.05,Jon Ågren,CS76651,red_circle
+42,992,GMI,Ale-Stenar-44-4,SWE,55.3833,14.05,Jon Ågren,CS76652,red_circle
+43,997,GMI,Ale-Stenar-56-14,SWE,55.3833,14.05,Jon Ågren,CS76653,red_circle
+44,1002,GMI,Ale-Stenar-64-24,SWE,55.3833,14.05,Jon Ågren,CS76654,red_circle
+45,1006,GMI,Ale-Stenar-77-31,SWE,55.3833,14.05,Jon Ågren,CS77636,red_circle
+46,1061,GMI,Brösarp-11-135,SWE,55.7167,14.1333,Jon Ågren,CS76727,red_circle
+47,1062,GMI,Brösarp-15-138,SWE,55.7167,14.1333,Jon Ågren,CS76728,red_circle
+48,1063,GMI,Brösarp-21-140,SWE,55.7167,14.1333,Jon Ågren,CS76729,red_circle
+49,1066,GMI,Brösarp-34-145,SWE,55.7167,14.1333,Jon Ågren,CS76730,red_circle
+50,1070,GMI,Brösarp-45-153,SWE,55.7167,14.1333,Jon Ågren,CS77643,red_circle
+51,1158,GMI,Aledal-6-49,SWE,56.7,16.5167,Jon Ågren,CS76656,red_circle
+52,1166,GMI,Aledal-14-73,SWE,56.7,16.5167,Jon Ågren,CS77651,red_circle
+53,1254,GMI,Tos-82-387,SWE,59.4333,17.0167,Jon Ågren,CS77379,orange_circle
+54,1257,GMI,Tos-95-393,SWE,59.4333,17.0167,Jon Ågren,CS77380,orange_circle
+55,1313,GMI,Ängsö-59-422,SWE,59.5667,16.8667,Jon Ågren,CS77658,forbidden
+56,1317,GMI,Ängsö-74-430,SWE,59.5667,16.8667,Jon Ågren,CS76665,forbidden
+57,1552,GMI,Sku-30,SWE,63.0833,18.3667,Jon Ågren,CS77251,orange_circle
+58,1612,MPI,Brn-10,USA,41.9,-86.583,Diane Byers,CS78962,ltblu_circle
+59,1622,MPI,Brn-24,USA,41.9,-86.583,Diane Byers,CS78963,ltblu_circle
+60,1651,MPI,DuckLkSP38,USA,43.3431,-86.4045,Diane Byers,CS78964,ltblu_circle
+61,1652,MPI,DuckLkSP40,USA,43.3431,-86.4045,Diane Byers,CS78965,ltblu_circle
+62,1676,MPI,Haz-2,USA,41.879,-86.607,Diane Byers,CS78966,ltblu_circle
+63,1684,MPI,Haz-10,USA,41.879,-86.607,Diane Byers,CS78967,ltblu_circle
+64,1739,MPI,KBS-Mac-68,USA,42.405,-85.398,Diane Byers,CS78968,ltblu_circle
+65,1741,MPI,KBS-Mac-74,USA,42.405,-85.398,Diane Byers,CS78969,ltblu_circle
+66,1756,MPI,Ker-4,USA,42.184,-86.358,Diane Byers,CS78970,ltblu_circle
+67,1757,MPI,Ker-5,USA,42.184,-86.358,Diane Byers,CS78971,ltblu_circle
+68,1793,MPI,L-R-5,USA,41.847,-86.67,Diane Byers,CS78972,ltblu_circle
+69,1797,MPI,L-R-10,USA,41.847,-86.67,Diane Byers,CS78973,ltblu_circle
+70,1819,MPI,Lak-12,USA,41.8,-86.67,Diane Byers,CS78974,ltblu_circle
+71,1820,MPI,Lak-13,USA,41.8,-86.67,Diane Byers,CS78975,ltblu_circle
+72,1829,Monsanto,Mdn-1,USA,42.051,-86.509,Diane Byers,CS77077,ltblu_circle
+73,1834,MPI,Mdn-8,USA,42.051,-86.509,Diane Byers,CS78976,ltblu_circle
+74,1835,MPI,Mdn-10,USA,42.051,-86.509,Diane Byers,CS78977,ltblu_circle
+75,1851,MPI,MNF-Pot-10,USA,43.595,-86.2657,Diane Byers,CS78978,ltblu_circle
+76,1852,MPI,MNF-Pot-15,USA,43.595,-86.2657,Diane Byers,CS78979,ltblu_circle
+77,1853,Monsanto,MNF-Pot-21,USA,43.595,-86.2657,Diane Byers,CS77099,ltblu_circle
+78,1872,Monsanto,MNF-Pot-75,USA,43.595,-86.2657,Diane Byers,CS77100,ltblu_circle
+79,1890,Monsanto,MNF-Riv-21,USA,43.5139,-86.1859,Diane Byers,CS77101,purple_circle
+80,1925,Monsanto,MNF-Che-2,USA,43.5251,-86.1843,Diane Byers,CS77096,ltblu_circle
+81,1942,MPI,MNF-Che-47,USA,43.5251,-86.1843,Diane Byers,CS78980,ltblu_circle
+82,1943,MPI,MNF-Che-49,USA,43.5251,-86.1843,Diane Byers,CS78981,ltblu_circle
+83,1954,Monsanto,MNF-Jac-12,USA,43.5187,-86.1739,Diane Byers,CS77097,ltblu_circle
+84,2016,Monsanto,MNF-Pin-39,USA,43.5356,-86.1788,Diane Byers,CS77098,forbidden
+85,2017,MPI,MNF-Pin-40,USA,43.5356,-86.1788,Diane Byers,CS78982,ltblu_circle
+86,2031,MPI,Map-8,USA,42.166,-86.412,Diane Byers,CS78983,ltblu_circle
+87,2053,MPI,Map-35,USA,42.166,-86.412,Diane Byers,CS78984,ltblu_circle
+88,2057,MPI,Map-42,USA,42.166,-86.412,Diane Byers,CS77732,ltblu_circle
+89,2081,MPI,MuskSP-68,USA,43.2483,-86.3368,Diane Byers,CS78985,ltblu_circle
+90,2091,MPI,MuskSP-83,USA,43.2483,-86.3368,Diane Byers,CS78986,ltblu_circle
+91,2106,MPI,MSGA-10,USA,43.2749,-86.0891,Diane Byers,CS78987,ltblu_circle
+92,2108,MPI,MSGA-12,USA,43.2749,-86.0891,Diane Byers,CS78988,ltblu_circle
+93,2141,MPI,MSGA-61,USA,43.2749,-86.0891,Diane Byers,CS78989,ltblu_circle
+94,2159,MPI,Paw-13,USA,42.148,-86.431,Diane Byers,CS78990,ltblu_circle
+95,2166,MPI,Paw-20,USA,42.148,-86.431,Diane Byers,CS78991,ltblu_circle
+96,2171,Monsanto,Paw-26,USA,42.148,-86.431,Diane Byers,CS77164,ltblu_circle
+97,2191,MPI,Pent-7,USA,43.7623,-86.3929,Diane Byers,CS78992,ltblu_circle
+98,2202,Monsanto,Pent-23,USA,43.7623,-86.3929,Diane Byers,CS77168,forbidden
+99,2212,MPI,Pent-46,USA,43.7623,-86.3929,Diane Byers,CS78993,ltblu_circle
+100,2239,MPI,Riv-25,USA,42.184,-86.382,Diane Byers,CS78994,ltblu_circle
+101,2240,MPI,Riv-26,USA,42.184,-86.382,Diane Byers,CS78995,ltblu_circle
+102,2276,Monsanto,SLSP-31,USA,43.665,-86.496,Diane Byers,CS77254,forbidden
+103,2278,Monsanto,SLSP-35,USA,43.665,-86.496,Diane Byers,CS77255,ltblu_circle
+104,2285,MPI,SLSP-69,USA,43.665,-86.496,Diane Byers,CS78996,ltblu_circle
+105,2286,MPI,SLSP-67,USA,43.665,-86.496,Diane Byers,CS78997,ltblu_circle
+106,2317,Monsanto,Ste-40,USA,42.03,-86.514,Diane Byers,CS77278,forbidden
+107,2370,MPI,Yng-4,USA,41.865,-86.646,Diane Byers,CS78998,ltblu_circle
+108,2412,MPI,Yng-53,USA,41.865,-86.646,Diane Byers,CS78999,ltblu_circle
+109,4779,Monsanto,UKSW06-179,UK,50.4,-4.9,Eric Holub,CS78808,blu_circle
+110,4807,Monsanto,UKSW06-207,UK,50.4,-4.9,Eric Holub,CS78809,blu_circle
+111,4826,Monsanto,UKSW06-226,UK,50.4,-4.9,Eric Holub,CS78810,blu_circle
+112,4840,MPI,UKSW06-240,UK,50.4,-4.9,Eric Holub,CS79000,blu_circle
+113,4857,MPI,UKSW06-257,UK,50.3,-4.9,Eric Holub,CS79001,blu_circle
+114,4884,Monsanto,UKSW06-285,UK,50.3,-4.9,Eric Holub,CS78811,blu_circle
+115,4900,Monsanto,UKSW06-302,UK,50.3,-4.8,Eric Holub,CS78812,blu_circle
+116,4939,MPI,UKSW06-341,UK,50.4,-4.7,Eric Holub,CS79002,blu_circle
+117,4958,Monsanto,UKSW06-360,UK,50.5,-4.5,Eric Holub,CS78814,blu_circle
+118,5023,Monsanto,UKSE06-118,UK,51.3,0.5,Eric Holub,CS78799,blu_circle
+119,5104,Monsanto,UKSE06-252,UK,51.3,0.5,Eric Holub,CS78800,ltblu_circle
+120,5151,Monsanto,UKSE06-325,UK,52.2,-1.7,Eric Holub,CS78801,forbidden
+121,5165,Monsanto,UKSE06-362,UK,51.3,0.4,Eric Holub,CS78802,forbidden
+122,5210,Monsanto,UKSE06-432,UK,51.2,0.3,Eric Holub,CS78803,blu_circle
+123,5236,Monsanto,UKSE06-470,UK,51.2,0.4,Eric Holub,CS78804,blu_circle
+124,5249,MPI,UKSE06-491,UK,51.2,0.3,Eric Holub,CS79003,blu_circle
+125,5253,Monsanto,UKSE06-500,UK,51.1,0.6,Eric Holub,CS78805,blu_circle
+126,5276,Monsanto,UKSE06-533,UK,51.3,1.1,Eric Holub,CS78806,blu_circle
+127,5279,MPI,UKSE06-541,UK,51.3,1.1,Eric Holub,CS79004,blu_circle
+128,5349,Monsanto,UKSE06-639,UK,51.1,0.4,Eric Holub,CS78807,blu_circle
+129,5353,Monsanto,UKNW06-003,UK,54.5,-3.0,Eric Holub,CS78792,blu_circle
+130,5395,MPI,UKNW06-102,UK,54.4,-3.0,Eric Holub,CS79005,blu_circle
+131,5486,Monsanto,UKNW06-233,UK,54.6,-3.3,Eric Holub,CS78794,ltblu_circle
+132,5577,Monsanto,UKNW06-403,UK,54.7,-3.4,Eric Holub,CS78797,blu_circle
+133,5644,Monsanto,UKNW06-481,UK,54.4,-2.9,Eric Holub,CS78798,blu_circle
+134,5651,MPI,UKNW06-488,UK,54.4,-2.9,Eric Holub,CS79006,blu_circle
+135,5717,MPI,Bra-1,UK,54.6,-3.2,Eric Holub,CS79007,blu_circle
+136,5718,MPI,UKID11,UK,57.0,-3.4,Eric Holub,CS79008,blu_circle
+137,5720,Monsanto,Cal-2,UK,53.3,-1.6,D. Ratcliffe,CS78781,forbidden
+138,5726,Monsanto,Cnt-1,UK,51.3,1.1,Eric Holub,CS78782,blu_circle
+139,5741,Monsanto,For-2,UK,56.6,-4.1,D. Ratcliffe,CS78783,blu_circle
+140,5748,Monsanto,Kil-0,UK,56.0,-4.4,D. Ratcliffe,CS78784,ltblu_circle
+141,5757,Monsanto,Mc-1,UK,54.6,-2.3,D. Ratcliffe,CS78785,forbidden
+142,5768,"Monsanto,MPI",UKID63,UK,54.1,-1.5,Eric Holub,CS78786,forbidden
+143,5772,Monsanto,Set-1,UK,54.1,-2.3,D. Ratcliffe,CS78787,forbidden
+144,5776,MPI,UKID71,UK,52.9,-1.3,Eric Holub,CS79009,blu_circle
+145,5779,Monsanto,UKID74,UK,51.0,-3.1,Eric Holub,CS78789,blu_circle
+146,5784,Monsanto,Ty-1,UK,56.4,-5.2,D. Ratcliffe,CS78790,forbidden
+147,5798,MPI,UKID93,UK,53.1,-3.3,Eric Holub,CS79010,blu_circle
+148,5800,Monsanto,UKID96,UK,57.4,-5.5,Eric Holub,CS78791,ltblu_circle
+149,5811,Monsanto,UKID107,UK,52.9,-3.1,Eric Holub,CS78778,forbidden
+150,5822,Monsanto,UKID116,UK,56.7333,-5.98333,Eric Holub,CS78780,forbidden
+151,5830,GMI,App1-12,SWE,56.3333,15.9667,Magnus Nordborg,CS76667,red_circle
+152,5831,GMI,App1-14,SWE,56.3333,15.9667,Magnus Nordborg,CS76668,red_circle
+153,5832,GMI,App1-16,SWE,56.3333,15.9667,Magnus Nordborg,CS76669,red_circle
+154,5836,GMI,Boo2-3,SWE,55.86,13.51,Magnus Nordborg,CS77906,red_circle
+155,5837,Salk,Bor-1,CZE,49.4013,16.2326,Jirina Relichov,CS76453,ylw_circle
+156,5856,GMI,Dör-10,SWE,63.0167,17.4914,Magnus Nordborg,CS76806,orange_circle
+157,5860,GMI,Dra-3,SWE,62.6814,18.0165,Magnus Nordborg,CS77913,orange_circle
+158,5865,GMI,Dra1-4,SWE,55.76,14.12,Magnus Nordborg,CS76809,red_circle
+159,5867,GMI,Dra2-1,SWE,55.76,14.12,Magnus Nordborg,CS76810,red_circle
+160,5874,Monsanto,DraII-6,CZE,49.4112,16.2815,Jirina Relichov,CS76814,ylw_circle
+161,5890,Monsanto,DraIV 1-8,CZE,49.4112,16.2815,Jirina Relichov,CS76817,ylw_circle
+162,5893,Monsanto,DraIV 1-11,CZE,49.4112,16.2815,Jirina Relichov,CS76816,ylw_circle
+163,5907,Monsanto,DraIV 2-9,CZE,49.4112,16.2815,Jirina Relichov,CS76818,ylw_circle
+164,5921,Monsanto,DraIV 3-7,CZE,49.4112,16.2815,Jirina Relichov,CS76819,ylw_circle
+165,5950,Monsanto,DraIV 5-12,CZE,49.4112,16.2815,Jirina Relichov,CS76820,ylw_circle
+166,5984,Monsanto,DraIV 6-13,CZE,49.4112,16.2815,Jirina Relichov,CS76822,ylw_circle
+167,5993,Monsanto,DraIV 6-22,CZE,49.4112,16.2815,Jirina Relichov,CS76823,ylw_circle
+168,6008,Salk,Duk,CZE,49.1,16.2,Jirina Relichov,CS76824,ylw_circle
+169,6009,GMI,Eden-1,SWE,62.877,18.177,Magnus Nordborg,CS76826,orange_circle
+170,6010,GMI,Eden-5,SWE,62.877,18.177,Magnus Nordborg,CS78000,orange_circle
+171,6011,GMI,Eden-6,SWE,62.877,18.177,Magnus Nordborg,CS76828,orange_circle
+172,6012,GMI,Eden-7,SWE,62.877,18.177,Magnus Nordborg,CS76829,orange_circle
+173,6013,GMI,Eden-9,SWE,62.877,18.177,Magnus Nordborg,CS76830,orange_circle
+174,6016,GMI,Eds-1,SWE,62.9,18.4,Magnus Nordborg,CS76834,orange_circle
+175,6017,GMI,Eds-9,SWE,62.9,18.4,Magnus Nordborg,CS76835,orange_circle
+176,6019,GMI,Fjä1-2,SWE,56.06,14.29,Magnus Nordborg,CS76860,red_circle
+177,6020,GMI,Fjä1-5,SWE,56.06,14.29,Magnus Nordborg,CS76861,red_circle
+178,6021,GMI,Fjä2-4,SWE,56.06,14.29,Magnus Nordborg,CS76862,red_circle
+179,6022,GMI,Fjä2-6,SWE,56.06,14.29,Magnus Nordborg,CS78009,red_circle
+180,6023,GMI,Fly2-1,SWE,55.7509,13.3712,Magnus Nordborg,CS76863,red_circle
+181,6024,GMI,Fly2-2,SWE,55.7509,13.3712,Magnus Nordborg,CS76864,red_circle
+182,6025,GMI,Gro-3,SWE,62.6437,17.7339,Magnus Nordborg,CS76889,orange_circle
+183,6030,GMI,Grön-5,SWE,62.806,18.1896,Magnus Nordborg,CS76893,orange_circle
+184,6034,GMI,Hov1-7,SWE,56.1,13.74,Magnus Nordborg,CS76932,red_circle
+185,6035,GMI,Hov1-10,SWE,56.1,13.74,Magnus Nordborg,CS76931,red_circle
+186,6036,GMI,Hov3-2,SWE,56.1,13.74,Magnus Nordborg,CS76934,red_circle
+187,6038,GMI,Hov3-5,SWE,56.1,13.74,Magnus Nordborg,CS76935,red_circle
+188,6039,GMI,Hovdala-2,SWE,56.1,13.74,Torbjorn Sall,CS76937,forbidden
+189,6040,GMI,Kni-1,SWE,55.66,13.4,Magnus Nordborg,CS76970,red_circle
+190,6041,GMI,Lis-3,SWE,56.0328,14.775,Magnus Nordborg,CS77044,red_circle
+191,6042,GMI,Lom1-1,SWE,56.09,13.9,Magnus Nordborg,CS77048,forbidden
+192,6043,GMI,Löv-1,SWE,62.801,18.079,Magnus Nordborg,CS77049,orange_circle
+193,6046,GMI,Löv-5,SWE,62.801,18.079,Magnus Nordborg,CS77050,orange_circle
+194,6064,GMI,Nyl-2,SWE,62.9513,18.2763,Magnus Nordborg,CS77136,orange_circle
+195,6069,GMI,Nyl-7,SWE,62.9513,18.2763,Magnus Nordborg,CS77137,orange_circle
+196,6070,GMI,Omn-1,SWE,62.9308,18.3448,Magnus Nordborg,CS77145,orange_circle
+197,6071,GMI,Omn-5,SWE,62.9308,18.3448,Magnus Nordborg,CS77146,orange_circle
+198,6073,GMI,ÖMö1-7,SWE,56.1481,15.8155,Magnus Nordborg,CS77147,red_circle
+199,6074,GMI,Ör-1,SWE,56.4573,16.1308,Magnus Nordborg,CS77150,red_circle
+200,6076,GMI,Rev-2,SWE,55.6942,13.4504,Magnus Nordborg,CS77215,red_circle
+201,6077,GMI,Rev-3,SWE,55.6942,13.4504,Magnus Nordborg,CS78030,red_circle
+202,6085,GMI,Sparta-1,SWE,55.7097,13.2145,Magnus Nordborg,CS77260,red_circle
+203,6086,GMI,Sr:3,SWE,58.9,11.2,Ivo Cetl,CS77267,forbidden
+204,6087,GMI,Stu-2,SWE,56.4666,16.1284,Magnus Nordborg,CS78033,red_circle
+205,6088,GMI,Stu1-1,SWE,56.4666,16.1284,Magnus Nordborg,CS77285,red_circle
+206,6090,GMI,T1000,SWE,55.6525,13.2197,Mattias Jakobsson,CS77288,red_circle
+207,6091,GMI,T1010,SWE,55.6525,13.215,Mattias Jakobsson,CS78035,red_circle
+208,6092,GMI,T1020,SWE,55.6514,13.2233,Mattias Jakobsson,CS77289,red_circle
+209,6094,GMI,T1040,SWE,55.6494,13.2147,Mattias Jakobsson,CS77290,red_circle
+210,6095,GMI,T1050,SWE,55.6486,13.2161,Mattias Jakobsson,CS78039,red_circle
+211,6096,GMI,T1060,SWE,55.6472,13.2225,Mattias Jakobsson,CS78040,red_circle
+212,6097,GMI,T1070,SWE,55.6481,13.2264,Mattias Jakobsson,CS77291,red_circle
+213,6098,GMI,T1080,SWE,55.6561,13.2178,Mattias Jakobsson,CS77292,red_circle
+214,6099,GMI,T1090,SWE,55.6575,13.2386,Mattias Jakobsson,CS77293,red_circle
+215,6100,GMI,T1110,SWE,55.6,13.2,Mattias Jakobsson,CS77294,red_circle
+216,6101,GMI,T1120,SWE,55.6,13.2,Mattias Jakobsson,CS78045,red_circle
+217,6102,GMI,T1130,SWE,55.6,13.2,Mattias Jakobsson,CS77295,red_circle
+218,6104,GMI,T1160,SWE,55.7,13.2,Mattias Jakobsson,CS77296,red_circle
+219,6105,GMI,T450,SWE,55.7967,13.1211,Mattias Jakobsson,CS77297,red_circle
+220,6106,GMI,T460,SWE,55.7931,13.1186,Mattias Jakobsson,CS77298,red_circle
+221,6107,GMI,T470,SWE,55.7942,13.1222,Mattias Jakobsson,CS77299,red_circle
+222,6108,GMI,T480,SWE,55.7989,13.1206,Mattias Jakobsson,CS77300,blu_circle
+223,6109,GMI,T510,SWE,55.7936,13.1233,Mattias Jakobsson,CS77301,red_circle
+224,6111,GMI,T530,SWE,55.7989,13.1219,Mattias Jakobsson,CS77302,red_circle
+225,6112,GMI,T540,SWE,55.7967,13.1044,Mattias Jakobsson,CS77303,red_circle
+226,6113,GMI,T550,SWE,55.8078,13.1028,Mattias Jakobsson,CS77304,red_circle
+227,6114,GMI,T570,SWE,55.8097,13.1342,Mattias Jakobsson,CS77305,red_circle
+228,6115,GMI,T580,SWE,55.8,13.1367,Mattias Jakobsson,CS77306,red_circle
+229,6118,GMI,T610,SWE,55.7,13.2,Mattias Jakobsson,CS77307,red_circle
+230,6119,GMI,T620,SWE,55.7,13.2,Mattias Jakobsson,CS78060,red_circle
+231,6122,GMI,T670,SWE,55.8364,13.3075,Mattias Jakobsson,CS77308,red_circle
+232,6123,GMI,T680,SWE,55.8369,13.3033,Mattias Jakobsson,CS78064,red_circle
+233,6124,GMI,T690,SWE,55.8378,13.3092,Mattias Jakobsson,CS77309,red_circle
+234,6125,GMI,T710,SWE,55.8403,13.3106,Mattias Jakobsson,CS77310,red_circle
+235,6126,GMI,T720,SWE,55.8411,13.3047,Mattias Jakobsson,CS77311,red_circle
+236,6128,GMI,T740,SWE,55.8397,13.2881,Mattias Jakobsson,CS77313,red_circle
+237,6131,GMI,T780,SWE,55.8369,13.3181,Mattias Jakobsson,CS77315,red_circle
+238,6132,GMI,T790,SWE,55.8386,13.3186,Mattias Jakobsson,CS77316,red_circle
+239,6133,GMI,T800,SWE,55.8364,13.2906,Mattias Jakobsson,CS77317,red_circle
+240,6134,GMI,T810,SWE,55.8383,13.2906,Mattias Jakobsson,CS77318,red_circle
+241,6136,GMI,T840,SWE,55.9336,13.5519,Mattias Jakobsson,CS77319,red_circle
+242,6137,GMI,T850,SWE,55.9419,13.5603,Mattias Jakobsson,CS77320,red_circle
+243,6138,GMI,T860,SWE,55.9403,13.5511,Mattias Jakobsson,CS77321,red_circle
+244,6140,GMI,T880,SWE,55.9392,13.5539,Mattias Jakobsson,CS77322,red_circle
+245,6141,GMI,T890,SWE,55.9414,13.5542,Mattias Jakobsson,CS78079,red_circle
+246,6142,GMI,T900,SWE,55.9428,13.5558,Mattias Jakobsson,CS77323,red_circle
+247,6145,GMI,T930,SWE,55.9497,13.5533,Mattias Jakobsson,CS77324,red_circle
+248,6148,GMI,T960,SWE,55.9319,13.5508,Mattias Jakobsson,CS77325,red_circle
+249,6149,GMI,T970,SWE,55.9281,13.5481,Mattias Jakobsson,CS77326,red_circle
+250,6150,GMI,T980,SWE,55.9261,13.5319,Mattias Jakobsson,CS77327,red_circle
+251,6151,GMI,T990,SWE,55.6528,13.2244,Mattias Jakobsson,CS77328,red_circle
+252,6153,GMI,TAA 03,SWE,62.6425,17.7422,Mattias Jakobsson,CS77329,orange_circle
+253,6154,GMI,TAA 04,SWE,62.6422,17.7406,Mattias Jakobsson,CS77330,orange_circle
+254,6163,GMI,TAA 14,SWE,62.6425,17.7356,Mattias Jakobsson,CS77331,orange_circle
+255,6166,GMI,TAA 17,SWE,62.6425,17.7372,Mattias Jakobsson,CS77332,orange_circle
+256,6169,GMI,TÅD 01,SWE,62.8714,18.3447,Mattias Jakobsson,CS77333,orange_circle
+257,6172,GMI,TÅD 04,SWE,62.8717,18.3436,Mattias Jakobsson,CS77335,orange_circle
+258,6173,GMI,TÅD 05,SWE,62.8717,18.3419,Mattias Jakobsson,CS77336,orange_circle
+259,6174,GMI,TÅD 06,SWE,62.8719,18.3422,Mattias Jakobsson,CS77337,orange_circle
+260,6177,GMI,TÄL 03,SWE,62.6322,17.69,Mattias Jakobsson,CS77338,orange_circle
+261,6180,GMI,TÄL 07,SWE,62.6322,17.6906,Mattias Jakobsson,CS77339,ltblu_circle
+262,6184,GMI,TBÖ 01,SWE,62.8892,18.4522,Mattias Jakobsson,CS77343,orange_circle
+263,6188,GMI,TDr-1,SWE,55.7683,14.1386,Mattias Jakobsson,CS77345,red_circle
+264,6189,GMI,TDr-2,SWE,55.7686,14.1383,Mattias Jakobsson,CS77351,red_circle
+265,6191,GMI,TDr-4,SWE,55.7689,14.1375,Mattias Jakobsson,CS77352,red_circle
+266,6192,GMI,TDr-5,SWE,55.7692,14.1369,Mattias Jakobsson,CS77353,red_circle
+267,6193,GMI,TDr-7,SWE,55.7694,14.1347,Mattias Jakobsson,CS77354,red_circle
+268,6194,GMI,TDr-8,SWE,55.7706,14.1342,Mattias Jakobsson,CS77355,red_circle
+269,6195,GMI,TDr-9,SWE,55.7708,14.1342,Mattias Jakobsson,CS77356,red_circle
+270,6198,GMI,TDr-13,SWE,55.7708,14.1331,Mattias Jakobsson,CS77347,red_circle
+271,6201,GMI,TDr-16,SWE,55.7719,14.1211,Mattias Jakobsson,CS77348,red_circle
+272,6202,GMI,TDr-17,SWE,55.7717,14.1206,Mattias Jakobsson,CS77349,red_circle
+273,6203,GMI,TDr-18,SWE,55.7714,14.1208,Mattias Jakobsson,CS77350,red_circle
+274,6209,GMI,TEDEN 02,SWE,62.8836,18.1842,Mattias Jakobsson,CS77358,orange_circle
+275,6210,GMI,TEDEN 03,SWE,62.8839,18.1836,Mattias Jakobsson,CS77359,orange_circle
+276,6214,GMI,TFÄ 04,SWE,63.0175,18.3281,Mattias Jakobsson,CS78121,orange_circle
+277,6216,GMI,TFÄ 06,SWE,63.0167,18.3283,Mattias Jakobsson,CS77362,orange_circle
+278,6217,GMI,TFÄ 07,SWE,63.0169,18.3283,Mattias Jakobsson,CS77363,orange_circle
+279,6218,GMI,TFÄ 08,SWE,63.0172,18.3283,Mattias Jakobsson,CS77364,orange_circle
+280,6220,GMI,TGR 01,SWE,62.806,18.1896,Mattias Jakobsson,CS77365,orange_circle
+281,6221,GMI,TGR 02,SWE,62.806,18.1896,Mattias Jakobsson,CS77366,orange_circle
+282,6231,GMI,TNY 04,SWE,62.96,18.2844,Mattias Jakobsson,CS77368,orange_circle
+283,6235,GMI,TOM 01,SWE,62.9611,18.3589,Mattias Jakobsson,CS77372,orange_circle
+284,6237,GMI,TOM 03,SWE,62.9619,18.35,Mattias Jakobsson,CS77373,orange_circle
+285,6238,GMI,TOM 04,SWE,62.9619,18.35,Mattias Jakobsson,CS77374,orange_circle
+286,6240,GMI,TOM 06,SWE,62.9622,18.35,Mattias Jakobsson,CS77375,orange_circle
+287,6241,GMI,TOM 07,SWE,62.9614,18.3608,Mattias Jakobsson,CS77376,orange_circle
+288,6242,GMI,Tomegap-2,SWE,55.7,13.2,Mattias Jakobsson,CS77377,red_circle
+289,6243,GMI,Tottarp-2,SWE,56.27373,13.90045,Magnus Nordborg,CS77381,ylw_circle
+290,6244,GMI,TRÄ 01,SWE,62.9169,18.4728,Mattias Jakobsson,CS77384,orange_circle
+291,6252,GMI,TV-4,SWE,55.5796,14.3336,Mattias Jakobsson,CS78771,ltblu_circle
+292,6255,GMI,TV-7,SWE,55.5796,14.334,Mattias Jakobsson,CS78772,ltblu_circle
+293,6258,GMI,TV-10,SWE,55.5796,14.3336,Mattias Jakobsson,CS78767,forbidden
+294,6268,GMI,TV-22,SWE,55.5796,14.3336,Mattias Jakobsson,CS78768,ltblu_circle
+295,6276,GMI,TV-30,SWE,55.5796,14.3336,Mattias Jakobsson,CS78769,ltblu_circle
+296,6284,GMI,TV-38,SWE,55.5796,14.3336,Mattias Jakobsson,CS78770,red_circle
+297,6296,Monsanto,UduI 1-11,CZE,49.2771,16.6314,Jirina Relichov,CS78774,ylw_circle
+298,6390,Monsanto,UduI 3-36,CZE,49.2771,16.6314,Jirina Relichov,CS78775,ylw_circle
+299,6396,Monsanto,UduI 4-9,CZE,49.2771,16.6314,Jirina Relichov,CS78776,ylw_circle
+300,6413,GMI,Ull3-4,SWE,56.06,13.97,Magnus Nordborg,CS78819,red_circle
+301,6424,Monsanto,ZdrI 1-23,CZE,49.3853,16.2544,Jirina Relichov,CS78875,ylw_circle
+302,6434,Monsanto,ZdrI 2-9,CZE,49.3853,16.2544,Jirina Relichov,CS78877,forbidden
+303,6445,Monsanto,ZdrI 2-21,CZE,49.3853,16.2544,Jirina Relichov,CS78876,ylw_circle
+304,6680,Salk,ANH-1,GER,51.85,6.4333,Gerhard Röbbelen,CS76437,blu_circle
+305,6739,MPI,CSHL-15,USA,40.8585,-73.4675,Catherine Weiss,CS79011,ltblu_circle
+306,6740,MPI,CSHL-17,USA,40.8585,-73.4675,Catherine Weiss,CS79012,ltblu_circle
+307,6744,Monsanto,CSHL-5,USA,40.8585,-73.4675,Catherine Weiss,CS76779,ltblu_circle
+308,6749,MPI,FM-10,USA,42.4489,-76.5072,Michael Nachman,CS79013,ltblu_circle
+309,6750,MPI,FM-11,USA,42.4489,-76.5072,Michael Nachman,CS79014,ltblu_circle
+310,6805,MPI,HS-12,USA,42.373,-71.0627,Toby Kellogg,CS79015,ltblu_circle
+311,6806,MPI,HS-17,USA,42.373,-71.0627,Toby Kellogg,CS79016,ltblu_circle
+312,6814,MPI,KNO-15,USA,41.2816,-86.621,Joy Bergelson,CS79017,ltblu_circle
+313,6830,MPI,Kz-13,KAZ,49.5,73.1,Ihsan Al-Shehbaz,CS76994,forbidden
+314,6897,Salk,Ag-0,FRA,45.0,1.3,Albert Kranz,CS76430,blu_circle
+315,6898,Salk,An-1,BEL,51.2167,4.4,Albert Kranz,CS76435,forbidden
+316,6900,GMI,Bil-5,SWE,63.324,18.484,Magnus Nordborg,CS76709,orange_circle
+317,6901,GMI,Bil-7,SWE,63.324,18.484,Magnus Nordborg,CS76710,orange_circle
+318,6903,Salk,Bor-4,CZE,49.4013,16.2326,Jirina Relichov,CS76454,ylw_circle
+319,6904,Salk,Br-0,CZE,49.2,16.6166,Albert Kranz,CS76455,blu_circle
+320,6907,Salk,CIBC-17,UK,51.4083,-0.6383,Mick Crawley,CS76770,forbidden
+321,6908,Salk,CIBC-5,UK,51.4083,-0.6383,Mick Crawley,CS78894,blu_circle
+322,6909,GMI,Col-0,USA,38.3,-92.3,Albert Kranz,CS76778,ltblu_circle
+323,6911,Salk,Cvi-0,CPV,15.1111,-23.6167,Albert Kranz,CS76789,grn_circle
+324,6913,GMI,Eden-2,SWE,62.877,18.177,Magnus Nordborg,CS76827,orange_circle
+325,6915,Salk,Ei-2,GER,50.3,6.3,Albert Kranz,CS76478,ltblu_circle
+326,6917,GMI,Fäb-2,SWE,63.0165,18.3174,Magnus Nordborg,CS76850,orange_circle
+327,6918,GMI,Fäb-4,SWE,63.0165,18.3174,Magnus Nordborg,CS76851,orange_circle
+328,6919,Salk,Ga-0,GER,50.3,8.0,Albert Kranz,CS76490,ylw_circle
+329,6920,Salk,Got-22,GER,51.5338,9.9355,Gerhard Röbbelen,CS76884,forbidden
+330,6922,Salk,Gu-0,GER,50.3,8.0,Albert Kranz,CS76498,ltblu_circle
+331,6923,Salk,HR-10,UK,51.4083,-0.6383,Mick Crawley,CS76940,blu_circle
+332,6924,Salk,HR-5,UK,51.4083,-0.6383,Mick Crawley,CS76514,blu_circle
+333,6926,Salk,Kin-0,USA,44.46,-85.37,Albert Kranz,CS76527,blu_circle
+334,6927,"Salk,MPI",KNO-10,USA,41.2816,-86.621,Joy Bergelson,CS76973,ltblu_circle
+335,6929,Salk,Kondara,TJK,38.48,68.49,Igor Vizir,CS76532,purple_circle
+336,6931,Salk,Kz-9,KAZ,49.5,73.1,Ihsan Al-Shehbaz,CS76537,purple_circle
+337,6932,"MPI,GMI",Ler-1,GER,47.984,10.8719,Eric Holub,CS77021,forbidden
+338,6933,Salk,LL-0,ESP,41.59,2.49,Albert Kranz,CS77047,pink_circle
+339,6938,Salk,Ms-0,RUS,55.7522,37.6322,Albert Kranz,CS76555,purple_circle
+340,6940,Salk,Mz-0,GER,50.3,8.3,Albert Kranz,CS76557,ltblu_circle
+341,6943,Salk,NFA-10,UK,51.4083,-0.6383,Mick Crawley,CS77126,blu_circle
+342,6944,Salk,NFA-8,UK,51.4083,-0.6383,Mick Crawley,CS78913,blu_circle
+343,6945,Salk,Nok-3,NED,52.24,4.45,Albert Kranz,CS76562,ltblu_circle
+344,6951,Salk,Pu2-23,CZE,49.42,16.36,Ivo Cetl,CS76579,ylw_circle
+345,6956,Salk,Pu2-7,CZE,49.42,16.36,Ivo Cetl,CS76580,ylw_circle
+346,6957,Salk,Pu2-8,CZE,49.42,16.36,Ivo Cetl,CS77192,ylw_circle
+347,6958,Salk,Ra-0,FRA,46.0,3.3,Albert Kranz,CS76582,blu_circle
+348,6959,Salk,Rennes-1,FRA,48.5,-1.41,Gerhard Röbbelen,CS77210,blu_circle
+349,6960,Salk,Rennes-11,FRA,48.5,-1.41,Gerhard Röbbelen,CS77211,blu_circle
+350,6961,Salk,Se-0,ESP,38.3333,-3.53333,Albert Kranz,CS76597,pink_circle
+351,6963,Salk,Sorbo,TJK,38.35,68.48,Igor Vizir,CS78917,purple_circle
+352,6966,Salk,Sq-1,UK,51.4083,-0.6383,Mick Crawley,CS77266,blu_circle
+353,6967,Salk,Sq-8,UK,51.4083,-0.6383,Mick Crawley,CS76604,blu_circle
+354,6968,"Salk,GMI",Tamm-2,FIN,60.0,23.5,Outi Savolainen,CS76610,orange_circle
+355,6969,Salk,Tamm-27,FIN,60.0,23.5,Outi Savolainen,CS77341,orange_circle
+356,6970,Salk,Ts-1,ESP,41.7194,2.93056,Albert Kranz,CS76615,pink_circle
+357,6971,Salk,Ts-5,ESP,41.7194,2.93056,Albert Kranz,CS77388,pink_circle
+358,6973,GMI,Ull2-3,SWE,56.0648,13.9707,Magnus Nordborg,CS78817,ltblu_circle
+359,6974,GMI,Ull2-5,SWE,56.0648,13.9707,Magnus Nordborg,CS78818,red_circle
+360,6975,Salk,Uod-1,AUT,48.3,14.45,Marcus Koch,CS76621,ylw_circle
+361,6976,Salk,Uod-7,AUT,48.3,14.45,Marcus Koch,CS78823,ylw_circle
+362,6979,Salk,Wei-0,SUI,47.25,8.26,Alan Slusarenko,CS76628,ylw_circle
+363,6981,"MPI,Salk",Ws-2,RUS,52.3,30.0,Kenneth Feldmann,CS78920,forbidden
+364,6982,Salk,Wt-5,GER,52.3,9.3,Albert Kranz,CS76632,ltblu_circle
+365,6984,Salk,Zdr-1,CZE,49.3853,16.2544,Jirina Relichov,CS76635,ylw_circle
+366,6986,Salk,Abd-0,UK,57.1539,-2.2207,R. Mitchelson,CS76429,blu_circle
+367,6987,Salk,Ak-1,GER,48.0683,7.62551,Albert Kranz,CS76431,forbidden
+368,6989,Salk,Alst-1,UK,54.8,-2.4333,Maarten Koornneef,CS76432,blu_circle
+369,6990,Salk,Amel-1,NED,53.448,5.73,Maarten Koornneef,CS76434,forbidden
+370,6992,Salk,Ang-0,BEL,50.3,5.3,Albert Kranz,CS76436,forbidden
+371,6997,Salk,Appt-1,NED,51.8333,5.5833,Maarten Koornneef,CS76440,ltblu_circle
+372,7000,Salk,Aa-0,GER,50.9167,9.57073,Albert Kranz,CS76428,ltblu_circle
+373,7002,Salk,Baa-1,NED,51.3333,6.1,Maarten Koornneef,CS76442,ltblu_circle
+374,7003,Salk,Bs-1,SUI,47.5,7.5,Albert Kranz,CS78888,forbidden
+375,7008,Salk,Benk-1,NED,52.0,5.675,Maarten Koornneef,CS76447,ltblu_circle
+376,7013,Salk,Bd-0,GER,52.4584,13.287,Albert Kranz,CS76445,red_circle
+377,7014,Salk,Ba-1,UK,56.5459,-4.79821,Albert Kranz,CS76441,ltblu_circle
+378,7025,Salk,Bl-1,ITA,44.5041,11.3396,Albert Kranz,CS76450,ylw_circle
+379,7026,Salk,Boot-1,UK,54.4,-3.2667,Maarten Koornneef,CS76452,blu_circle
+380,7028,Salk,Bch-1,GER,49.5166,9.3166,Albert Kranz,CS76444,forbidden
+381,7031,Salk,Bsch-0,GER,50.0167,8.6667,Albert Kranz,CS76457,ltblu_circle
+382,7033,"Salk,MPI",Buckhorn Pass,USA,41.3599,-122.755,Angus Murphy,CS76733,ltblu_circle
+383,7036,"MPI,Salk",Bu-0,GER,50.5,9.5,Albert Kranz,CS78889,ltblu_circle
+384,7058,Mott,Bur-0,IRL,53.08,-9.07555556,Albert Kranz,CS76734,forbidden
+385,7061,Salk,Cal-0,UK,53.2699,-1.64293,Albert Kranz,CS76460,forbidden
+386,7062,Salk,Ca-0,GER,50.2981,8.26607,Albert Kranz,CS76459,ltblu_circle
+387,7063,Mott,Can-0,ESP,29.2144,-13.4811,Albert Kranz,CS76740,grn_circle
+388,7064,Salk,Cnt-1,UK,51.3,1.1,Eric Holub,CS76467,blu_circle
+389,7067,Mott,Ct-1,ITA,37.3,15.0,Albert Kranz,CS76786,ylw_circle
+390,7068,Salk,Cerv-1,ITA,42.0,12.1,Maarten Koornneef,CS76462,wht_circle
+391,7071,Salk,Chat-1,FRA,48.0717,1.33867,Maarten Koornneef,CS76463,blu_circle
+392,7072,Salk,Chi-0,RUS,53.7502,34.7361,Albert Kranz,CS76464,forbidden
+393,7077,Salk,Co-1,POR,40.12,-8.25,Albert Kranz,CS76468,wht_circle
+394,7081,Salk,Co,POR,40.2077,-8.42639,George Redei,CS78895,pink_circle
+395,7092,Salk,Com-1,FRA,49.416,2.823,Maarten Koornneef,CS76469,blu_circle
+396,7094,Monsanto,Da-0,GER,49.8724,8.65081,Albert Kranz,CS76791,ltblu_circle
+397,7096,Salk,Di-G,FRA,47.3239,5.04278,Maarten Koornneef,CS76472,forbidden
+398,7102,Salk,Do-0,GER,50.7224,8.2372,Albert Kranz,CS76474,ltblu_circle
+399,7103,Salk,Dra-0,CZE,49.4167,16.2667,Albert Kranz,CS76476,ylw_circle
+400,7106,"MPI,Salk",Dr-0,GER,51.051,13.7336,Albert Kranz,CS78897,ylw_circle
+401,7107,Salk,Durh-1,UK,54.7761,-1.5733,Maarten Koornneef,CS76477,blu_circle
+402,7109,Salk,Ema-1,UK,51.3,0.5,Eric Holub,CS76480,blu_circle
+403,7111,Mott,Edi-0,UK,55.9494,-3.16028,Albert Kranz,CS76831,forbidden
+404,7117,Salk,El-0,GER,51.5105,9.68253,Albert Kranz,CS76479,ltblu_circle
+405,7119,Salk,En-2,GER,50.0,8.5,Albert Kranz,CS76481,ltblu_circle
+406,7120,Salk,En-D,GER,50.0,8.5,Albert Kranz,CS76482,ylw_circle
+407,7125,"MPI,Salk",Er-0,GER,49.5955,11.0087,Albert Kranz,CS78898,ltblu_circle
+408,7126,Salk,Es-0,FIN,60.1997,24.5682,Albert Kranz,CS76484,forbidden
+409,7127,Salk,Est,EST,58.6656,24.9871,Brigitte Damm,CS76485,forbidden
+410,7130,Salk,Et-0,FRA,44.6447,2.56481,Albert Kranz,CS76486,blu_circle
+411,7133,Salk,Fr-2,GER,50.1102,8.6822,Albert Kranz,CS76489,ltblu_circle
+412,7138,Salk,Fi-0,GER,50.5,8.0167,Albert Kranz,CS76488,forbidden
+413,7143,Salk,Gel-1,NED,51.0167,5.86667,Maarten Koornneef,CS76492,ltblu_circle
+414,7147,Salk,Gie-0,GER,50.584,8.67825,Albert Kranz,CS76493,forbidden
+415,7158,Monsanto,Gr-5,AUT,47.0,15.5,Albert Kranz,CS76885,euro
+416,7160,Salk,Gre-0,USA,43.178,-85.2532,Albert Kranz,CS76497,ltblu_circle
+417,7161,Salk,Gd-1,GER,53.5,10.5,Albert Kranz,CS76491,ltblu_circle
+418,7162,Salk,Hs-0,GER,52.24,9.44,Albert Kranz,CS76515,ltblu_circle
+419,7163,Salk,Ha-0,GER,52.3721,9.73569,Albert Kranz,CS76500,forbidden
+420,7164,Salk,Hau-0,DEN,55.675,12.5686,Albert Kranz,CS76915,red_circle
+421,7165,Salk,Hn-0,GER,51.3472,8.28844,Albert Kranz,CS76513,ltblu_circle
+422,7169,Salk,Hh-0,GER,54.4175,9.88682,Albert Kranz,CS76512,forbidden
+423,7177,Salk,Jm-0,CZE,49.0,15.0,Albert Kranz,CS76520,ylw_circle
+424,7181,Salk,Je-0,GER,50.927,11.587,Albert Kranz,CS76518,forbidden
+425,7183,Salk,Kas-1,IND,35.0,77.0,Shauna Somerville,CS79018,purple_circle
+426,7186,Mott,Kn-0,LTU,54.8969,23.8924,Albert Kranz,CS76969,ylw_circle
+427,7192,Salk,Kil-0,UK,55.6395,-5.66364,Albert Kranz,CS76526,ltblu_circle
+428,7199,Salk,Kl-5,GER,50.95,6.9666,Albert Kranz,CS76528,ltblu_circle
+429,7202,Salk,Kb-0,GER,50.1797,8.50861,Albert Kranz,CS76524,ltblu_circle
+430,7203,Salk,Krot-0,GER,49.631,11.5722,Thomas Mitchell-Olds,CS76534,ylw_circle
+431,7207,Salk,Kyoto,JPN,35.0085,135.752,Hirokazu Tsukaya,CS76535,ylw_circle
+432,7208,Salk,Lan-0,UK,55.6739,-3.78181,Albert Kranz,CS76539,ltblu_circle
+433,7209,Salk,La-0,POL,52.7333,15.2333,Albert Kranz,CS76538,forbidden
+434,7213,Mott,Ler-0,GER,47.984,10.8719,Maarten Koornneef,CS77020,forbidden
+435,7217,Salk,Lm-2,FRA,48.0,0.5,Albert Kranz,CS76545,blu_circle
+436,7218,Salk,Le-0,NED,52.1611,4.49015,Albert Kranz,CS76540,forbidden
+437,7223,Salk,Li-2:1,GER,50.3833,8.0666,Albert Kranz,CS76541,ylw_circle
+438,7231,Monsanto,Li-7,GER,50.3833,8.0666,Albert Kranz,CS77035,ltblu_circle
+439,7236,Salk,Litva,LTU,,,Igor Vizir,CS76543,ylw_circle
+440,7244,Salk,Mnz-0,GER,50.001,8.26664,Albert Kranz,CS76552,ltblu_circle
+441,7248,Salk,Mv-0,USA,41.3923,-70.6652,Albert Kranz,CS76556,ltblu_circle
+442,7250,Salk,Me-0,GER,51.9183,10.1138,Albert Kranz,CS76549,ltblu_circle
+443,7255,Salk,Mh-0,POL,50.95,20.5,Albert Kranz,CS76550,ltblu_circle
+444,7258,Salk,Nw-0,GER,50.5,8.5,Albert Kranz,CS76564,ltblu_circle
+445,7268,Salk,Np-0,GER,52.6969,10.981,Albert Kranz,CS76563,forbidden
+446,7273,Mott,No-0,GER,51.0581,13.2995,Albert Kranz,CS77128,ylw_circle
+447,7276,Salk,Ob-0,GER,50.2,8.5833,Albert Kranz,CS76566,ltblu_circle
+448,7280,Salk,Old-1,GER,53.1667,8.2,Albert Kranz,CS76567,ltblu_circle
+449,7282,Salk,Or-0,GER,50.3827,8.01161,Albert Kranz,CS76568,ltblu_circle
+450,7287,Salk,Ove-0,GER,53.3422,8.42255,Albert Kranz,CS76569,ltblu_circle
+451,7288,Mott,Oy-0,NOR,60.385543,6.193019,Albert Kranz,CS77156,forbidden
+452,7296,Monsanto,Petergof,RUS,59.0,29.0,Igor Vizir,CS77170,ylw_circle
+453,7298,Salk,Pi-0,AUT,47.04,10.51,Albert Kranz,CS76572,ylw_circle
+454,7305,Salk,Pt-0,GER,53.476,10.6065,Albert Kranz,CS78915,forbidden
+455,7306,Salk,Pog-0,CAN,49.2655,-123.206,Albert Kranz,CS76576,blu_circle
+456,7307,Monsanto,Pn-0,FRA,48.0653,-2.96591,Albert Kranz,CS77182,blu_circle
+457,7314,Salk,Ragl-1,UK,54.3512,-3.41697,Maarten Koornneef,CS76583,forbidden
+458,7316,Salk,Rhen-1,NED,51.9667,5.56667,Maarten Koornneef,CS78916,forbidden
+459,7319,Salk,Rome-1,ITA,42.0,12.1,Maarten Koornneef,CS76590,forbidden
+460,7320,Salk,Rou-0,FRA,49.4424,1.09849,Albert Kranz,CS76591,blu_circle
+461,7322,Mott,Rsch-4,RUS,56.3,34.0,Albert Kranz,CS77222,ltblu_circle
+462,7323,Salk,Rubezhnoe-1,UKR,49.0,38.28,Igor Vizir,CS76594,purple_circle
+463,7327,Salk,Sf-1,ESP,41.7833,3.03333,F. Laibach,CS77246,pink_circle
+464,7328,Mott,Sf-2,ESP,41.7833,3.03333,Albert Kranz,CS77247,pink_circle
+465,7332,Salk,Seattle-0,USA,47.0,-122.2,Rick Amasino,CS76598,blu_circle
+466,7333,Salk,Sei-0,ITA,46.5438,11.5614,Albert Kranz,CS76599,ylw_circle
+467,7337,Salk,Si-0,GER,50.8738,8.02341,Albert Kranz,CS76601,ltblu_circle
+468,7342,Salk,Su-0,UK,53.6473,-3.00733,Albert Kranz,CS76606,forbidden
+469,7343,Salk,Sp-0,GER,52.5339,13.181,Albert Kranz,CS76603,red_circle
+470,7344,Salk,Sg-1,GER,47.6667,9.5,Albert Kranz,CS76600,forbidden
+471,7346,Monsanto,Sten-0,GER,52.6058,11.8558,Albert Kranz,CS77277,red_circle
+472,7347,Salk,Stw-0,RUS,52.0,36.0,Albert Kranz,CS76605,ylw_circle
+473,7349,Salk,Ta-0,CZE,49.5,14.5,Albert Kranz,CS76608,ylw_circle
+474,7350,Salk,Tac-0,USA,47.2413,-122.459,Thomas Mitchell-Olds,CS76609,ylw_circle
+475,7353,Salk,Tha-1,NED,52.08,4.3,Maarten Koornneef,CS76611,forbidden
+476,7354,Salk,Ting-1,SWE,56.5,14.9,Maarten Koornneef,CS76612,red_circle
+477,7356,"Salk,MPI",Tol-0,USA,41.6639,-83.5553,Scott Leisner,CS76614,ltblu_circle
+478,7358,MPI,Tol-2,USA,41.6639,-83.5553,Scott Leisner,CS79019,ltblu_circle
+479,7359,MPI,Tol-3,USA,41.6639,-83.5553,Scott Leisner,CS79020,ltblu_circle
+480,7372,Salk,Tscha-1,AUT,47.0748,9.9042,Maarten Koornneef,CS76616,ylw_circle
+481,7373,Mott,Tsu-0,JPN,34.43,136.31,Albert Kranz,CS77389,forbidden
+482,7377,Salk,Tul-0,USA,43.2708,-85.2563,Albert Kranz,CS76618,ltblu_circle
+483,7378,Salk,Uk-1,GER,48.0333,7.7667,Albert Kranz,CS76620,forbidden
+484,7382,Salk,Utrecht,NED,52.0918,5.1145,Viola Willemsen,CS76622,forbidden
+485,7383,Salk,Van-0,CAN,49.2655,-123.206,Albert Kranz,CS76623,blu_circle
+486,7384,Salk,Ven-1,NED,52.0333,5.55,Maarten Koornneef,CS76624,forbidden
+487,7387,Salk,Vind-1,UK,54.9902,-2.3671,Maarten Koornneef,CS76625,blu_circle
+488,7394,Salk,Wa-1,POL,52.3,21.0,Albert Kranz,CS76626,forbidden
+489,7396,Mott,Ws-0.2,RUS,52.3,30.0,Albert Kranz,CS78857,ylw_circle
+490,7404,Salk,Wc-1,GER,52.6,10.0667,Albert Kranz,CS76627,forbidden
+491,7411,Salk,Wl-0,GER,47.9299,10.8134,Albert Kranz,CS76630,ylw_circle
+492,7413,Mott,Wil-2,LTU,54.6833,25.3167,Albert Kranz,CS78856,ylw_circle
+493,7415,Mott,Wu-0,GER,49.7878,9.9361,Albert Kranz,CS78858,ltblu_circle
+494,7416,Salk,Yo-0,USA,37.45,-119.35,Albert Kranz,CS76633,ltblu_circle
+495,7417,Mott,Zu-0,SUI,47.3667,8.55,Albert Kranz,CS78880,blu_circle
+496,7418,Monsanto,Zu-1,SUI,47.3667,8.55,Albert Kranz,CS78881,forbidden
+497,7419,Salk,Db-1,GER,50.3058,8.32213,Albert Kranz,CS76471,ltblu_circle
+498,7424,Salk,Jl-3,CZE,49.2,16.6166,Albert Kranz,CS76519,ylw_circle
+499,7427,Salk,Ko-2,DEN,,,Albert Kranz,CS76531,ylw_circle
+500,7430,Salk,Nc-1,FRA,48.6167,6.25,Albert Kranz,CS76559,forbidden
+501,7460,Salk,Da(1)-12,CZE,,,Igor Vizir,CS76470,ylw_circle
+502,7461,Salk,H55,CZE,49.0,15.0,Igor Vizir,CS76897,ltblu_circle
+503,7471,Salk,RLD-1,UNK,,,Maarten Koornneef,CS76588,forbidden
+504,7475,MPI,KEN,USA,41.767,-72.677,Massimo Pigliucci,CS79021,ltblu_circle
+505,7477,Monsanto,WAR,USA,41.7302,-71.2825,Massimo Pigliucci,CS78853,forbidden
+506,7514,Salk,RRS-7,USA,41.5609,-86.4251,Joy Bergelson,CS76593,forbidden
+507,7515,"MPI,Salk",RRS-10,USA,41.5609,-86.4251,Joy Bergelson,CS76592,ltblu_circle
+508,7516,GMI,Vår2-1,SWE,55.58,14.334,Magnus Nordborg,CS78830,ltblu_circle
+509,7517,GMI,Vår2-6,SWE,55.58,14.334,Magnus Nordborg,CS78831,ltblu_circle
+510,7520,Salk,Lp2-2,CZE,49.38,16.81,Ivo Cetl,CS76546,ylw_circle
+511,7521,Salk,Lp2-6,CZE,49.38,16.81,Ivo Cetl,CS77052,ylw_circle
+512,7523,Salk,Pna-17,USA,42.0945,-86.3253,Joy Bergelson,CS76575,ltblu_circle
+513,7525,Salk,Rmx-A180,USA,42.036,-86.511,Joy Bergelson,CS77218,ltblu_circle
+514,7529,MPI,627RMX-1MN4,USA,42.0333,-86.5128,Justin Borevitz,CS79022,ltblu_circle
+515,7530,MPI,627RMX-1MN5,USA,42.0333,-86.5128,Justin Borevitz,CS79023,ltblu_circle
+516,7566,MPI,627ME-13Y1,USA,42.093,-86.359,Justin Borevitz,CS78367,ltblu_circle
+517,7568,MPI,627ME-1MI1,USA,42.093,-86.359,Justin Borevitz,CS79024,ltblu_circle
+518,7717,Monsanto,KNO1.37,USA,41.273,-86.625,Megan Dunning,CS76972,ltblu_circle
+519,7757,MPI,KNO2.41,USA,41.273,-86.625,Megan Dunning,CS79025,ltblu_circle
+520,7767,MPI,KNO2.54,USA,41.273,-86.625,Megan Dunning,CS79026,ltblu_circle
+521,7917,Monsanto,PNA3.10,USA,42.0945,-86.3253,Megan Dunning,CS77183,ltblu_circle
+522,7947,Monsanto,PNA3.40,USA,42.0945,-86.3253,Megan Dunning,CS77184,ltblu_circle
+523,8037,MPI,PT1.52,USA,41.3423,-86.7368,Megan Dunning,CS79027,ltblu_circle
+524,8057,MPI,PT1.85,USA,41.3423,-86.7368,Megan Dunning,CS79028,ltblu_circle
+525,8077,Monsanto,PT2.21,USA,41.3423,-86.7368,Megan Dunning,CS77191,ltblu_circle
+526,8132,Monsanto,RMX3.22,USA,42.036,-86.511,Megan Dunning,CS77219,ltblu_circle
+527,8171,MPI,RMX4.118,USA,42.036,-86.511,Megan Dunning,CS79029,ltblu_circle
+528,8214,Salk,Gy-0,FRA,49.0,2.0,Albert Kranz,CS78901,blu_circle
+529,8222,GMI,Lis-2,SWE,56.0328,14.775,Magnus Nordborg,CS77043,red_circle
+530,8227,GMI,THÖ 03,SWE,62.7989,17.9103,Mattias Jakobsson,CS77367,orange_circle
+531,8230,GMI,Algutsrum,SWE,56.68,16.5,Magnus Nordborg,CS76657,red_circle
+532,8231,GMI,Brö1-6,SWE,56.3,16.0,Magnus Nordborg,CS76726,red_circle
+533,8233,Salk,Dem-4,USA,41.1876,-87.1923,Joy Bergelson,CS76794,ltblu_circle
+534,8234,"GMI,Salk",Gul1-2,SWE,56.4606,15.8127,Magnus Nordborg,CS76896,red_circle
+535,8235,Salk,Hod,CZE,48.8,17.1,Jirina Relichov,CS76924,ylw_circle
+536,8236,Salk,HSm,CZE,49.33,15.76,Jirina Relichov,CS76941,ylw_circle
+537,8237,GMI,Kävlinge-1,SWE,55.8,13.1,Torbjorn Sall,CS76964,red_circle
+538,8238,Salk,Kent,UK,51.15,0.4,Magnus Nordborg,CS76967,ltblu_circle
+539,8239,Salk,PHW-3,GER,51.0,7.0,Paul Williams,CS76976,ltblu_circle
+540,8240,GMI,Kulturen-1,SWE,55.705,13.196,Torbjorn Sall,CS76987,red_circle
+541,8241,GMI,Liarum,SWE,55.9473,13.821,Torbjorn Sall,CS77038,red_circle
+542,8242,GMI,Lillö-1,SWE,56.1494,15.7884,Magnus Nordborg,CS77039,red_circle
+543,8243,Salk,PHW-2,ITA,43.7703,11.2547,Paul Williams,CS77173,blu_circle
+544,8244,Salk,PHW-34,FRA,48.6103,2.3086,Paul Williams,CS77174,blu_circle
+545,8246,Salk,NC-6,USA,35.0,-79.18,Joy Bergelson,CS77124,ltblu_circle
+546,8247,GMI,San-2,SWE,56.07,13.74,Magnus Nordborg,CS77233,red_circle
+547,8249,GMI,Vimmerby,SWE,57.7,15.8,Magnus Nordborg,CS78845,red_circle
+548,8256,GMI,Bå1-2,SWE,56.4,12.9,Magnus Nordborg,CS76676,forbidden
+549,8258,GMI,Bå4-1,SWE,56.4,12.9,Magnus Nordborg,CS76677,red_circle
+550,8259,GMI,Bå5-1,SWE,56.4,12.9,Magnus Nordborg,CS76678,red_circle
+551,8264,Salk,Bla-1,ESP,41.6833,2.8,Albert Kranz,CS76451,pink_circle
+552,8283,GMI,Dra3-1,SWE,55.76,14.12,Magnus Nordborg,CS76811,red_circle
+553,8284,Salk,DraII-1,CZE,49.4112,16.2815,Jirina Relichov,CS76813,ylw_circle
+554,8285,Salk,DraIII-1,CZE,49.4112,16.2815,Jirina Relichov,CS76815,ylw_circle
+555,8290,Salk,En-1,GER,50.0,8.5,Albert Kranz,CS76841,ylw_circle
+556,8297,Salk,Ge-0,SUI,46.5,6.08,Albert Kranz,CS76875,blu_circle
+557,8306,GMI,Hov4-1,SWE,56.1,13.74,Magnus Nordborg,CS76936,red_circle
+558,8307,GMI,Hovdala-6,SWE,56.1,13.74,Torbjorn Sall,CS76938,red_circle
+559,8311,Salk,In-0,AUT,47.5,11.5,Albert Kranz,CS78903,ylw_circle
+560,8312,"MPI,Salk",Is-0,GER,50.5,7.5,Albert Kranz,CS78904,ltblu_circle
+561,8326,GMI,Lis-1,SWE,56.0328,14.775,Magnus Nordborg,CS77042,red_circle
+562,8334,GMI,Lu-1,SWE,55.71,13.2,Albert Kranz,CS77056,forbidden
+563,8335,GMI,Lund,SWE,55.71,13.2,Magnus Nordborg,CS77060,red_circle
+564,8337,Salk,Mir-0,ITA,44.0,12.37,Albert Kranz,CS76551,blu_circle
+565,8343,Salk,Na-1,FRA,47.5,1.5,Albert Kranz,CS76558,forbidden
+566,8351,GMI,Ost-0,SWE,60.25,18.37,Albert Kranz,CS77154,orange_circle
+567,8354,Salk,Per-1,RUS,58.0,56.3167,Albert Kranz,CS76571,purple_circle
+568,8357,Salk,Pla-0,ESP,41.5,2.25,Albert Kranz,CS76573,pink_circle
+569,8365,Salk,Rak-2,CZE,49.0,16.0,Albert Kranz,CS77201,ylw_circle
+570,8366,Salk,Rd-0,GER,50.5,8.5,Albert Kranz,CS76584,forbidden
+571,8369,GMI,Rev-1,SWE,55.6942,13.4504,Magnus Nordborg,CS77214,red_circle
+572,8376,GMI,Sanna-2,SWE,62.69,18.0,Magnus Nordborg,CS77234,orange_circle
+573,8386,GMI,Sr:5,SWE,58.9,11.2,Ivo Cetl,CS77268,ylw_circle
+574,8387,GMI,St-0,SWE,59.0,18.0,Albert Kranz,CS77270,ltblu_circle
+575,8419,Salk,Wil-1,LTU,54.6833,25.3167,Albert Kranz,CS78855,ylw_circle
+576,8420,Salk,Kelsterbach-4,GER,50.0667,8.5333,Paul Williams,CS76525,ltblu_circle
+577,8422,GMI,Fjä1-1,SWE,56.06,14.29,Magnus Nordborg,CS76859,red_circle
+578,8424,Salk,Kas-2,IND,35.0,77.0,Shauna Somerville,CS78905,purple_circle
+579,8426,GMI,Ull1-1,SWE,56.06,13.97,Magnus Nordborg,CS78816,red_circle
+580,8427,GMI,Ull2-13,SWE,56.0648,13.9707,Magnus Nordborg,CS78552,red_circle
+581,8464,MPI,LP3413.31,USA,41.6862,-86.8513,Justin Borevitz,CS79030,ltblu_circle
+582,8483,MPI,LP3413.53,USA,41.6862,-86.8513,Justin Borevitz,CS79031,ltblu_circle
+583,8699,MPI,328PNA062,USA,42.0945,-86.3253,Justin Borevitz,CS79032,ltblu_circle
+584,8723,MPI,11PNA1.14,USA,42.0945,-86.3253,Justin Borevitz,CS79033,ltblu_circle
+585,9027,MPI,RMX413.85,USA,42.036,-86.511,Justin Borevitz,CS79034,ltblu_circle
+586,9057,GMI,Vinslöv,SWE,56.1,13.9167,Torbjorn Sall,CS78847,red_circle
+587,9058,GMI,Västervik,SWE,57.75,16.6333,Magnus Nordborg,CS78834,forbidden
+588,9067,Monsanto,Xan-3,AZE,38.6536,48.7992,James Beck,CS78860,wht_circle
+589,9069,Monsanto,Xan-5,AZE,38.6536,48.7992,James Beck,CS78861,wht_circle
+590,9070,Monsanto,Xan-6,AZE,38.6536,48.7992,James Beck,CS78862,wht_circle
+591,9075,Monsanto,Lerik1-4,AZE,38.7406,48.6131,James Beck,CS77023,wht_circle
+592,9078,Monsanto,Lerik1-7,AZE,38.7406,48.6131,James Beck,CS77024,wht_circle
+593,9079,Monsanto,Lerik2-1,AZE,38.7833,48.5517,James Beck,CS77025,wht_circle
+594,9081,Monsanto,Lerik2-3,AZE,38.7833,48.5517,James Beck,CS77026,wht_circle
+595,9084,Monsanto,Lerik2-6,AZE,38.7833,48.5517,James Beck,CS77028,wht_circle
+596,9085,Monsanto,Lerik2-7,AZE,38.7833,48.5517,James Beck,CS77029,wht_circle
+597,9089,Monsanto,Nar-3,AZE,38.9522,48.925,James Beck,CS77119,wht_circle
+598,9091,Monsanto,Nar-5,AZE,38.9522,48.925,James Beck,CS77121,wht_circle
+599,9095,Monsanto,Istisu-5,AZE,38.9786,48.5594,James Beck,CS76950,wht_circle
+600,9099,Monsanto,Istisu-9,AZE,38.9786,48.5594,James Beck,CS76953,wht_circle
+601,9100,Monsanto,Lag1-2,GEO,41.8296,46.2831,James Beck,CS76998,wht_circle
+602,9102,Monsanto,Lag1-4,GEO,41.8296,46.2831,James Beck,CS76999,wht_circle
+603,9103,Monsanto,Lag1-5,GEO,41.8296,46.2831,James Beck,CS77000,wht_circle
+604,9104,Monsanto,Lag1-6,GEO,41.8296,46.2831,James Beck,CS77001,wht_circle
+605,9105,Monsanto,Lag1-7,GEO,41.8296,46.2831,James Beck,CS77002,wht_circle
+606,9106,Monsanto,Lag1-8,GEO,41.8296,46.2831,James Beck,CS77003,wht_circle
+607,9111,Monsanto,Lag2-4,GEO,41.8296,46.2831,James Beck,CS77005,wht_circle
+608,9113,Monsanto,Lag2-6,GEO,41.8296,46.2831,James Beck,CS77006,wht_circle
+609,9114,Monsanto,Lag2-7,GEO,41.8296,46.2831,James Beck,CS77007,wht_circle
+610,9115,Monsanto,Lag2-10,GEO,41.8296,46.2831,James Beck,CS77004,wht_circle
+611,9121,Monsanto,Bak-5,GEO,41.7942,43.4767,James Beck,CS76685,wht_circle
+612,9125,Monsanto,Geg-14,ARM,40.1408,44.8203,James Beck,CS76876,purple_circle
+613,9128,Monsanto,Yeg-2,ARM,39.8692,45.3622,James Beck,CS78864,purple_circle
+614,9130,Monsanto,Yeg-4,ARM,39.8692,45.3622,James Beck,CS78865,purple_circle
+615,9131,Monsanto,Yeg-5,ARM,39.8692,45.3622,James Beck,CS78866,purple_circle
+616,9133,Monsanto,Yeg-7,ARM,39.8692,45.3622,James Beck,CS78867,purple_circle
+617,9134,Monsanto,Yeg-8,ARM,39.8692,45.3622,James Beck,CS78868,purple_circle
+618,9298,Monsanto,Edi-1,UK,55.9681,-3.21833,James Beck,CS76832,blu_circle
+619,9312,Monsanto,Ullapool-8,UK,57.9,-5.1525,James Beck,CS78821,blu_circle
+620,9314,Monsanto,Gol-2,UK,57.9672,-3.96722,James Beck,CS76883,blu_circle
+621,9321,GMI,Ådal 1,SWE,62.8622,18.336,Alison Anastasio,CS76643,orange_circle
+622,9323,GMI,Ådal 3,SWE,62.8622,18.336,Alison Anastasio,CS76644,orange_circle
+623,9332,GMI,Bar 1,SWE,62.8698,18.381,Alison Anastasio,CS76688,orange_circle
+624,9336,GMI,Bön 1,SWE,62.8794,18.4473,Alison Anastasio,CS76715,forbidden
+625,9339,GMI,Böt 1,SWE,57.7133,15.0689,Alison Anastasio,CS76720,red_circle
+626,9343,GMI,Dju-1,SWE,57.3089,18.1512,Alison Anastasio,CS78896,forbidden
+627,9352,GMI,Död 2,SWE,57.2608,16.3675,Alison Anastasio,CS76797,red_circle
+628,9353,GMI,Död 3,SWE,57.2608,16.3675,Alison Anastasio,CS76798,red_circle
+629,9363,GMI,EdJ 2,SWE,62.9147,18.4045,Alison Anastasio,CS76833,orange_circle
+630,9369,GMI,EkS 2,SWE,57.6781,14.9986,Alison Anastasio,CS76837,red_circle
+631,9370,GMI,EkS 3,SWE,57.6781,14.9986,Alison Anastasio,CS79035,red_circle
+632,9371,GMI,FäL 1,SWE,63.016,18.3175,Alison Anastasio,CS76852,orange_circle
+633,9380,GMI,FlyA 3,SWE,55.7488,13.3742,Alison Anastasio,CS76865,red_circle
+634,9381,GMI,Fri 1,SWE,55.8106,14.2091,Alison Anastasio,CS76868,forbidden
+635,9382,GMI,Fri 2,SWE,55.8106,14.2091,Alison Anastasio,CS76869,forbidden
+636,9383,GMI,Fri 3,SWE,55.8106,14.2091,Alison Anastasio,CS76870,forbidden
+637,9386,GMI,Grön 12,SWE,62.806,18.1896,Alison Anastasio,CS76891,orange_circle
+638,9388,GMI,Grön 14,SWE,62.806,18.1896,Alison Anastasio,CS76892,orange_circle
+639,9390,GMI,Hadd-1,SWE,57.3263,15.8979,Alison Anastasio,CS78659,red_circle
+640,9391,GMI,Hadd-2,SWE,57.3263,15.8979,Alison Anastasio,CS76905,red_circle
+641,9392,GMI,Hadd-3,SWE,57.3263,15.8979,Alison Anastasio,CS76906,red_circle
+642,9394,GMI,Hag-2,SWE,56.5804,16.4063,Alison Anastasio,CS76907,forbidden
+643,9395,GMI,Hal-1,SWE,57.5089,15.0105,Alison Anastasio,CS76908,red_circle
+644,9399,GMI,Hamm-1,SWE,55.4234,13.9905,Alison Anastasio,CS76910,red_circle
+645,9402,GMI,Hel-3,SWE,57.8765,14.8549,Alison Anastasio,CS76918,red_circle
+646,9404,GMI,HolA-1 1,SWE,55.7491,13.399,Alison Anastasio,CS76926,red_circle
+647,9405,GMI,HolA-1 2,SWE,55.7491,13.399,Alison Anastasio,CS76927,red_circle
+648,9407,GMI,HolA-2 2,SWE,55.7491,13.399,Alison Anastasio,CS76928,red_circle
+649,9408,GMI,Kal 1,SWE,56.047,13.9519,Alison Anastasio,CS76959,red_circle
+650,9409,GMI,Kia 1,SWE,56.0573,14.302,Alison Anastasio,CS76968,red_circle
+651,9412,GMI,Kor 3,SWE,57.2746,16.1494,Alison Anastasio,CS76981,red_circle
+652,9413,GMI,Kor 4,SWE,57.2746,16.1494,Alison Anastasio,CS76982,red_circle
+653,9416,GMI,Kru-3,SWE,57.7215,18.3837,Alison Anastasio,CS76986,red_circle
+654,9421,GMI,Lan 1,SWE,55.9745,14.3997,Alison Anastasio,CS77009,red_circle
+655,9427,GMI,Näs 2,SWE,62.8815,18.4055,Alison Anastasio,CS77122,orange_circle
+656,9433,GMI,Nyl 13,SWE,62.9513,18.2763,Alison Anastasio,CS77135,orange_circle
+657,9436,GMI,Puk-1,SWE,56.1633,14.6806,Alison Anastasio,CS77194,red_circle
+658,9437,GMI,Puk-2,SWE,56.1633,14.6806,Alison Anastasio,CS77195,red_circle
+659,9442,GMI,Sim-1,SWE,55.5678,14.3398,Alison Anastasio,CS77250,ltblu_circle
+660,9450,GMI,Spro 1,SWE,57.2545,18.2109,Alison Anastasio,CS77263,red_circle
+661,9451,GMI,Spro 2,SWE,57.2545,18.2109,Alison Anastasio,CS77264,red_circle
+662,9452,GMI,Spro 3,SWE,57.2545,18.2109,Alison Anastasio,CS77265,red_circle
+663,9453,GMI,Stenk-2,SWE,57.8009,18.5162,Alison Anastasio,CS77274,red_circle
+664,9454,GMI,Stenk-3,SWE,57.8009,18.5162,Alison Anastasio,CS77275,red_circle
+665,9455,GMI,Stenk-4,SWE,57.8009,18.5162,Alison Anastasio,CS77276,red_circle
+666,9470,GMI,Tur-4,SWE,57.6511,14.8043,Alison Anastasio,CS77399,red_circle
+667,9471,GMI,Ull-A-1,SWE,56.0648,13.9707,Alison Anastasio,CS78820,red_circle
+668,9476,GMI,VårA 1,SWE,55.5796,14.3336,Alison Anastasio,CS78832,ltblu_circle
+669,9481,GMI,Yst-1,SWE,55.4242,13.8484,Alison Anastasio,CS78869,red_circle
+670,9503,Monsanto,11C1,UK,55.8877,-3.21072,Andrew Hudson,CS76640,blu_circle
+671,9506,Monsanto,IP-Alo-0,POR,40.11,-7.47,Carlos Alonso-Blanco,CS76662,forbidden
+672,9507,Monsanto,IP-Coa-0,POR,38.45,-7.5,Carlos Alonso-Blanco,CS76775,pink_circle
+673,9508,Monsanto,IP-Mos-1,POR,40.04,-7.11,Carlos Alonso-Blanco,CS77108,forbidden
+674,9509,Monsanto,IP-Reg-0,POR,39.29,-7.4,Carlos Alonso-Blanco,CS77207,pink_circle
+675,9510,Monsanto,IP-Rei-0,POR,38.75,-7.59,Carlos Alonso-Blanco,CS77208,pink_circle
+676,9511,Monsanto,IP-Vav-0,POR,38.53,-8.02,Carlos Alonso-Blanco,CS78835,pink_circle
+677,9512,Monsanto,IP-Vid-1,POR,38.22,-7.84,Carlos Alonso-Blanco,CS78842,pink_circle
+678,9513,Monsanto,IP-Adc-5,ESP,38.77,-4.07,Carlos Alonso-Blanco,CS76646,forbidden
+679,9514,Monsanto,IP-Adm-0,ESP,39.15,-4.54,Carlos Alonso-Blanco,CS76647,pink_circle
+680,9515,Monsanto,IP-Ala-0,ESP,39.72,-6.89,Carlos Alonso-Blanco,CS76650,pink_circle
+681,9517,Monsanto,IP-All-0,ESP,42.19,-7.8,Carlos Alonso-Blanco,CS76659,blu_circle
+682,9518,Monsanto,IP-Alm-0,ESP,39.88,-0.36,Carlos Alonso-Blanco,CS76660,pink_circle
+683,9519,Monsanto,IP-Ang-0,ESP,41.94,2.64,Xavier Picó,CS78886,pink_circle
+684,9520,Monsanto,IP-Ara-4,ESP,41.7,-3.68,Carlos Alonso-Blanco,CS76670,pink_circle
+685,9521,Monsanto,IP-Bar-1,ESP,41.43,2.13,Xavier Picó,CS76689,pink_circle
+686,9522,Monsanto,IP-Bea-0,ESP,36.52,-5.27,Carlos Alonso-Blanco,CS76695,pink_circle
+687,9523,Monsanto,IP-Ben-0,ESP,38.37,-2.66,Carlos Alonso-Blanco,CS76700,forbidden
+688,9524,Monsanto,IP-Ber-0,ESP,42.52,-0.56,Carlos Alonso-Blanco,CS78887,pink_circle
+689,9525,Monsanto,IP-Bis-0,ESP,42.49,0.54,Xavier Picó,CS76711,pink_circle
+690,9526,Monsanto,IP-Cab-3,ESP,41.54,2.39,Xavier Picó,CS76738,pink_circle
+691,9527,Monsanto,IP-Cad-0,ESP,40.37,-5.74,Carlos Alonso-Blanco,CS76739,forbidden
+692,9528,Monsanto,IP-Cal-0,ESP,40.94,-1.37,Carlos Alonso-Blanco,CS78890,pink_circle
+693,9529,Monsanto,IP-Cap-1,ESP,36.97,-3.36,Carlos Alonso-Blanco,CS76741,forbidden
+694,9530,Monsanto,IP-Car-1,ESP,38.25,-4.32,Carlos Alonso-Blanco,CS76742,forbidden
+695,9531,Monsanto,IP-Cdc-3,ESP,41.21,-4.54,Carlos Alonso-Blanco,CS76761,pink_circle
+696,9532,Monsanto,IP-Cdo-0,ESP,42.23,-4.64,Carlos Alonso-Blanco,CS76762,pink_circle
+697,9533,Monsanto,IP-Cem-0,ESP,41.15,-4.32,Carlos Alonso-Blanco,CS76763,grn_circle
+698,9534,Monsanto,IP-Cmo-3,ESP,40.05,-4.65,Carlos Alonso-Blanco,CS76774,pink_circle
+699,9535,Monsanto,IP-Coc-1,ESP,42.31,3.19,Xavier Picó,CS76776,pink_circle
+700,9536,Monsanto,IP-Cor-0,ESP,40.83,-2.0,Carlos Alonso-Blanco,CS76782,forbidden
+701,9537,Monsanto,IP-Cum-1,ESP,38.07,-6.66,Carlos Alonso-Blanco,CS76787,pink_circle
+702,9539,Monsanto,IP-Deh-1,ESP,40.29,-6.67,Carlos Alonso-Blanco,CS76793,pink_circle
+703,9540,Monsanto,IP-Elb-0,ESP,41.81,2.34,Xavier Picó,CS76838,pink_circle
+704,9541,Monsanto,IP-Fue-2,ESP,38.26,-5.42,Carlos Alonso-Blanco,CS76871,pink_circle
+705,9542,Monsanto,IP-Fun-0,ESP,40.79,-4.05,Carlos Alonso-Blanco,CS76872,grn_circle
+706,9543,Monsanto,IP-Gra-0,ESP,36.77,-5.39,Xavier Picó,CS76886,grn_circle
+707,9544,Monsanto,IP-Gua-1,ESP,39.4,-5.33,Carlos Alonso-Blanco,CS76894,pink_circle
+708,9545,Monsanto,IP-Her-12,ESP,39.4,-5.78,Carlos Alonso-Blanco,CS76920,grn_circle
+709,9546,Monsanto,IP-Hom-4,ESP,40.82,-1.68,Carlos Alonso-Blanco,CS76929,pink_circle
+710,9547,Monsanto,IP-Hor-0,ESP,41.67,2.62,Xavier Picó,CS76930,pink_circle
+711,9548,Monsanto,IP-Hoy-0,ESP,40.4,-5.0,Carlos Alonso-Blanco,CS76939,forbidden
+712,9549,Monsanto,IP-Hum-2,ESP,42.23,-3.69,Carlos Alonso-Blanco,CS76943,grn_circle
+713,9550,Monsanto,IP-Iso-4,ESP,43.05,-5.37,Carlos Alonso-Blanco,CS76946,grn_circle
+714,9551,Monsanto,IP-Jim-1,ESP,42.28,-5.92,Carlos Alonso-Blanco,CS76955,forbidden
+715,9552,Monsanto,IP-Lab-7,ESP,40.87,-4.5,Carlos Alonso-Blanco,CS76995,forbidden
+716,9553,Monsanto,IP-Ldd-0,ESP,41.58,-4.71,Carlos Alonso-Blanco,CS77012,pink_circle
+717,9554,Monsanto,IP-Lso-0,ESP,38.86,-3.16,Carlos Alonso-Blanco,CS77055,grn_circle
+718,9555,Monsanto,IP-Mar-1,ESP,39.58,-3.93,Carlos Alonso-Blanco,CS77068,grn_circle
+719,9556,Monsanto,IP-Men-2,ESP,39.66,-4.34,Xavier Picó,CS77081,pink_circle
+720,9557,Monsanto,IP-Moa-0,ESP,42.46,0.7,Carlos Alonso-Blanco,CS77102,pink_circle
+721,9558,Monsanto,IP-Moc-11,ESP,41.57,-5.64,Carlos Alonso-Blanco,CS77103,forbidden
+722,9559,Monsanto,IP-Mon-5,ESP,38.06,-4.38,Carlos Alonso-Blanco,CS77107,forbidden
+723,9560,Monsanto,IP-Mot-0,ESP,38.19,-6.24,Carlos Alonso-Blanco,CS77109,pink_circle
+724,9561,Monsanto,IP-Mun-0,ESP,40.71,-5.04,Carlos Alonso-Blanco,CS77114,forbidden
+725,9562,Monsanto,IP-Mur-0,ESP,41.67,2.0,Xavier Picó,CS77115,pink_circle
+726,9564,Monsanto,IP-Nog-17,ESP,40.45,-1.6,Xavier Picó,CS77129,pink_circle
+727,9565,Monsanto,IP-Orb-10,ESP,42.97,-1.23,Carlos Alonso-Blanco,CS77152,forbidden
+728,9567,Monsanto,IP-Pal-0,ESP,42.34,1.3,Xavier Picó,CS77159,pink_circle
+729,9568,Monsanto,IP-Pan-0,ESP,42.76,-0.23,Carlos Alonso-Blanco,CS77160,pink_circle
+730,9569,Monsanto,IP-Pds-1,ESP,42.87,-6.45,Carlos Alonso-Blanco,CS77166,blu_circle
+731,9571,Monsanto,IP-Pro-0,ESP,43.28,-6.01,Carlos Alonso-Blanco,CS78914,blu_circle
+732,9573,Monsanto,IP-Rds-0,ESP,41.86,2.99,Xavier Picó,CS77206,pink_circle
+733,9574,Monsanto,IP-Rel-0,ESP,38.6,-2.7,Carlos Alonso-Blanco,CS77209,grn_circle
+734,9576,Monsanto,IP-Rev-0,ESP,40.86,-4.11,Carlos Alonso-Blanco,CS77213,forbidden
+735,9577,Monsanto,IP-Ria-0,ESP,42.34,2.17,Xavier Picó,CS77216,pink_circle
+736,9578,Monsanto,IP-Sac-0,ESP,42.13,-6.7,Carlos Alonso-Blanco,CS77229,blu_circle
+737,9579,Monsanto,IP-San-10,ESP,38.33,-3.51,Carlos Alonso-Blanco,CS77232,forbidden
+738,9581,Monsanto,IP-Sdv-3,ESP,42.84,-5.12,Carlos Alonso-Blanco,CS77242,forbidden
+739,9582,Monsanto,IP-Ses-0,ESP,41.48,-1.63,Carlos Alonso-Blanco,CS77244,pink_circle
+740,9583,Monsanto,IP-Sne-0,ESP,37.09,-3.38,Carlos Alonso-Blanco,CS77258,grn_circle
+741,9584,Monsanto,IP-Stp-0,ESP,41.19,-3.58,Carlos Alonso-Blanco,CS77283,pink_circle
+742,9585,Monsanto,IP-Svi-0,ESP,43.4,-7.39,Carlos Alonso-Blanco,CS77287,blu_circle
+743,9586,Monsanto,IP-Tam-0,ESP,41.03,-3.27,Carlos Alonso-Blanco,CS77340,pink_circle
+744,9587,Monsanto,IP-Tdc-0,ESP,41.5,-1.88,Carlos Alonso-Blanco,CS77344,pink_circle
+745,9588,Monsanto,IP-Tol-7,ESP,42.11,0.6,Xavier Picó,CS77371,pink_circle
+746,9589,Monsanto,IP-Tor-1,ESP,41.6,-2.83,Carlos Alonso-Blanco,CS77378,pink_circle
+747,9590,Monsanto,IP-Trs-0,ESP,43.37,-5.49,Carlos Alonso-Blanco,CS77387,blu_circle
+748,9591,Monsanto,IP-Vad-0,ESP,42.86,-3.59,Carlos Alonso-Blanco,CS78826,forbidden
+749,9592,Monsanto,IP-Vae-2,ESP,42.1,-5.44,Carlos Alonso-Blanco,CS78827,forbidden
+750,9593,Monsanto,IP-Vaz-0,ESP,42.26,-2.99,Carlos Alonso-Blanco,CS78836,pink_circle
+751,9594,Monsanto,IP-Vdm-0,ESP,42.04,1.01,Carlos Alonso-Blanco,CS78837,pink_circle
+752,9595,Monsanto,IP-Vdt-0,ESP,40.89,-5.5,Carlos Alonso-Blanco,CS78838,forbidden
+753,9596,Monsanto,IP-Ver-5,ESP,41.95,-7.45,Carlos Alonso-Blanco,CS78841,forbidden
+754,9597,Monsanto,IP-Vig-1,ESP,42.31,-2.53,Carlos Alonso-Blanco,CS78843,pink_circle
+755,9598,Monsanto,IP-Vim-0,ESP,41.88,-6.51,Carlos Alonso-Blanco,CS78844,grn_circle
+756,9599,Monsanto,IP-Vin-0,ESP,42.8,-5.77,Carlos Alonso-Blanco,CS78846,blu_circle
+757,9600,Monsanto,IP-Vis-0,ESP,39.85,-6.04,Carlos Alonso-Blanco,CS78848,grn_circle
+758,9601,Monsanto,IP-Voz-0,ESP,41.85,-1.88,Carlos Alonso-Blanco,CS78849,pink_circle
+759,9602,Monsanto,IP-Vpa-1,ESP,40.5,-3.96,Carlos Alonso-Blanco,CS78850,pink_circle
+760,9606,Monsanto,Aitba-1,MAR,31.48,-7.45,0,CS76649,grn_circle
+761,9607,Monsanto,Panik-1,RUS,53.05,52.15,0,CS77161,purple_circle
+762,9608,Monsanto,Karag-2,RUS,51.37,59.44,0,CS76961,purple_circle
+763,9609,Monsanto,Adam-1,RUS,51.41,59.98,0,CS76645,purple_circle
+764,9610,Monsanto,Lesno-4,RUS,53.04,51.96,0,CS77034,purple_circle
+765,9611,Monsanto,Lesno-1,RUS,53.04,51.9,0,CS77032,purple_circle
+766,9612,Monsanto,Lesno-2,RUS,53.04,51.94,0,CS77033,purple_circle
+767,9613,Monsanto,Balan-1,RUS,55.36,61.41,0,CS76687,wht_circle
+768,9615,Monsanto,Parti-1,RUS,52.99,52.16,0,CS77163,purple_circle
+769,9616,Monsanto,Krazo-1,RUS,53.06,51.96,0,CS76984,purple_circle
+770,9617,Monsanto,Karag-1,RUS,51.37,59.44,0,CS76960,purple_circle
+771,9619,Monsanto,Basta-1,RUS,51.84,79.48,0,CS76691,purple_circle
+772,9620,Monsanto,Basta-2,RUS,51.82,79.48,0,CS76692,purple_circle
+773,9621,Monsanto,Basta-3,RUS,51.84,79.46,0,CS76693,purple_circle
+774,9622,Monsanto,Bijisk-4,RUS,52.52,85.27,0,CS76707,forbidden
+775,9624,Monsanto,Chaba-2,RUS,53.6,79.37,0,CS76767,purple_circle
+776,9625,Monsanto,Kolyv-2,RUS,51.31,82.59,0,CS76977,purple_circle
+777,9626,Monsanto,Kolyv-3,RUS,51.36,82.59,0,CS76978,purple_circle
+778,9627,Monsanto,Kolyv-5,RUS,51.32,82.55,0,CS76979,purple_circle
+779,9628,Monsanto,Kolyv-6,RUS,51.33,82.54,0,CS76980,purple_circle
+780,9629,Monsanto,K-oze-1,RUS,51.35,82.18,0,CS76957,purple_circle
+781,9630,Monsanto,K-oze-3,RUS,51.34,82.16,0,CS76958,purple_circle
+782,9631,Monsanto,Lebja-1,RUS,51.65,80.79,0,CS77015,purple_circle
+783,9632,Monsanto,Lebja-2,RUS,51.67,80.82,0,CS77016,purple_circle
+784,9633,Monsanto,Lebja-4,RUS,51.63,80.83,0,CS77017,purple_circle
+785,9634,Monsanto,Masl-1,RUS,54.13,81.31,0,CS77073,purple_circle
+786,9635,Monsanto,Nosov-1,RUS,51.87,80.6,0,CS77130,purple_circle
+787,9636,Monsanto,Noveg-1,RUS,51.75,80.82,0,CS77131,purple_circle
+788,9637,Monsanto,Noveg-2,RUS,51.77,80.85,0,CS77132,purple_circle
+789,9638,Monsanto,Noveg-3,RUS,51.73,80.86,0,CS77133,purple_circle
+790,9639,Monsanto,Panke-1,RUS,53.82,80.31,0,CS77162,purple_circle
+791,9640,Monsanto,Rakit-1,RUS,51.87,80.06,0,CS77202,purple_circle
+792,9641,Monsanto,Rakit-2,RUS,51.9,80.06,0,CS77203,purple_circle
+793,9642,Monsanto,Rakit-3,RUS,51.84,80.06,0,CS77204,purple_circle
+794,9643,Monsanto,Sever-1,RUS,52.1,79.31,0,CS77245,purple_circle
+795,9644,Monsanto,Zupan-1,CRO,45.07,18.72,0,CS78882,ylw_circle
+796,9645,Monsanto,Gradi-1,CRO,45.17,18.7,0,CS76887,ylw_circle
+797,9646,Monsanto,Aiell-1,ITA,39.126899,16.170188,,CS76648,wht_circle
+798,9647,Monsanto,Basen-1,ITA,40.37,16.77,0,CS76690,wht_circle
+799,9648,Monsanto,Bisig-1,ITA,39.48,16.28,0,CS76712,wht_circle
+800,9649,Monsanto,Bivio-1,ITA,39.13,16.17,0,CS76713,wht_circle
+801,9651,Monsanto,Filet-1,ITA,40.68,14.87,0,CS76858,wht_circle
+802,9653,Monsanto,Giffo-1,ITA,38.44,16.13,0,CS76878,wht_circle
+803,9655,Monsanto,Marce-1,ITA,38.92,16.47,0,CS77071,wht_circle
+804,9656,Monsanto,Marti-1,ITA,40.64,17.31,0,CS77072,wht_circle
+805,9657,Monsanto,Melic-1,ITA,38.45,16.04,0,CS77078,wht_circle
+806,9658,Monsanto,Nicas-1,ITA,38.97,16.34,0,CS77127,wht_circle
+807,9659,Monsanto,Pigna-1,ITA,41.18,14.18,0,CS77177,wht_circle
+808,9660,Monsanto,Sarno-1,ITA,40.84,14.57,0,CS77236,wht_circle
+809,9661,Monsanto,Cimin-1,ITA,39.58,16.21,0,CS76771,wht_circle
+810,9663,Monsanto,Teano-1,ITA,41.33,14.09,0,CS77357,forbidden
+811,9664,Monsanto,Mitterberg-1-179,ITA,46.366,11.2832,Joerg Wunder,CS78907,ylw_circle
+812,9665,Monsanto,Mitterberg-1-180,ITA,46.366,11.2832,Joerg Wunder,CS78908,ylw_circle
+813,9666,Monsanto,Mitterberg-1-182,ITA,46.366,11.2832,Joerg Wunder,CS78909,ylw_circle
+814,9667,Monsanto,Mitterberg-1-183,ITA,46.366,11.2832,Joerg Wunder,CS78910,ylw_circle
+815,9668,Monsanto,Mitterberg-2-184,ITA,46.3668,11.2837,Joerg Wunder,CS77085,ylw_circle
+816,9669,Monsanto,Mitterberg-2-185,ITA,46.3668,11.2837,Joerg Wunder,CS77086,ylw_circle
+817,9670,Monsanto,Mitterberg-2-186,ITA,46.3668,11.2837,Joerg Wunder,CS77087,ylw_circle
+818,9671,Monsanto,Mitterberg-3-187,ITA,46.3668,11.2837,Joerg Wunder,CS77088,ylw_circle
+819,9672,Monsanto,Mitterberg-3-188,ITA,46.3668,11.2837,Joerg Wunder,CS77089,ylw_circle
+820,9673,Monsanto,Mitterberg-3-189,ITA,46.3668,11.2837,Joerg Wunder,CS77090,ylw_circle
+821,9676,Monsanto,Mitterberg-4-192,ITA,46.3718,11.2866,Joerg Wunder,CS77093,ylw_circle
+822,9677,Monsanto,Mitterberg-4-193,ITA,46.3718,11.2866,Joerg Wunder,CS77094,ylw_circle
+823,9678,Monsanto,Mitterberg-4-194,ITA,46.3718,11.2866,Joerg Wunder,CS77095,ylw_circle
+824,9679,Monsanto,Castelfed-1-195,ITA,46.3378,11.2928,Joerg Wunder,CS76744,ylw_circle
+825,9680,Monsanto,Castelfed-1-196,ITA,46.3378,11.2928,Joerg Wunder,CS76745,ylw_circle
+826,9681,Monsanto,Castelfed-1-197,ITA,46.3378,11.2928,Joerg Wunder,CS76746,ylw_circle
+827,9682,Monsanto,Castelfed-1-198,ITA,46.3378,11.2928,Joerg Wunder,CS76747,ylw_circle
+828,9683,Monsanto,Castelfed-1-199,ITA,46.3378,11.2928,Joerg Wunder,CS76748,ylw_circle
+829,9684,Monsanto,Castelfed-2-200,ITA,46.3378,11.2928,Joerg Wunder,CS76749,ylw_circle
+830,9685,Monsanto,Castelfed-2-201,ITA,46.3378,11.2928,Joerg Wunder,CS76750,ylw_circle
+831,9686,Monsanto,Castelfed-2-202,ITA,46.3378,11.2928,Joerg Wunder,CS76751,ylw_circle
+832,9687,Monsanto,Castelfed-2-203,ITA,46.3378,11.2928,Joerg Wunder,CS76752,ylw_circle
+833,9689,Monsanto,Castelfed-3-205,ITA,46.3378,11.2928,Joerg Wunder,CS76754,ylw_circle
+834,9690,Monsanto,Castelfed-3-206,ITA,46.3378,11.2928,Joerg Wunder,CS76755,ylw_circle
+835,9691,Monsanto,Castelfed-3-207,ITA,46.3378,11.2928,Joerg Wunder,CS76756,forbidden
+836,9692,Monsanto,Castelfed-3-208,ITA,46.3378,11.2928,Joerg Wunder,CS76757,ylw_circle
+837,9693,Monsanto,Castelfed-3-209,ITA,46.3378,11.2928,Joerg Wunder,CS76758,ylw_circle
+838,9694,Monsanto,Castelfed-4-210,ITA,46.3378,11.2928,Joerg Wunder,CS78891,ylw_circle
+839,9695,Monsanto,Castelfed-4-211,ITA,46.3378,11.2928,Joerg Wunder,CS78892,ylw_circle
+840,9696,Monsanto,Castelfed-4-214,ITA,46.3378,11.2928,Joerg Wunder,CS78893,ylw_circle
+841,9697,Monsanto,Dolen-1,BUL,41.62,23.94,0,CS76802,wht_circle
+842,9698,Monsanto,Goced-1,BUL,41.57,23.85,0,CS76882,wht_circle
+843,9699,Monsanto,Kolar-1,BUL,41.37,23.14,0,CS76974,wht_circle
+844,9700,Monsanto,Dolna-1-10,BUL,42.32,23.1,0,CS76803,wht_circle
+845,9701,Monsanto,Ivano-1,BUL,43.7,25.91,0,CS76954,wht_circle
+846,9703,Monsanto,Melni-1,BUL,41.53,23.39,0,CS77079,wht_circle
+847,9704,Monsanto,Melni-2,BUL,41.53,23.39,0,CS77080,wht_circle
+848,9705,Monsanto,Choto-1,BUL,41.5,23.33,0,CS76769,wht_circle
+849,9706,Monsanto,Dospa-1,BUL,41.64,24.18,0,CS76807,wht_circle
+850,9707,Monsanto,Podvi-1,BUL,41.57,24.84,0,CS77187,wht_circle
+851,9708,Monsanto,Kardz-1,BUL,41.62,25.35,0,CS76962,wht_circle
+852,9709,Monsanto,Zerev-1-34,BUL,41.85,23.13,0,CS78878,wht_circle
+853,9710,Monsanto,Zerev-1-35,BUL,41.85,23.13,0,CS78879,wht_circle
+854,9711,Monsanto,Dolna-1-39,BUL,42.32,23.1,0,CS76804,wht_circle
+855,9712,Monsanto,Dolna-1-40,BUL,42.32,23.1,0,CS76805,wht_circle
+856,9713,Monsanto,Stara-1,BUL,42.49,25.61,0,CS77271,wht_circle
+857,9714,Monsanto,Grivo-1,BUL,41.84,25.75,0,CS76888,wht_circle
+858,9716,Monsanto,Leska-1-44,BUL,41.54,24.98,0,CS77030,wht_circle
+859,9717,Monsanto,Kardz-2,BUL,41.66,25.47,0,CS76963,wht_circle
+860,9718,Monsanto,Smolj-1,BUL,41.55,24.75,0,CS77256,wht_circle
+861,9719,Monsanto,Koren-1,BUL,41.83,25.69,0,CS76983,wht_circle
+862,9720,Monsanto,Malak-1,BUL,41.77,25.68,0,CS77064,wht_circle
+863,9721,Monsanto,Schip-1,BUL,42.72,25.33,0,CS77239,wht_circle
+864,9722,Monsanto,Groch-1,BUL,41.71,24.41,0,CS76890,wht_circle
+865,9723,Monsanto,Slavi-2,BUL,41.42,23.67,0,CS77252,wht_circle
+866,9725,Monsanto,Epidauros-1,GRC,37.6,23.08,0,CS76844,wht_circle
+867,9726,Monsanto,Faneronemi-3,GRC,37.07,22.04,0,CS76853,wht_circle
+868,9727,Monsanto,Olympia-2,GRC,37.63,21.62,0,CS77144,ylw_circle
+869,9728,Monsanto,Stiav-1,SVK,48.46,18.9,0,CS77279,ylw_circle
+870,9729,Monsanto,Stiav-2,SVK,48.46,18.9,0,CS77280,ylw_circle
+871,9730,Monsanto,Bela-1,SVK,48.47,18.94,0,CS76696,ylw_circle
+872,9731,Monsanto,Stiav-3,SVK,48.46,18.9,0,CS77281,ylw_circle
+873,9732,Monsanto,Halca-1,SVK,48.47,18.96,0,CS76909,ylw_circle
+874,9733,Monsanto,Bela-2,SVK,48.47,18.94,0,CS76697,ylw_circle
+875,9735,Monsanto,Bela-4,SVK,48.47,18.94,0,CS76699,ylw_circle
+876,9736,Monsanto,Teiu-2,ROU,44.69,25.17,0,CS77361,forbidden
+877,9737,Monsanto,Ulies-1,ROU,45.95,22.62,0,CS78815,purple_circle
+878,9738,Monsanto,Bran-1,ROU,45.57,25.42,0,CS76722,forbidden
+879,9739,Monsanto,Toc-1,ROU,46.01,22.33,0,CS77370,ylw_circle
+880,9741,Monsanto,Orast-1,ROU,45.84,23.16,0,CS77151,ylw_circle
+881,9743,Monsanto,Furni-1,ROU,45.14,25.0,0,CS76873,forbidden
+882,9744,Monsanto,Iasi-1,ROU,47.16,27.59,0,CS76944,forbidden
+883,9745,Monsanto,Sij 1/96,UZB,41.45,70.05,0,CS77249,purple_circle
+884,9747,Monsanto,Zabar-1,SRB,44.38,21.22,0,CS78870,ylw_circle
+885,9748,Monsanto,Zagub-1,SRB,44.23,21.71,0,CS78871,forbidden
+886,9749,Monsanto,Knjas-1,SRB,43.54,22.29,0,CS76971,wht_circle
+887,9754,Monsanto,Sredn-1,SRB,44.66,21.37,0,CS77269,forbidden
+888,9755,Monsanto,Vajug-1,SRB,44.56,22.56,0,CS78828,wht_circle
+889,9756,Monsanto,Staro-2,SRB,44.3,21.08,0,CS77273,ylw_circle
+890,9757,Monsanto,Staro-1,SRB,44.3,21.08,0,CS77272,wht_circle
+891,9758,Salk,Altai-5,CHN,47.75,88.4,0,CS76433,purple_circle
+892,9759,Salk,Anz-0,IRN,37.47,49.47,0,CS76439,wht_circle
+893,9761,Salk,Bik-1,LBN,33.92,35.7,0,CS76449,ylw_circle
+894,9762,Salk,Etna-2,ITA,37.69,14.98,0,CS76487,forbidden
+895,9764,Salk,Qar-8a,LBN,34.1,35.84,0,CS76581,forbidden
+896,9766,Salk,Westkar-4,KGZ,42.26,74.16,0,CS76629,purple_circle
+897,9768,Monsanto,Ru4-16,GER,48.57,9.16,0,CS77225,ylw_circle
+898,9769,Monsanto,HE-1,GER,48.55,8.99,0,CS76916,ylw_circle
+899,9770,Monsanto,KBG2-13,GER,48.53,9.01,0,CS76966,ylw_circle
+900,9771,Monsanto,Pfn-N2.2-6,GER,48.56,9.11,0,CS77172,ylw_circle
+901,9772,Monsanto,Hof-1,GER,48.41,8.85,0,CS76925,ylw_circle
+902,9774,Monsanto,Alt-1,GER,48.59,9.22,0,CS76663,ylw_circle
+903,9775,Monsanto,Berg-1,GER,48.41,8.79,0,CS76701,ylw_circle
+904,9776,Monsanto,Fell3-7,GER,48.43,8.79,0,CS76857,ylw_circle
+905,9777,Monsanto,Gn-1,GER,48.57,9.17,0,CS76880,ylw_circle
+906,9778,Monsanto,Bach-7,GER,48.41,8.84,0,CS76679,ylw_circle
+907,9779,Monsanto,Bai-10,GER,48.5,8.78,0,CS76682,ylw_circle
+908,9780,Monsanto,Fell2-4,GER,48.43,8.79,0,CS76856,ylw_circle
+909,9781,Monsanto,Kus2-2,GER,48.52,9.11,0,CS76990,ylw_circle
+910,9782,Monsanto,Lu3-30,GER,48.53,9.09,0,CS77057,ylw_circle
+911,9783,Monsanto,Tu-PK-7,GER,48.52,9.05,0,CS77396,forbidden
+912,9784,Monsanto,Erg2-6,GER,48.5,8.8,0,CS76845,ylw_circle
+913,9785,Monsanto,Ha-HBT1-2,GER,48.54,9.02,0,CS76898,ylw_circle
+914,9786,Monsanto,Ha-P-13,GER,48.54,9.01,0,CS76901,ylw_circle
+915,9787,Monsanto,HI-4,GER,48.5,9.0,0,CS76922,ylw_circle
+916,9788,Monsanto,KBG1-14,GER,48.53,9.01,0,CS76965,ylw_circle
+917,9789,Monsanto,Obh-13,GER,48.39,8.96,0,CS77140,ylw_circle
+918,9790,Monsanto,Gn2-3,GER,48.58,9.18,0,CS76881,ylw_circle
+919,9791,Monsanto,Haes-1,GER,48.6,9.2,0,CS76914,ylw_circle
+920,9792,Monsanto,Lu4-2,GER,48.54,9.09,0,CS77058,ylw_circle
+921,9793,Monsanto,Ru-N2,GER,48.57,9.16,0,CS77224,ylw_circle
+922,9794,Monsanto,Tu-B1-2,GER,48.52,9.08,0,CS77391,ylw_circle
+923,9795,Monsanto,Wank-2,GER,48.5,9.11,0,CS78852,ylw_circle
+924,9796,Monsanto,Bach2-1,GER,48.41,8.84,0,CS76680,ylw_circle
+925,9797,Monsanto,Ha-HBT2-10,GER,48.54,9.02,0,CS76899,ylw_circle
+926,9798,Monsanto,Ha-P2-1,GER,48.54,9.01,0,CS76902,ylw_circle
+927,9799,Monsanto,Hart-2,GER,48.39,8.85,0,CS76913,ylw_circle
+928,9800,Monsanto,Ha-S-B,GER,48.54,9.01,0,CS76903,ylw_circle
+929,9801,Monsanto,Ha-SP-2,GER,48.54,9.01,0,CS76904,ylw_circle
+930,9802,Monsanto,Kus3-1,GER,48.51,9.11,0,CS76991,ylw_circle
+931,9803,Monsanto,Muh-2,GER,48.42,8.76,0,CS77113,ylw_circle
+932,9804,Monsanto,Obe1-15,GER,48.45,8.87,0,CS77139,ylw_circle
+933,9805,Monsanto,Pfn-10,GER,48.54,9.09,0,CS77171,ylw_circle
+934,9806,Monsanto,Ru-2,GER,48.56,9.16,0,CS77223,ylw_circle
+935,9807,Monsanto,Schl-7,GER,48.6,9.22,0,CS77240,ylw_circle
+936,9808,Monsanto,Tu-B2-3,GER,48.52,9.08,0,CS77392,ylw_circle
+937,9809,Monsanto,Tu-KB-6,GER,48.52,9.05,0,CS77393,blu_circle
+938,9810,Monsanto,Tu-KS-7,GER,48.53,9.07,0,CS77394,ylw_circle
+939,9811,Monsanto,Tu-NK-12,GER,48.52,9.05,0,CS77395,ylw_circle
+940,9812,Monsanto,Tu-W1,GER,48.52,9.03,0,CS77397,ylw_circle
+941,9813,Monsanto,BI-4,GER,48.4,8.77,0,CS76706,ylw_circle
+942,9814,Monsanto,Fell1-10,GER,48.42,8.79,0,CS76855,ylw_circle
+943,9815,Monsanto,Ha-HBT3-11,GER,48.54,9.02,0,CS76900,ylw_circle
+944,9816,Monsanto,Tu-WH,GER,48.55,9.06,0,CS77398,ylw_circle
+945,9817,Monsanto,IP-Ace-0,ESP,39.84,-6.6,Carlos Alonso-Blanco,CS76642,pink_circle
+946,9819,Monsanto,IP-Amu-0,ESP,42.35,-3.03,Carlos Alonso-Blanco,CS76664,pink_circle
+947,9820,Monsanto,IP-Are-0,ESP,41.0,-4.71,Carlos Alonso-Blanco,CS76671,pink_circle
+948,9821,Monsanto,IP-Aru-0,ESP,41.81,2.49,Xavier Picó,CS76674,pink_circle
+949,9822,Monsanto,IP-Aul-0,ESP,40.52,-4.02,Carlos Alonso-Blanco,CS76675,pink_circle
+950,9823,Monsanto,IP-Bae-0,ESP,43.34,-5.84,Carlos Alonso-Blanco,CS76681,blu_circle
+951,9824,Monsanto,IP-Bes-5,ESP,42.91,-4.91,Carlos Alonso-Blanco,CS76702,forbidden
+952,9825,Monsanto,IP-Boa-0,ESP,40.4,-3.88,Carlos Alonso-Blanco,CS76714,pink_circle
+953,9826,Monsanto,IP-Bor-0,ESP,42.49,-6.71,Carlos Alonso-Blanco,CS76717,blu_circle
+954,9827,Monsanto,IP-Bos-0,ESP,42.78,0.69,Xavier Picó,CS76719,blu_circle
+955,9828,Monsanto,IP-Bra-0,ESP,42.5,-6.15,Xavier Picó,CS76721,blu_circle
+956,9830,Monsanto,IP-Bus-0,ESP,36.97,-3.28,Carlos Alonso-Blanco,CS76736,forbidden
+957,9831,Monsanto,IP-Cas-0,ESP,38.54,-3.39,Carlos Alonso-Blanco,CS76743,forbidden
+958,9832,Monsanto,IP-Cat-0,ESP,40.54,-3.69,Carlos Alonso-Blanco,CS76759,grn_circle
+959,9833,Monsanto,IP-Cha-0,ESP,40.38,-4.21,Carlos Alonso-Blanco,CS76764,pink_circle
+960,9834,Monsanto,IP-Cho-0,ESP,40.51,-3.9,Carlos Alonso-Blanco,CS76768,pink_circle
+961,9835,Monsanto,IP-Cir-0,ESP,40.61,-6.57,Carlos Alonso-Blanco,CS76772,forbidden
+962,9836,Monsanto,IP-Cod-0,ESP,41.25,-1.32,Carlos Alonso-Blanco,CS76777,pink_circle
+963,9837,Monsanto,IP-Con-0,ESP,37.94,-5.6,Xavier Picó,CS76780,grn_circle
+964,9838,Monsanto,IP-Cot-0,ESP,41.83,-5.38,Carlos Alonso-Blanco,CS76784,forbidden
+965,9839,Monsanto,IP-Coy-0,ESP,40.44,-4.27,Carlos Alonso-Blanco,CS76785,forbidden
+966,9840,Monsanto,IP-Dar-0,ESP,41.13,-1.43,Carlos Alonso-Blanco,CS76792,pink_circle
+967,9841,Monsanto,IP-Ees-0,ESP,40.59,-4.15,Carlos Alonso-Blanco,CS76836,pink_circle
+968,9843,Monsanto,IP-Elp-0,ESP,40.53,-3.92,Carlos Alonso-Blanco,CS76840,pink_circle
+969,9844,Monsanto,IP-Esn-2,ESP,42.27,0.19,Carlos Alonso-Blanco,CS76846,pink_circle
+970,9845,Monsanto,IP-Evs-0,ESP,40.48,-3.96,Carlos Alonso-Blanco,CS76848,pink_circle
+971,9846,Monsanto,IP-Ezc-2,ESP,42.31,-3.02,Carlos Alonso-Blanco,CS76849,pink_circle
+972,9847,Monsanto,IP-Fel-2,ESP,43.31,-5.7,Carlos Alonso-Blanco,CS76854,blu_circle
+973,9848,Monsanto,IP-Glo-1,ESP,40.11,-5.77,Carlos Alonso-Blanco,CS76879,pink_circle
+974,9849,Monsanto,IP-Gud-3,ESP,40.65,-4.11,Carlos Alonso-Blanco,CS76895,forbidden
+975,9850,Monsanto,IP-Hec-0,ESP,42.86,-0.7,Carlos Alonso-Blanco,CS76917,pink_circle
+976,9851,Monsanto,IP-Hue-3,ESP,42.96,-6.1,Carlos Alonso-Blanco,CS76942,blu_circle
+977,9852,Monsanto,IP-Ini-0,ESP,40.46,-3.75,Carlos Alonso-Blanco,CS76945,pink_circle
+978,9853,Monsanto,IP-Lac-0,ESP,43.33,-5.91,Carlos Alonso-Blanco,CS76996,blu_circle
+979,9854,Monsanto,IP-Laf-1,ESP,43.36,-5.88,Carlos Alonso-Blanco,CS76997,blu_circle
+980,9855,Monsanto,IP-Lam-0,ESP,40.57,-3.89,Carlos Alonso-Blanco,CS77008,pink_circle
+981,9856,Monsanto,IP-Lch-0,ESP,40.51,-4.0,Carlos Alonso-Blanco,CS77010,pink_circle
+982,9857,Monsanto,IP-Leg-0,ESP,40.33,-3.8,Carlos Alonso-Blanco,CS77019,pink_circle
+983,9858,Monsanto,IP-Loz-0,ESP,40.98,-3.8,Carlos Alonso-Blanco,CS77051,forbidden
+984,9859,Monsanto,IP-Lro-0,ESP,40.5,-3.88,Carlos Alonso-Blanco,CS77054,pink_circle
+985,9860,Monsanto,IP-Lum-0,ESP,42.24,-2.62,Carlos Alonso-Blanco,CS77059,pink_circle
+986,9861,Monsanto,IP-Mac-0,ESP,40.72,-3.21,Carlos Alonso-Blanco,CS77061,pink_circle
+987,9862,Monsanto,IP-Mad-0,ESP,40.45,-3.67,Carlos Alonso-Blanco,CS77062,blu_circle
+988,9864,Monsanto,IP-Mat-0,ESP,41.76,2.69,Xavier Picó,CS77074,pink_circle
+989,9866,Monsanto,IP-Mdd-0,ESP,41.89,-2.79,Carlos Alonso-Blanco,CS77076,pink_circle
+990,9867,Monsanto,IP-Mie-1,ESP,40.94,-3.22,Xavier Picó,CS77083,pink_circle
+991,9868,Monsanto,IP-Moe-0,ESP,41.78,2.37,Xavier Picó,CS77104,pink_circle
+992,9869,Monsanto,IP-Moj-0,ESP,36.76,-5.28,Xavier Picó,CS77105,grn_circle
+993,9870,Monsanto,IP-Moz-0,ESP,41.91,0.17,Carlos Alonso-Blanco,CS77111,pink_circle
+994,9871,Monsanto,IP-Nac-0,ESP,40.75,-3.99,Carlos Alonso-Blanco,CS77117,grn_circle
+995,9873,Monsanto,IP-Ndc-0,ESP,37.94,-5.45,Xavier Picó,CS77125,pink_circle
+996,9874,Monsanto,IP-Oja-0,ESP,42.34,-3.0,Carlos Alonso-Blanco,CS77143,pink_circle
+997,9875,Monsanto,IP-Ovi-1,ESP,43.38,-5.87,Carlos Alonso-Blanco,CS77155,blu_circle
+998,9876,Monsanto,IP-Pad-0,ESP,41.34,0.99,Carlos Alonso-Blanco,CS77158,pink_circle
+999,9877,Monsanto,IP-Pdl-0,ESP,43.02,-5.6,Carlos Alonso-Blanco,CS77165,forbidden
+1000,9878,Monsanto,IP-Pee-0,ESP,40.78,-3.62,Carlos Alonso-Blanco,CS77167,pink_circle
+1001,9879,Monsanto,IP-Per-0,ESP,37.6,-1.12,Carlos Alonso-Blanco,CS77169,grn_circle
+1002,9880,Monsanto,IP-Pib-1,ESP,42.72,-3.44,Carlos Alonso-Blanco,CS77175,pink_circle
+1003,9881,Monsanto,IP-Pie-0,ESP,40.46,-5.32,Carlos Alonso-Blanco,CS77176,forbidden
+1004,9882,Monsanto,IP-Pil-0,ESP,40.46,-4.26,Carlos Alonso-Blanco,CS77178,pink_circle
+1005,9883,Monsanto,IP-Piq-0,ESP,42.1,-2.56,Carlos Alonso-Blanco,CS77179,pink_circle
+1006,9885,Monsanto,IP-Prd-0,ESP,41.14,-3.68,Carlos Alonso-Blanco,CS77189,pink_circle
+1007,9886,Monsanto,IP-Pru-0,ESP,42.38,1.73,Xavier Picó,CS77190,pink_circle
+1008,9887,Monsanto,IP-Pun-0,ESP,40.4,-4.77,Carlos Alonso-Blanco,CS77196,grn_circle
+1009,9888,Monsanto,IP-Pva-1,ESP,40.93,-3.31,Xavier Picó,CS77197,pink_circle
+1010,9890,Monsanto,IP-Rib-1,ESP,43.16,-5.07,Carlos Alonso-Blanco,CS77217,forbidden
+1011,9891,Monsanto,IP-Sal-0,ESP,41.93,2.92,Xavier Picó,CS77230,pink_circle
+1012,9892,Monsanto,IP-Sam-0,ESP,42.68,-6.96,Carlos Alonso-Blanco,CS77231,forbidden
+1013,9894,Monsanto,IP-Sen-0,ESP,42.59,0.76,Xavier Picó,CS77243,forbidden
+1014,9895,Monsanto,IP-Sfb-6,ESP,41.78,2.57,Xavier Picó,CS77248,pink_circle
+1015,9897,Monsanto,IP-Smt-1,ESP,40.95,-5.63,Xavier Picó,CS77257,forbidden
+1016,9898,Monsanto,IP-Som-0,ESP,41.14,-3.58,Carlos Alonso-Blanco,CS77259,pink_circle
+1017,9899,Monsanto,IP-Tau-0,ESP,42.54,0.84,Xavier Picó,CS77342,pink_circle
+1018,9900,Monsanto,IP-Tri-0,ESP,37.38,-6.01,Xavier Picó,CS77386,pink_circle
+1019,9901,Monsanto,IP-Urd-1,ESP,42.27,-2.98,Carlos Alonso-Blanco,CS78824,pink_circle
+1020,9902,Monsanto,IP-Usa-0,ESP,40.71,-3.24,Carlos Alonso-Blanco,CS78825,pink_circle
+1021,9903,Monsanto,IP-Val-0,ESP,42.31,-3.1,Carlos Alonso-Blanco,CS78829,pink_circle
+1022,9904,Monsanto,IP-Vas-0,ESP,40.95,-3.31,Carlos Alonso-Blanco,CS78833,pink_circle
+1023,9905,Monsanto,IP-Ven-0,ESP,40.76,-4.01,Carlos Alonso-Blanco,CS78840,grn_circle
+1024,9906,Monsanto,IP-Mah-6,ESP,40.0,4.25,Xavier Picó,CS77063,forbidden
+1025,9908,Monsanto,ESP-1-11,FRA,50.72,3.47,0,CS76847,blu_circle
+1026,9909,Monsanto,GEN-8,FRA,50.59,3.3,0,CS76877,blu_circle
+1027,9910,Monsanto,BRI-2,FRA,50.68,3.52,0,CS76725,blu_circle
+1028,9911,Monsanto,ARGE-1-15,FRA,47.16,4.28,0,CS76672,blu_circle
+1029,9912,Monsanto,CIRY-13,FRA,46.67,4.55,0,CS76773,blu_circle
+1030,9914,Monsanto,IST-29,FRA,47.58,5.33,0,CS76948,ylw_circle
+1031,9915,Monsanto,Mar-4-16,FRA,47.45,3.94,0,CS77069,ylw_circle
+1032,9917,Monsanto,RAD-21,FRA,46.69,4.34,0,CS77200,blu_circle
+1033,9918,Monsanto,SAUL-24,FRA,47.43,5.21,0,CS77237,blu_circle
+1034,9920,Monsanto,DIR-9,FRA,48.54,4.32,0,CS76796,ltblu_circle
+1035,9921,Monsanto,FOR-23,FRA,48.57,4.41,0,CS76867,blu_circle
+1036,9924,Monsanto,PLY-20,FRA,48.59,4.24,0,CS77181,forbidden
+1037,9925,Monsanto,RUM-20,FRA,48.91,4.52,0,CS77226,blu_circle
+1038,9926,Monsanto,TRE-1,FRA,48.86,4.1,0,CS77385,blu_circle
+1039,9927,Monsanto,ARR-17,FRA,44.05,3.69,0,CS76673,blu_circle
+1040,9928,Monsanto,BEZ-9,FRA,44.12,3.77,0,CS76703,blu_circle
+1041,9929,Monsanto,ISS-20,FRA,43.92,3.71,0,CS76947,blu_circle
+1042,9930,Monsanto,LEC-25,FRA,43.91,4.14,0,CS77018,ylw_circle
+1043,9932,Monsanto,NOZ-6,FRA,44.12,4.33,0,CS77134,forbidden
+1044,9933,Monsanto,VED-10,FRA,43.74,3.89,0,CS78839,forbidden
+1045,9935,Monsanto,BAU-15,FRA,50.6,2.93,0,CS76694,blu_circle
+1046,9937,Monsanto,CATS-6,FRA,50.79,2.69,0,CS76760,blu_circle
+1047,9938,Monsanto,WAV-8,FRA,50.65,2.99,0,CS78854,blu_circle
+1048,9939,MPI,ICE49 / Aitba-2,MAR,31.48,-7.45,,CS76347,grn_circle
+1049,9941,MPI,Fei-0,POR,40.92,-8.54,,CS76412,blu_circle
+1050,9942,MPI,Agu-1,ESP,41.32,-1.34,,CS76409,pink_circle
+1051,9943,MPI,Cdm-0,ESP,39.73,-5.74,,CS76410,pink_circle
+1052,9944,MPI,Don-0,ESP,36.83,-6.36,,CS76411,grn_circle
+1053,9945,MPI,Leo-1,ESP,41.8,-3.11,,CS76413,forbidden
+1054,9946,MPI,Mer-6,ESP,38.92,-6.34,,CS76414,pink_circle
+1055,9947,MPI,Ped-0,ESP,40.74,-3.9,,CS76415,grn_circle
+1056,9948,MPI,Pra-6,ESP,41.05,-3.54,,CS76416,pink_circle
+1057,9949,MPI,Qui-0,ESP,42.69,-6.93,,CS76417,blu_circle
+1058,9950,MPI,Vie-0,ESP,42.63,0.76,,CS76418,pink_circle
+1059,9951,MPI,ICE127 / Kly-1,RUS,51.3333,82.5667,Heike Schmuths,CS76385,purple_circle
+1060,9952,MPI,ICE130 / Kly-4,RUS,51.32,82.55,,CS76384,purple_circle
+1061,9953,MPI,ICE134 / Koz-2,RUS,51.33,82.19,,CS76383,purple_circle
+1062,9955,MPI,ICE60 / Stepn-2,RUS,54.09,60.46,,CS76377,purple_circle
+1063,9956,MPI,ICE61 / Stepn-1,RUS,54.06,60.48,,CS76378,purple_circle
+1064,9957,MPI,ICE70 / Borsk-2,RUS,53.04,51.75,,CS76421,purple_circle
+1065,9958,MPI,ICE71 / Shigu-1,RUS,53.33,49.48,,CS76375,purple_circle
+1066,9959,MPI,ICE72 / Shigu-2,RUS,53.33,49.48,,CS76374,purple_circle
+1067,9960,MPI,ICE73 / Kidr-1,RUS,51.31,57.56,,CS76376,purple_circle
+1068,9962,MPI,ICE102 / Galdo-1,ITA,40.57,15.32,,CS76423,wht_circle
+1069,9963,MPI,ICE104 / Lago-1,ITA,39.18,16.26,,CS76367,wht_circle
+1070,9964,MPI,ICE106 / Mammo-1,ITA,38.36,16.23,,CS76365,wht_circle
+1071,9965,MPI,ICE107 / Mammo-2,ITA,38.38,16.22,,CS76364,wht_circle
+1072,9966,MPI,ICE111 / Monte-1,ITA,40.28,15.65,,CS76361,wht_circle
+1073,9968,MPI,ICE119 / Timpo-1,ITA,39.27,16.27,,CS76424,wht_circle
+1074,9969,MPI,ICE120 / Valsi-1,ITA,40.18,16.45,,CS76425,wht_circle
+1075,9970,MPI,ICE163 / Altenb-2,ITA,46.3716,11.2376,Joerg Wunder,CS76353,ylw_circle
+1076,9971,MPI,ICE169 / Bozen-1.1,ITA,46.513,11.331,Joerg Wunder,CS76357,ylw_circle
+1077,9972,MPI,ICE173 / Bozen-1.2,ITA,46.513,11.331,Joerg Wunder,CS76358,ylw_circle
+1078,9973,MPI,ICE181 / Mitterberg-1-181,ITA,46.366,11.2832,Joerg Wunder,CS76354,ylw_circle
+1079,9974,MPI,ICE212 / Castelfed-4.1,ITA,46.3378,11.2928,Joerg Wunder,CS76355,ylw_circle
+1080,9975,MPI,ICE213 / Castelfed-4-213,ITA,46.3378,11.2928,Joerg Wunder,CS76356,ylw_circle
+1081,9976,MPI,ICE216 / Rovero-1,ITA,46.2543,11.167,Joerg Wunder,CS76351,ylw_circle
+1082,9978,MPI,ICE228 / Vezzano-2.2,ITA,46.6297,10.817,Joerg Wunder,CS76350,ylw_circle
+1083,9979,MPI,ICE79 / Voeran-1,ITA,46.36,11.23,,CS76352,ylw_circle
+1084,9980,MPI,ICE91 / Angel-1,ITA,38.62,16.17,,CS76362,wht_circle
+1085,9981,MPI,ICE92 / Angit-1,ITA,38.76,16.24,,CS76366,wht_circle
+1086,9982,MPI,ICE93 / Apost-1,ITA,39.01,16.47,,CS76368,wht_circle
+1087,9983,MPI,ICE97 / Ciste-1,ITA,41.62,12.87,,CS76359,forbidden
+1088,9984,MPI,ICE98 / Ciste-2,ITA,41.62,12.87,,CS76360,forbidden
+1089,9985,MPI,ICE29 / Slavi-1,BUL,41.43,23.65,,CS76419,wht_circle
+1090,9986,MPI,ICE33 / Jablo-1,BUL,41.59,25.2,,CS76372,wht_circle
+1091,9987,MPI,ICE7 / Lecho-1,BUL,41.43,23.5,,CS76371,wht_circle
+1092,9988,MPI,Bak-2,GEO,41.7942,43.4767,James Beck,CS76392,wht_circle
+1093,9990,MPI,Lag2.2 / Lag2-2,GEO,41.8296,46.2831,James Beck,CS76390,wht_circle
+1094,9991,MPI,Vash-1,GEO,41.2381,46.3728,James Beck,CS76391,wht_circle
+1095,9993,MPI,Nemrut-1,TUR,38.6425,42.2394,James Beck,CS76398,forbidden
+1096,9995,MPI,HKT2.4,GER,48.14,9.4,,CS76404,ylw_circle
+1097,9996,MPI,Nie1-2,GER,48.52,8.8,,CS76402,ylw_circle
+1098,9997,MPI,Rue3-1-31,GER,48.56,9.16,,CS76406,ylw_circle
+1099,9998,MPI,Star-8,GER,48.43,8.82,,CS76400,forbidden
+1100,9999,MPI,TueSB30-3,GER,48.53,9.06,,CS76403,ylw_circle
+1101,10001,MPI,TueV13 / TueV-13,GER,48.52,9.05,Kirsten Bomblies,CS76407,blue_circle
+1102,10002,MPI,TueWa1-2,GER,48.53,9.04,Kirsten Bomblies,CS76405,blu_circle
+1103,10004,MPI,ICE1 / Bolin-1,ROU,44.46,25.74,,CS76373,wht_circle
+1104,10005,MPI,ICE63 / Copac-1,ROU,46.11,21.95,,CS76420,ylw_circle
+1105,10006,MPI,Kastel-1,UKR,44.6419,34.3814,James Beck,CS76395,wht_circle
+1106,10008,MPI,ICE150 / Sij-1,UZB,41.45,70.05,Heike Schmuths,CS76379,purple_circle
+1107,10009,MPI,ICE152 / Sij-2,UZB,41.45,70.05,,CS76380,purple_circle
+1108,10010,MPI,ICE153 / Sij-4,UZB,41.45,70.05,,CS76381,purple_circle
+1109,10011,MPI,Yeg-1,ARM,39.8692,45.3622,James Beck,CS76394,purple_circle
+1110,10012,MPI,Istisu-1,AZE,38.9786,48.5594,James Beck,CS76389,wht_circle
+1111,10013,MPI,Lerik1-3,AZE,38.7406,48.6131,James Beck,CS76388,wht_circle
+1112,10014,MPI,Xan-1,AZE,38.6536,48.7992,James Beck,CS76387,wht_circle
+1113,10015,MPI,Sha / Ara-1,AFG,37.29,71.3,,CS76382,purple_circle
+1114,10017,MPI,ICE21 / Petro-1,SRB,44.34,21.46,,CS76370,ylw_circle
+1115,10018,MPI,ICE36 / Dobra-1,SRB,44.84,20.16,,CS76369,ylw_circle
+1116,10020,MPI,Jl-2,CZE,49.17,16.5,,CS76956,ylw_circle
+1117,10022,MPI,Uk-3,GER,48.0333,7.7667,Albert Kranz,CS78777,forbidden
+1118,10023,MPI,Strand-1,NOR,68.8,15.45,,CS77284,forbidden
+1119,10027,MPI,Uk-6,GER,48.02838,7.765567,Eunyoung Chae,CS78938,ylw_circle
+1120,14312,GMI,Kos-1,RUS,62.02,34.12,Magnus Nordborg,CS78923,purple_circle
+1121,14313,GMI,Kos-2,RUS,62.02,34.12,Magnus Nordborg,CS78924,purple_circle
+1122,14314,GMI,Radk-1,RUS,61.59,35.11,Magnus Nordborg,CS78927,purple_circle
+1123,14315,GMI,Radk-2,RUS,61.59,35.11,Magnus Nordborg,CS78928,purple_circle
+1124,14318,GMI,Shu-1,RUS,61.94,34.24,Magnus Nordborg,CS78930,purple_circle
+1125,14319,GMI,Shu-2,RUS,61.94,34.24,Magnus Nordborg,CS78931,purple_circle
+1126,15560,GMI,Valm,RUS,61.37,61.37,Magnus Nordborg,CS78932,purple_circle
+1127,15591,GMI,OOE1-1,AUT,48.3315333,14.72665,Wolfram Weckwert,CS78939,ylw_circle
+1128,15592,GMI,OOE3-1,AUT,48.3314667,14.7158667,Wolfram Weckwert,CS78940,ylw_circle
+1129,15593,GMI,OOE3-2,AUT,48.3314667,14.7158667,Wolfram Weckwert,CS78941,ylw_circle
+1130,18694,GMI,Pien,RUS,60.4,32.09,Magnus Nordborg,CS78926,purple_circle
+1131,18696,GMI,Samm,RUS,61.57,30.63,Magnus Nordborg,CS78929,purple_circle
+1132,19949,GMI,OOE2-1,AUT,48.3268333,14.7181667,Wolfram Weckwert,CS79036,ylw_circle
+1133,19950,GMI,OOE2-2,AUT,48.3268333,14.7181667,Wolfram Weckwert,CS79037,ylw_circle
+1134,19951,GMI,OOE23,AUT,48.3268333,14.7181667,Wolfram Weckwert,CS79038,ylw_circle
