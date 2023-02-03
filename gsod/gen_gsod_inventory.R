@@ -76,6 +76,20 @@ multi_fulljoin <- function(dtl, years) {
     return(outdt)
 }
 
+merge_rows <- function(df) {
+    outdf = data.frame(matrix(nrow = 1, ncol = ncol(df)+1))
+    for (ii in 1:ncol(df)) {
+        if (colnames(df)[ii] %in% c('LONGITUDE','LATITUDE')) {
+            outdf[1,ii] = df[1,ii]
+        } else {
+            outdf[1,ii] = unique(df[which(!is.na(df[,ii])), ii])
+        }
+    }
+    outdf[1,ncol(outdf)] = paste0('Lat:',df[2,'LATITUDE'],'; Lon:',df[2,'LONGITUDE'])
+    colnames(outdf) = c(colnames(df),'ALT_LATLONG')
+    return(outdf)
+}
+
 # def variables --------
 years = seq(2017, 2021)
 outdir = './gsod/noaa-ftp/inventory/'
@@ -101,15 +115,35 @@ stations_name = lapply(stations_byyear, function(xx) {
 
 # intersect the stations
 stations_all5 = multi_intersect(stations_name) # 11531 stations
+print(length(stations_all5))
 # get their locations and precipitation availability data
 stations_all5_locs = multi_fulljoin(dtl = stations_byyear, years = years) %>%
-    dplyr::filter(STATION %in% stations_all5)
+    dplyr::filter(STATION %in% stations_all5) %>%
+    dplyr::arrange(STATION)
+print(dim(stations_all5_locs))
+
+# remove duplicates in stations_all5_locs
+stations_dups = stations_all5_locs %>%
+    dplyr::filter(STATION %in% stations_all5_locs$STATION[duplicated(stations_all5_locs$STATION)])
+stations_dups = base::split(stations_dups, stations_dups$STATION)
+stations_dedup = dplyr::bind_rows(lapply(stations_dups, merge_rows))
+
+stations_notdups = stations_all5_locs %>%
+    dplyr::filter(!(STATION %in% stations_all5_locs$STATION[duplicated(stations_all5_locs$STATION)])) %>%
+    dplyr::mutate(ALT_LATLONG = NA_character_)
+stations_all5_locs_dedup = dplyr::bind_rows(stations_dedup, stations_notdups) %>%
+    dplyr::arrange(STATION)
+print(dim(stations_all5_locs_dedup))
+
+# get some statistics (most have precipitation data)
+table(rowSums(stations_all5_locs_dedup %>% dplyr::select(starts_with('PRCPAVAIL'))))
+# most have everyday data
+# hist(rowSums(stations_all5_locs_dedup %>% dplyr::select(starts_with('NOBS'))))
 
 # output files --------
-saveRDS(stations_all5_locs, file = paste0(outdir, 'stations_loc_nona_2017-2021.rds'))
-write.table(stations_all5_locs, file = paste0(outdir, 'stations_loc_nona_2017-2021.tsv'), sep = '\t')
+saveRDS(stations_all5_locs_dedup, file = paste0(outdir, 'stations_loc_nona_2017-2021.rds'))
+write.table(stations_all5_locs_dedup, file = paste0(outdir, 'stations_loc_nona_2017-2021.tsv'), sep = '\t')
 
-# dim(stations_all5_locs) is 12445 obs of 13 variables. There are duplicated station ids due to differences in their lat long
 
 # cleanup --------
 date()

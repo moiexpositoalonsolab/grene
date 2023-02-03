@@ -2,11 +2,14 @@
 # Author: Meixi Lin
 # Date: Fri Nov 18 16:29:59 2022
 # Data source: Global Surface Summary of the Day
+# Modification: Enforce precipitation data
+# Date: Fri Feb  3 12:45:24 2023
+
+options(echo = TRUE, stringsAsFactors = FALSE)
 
 gen_weatherstation_data <- function() {
     print(date())
     rm(list = ls())
-    options(echo = TRUE, stringsAsFactors = FALSE)
     source('R/load_gsod_csv.R')
     source('R/nearest_weatherstation.R') # these needs to be removed
     source('R/use_grene_data.R')
@@ -20,20 +23,31 @@ gen_weatherstation_data <- function() {
     ws_vars = c("site","stationid","weatherdate","temp","dewp","slp","stp","visib",
                 "wdsp","mxspd","gust","max","min","prcp","sndp","frshtt")
     ws_info = c("stationid", "dist2site", "station_longitude", "station_latitude",
-                "station_altitude", "station_name")
+                "station_altitude", "station_name",
+                "nobs_2017","nobs_2018","nobs_2019","nobs_2020","nobs_2021", "prcp_avail")
 
     #######################################################################
     # load data
     load('data/locations_data.rda')
     longlat = locations_data[,c('site','longitude','latitude')]
 
-    # read weather station locations
+    # read weather station locations (will have duplicated stationid due to differences in latlong reports)
     stations_all5 = readRDS(file = './gsod/noaa-ftp/inventory/stations_loc_nona_2017-2021.rds')
 
     #######################################################################
     # get weather stations
-    stations_near = nearest_weatherstation(longlat, stations_all5)
-    hist(stations_near$dist2site)
+    stations_near0 = nearest_weatherstation(longlat, stations_all5)
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+    # 495.3  7935.8 13063.3 17801.5 25363.8 46687.5
+    # require precipitation data
+    stations_near = nearest_weatherstation(longlat, stations_all5, precipitation = TRUE)
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+    # 495.3  8511.4 14156.1 24502.4 34041.5 99138.0
+    # site 19, 47, 52, 53 did not have any weather station within 100 km with precipitation data
+    # hist(stations_near$dist2site)
+    # plot(stations_near0$dist2site, stations_near$dist2site,type = 'n')
+    # text(stations_near0$dist2site, stations_near$dist2site, stations_near$site)
+
     #######################################################################
     # get weather for each of these sites
     # 16 sites only reported the tempature
@@ -48,11 +62,12 @@ gen_weatherstation_data <- function() {
             noprcp = noprcp + 1
         }
         dt = dt %>%
-            dplyr::mutate(site = stations_near[ii, 'site'],
-                          dist2site = stations_near[ii, 'dist2site'])
+            dplyr::mutate(site = stations_near[ii,'site']) %>%
+            dplyr::arrange(site, weatherdate)
         # weather station data
         ws_data = dt[,ws_vars]
-        ws_infod = dt[,ws_info] %>% dplyr::distinct()
+        ws_infod = cbind(unique(dt[, colnames(dt) %in% ws_info]),
+                         stations_near[ii, colnames(stations_near) %in% ws_info])[,ws_info]
         if (nrow(ws_infod) != 1) {
             warning('Bad weather station info. Keeping only the first row')
             print(ws_infod)

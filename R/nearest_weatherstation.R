@@ -4,8 +4,12 @@
 # Data source: Global Surface Summary of the Day
 # Input: longlat, a data frame of site longitude and latitude
 # weather_locs, the data frame of weather locations stored in `./gsod/noaa-ftp/inventory`
-nearest_weatherstation <- function(longlat, weather_locs, dcut = 100*1e+3) {
+# Modification: Add support for accessing precipitation data
+# Date: Fri Feb  3 09:14:12 2023
+
+nearest_weatherstation <- function(longlat, weather_locs, dcut = 100*1e+3, precipitation = FALSE) {
     require(sf)
+    require(dplyr)
     site_sf <- sf::st_as_sf(longlat, coords = c('longitude','latitude'), crs = 4326)
     site_buf <- sf::st_buffer(site_sf, dist = dcut)
     weather_sf <- st_as_sf(weather_locs, coords = c('LONGITUDE','LATITUDE'), crs = 4326)
@@ -16,25 +20,43 @@ nearest_weatherstation <- function(longlat, weather_locs, dcut = 100*1e+3) {
         if (nrow(dt) < 1) {
             stop('No weather station within given dcut. (default 100 km)')
         } else {
+            if (precipitation) {
+                # require precipitation data
+                prcpa = sf::st_drop_geometry(dt) %>%
+                    dplyr::select(starts_with('PRCPAVAIL'))
+                prcpa = apply(prcpa, 1, all)
+                if (all(prcpa == FALSE)) {
+                    warning(paste0('No weather station within given dcut has precipitation data. (default 100 km) for site', site_buf$site[ii]))
+                    # keep as it is
+                } else {
+                    dt = dt[prcpa,]
+                }
+            }
             dtlist[[ii]] = dt
         }
     }
     names(dtlist) = site_buf$site
     # find the closest station
-    mindistdf = data.frame(matrix(nrow = nrow(site_buf), ncol = 3))
-    colnames(mindistdf) = c('site','stationid', 'dist2site')
+    mindistdfnames = c('site','stationid', 'dist2site', 'alt_latlong', 'nobs_2017','nobs_2018','nobs_2019','nobs_2020','nobs_2021', 'prcp_avail')
+    mindistdf = data.frame(matrix(nrow = nrow(site_buf), ncol = length(mindistdfnames)))
+    colnames(mindistdf) = mindistdfnames
     # iterate to get the minimum distances
     for (ii in 1:length(dtlist)) {
         # get the distance within cutoff
         mydist = st_distance(x = dtlist[[ii]], y = site_sf[ii,])
         mindist = min(mydist)
-        mindiststation = dtlist[[ii]]$STATION[which(mydist == mindist)]
+        mindistdt = sf::st_drop_geometry(dtlist[[ii]][which(mydist == mindist), ])
+        myprcpa = mindistdt %>% dplyr::select(starts_with('PRCPAVAIL'))
+        myprcpa = apply(myprcpa, 1, all)
         # get the minimum distance
         mindistdf[ii,'site'] = names(dtlist)[ii]
-        mindistdf[ii,'stationid'] = mindiststation
         mindistdf[ii,'dist2site'] = mindist
+        mindistdf[ii, c('stationid','alt_latlong','nobs_2017','nobs_2018','nobs_2019','nobs_2020','nobs_2021')] =
+            mindistdt[,c('STATION','ALT_LATLONG','NOBS_2017','NOBS_2018','NOBS_2019','NOBS_2020','NOBS_2021')]
+        mindistdf[ii,'prcp_avail'] = unname(myprcpa)
     }
-    # print(summary(mindistdf$dist2site))
+    # hist(mindistdf$dist2site)
+    print(summary(mindistdf$dist2site))
     return(mindistdf)
 }
 
