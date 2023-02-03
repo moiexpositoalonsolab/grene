@@ -81,6 +81,7 @@ gen_fastq_info <- function() {
     return(y)
   })
   keys <- dplyr::bind_rows(keys) # 914 rows
+  # 2023-01-27 note: interestingly, this is also the sampleid not processed by grenepipe
   keys$sampleid[duplicated(keys$sampleid)] # MLFH570120190821
 
   ## find the fastqfiles
