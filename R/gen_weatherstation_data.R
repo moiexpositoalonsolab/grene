@@ -42,8 +42,8 @@ gen_weatherstation_data <- function() {
     # require precipitation data
     stations_near = nearest_weatherstation(longlat, stations_all5, precipitation = TRUE)
     # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-    # 495.3  8511.4 14156.1 24502.4 34041.5 99138.0
-    # site 19, 47, 52, 53 did not have any weather station within 100 km with precipitation data
+    # 495.3  8511.4 13792.1 19248.8 30324.5 46687.5
+    # site 1, 19, 20, 25, 47, 52, 53, 54 did not have any weather station within 100 km with precipitation data
     # hist(stations_near$dist2site)
     # plot(stations_near0$dist2site, stations_near$dist2site,type = 'n')
     # text(stations_near0$dist2site, stations_near$dist2site, stations_near$site)

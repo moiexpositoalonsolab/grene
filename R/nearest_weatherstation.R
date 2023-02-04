@@ -7,7 +7,7 @@
 # Modification: Add support for accessing precipitation data
 # Date: Fri Feb  3 09:14:12 2023
 
-nearest_weatherstation <- function(longlat, weather_locs, dcut = 100*1e+3, precipitation = FALSE) {
+nearest_weatherstation <- function(longlat, weather_locs, dcut = 50*1e+3, precipitation = FALSE) {
     require(sf)
     require(dplyr)
     site_sf <- sf::st_as_sf(longlat, coords = c('longitude','latitude'), crs = 4326)
@@ -18,7 +18,7 @@ nearest_weatherstation <- function(longlat, weather_locs, dcut = 100*1e+3, preci
     for(ii in 1:nrow(site_buf)) {
         dt = st_filter(x = weather_sf, y = site_buf[ii,])
         if (nrow(dt) < 1) {
-            stop('No weather station within given dcut. (default 100 km)')
+            stop('No weather station within given dcut. (default 50 km)')
         } else {
             if (precipitation) {
                 # require precipitation data
@@ -26,7 +26,7 @@ nearest_weatherstation <- function(longlat, weather_locs, dcut = 100*1e+3, preci
                     dplyr::select(starts_with('PRCPAVAIL'))
                 prcpa = apply(prcpa, 1, all)
                 if (all(prcpa == FALSE)) {
-                    warning(paste0('No weather station within given dcut has precipitation data. (default 100 km) for site', site_buf$site[ii]))
+                    warning(paste0('No weather station within given dcut has precipitation data. (default 50 km) for site', site_buf$site[ii]))
                     # keep as it is
                 } else {
                     dt = dt[prcpa,]
