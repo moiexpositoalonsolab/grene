@@ -24,7 +24,7 @@ gen_weatherstation_data <- function() {
                 "wdsp","mxspd","gust","max","min","prcp","sndp","frshtt")
     ws_info = c("stationid", "dist2site", "station_longitude", "station_latitude",
                 "station_altitude", "station_name",
-                "nobs_2017","nobs_2018","nobs_2019","nobs_2020","nobs_2021", "prcp_avail")
+                "nobs_2017","nobs_2018","nobs_2019","nobs_2020","nobs_2021", "nobs_full", "prcp_avail")
 
     #######################################################################
     # load data
@@ -40,17 +40,19 @@ gen_weatherstation_data <- function() {
     # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
     # 495.3  7935.8 13063.3 17801.5 25363.8 46687.5
     # require precipitation data
-    stations_near = nearest_weatherstation(longlat, stations_all5, precipitation = TRUE)
+    stations_near0.1 = nearest_weatherstation(longlat, stations_all5, precipitation = TRUE)
+    stations_near = nearest_weatherstation(longlat, stations_all5, precipitation = TRUE, fullyear = TRUE)
     # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-    # 495.3  8511.4 13792.1 19248.8 30324.5 46687.5
-    # site 1, 19, 20, 25, 47, 52, 53, 54 did not have any weather station within 100 km with precipitation data
+    # 495.3  8511.4 15177.5 19890.6 31155.1 46687.5
+    # site 1, 19, 20, 25, 47, 52, 53, 54 did not have any weather station within 50 km with precipitation data
+    # site 58 did not have any weather station within 50 km with > 250 days & 12 months data.
     # hist(stations_near$dist2site)
     # plot(stations_near0$dist2site, stations_near$dist2site,type = 'n')
-    # text(stations_near0$dist2site, stations_near$dist2site, stations_near$site)
+    # text(stations_near0$dist2site, stations_near$dist2site, stations_near$site, col = 'red')
+    # text(stations_near0$dist2site, stations_near0.1$dist2site, stations_near0.1$site, col = 'green')
 
     #######################################################################
     # get weather for each of these sites
-    # 16 sites only reported the tempature
     noprcp = 0
     weatherstation_datal = vector('list', length = nrow(locations_data))
     weatherstation_infol = vector('list', length = nrow(locations_data))
@@ -69,7 +71,7 @@ gen_weatherstation_data <- function() {
         ws_infod = cbind(unique(dt[, colnames(dt) %in% ws_info]),
                          stations_near[ii, colnames(stations_near) %in% ws_info])[,ws_info]
         if (nrow(ws_infod) != 1) {
-            warning('Bad weather station info. Keeping only the first row')
+            warning('Bad weather station info. Keeping only the first row.')
             print(ws_infod)
             ws_infod = ws_infod[1,]
         }

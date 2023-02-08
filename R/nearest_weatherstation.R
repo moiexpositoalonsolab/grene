@@ -6,8 +6,11 @@
 # weather_locs, the data frame of weather locations stored in `./gsod/noaa-ftp/inventory`
 # Modification: Add support for accessing precipitation data
 # Date: Fri Feb  3 09:14:12 2023
+# Modification: Add requirement for data availability
+# Date: Tue Feb  7 13:39:05 2023
 
-nearest_weatherstation <- function(longlat, weather_locs, dcut = 50*1e+3, precipitation = FALSE) {
+
+nearest_weatherstation <- function(longlat, weather_locs, dcut = 50*1e+3, precipitation = FALSE, fullyear = FALSE) {
     require(sf)
     require(dplyr)
     site_sf <- sf::st_as_sf(longlat, coords = c('longitude','latitude'), crs = 4326)
@@ -32,12 +35,21 @@ nearest_weatherstation <- function(longlat, weather_locs, dcut = 50*1e+3, precip
                     dt = dt[prcpa,]
                 }
             }
+            # require full year data
+            if (fullyear) {
+                if(sum(dt$NOBS_FULL) == 0) {
+                    warning(paste0('No weather station within given dcut has > 250 days & 12 months data. (default 50 km) for site', site_buf$site[ii]))
+                } else {
+                    dt = dt %>%
+                        dplyr::filter(NOBS_FULL == TRUE)
+                }
+            }
             dtlist[[ii]] = dt
         }
     }
     names(dtlist) = site_buf$site
     # find the closest station
-    mindistdfnames = c('site','stationid', 'dist2site', 'alt_latlong', 'nobs_2017','nobs_2018','nobs_2019','nobs_2020','nobs_2021', 'prcp_avail')
+    mindistdfnames = c('site','stationid', 'dist2site', 'altlatlong', 'nobs_2017','nobs_2018','nobs_2019','nobs_2020','nobs_2021', 'nobs_full', 'prcp_avail')
     mindistdf = data.frame(matrix(nrow = nrow(site_buf), ncol = length(mindistdfnames)))
     colnames(mindistdf) = mindistdfnames
     # iterate to get the minimum distances
@@ -51,8 +63,8 @@ nearest_weatherstation <- function(longlat, weather_locs, dcut = 50*1e+3, precip
         # get the minimum distance
         mindistdf[ii,'site'] = names(dtlist)[ii]
         mindistdf[ii,'dist2site'] = mindist
-        mindistdf[ii, c('stationid','alt_latlong','nobs_2017','nobs_2018','nobs_2019','nobs_2020','nobs_2021')] =
-            mindistdt[,c('STATION','ALT_LATLONG','NOBS_2017','NOBS_2018','NOBS_2019','NOBS_2020','NOBS_2021')]
+        mindistdf[ii, c('stationid','altlatlong','nobs_2017','nobs_2018','nobs_2019','nobs_2020','nobs_2021', 'nobs_full')] =
+            mindistdt[,c('STATION','ALTLATLONG','NOBS_2017','NOBS_2018','NOBS_2019','NOBS_2020','NOBS_2021', 'NOBS_FULL')]
         mindistdf[ii,'prcp_avail'] = unname(myprcpa)
     }
     # hist(mindistdf$dist2site)

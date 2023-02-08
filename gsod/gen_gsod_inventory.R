@@ -5,6 +5,8 @@
 # Date: Thu Feb  2 12:55:52 2023
 # README for GSOD: https://www.ncei.noaa.gov/data/global-summary-of-the-day/doc/readme.txt
 # Usage: Rscript --vanilla gsod/gen_gsod_inventory.R logs/gen_gsod_inventory.log
+# Modification: Add start and end date of the record
+# Date: Tue Feb  7 13:40:27 2023
 
 # preparation --------
 rm(list = ls())
@@ -16,6 +18,7 @@ date()
 sessionInfo()
 
 require(dplyr)
+require(lubridate)
 
 # def functions --------
 get_locations <- function(year) {
@@ -26,8 +29,9 @@ get_locations <- function(year) {
     # Date: Thu Feb  2 12:44:24 2023
     weather_locsl = lapply(weatherfiles, function(xx) {
         dt = read.csv(file = paste0(mypath, xx),
-                      colClasses = c('character','NULL','character','character', rep("NULL", 20),
-                                     'character','character','NULL','NULL'))
+                      colClasses = c('character','character','character','character', rep("NULL", 20),
+                                     'character','character','NULL','NULL')) %>%
+            dplyr::mutate(DATE = as.Date(DATE))
         dt1 = dt[,c('STATION', 'LATITUDE', 'LONGITUDE')]
         dt1 = dt1[!duplicated(dt1), ]
         if (nrow(dt1) != 1) {
@@ -44,6 +48,10 @@ get_locations <- function(year) {
         } else {
             dt1$PRCPAVAIL=TRUE
         }
+
+        # check for the start and end date of record
+        dt1$STARTDATE = min(dt$DATE)
+        dt1$ENDDATE = max(dt$DATE)
         dt1$NOBS = nrow(dt)
         return(dt1)
     })
@@ -71,13 +79,16 @@ multi_fulljoin <- function(dtl, years) {
     outdt = dplyr::full_join(dtl[[1]],dtl[[2]], by = c('STATION','LATITUDE','LONGITUDE'), suffix = paste0('_',years[1:2]))
     for (ii in 3:length(dtl)) {
         outdt = dplyr::full_join(outdt, dtl[[ii]], by = c('STATION','LATITUDE','LONGITUDE'))
-        colnames(outdt)[(ncol(outdt)-1):ncol(outdt)] = paste0(c('PRCPAVAIL_','NOBS_'), years[ii])
+        colnames(outdt)[(ncol(outdt)-3):ncol(outdt)] = paste0(c('PRCPAVAIL_','STARTDATE_','ENDDATE_','NOBS_'), years[ii])
     }
     return(outdt)
 }
 
 merge_rows <- function(df) {
     outdf = data.frame(matrix(nrow = 1, ncol = ncol(df)+1))
+    df = df %>%
+        dplyr::mutate(across(.cols = starts_with('STARTDATE'), .fns = as.character),
+                      across(.cols = starts_with('ENDDATE'), .fns = as.character))
     for (ii in 1:ncol(df)) {
         if (colnames(df)[ii] %in% c('LONGITUDE','LATITUDE')) {
             outdf[1,ii] = df[1,ii]
@@ -86,8 +97,22 @@ merge_rows <- function(df) {
         }
     }
     outdf[1,ncol(outdf)] = paste0('Lat:',df[2,'LATITUDE'],'; Lon:',df[2,'LONGITUDE'])
-    colnames(outdf) = c(colnames(df),'ALT_LATLONG')
+    colnames(outdf) = c(colnames(df),'ALTLATLONG')
+    outdf = outdf %>%
+        dplyr::mutate(across(.cols = starts_with('STARTDATE'), .fns = as.Date),
+                      across(.cols = starts_with('ENDDATE'), .fns = as.Date))
     return(outdf)
+}
+
+check_durations <- function(finaldf) {
+    dfmonths = finaldf %>%
+        dplyr::mutate(across(.cols = starts_with('STARTDATE'), .fns = lubridate::month),
+                      across(.cols = starts_with('ENDDATE'), .fns = lubridate::month))
+    dfmonths$passstart = (rowSums(dfmonths %>% dplyr::select(starts_with('STARTDATE')) < 2) == 5)
+    dfmonths$passend = (rowSums(dfmonths %>% dplyr::select(starts_with('ENDDATE')) > 11) == 5)
+    dfmonths$passnobs = (rowSums(dfmonths %>% dplyr::select(starts_with('NOBS')) > 250) == 5)
+    passdurations = dfmonths$passstart & dfmonths$passend & dfmonths$passnobs
+    return(passdurations)
 }
 
 # def variables --------
@@ -130,15 +155,16 @@ stations_dedup = dplyr::bind_rows(lapply(stations_dups, merge_rows))
 
 stations_notdups = stations_all5_locs %>%
     dplyr::filter(!(STATION %in% stations_all5_locs$STATION[duplicated(stations_all5_locs$STATION)])) %>%
-    dplyr::mutate(ALT_LATLONG = NA_character_)
+    dplyr::mutate(ALTLATLONG = NA_character_)
 stations_all5_locs_dedup = dplyr::bind_rows(stations_dedup, stations_notdups) %>%
     dplyr::arrange(STATION)
 print(dim(stations_all5_locs_dedup))
 
 # get some statistics (most have precipitation data)
 table(rowSums(stations_all5_locs_dedup %>% dplyr::select(starts_with('PRCPAVAIL'))))
-# most have everyday data
-# hist(rowSums(stations_all5_locs_dedup %>% dplyr::select(starts_with('NOBS'))))
+# get the ones that have more than 250 days and start before 02-01 ends after 11-31
+stations_all5_locs_dedup$NOBS_FULL = check_durations(stations_all5_locs_dedup)
+table(stations_all5_locs_dedup$NOBS_FULL)
 
 # output files --------
 saveRDS(stations_all5_locs_dedup, file = paste0(outdir, 'stations_loc_nona_2017-2021.rds'))
