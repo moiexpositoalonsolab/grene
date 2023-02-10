@@ -89,11 +89,12 @@ gen_samples_data <- function() {
         dplyr::mutate(usesample = case_when(isdispersion ~ FALSE,
                                             isfailedlabwork ~ FALSE,
                                             isreplicate & str_ends(sampleid,'B') ~ FALSE,
+                                            is.na(sampleid) ~ FALSE,
                                             TRUE ~ TRUE))
     table(samples_data[,c('usesample')])
-    # 79 = 63 (isdispersion) + 3(isreplicate/2) + 13(isfailedlabwork)
+    # 80 = 63 (isdispersion) + 3(isreplicate/2) + 13(isfailedlabwork) + 1 (is.na(sampleid))
     # FALSE  TRUE
-    # 79  2339
+    # 80  2338
     #######################################################################
     # Output data
     dim(samples_data) # [1] 2418    12
