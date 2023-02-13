@@ -2,11 +2,11 @@
 # Author: Meixi Lin
 # Adapted from Moi's previous script
 # Date: Wed Nov 16 13:37:45 2022
+options(echo = TRUE, stringsAsFactors = FALSE)
 
 gen_worldclim_sitesdata <- function() {
     print(date())
     rm(list = ls())
-    options(echo = TRUE, stringsAsFactors = FALSE)
     source('R/extract_worldclim.R') # these needs to be removed
     source('R/use_grene_data.R')
 
@@ -22,9 +22,8 @@ gen_worldclim_sitesdata <- function() {
     # small function to rename the header
     new_colnames <- function(oldname,
                              myvar = c('bio','tmin','tmax', 'tavg', 'prec', 'srad', 'wind', 'vapr')) {
-        out = reshape2::colsplit(oldname, pattern = '_', names = c('ver','res','var', 'sub')) %>%
-            dplyr::mutate(sub0 = as.integer(sub)) %>%
-            dplyr::arrange(sub0)
+        out = reshape2::colsplit(oldname, pattern = '_', names = c('ver','res','var','sub')) %>%
+            dplyr::mutate(sub0 = as.integer(sub))
         if (myvar == 'bio') {
             out = out %>%
                 dplyr::mutate(out = paste0(var, sub))
@@ -53,9 +52,15 @@ gen_worldclim_sitesdata <- function() {
         wcdt = data.frame(wcdt, row.names = NULL) # drops dimnames[[1]]
         return(wcdt)
     })
+    # Modification: BUG FIXED the bio10 were falsely labeled as bio2 in the previous version
+    # Date: Mon Feb 13 14:58:00 2023
     worldclim_sitesdata = dplyr::bind_cols(wc_dtlist) %>%
         dplyr::mutate(site = as.integer(dimnames(wc_dtlist0[[1]])[[1]])) %>% # append the dimnames for sanity check
-        dplyr::relocate(., site)
+        dplyr::relocate(., site) %>%
+        dplyr::relocate(bio10,bio11,bio12,bio13,bio14,bio15,bio16,bio17,bio18,bio19, .after = bio9)
+
+    # reorder worldclim data
+    worldclim_sitesdata = worldclim_sitesdata
     # sanity check that the site names is the same as locations data
     if (!all.equal(worldclim_sitesdata$site, locations_data$site)) {
         stop('Mismatched sites')
@@ -65,9 +70,9 @@ gen_worldclim_sitesdata <- function() {
     return(invisible())
 }
 
-# sink(file = './logs/gen_worldclim_sitesdata.log')
-# gen_worldclim_sitesdata()
-# sink()
+gen_worldclim_sitesdata()
+
+# Rscript --vanilla R/gen_worldclim_sitesdata.R &> logs/gen_worldclim_sitesdata.log
 
 
 
