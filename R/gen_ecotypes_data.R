@@ -2,6 +2,7 @@
 # author Tati
 # date oct 11 2022
 
+rm(list = ls())
 library(dplyr)
 
 ## import dataset with all the accessions used in the experiment
@@ -47,14 +48,29 @@ our_acc <- our_acc[myvars]
 # rename those variables
 cnames = c("ecotypeid", "longitude", "latitude", 'csnumber', 'name', 'country' , 'weightmasterseed',
   'estimatedseednumber', 'seedsperplot')
+
 names(our_acc) = cnames
 
-#save dataset ecotypes
+# Modification: Add CS number for the ones that were missing according to Xing's edits
+# Date: Mon Feb 13 14:39:20 2023
+ecotypes_data = our_acc
+ecotypes_data[ecotypes_data$ecotypeid == 9940, c('csnumber', 'name')] <- c('CS76348', 'Toufl-1 / ice50')
+ecotypes_data[ecotypes_data$ecotypeid == 9977, c('csnumber', 'name')] <- c('CS76349', 'Vezzano2-1 / ice226')
+ecotypes_data[ecotypes_data$ecotypeid == 9992, 'csnumber'] <- 'CS76386'
+
+# Add dataset source
+ecotypes_data = ecotypes_data %>%
+    dplyr::mutate(source = case_when(ecotypeid %in% c(100001, 100002) ~ 'israel',
+                                     ecotypeid %in% c(9940, 9977, 9992) ~ '80-pilot',
+                                     ecotypeid %in% c(6939) ~ 'regmap',
+                                     TRUE ~ '1001G')) %>%
+    dplyr::relocate(source, .after = ecotypeid) %>%
+    dplyr::arrange(ecotypeid)
 
 ################
 source('R/use_grene_data.R')
 ################
-ecotypes_data = our_acc
+
 use_grene_data(ecotypes_data)
 #write.csv(our_acc,"data/ecotypes_data.csv", row.names = FALSE, quote = T)
 
