@@ -1,12 +1,13 @@
 # Title: generate worldclim data by ecotypes_data
 # Author: Meixi Lin
 # Adapted from Moi's previous script
-# Date: Wed Nov 16 13:37:45 2022
+# Date: Mon Feb 13 15:29:54 2023
+# For sanity check with previous worldclim, see data/ARCHIVE/scripts/check_worldclim_ecotypes.R
+options(echo = TRUE, stringsAsFactors = FALSE)
 
 gen_worldclim_ecotypesdata <- function() {
     print(date())
     rm(list = ls())
-    options(echo = TRUE, stringsAsFactors = FALSE)
     source('R/extract_worldclim.R') # these needs to be removed
     source('R/use_grene_data.R')
 
@@ -22,9 +23,8 @@ gen_worldclim_ecotypesdata <- function() {
     # small function to rename the header
     new_colnames <- function(oldname,
                              myvar = c('bio','tmin','tmax', 'tavg', 'prec', 'srad', 'wind', 'vapr')) {
-        out = reshape2::colsplit(oldname, pattern = '_', names = c('ver','res','var', 'sub')) %>%
-            dplyr::mutate(sub0 = as.integer(sub)) %>%
-            dplyr::arrange(sub0)
+        out = reshape2::colsplit(oldname, pattern = '_', names = c('ver','res','var','sub')) %>%
+            dplyr::mutate(sub0 = as.integer(sub))
         if (myvar == 'bio') {
             out = out %>%
                 dplyr::mutate(out = paste0(var, sub))
@@ -38,28 +38,8 @@ gen_worldclim_ecotypesdata <- function() {
     #######################################################################
     # load data
     load('data/ecotypes_data.rda')
-
-    library(leaflet)
-    leaflet(data = ecotypes_data) %>%
-        addTiles() %>%
-        addCircleMarkers(~longitude, ~latitude)
-    # compare previous version
-    load('./data/ecotypes.clim.rda')
-    old_ecotypes = ecotypes.clim[,c(1,3,2,4,6,8,9)]
-    comp_ecotypes_data = ecotypes_data[,c(1,2,3,4,5,7,8)]
-    colnames(old_ecotypes) = colnames(comp_ecotypes_data)
-    old_ecotypes = old_ecotypes %>% dplyr::arrange(ecotypeid) %>%
-        dplyr::mutate(ecotypeid = as.integer(ecotypeid),
-                      estimatedseednumber = as.integer(estimatedseednumber))
-    comp_ecotypes_data = comp_ecotypes_data %>% dplyr::arrange(ecotypeid)
-    diffdf::diffdf(comp_ecotypes_data, old_ecotypes)
-
-    #######################################################################
-
-
-    longlat = locations_data[,c('longitude','latitude')]
-    rownames(longlat) = locations_data$ecotype
-
+    longlat = ecotypes_data[,c('longitude','latitude')]
+    rownames(longlat) = ecotypes_data$ecotypeid
 
     #######################################################################
     # extract worldclim
@@ -74,22 +54,32 @@ gen_worldclim_ecotypesdata <- function() {
         return(wcdt)
     })
     worldclim_ecotypesdata = dplyr::bind_cols(wc_dtlist) %>%
-        dplyr::mutate(ecotype = as.integer(dimnames(wc_dtlist0[[1]])[[1]])) %>% # append the dimnames for sanity check
-        dplyr::relocate(., ecotype)
-    # sanity check that the ecotype names is the same as locations data
-    if (!all.equal(worldclim_ecotypesdata$ecotype, locations_data$ecotype)) {
+        dplyr::mutate(ecotypeid = as.integer(dimnames(wc_dtlist0[[1]])[[1]])) %>% # append the dimnames for sanity check
+        dplyr::relocate(., ecotypeid) %>%
+        dplyr::relocate(bio10,bio11,bio12,bio13,bio14,bio15,bio16,bio17,bio18,bio19, .after = bio9)
+
+    # sanity check that the ecotypeid is the same as ecotypes_data
+    if (!all.equal(worldclim_ecotypesdata$ecotypeid, ecotypes_data$ecotypeid)) {
         stop('Mismatched ecotypes')
     }
+    #######################################################################
+    # confirm the missing data
+    missingecotypes = c(6184,9371,9394,9481)
+    ecotypes_m = ecotypes_data %>%
+        dplyr::filter(ecotypeid %in% missingecotypes)
+
+    plot(rr, xlim = c(13.8,13.9), ylim = c(55.3,55.5))
+    points(ecotypes_m$longitude, ecotypes_m$latitude)
+
+
     use_grene_data(worldclim_ecotypesdata)
     print(date())
     return(invisible())
 }
 
-# sink(file = './logs/gen_worldclim_ecotypesdata.log')
-# gen_worldclim_ecotypesdata()
-# sink()
+gen_worldclim_ecotypesdata()
 
-load('data/fastq_info.rda')
+# Rscript --vanilla R/gen_worldclim_ecotypesdata.R &> logs/gen_worldclim_ecotypesdata.log
 
 
 
