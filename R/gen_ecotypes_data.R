@@ -52,11 +52,13 @@ cnames = c("ecotypeid", "longitude", "latitude", 'csnumber', 'name', 'country' ,
 names(our_acc) = cnames
 
 # Modification: Add CS number for the ones that were missing according to Xing's edits
+# And comparison with previous versions
 # Date: Mon Feb 13 14:39:20 2023
 ecotypes_data = our_acc
 ecotypes_data[ecotypes_data$ecotypeid == 9940, c('csnumber', 'name')] <- c('CS76348', 'Toufl-1 / ice50')
 ecotypes_data[ecotypes_data$ecotypeid == 9977, c('csnumber', 'name')] <- c('CS76349', 'Vezzano2-1 / ice226')
 ecotypes_data[ecotypes_data$ecotypeid == 9992, 'csnumber'] <- 'CS76386'
+ecotypes_data[ecotypes_data$ecotypeid == 6939, 'csnumber'] <- 'CS22642'
 
 # Add dataset source
 ecotypes_data = ecotypes_data %>%
