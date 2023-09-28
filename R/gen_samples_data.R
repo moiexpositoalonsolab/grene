@@ -4,6 +4,8 @@
 # Date: Wed Nov 16 22:54:49 2022
 # Modification: Updated to include coverage and some other fixes
 # Date: Fri Feb 10 16:26:54 2023
+# Modification: Update to force site 57 have 3 generations
+# Date: Fri Jun  2 16:53:22 2023
 
 
 gen_samples_data <- function() {
@@ -31,7 +33,7 @@ gen_samples_data <- function() {
     calc_weighted_coverage <- function(samples_data) {
         df = samples_data %>%
             dplyr::filter(usesample) %>%
-            dplyr::mutate(spg = paste(site,plot,generation))
+            dplyr::mutate(spg = paste(site,plot,generation_merge57))
         dfl = base::split(df, df$spg)
         wc = lapply(dfl, function(xx) {
             xx$weighted_mean_coverage = stats::weighted.mean(xx$coverage, xx$flowerscollected)
@@ -57,8 +59,8 @@ gen_samples_data <- function() {
     samples_datar = read.csv(file = './data-raw/samples_sorted.csv')
     dim(samples_datar) # [1] 2415    8
     samples_data = samples_datar %>%
-        dplyr::mutate(TO_SKIP = ifelse(TO_SKIP == 'True', TRUE, FALSE),
-                      REPLICATES = ifelse(REPLICATES == 'True', TRUE, FALSE),
+        dplyr::mutate(TO_SKIP = TO_SKIP == 'True',
+                      REPLICATES = REPLICATES == 'True',
                       DATE= as.character(DATE),
                       year = as.integer(str_sub(DATE, end = 4)),
                       month = as.integer(str_sub(DATE, start = 5, end = 6)),
@@ -130,6 +132,7 @@ gen_samples_data <- function() {
     samples_data = samples_data %>%
         dplyr::mutate(generation = ifelse(month >= 10, year - 2017 + 1, year - 2017))
     # for site 57, different generation was reported
+    # Fri Jun  2 17:28:30 PDT 2023: but this generation setup was not used, so adding another one that merges things
     site57 = samples_data[samples_data$site == 57, ]
     # this covers all the generations
     site57 = site57 %>%
@@ -143,6 +146,11 @@ gen_samples_data <- function() {
             TRUE ~ -1
         ))
     samples_data[samples_data$site == 57, 'generation'] = site57$generation
+
+    # add anther generation scheme
+    samples_data = samples_data %>%
+        dplyr::mutate(generation_merge57 = generation,
+                      generation_merge57 = ifelse(site == 57, ceiling(generation_merge57/2), generation_merge57))
 
     #######################################################################
     # Merge the read coverage
@@ -169,8 +177,20 @@ gen_samples_data <- function() {
     samples_data = calc_weighted_coverage(samples_data)
 
     #######################################################################
+    # compare with another meta_data
+    # the samples_data now matched the /Carnegie/DPB/Data/Shared/Labs/Moi/Everyone/ath_evo/grenephase1-data/meta_table/merged_sample_table.csv
+    # see gen_merged_samples_data for details
+
+    # compare with older data that the mergingworked
+    # samples_data_new = samples_data
+    # load('./data/ARCHIVE/data-versions/samples_data_20230210.rda')
+    # mydiffrows = diffdf(samples_data_new, samples_data)$VarDiff_weighted_mean_coverage$..ROWNUMBER..
+    # View(cbind(samples_data_new[mydiffrows,c('site', 'plot', 'generation', 'date','generation_merge57')],
+    #            samples_data[mydiffrows,c('site', 'plot', 'generation')]))
+
+    #######################################################################
     # Output data
-    dim(samples_data) # [1] 2418    17
+    colnames(samples_data) # [1] 2418    19
     # # keep only the old tables for test
     # samples_data = samples_data %>%
     #     dplyr::select(-month, -day, -generation, -mapped_reads, -coverage, -weighted_mean_coverage) %>%
