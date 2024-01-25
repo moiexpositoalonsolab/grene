@@ -59,8 +59,6 @@ gen_worldclim_sitesdata <- function() {
         dplyr::relocate(., site) %>%
         dplyr::relocate(bio10,bio11,bio12,bio13,bio14,bio15,bio16,bio17,bio18,bio19, .after = bio9)
 
-    # reorder worldclim data
-    worldclim_sitesdata = worldclim_sitesdata
     # sanity check that the site names is the same as locations data
     if (!all.equal(worldclim_sitesdata$site, locations_data$site)) {
         stop('Mismatched sites')
