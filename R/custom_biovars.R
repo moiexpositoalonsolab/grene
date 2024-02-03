@@ -1,5 +1,5 @@
 # Adapted from https://rdrr.io/cran/dismo/src/R/biovars.R
-# Add use for mean temperature.
+# Add input for mean temperature. Original biovars only used tmin, tmax and prcp.
 # Add tolerance for no precipitation data.
 # Only tested on one row and no missing data
 
@@ -10,12 +10,12 @@ custom_biovars <- function(df) {
     tavg = t(as.matrix(df$temp))
     tmin = t(as.matrix(df$mint))
     tmax = t(as.matrix(df$maxt))
-    # check for missing data (NaN or NA)
+    # 1. there is no NA 2. there is all NA, both pass missingness filter
     missingpass <- sapply(list(prec,tavg,tmin,tmax), function(xx) {
         !(any(is.na(xx)) & !all(is.na(xx))) | (all(is.na(xx)))
     })
     if (any(!missingpass) | ncol(prec) != 12 | ncol(tavg) != 12 | ncol(tmin) != 12 | ncol(tmax) != 12) {
-        print(df)
+        print(as.data.frame(df))
         warning('Uncomplete 12 months data')
     }
     # P1. Annual Mean Temperature
