@@ -26,3 +26,7 @@ data/alleles.clim.rds
 **/ARCHIVE/
 data/ARCHIVE/
 data-raw/ARCHIVE/
+data/.*
+man/.*
+**/token.json
+**/credentials.json

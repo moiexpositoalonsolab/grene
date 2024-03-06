@@ -1,6 +1,6 @@
-## import the list of participants data 
-#https://docs.google.com/spreadsheets/d/1NTHPZ23FQHmvxaXzonJwRdORMVi6Qz-ILHE_T47S3VI/edit?pli=1#gid=818914143
-
+## import the sites info
+## https://docs.google.com/spreadsheets/d/1NTHPZ23FQHmvxaXzonJwRdORMVi6Qz-ILHE_T47S3VI/edit?pli=1#gid=818914143
+## this script is getting GrENE-sites_info - Curated
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
