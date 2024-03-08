@@ -7,7 +7,7 @@ import glob
 import pandas as pd
 import os
 
-with open('data-raw/python_scripts/files_to_download.txt') as f:
+with open('data-raw/python_scripts/samples_selected_sequencing.txt') as f:
     files_to_download = ast.literal_eval(f.read())
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']

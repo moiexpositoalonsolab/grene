@@ -14,9 +14,6 @@ g1001_acc=read.csv("data-raw/accessions_1001g.csv",fill = T,header=T)
 ## import dataset with accessions from arapheno project
 arapheno_acc=read.csv("data-raw/accessions_arapheno.csv",fill = T,header=T)
 
-## import dataset with isocodes
-iso_codes=read.csv("data-raw/country_isocodes.csv",fill = T,header=T)
-
 # bring info from 1001g
 our_acc = merge(our_acc, g1001_acc[c("id", "Lat", "Long", 'CS.Number')], all.x = TRUE, by.x = 'ecotypeid', by.y = 'id')
 
@@ -34,16 +31,16 @@ our_acc$Long[is.na(our_acc$Long)] <- our_acc$longitude[is.na(our_acc$Long)]
 # correct the 2 israeli accessions that are not in arapheno
 our_acc[our_acc$ecotypeid == 100001, "Long"]  = 35.797398
 our_acc[our_acc$ecotypeid == 100001, "Lat"]  = 33.093931
+# Corrected ecotype ID for the second accession
 our_acc[our_acc$ecotypeid == 100002, "Long"]  = 35.788213
 our_acc[our_acc$ecotypeid == 100002, "Lat"]  = 33.176177
 
-# use isocodes to get actual country names
-our_acc = merge(our_acc, iso_codes, all.x = TRUE, by.x = 'country', by.y = 'code')
-
 # select only relevant variables
-myvars <- c("ecotypeid", "Long", "Lat", 'CS.Number', 'name', 'country.y' , 'weightmasterseed',
+myvars <- c("ecotypeid", "Long", "Lat", 'CS.Number', 'name', 'country' , 'weightmasterseed',
             'estimatedseednumber', 'seedsperplot')
-our_acc <- our_acc[myvars]
+
+# Use select() with any_of() to select columns without causing an error if some columns are missing
+our_acc <- our_acc %>% select(any_of(myvars))
 
 # rename those variables
 cnames = c("ecotypeid", "longitude", "latitude", 'csnumber', 'name', 'country' , 'weightmasterseed',
