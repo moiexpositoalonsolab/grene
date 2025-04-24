@@ -1,53 +1,124 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# grene
+# GrENE-net: Global Evolutionary Network Experiment
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-# The GrENE-net evolution experiment
+## Overview
 
-For more information, visit [grene-net.org](grene-net.org). For comments or bugs, contact [moisesexpositoalonso@gmail.com](mailto:moisesexpositoalonso@gmail.com).
+GrENE-net (Global Evolutionary Network Experiment) is a collaborative research project studying plant evolution on a global scale. This R package contains the complete toolkit for managing and analyzing data from the GrENE-net experiment, including sample metadata, environmental data, and genomic analysis tools.
 
-This folder hosts the R package for the GrENE-net experiment, encompassing all metadata, including sample names, participant information, sample records, environmental data, and scripts for genome sequence manipulation and analysis. To install the package, run: `./build.R` followed by `./install`.
+For more information, visit [grene-net.org](https://grene-net.org).
 
-## Folder Structure and Key Components
+## Features
 
-- **build.R**: Script for building the R package.
-- **CPP/**: Directory possibly containing C++ source code.
-- **data/**: The data files that will be loaded together with the package
-when installed adnd loaded via library(grene). Datasets will be
-accessible in any script as data(“nameofdataset”)
-- **data-raw/**: Datasets from this project in raw format which are parsed
-and then stored in data/ R scripts starting with gen\_.R load those raw
-datasets, clean them, and store them in data/
-- **DESCRIPTION**: Package metadata including name, version, and dependencies.
-- **grene.Rproj**: RStudio project file.
-- **gsod/**: Directory, potentially related to Global Surface Summary of the Day weather data.
-- **install**: Script for installation.
-- **LICENSE** & **LICENSE.md**: Licensing information for the project.
-- **logs/**: Directory for log files.
-- **man/**: Manual pages for the package's functions and datasets.
-- **NAMESPACE**: Controls the export and import of functions in the package.
-- **R/**: ll R functions that will be available and loaded. These functions
-will be accessible to call when the package is installed and loaded via
-library(grene) in any script -man/ The manual of the package containing
-descriptions of functions and datasets. -CPP/ C++ functions that can be
-accessible to be called from R if loaded via the Rcpp module or sourced
-via the function Rcpp::sourceCpp()
-- **README.md** & **README.Rmd**: Descriptive documentation for the project.
-- **srtm/**: Directory, possibly related to Shuttle Radar Topography Mission data.
-- **TODELETE/**: Directory marked for potential deletion.
-- **wc2-0.5/**: Directory, speculated to contain climate or weather data.
+- Sample metadata management
+- Environmental data processing
+- Participant information tracking
+- Genome sequence analysis tools
+- Comprehensive data visualization
+- Climate and geographical data integration
 
 ## Installation
 
-Install the development version from [GitHub](https://github.com/moiexpositoalonsolab/grene) with:
+### Prerequisites
 
-``` r
-# install.packages("devtools")
+- R (>= 3.5.0)
+- devtools package
+
+### Installing from GitHub
+
+```r
+# Install devtools if you haven't already
+if (!require("devtools")) install.packages("devtools")
+
+# Install GrENE-net package
 devtools::install_github("moiexpositoalonsolab/grene")
+```
+
+Alternatively, you can install locally:
+
+1. Clone the repository
+2. Run `./build.R`
+3. Execute `./install`
+
+## Package Structure
+
+### Core Directories
+
+- **R/**: Core R functions for data analysis and manipulation
+- **data/**: Processed datasets (accessible via `data("dataset_name")`), including:
+  - Climate data: `bioclimvars_ecotypes_era5.csv`, `worldclim_sitesdata.csv`, `weatherstation_data.rda`
+  - Sample data: `samples_data.csv`, `sbsamples_data.csv`, `seedbank_samples.csv`
+  - Experimental data: `siliques_data.csv`, `census_data.csv`, `ecotypes_data.csv`
+  - Location data: `locations_data.csv`, `sites.clim.csv`
+  - Environmental data: `soilsamples_data.csv`, `temphum_ib_data.csv`
+  - Sequencing data: `fastq_info.csv`
+- **data-raw/**: Raw data files and processing scripts, containing:
+  - Original experimental data: `SURVIVAL_total_flowers_collected.csv`, `samples_records.csv`
+  - Location information: `locations_dataraw.csv`
+  - Census data: `census_samples.xlsx`
+  - Ecotype information: `ecotypes_seedmix.csv`, `accessions_1001g.csv`
+  - Python scripts for data processing in `python_scripts/`
+- **man/**: Package documentation and function references
+
+### Additional Components
+
+- **CPP/**: C++ source code for performance-critical operations
+- **gsod/**: Global Surface Summary of Day weather data processing
+- **srtm/**: Shuttle Radar Topography Mission data utilities
+- **wc2-0.5/**: Climate data processing tools
+
+## Usage
+
+```r
+# Load the package
+library(grene)
+
+# Access documentation
+?grene
+
+# Load included datasets
+data("dataset_name")
+```
+
+## Data Description
+
+The package includes several key datasets:
+
+- Sample records
+- Experimental locations information
+- Climate variables
+
+## Contributing
+
+We welcome contributions! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+## Support
+
+For questions, bug reports, or feature requests:
+
+- Open an issue on GitHub
+- Contact: [moisesexpositoalonso@gmail.com](mailto:moisesexpositoalonso@gmail.com)
+
+## License
+
+This project is licensed under [LICENSE.md](LICENSE.md)
+
+## Citation
+
+If you use GrENE-net in your research, please cite:
+
+[Citation information to be added]
+
+## Acknowledgments
+
+Thanks to all contributors and participants in the GrENE-net experiment worldwide.
 
 ## Example
 ``` r
