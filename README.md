@@ -15,9 +15,6 @@ For more information, visit [grene-net.org](https://grene-net.org).
 
 - Sample metadata management
 - Environmental data processing
-- Participant information tracking
-- Genome sequence analysis tools
-- Comprehensive data visualization
 - Climate and geographical data integration
 
 ## Installation
@@ -82,17 +79,6 @@ library(grene)
 # Load included datasets
 data("dataset_name")
 ```
-
-## Data Description
-
-The package includes several key datasets:
-
-- Sample records
-- Experimental locations information
-- Climate variables
-
-## Contributing
-
 We welcome contributions! Please:
 
 1. Fork the repository
@@ -104,7 +90,6 @@ We welcome contributions! Please:
 For questions, bug reports, or feature requests:
 
 - Open an issue on GitHub
-- Contact: [moisesexpositoalonso@gmail.com](mailto:moisesexpositoalonso@gmail.com)
 
 ## License
 
